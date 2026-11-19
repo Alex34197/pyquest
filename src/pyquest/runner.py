@@ -394,19 +394,32 @@ def _install_sandbox(base: str) -> None:  # pragma: no cover (se ejecuta en el h
             setattr(__import__(_mod), _fn, _bloq)
         except Exception:
             pass
-    base_abs = _os.path.normcase(_os.path.abspath(base))
+    base_abs = _os.path.normcase(_os.path.realpath(base))
 
-    def _open_seguro(file, mode="r", *args, **kwargs):
-        if isinstance(mode, str) and any(c in mode for c in "wax+"):
-            try:
-                target = _os.path.normcase(_os.path.abspath(_os.fspath(file)))
-                # dentro de la carpeta (no basta con empezar igual: /tmp/a vs /tmp/ab)
-                fuera = target != base_abs and not target.startswith(base_abs + _os.sep)
-            except Exception:
-                fuera = not isinstance(file, int)  # un descriptor ya abierto se permite
-            if fuera:
-                raise PermissionError("Escritura de ficheros fuera del área de trabajo bloqueada")
-        return orig_open(file, mode, *args, **kwargs)
+    class _SafeOpen:
+        """``open`` que solo deja escribir dentro de ``base``.
+
+        Es un objeto invocable y NO una función: si un módulo lo guarda como
+        atributo de clase (el ``pathlib`` de Python 3.10 hace
+        ``_NormalAccessor.open = io.open``), una función se convertiría en
+        método y recibiría un ``self`` de más.
+        """
+        __slots__ = ()
+
+        def __call__(self, file, mode="r", *args, **kwargs):
+            if isinstance(mode, str) and any(c in mode for c in "wax+"):
+                try:
+                    # realpath en ambos lados: en macOS /var -> /private/var
+                    target = _os.path.normcase(_os.path.realpath(_os.fspath(file)))
+                    # dentro de la carpeta (no basta con empezar igual: /tmp/a vs /tmp/ab)
+                    fuera = target != base_abs and not target.startswith(base_abs + _os.sep)
+                except Exception:
+                    fuera = not isinstance(file, int)  # un descriptor ya abierto se permite
+                if fuera:
+                    raise PermissionError("Escritura de ficheros fuera del área de trabajo bloqueada")
+            return orig_open(file, mode, *args, **kwargs)
+
+    _open_seguro = _SafeOpen()
     builtins.open = _open_seguro
     try:
         import io

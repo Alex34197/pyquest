@@ -10,12 +10,8 @@ os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
 
 @pytest.fixture(scope="module")
-def app():
-    try:
-        from PySide6.QtWidgets import QApplication
-        return QApplication.instance() or QApplication([])
-    except Exception as e:  # libs gráficas ausentes / sin plataforma
-        pytest.skip(f"Qt no disponible: {e}")
+def app(qapp):  # QApplication de sesión (conftest.py)
+    return qapp
 
 
 def _make_window():

@@ -15,3 +15,30 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "src
 def _isolated_progress(tmp_path, monkeypatch):
     from pyquest import progress
     monkeypatch.setattr(progress, "_path", lambda: tmp_path / "progress.json")
+
+
+@pytest.fixture(scope="session")
+def qapp():
+    """Una sola QApplication para toda la sesión de tests (GUI offscreen).
+
+    Al terminar cierra y destruye todas las ventanas MIENTRAS la aplicación
+    sigue viva: si Python destruye la QApplication antes que los widgets al
+    salir, Qt revienta con un segfault (visto en Linux/macOS con Python 3.10).
+    """
+    os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
+    try:
+        from PySide6.QtWidgets import QApplication
+        app = QApplication.instance() or QApplication([])
+    except Exception as e:  # libs gráficas ausentes / sin plataforma
+        pytest.skip(f"Qt no disponible: {e}")
+    yield app
+
+    import gc
+
+    from PySide6.QtCore import QCoreApplication, QEvent
+    for w in app.topLevelWidgets():
+        w.close()
+        w.deleteLater()
+    QCoreApplication.sendPostedEvents(None, QEvent.DeferredDelete)
+    app.processEvents()
+    gc.collect()

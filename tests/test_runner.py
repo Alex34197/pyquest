@@ -159,3 +159,13 @@ def test_tempfile_works_inside_workdir():
     rr = R.run_code("import tempfile\nwith tempfile.TemporaryFile() as f:\n"
                     "    f.write(b'x')\nprint('ok')")
     assert rr.ok, rr.stderr
+
+
+def test_patched_open_survives_being_a_class_attribute():
+    # El pathlib de Python 3.10 hace `_NormalAccessor.open = io.open`: el open
+    # del sandbox no debe convertirse en método al guardarse así.
+    rr = R.run_code("import io\nclass Accesor:\n    open = io.open\n"
+                    "with Accesor().open('a.txt', 'w') as f:\n    f.write('ok')\n"
+                    "print(open('a.txt').read())")
+    assert rr.ok, rr.stderr
+    assert rr.stdout.strip() == "ok"

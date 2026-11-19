@@ -112,12 +112,22 @@ jobs:
 
       - name: Reunir entregables
         shell: bash
+        # Nombres únicos por sistema (en la Release van todos juntos). Los portables de
+        # Linux/macOS van en .tar.gz: así conservan el permiso de ejecución.
         run: |
+          set -euo pipefail
           mkdir -p out
-          cp -r dist_portable/* out/ 2>/dev/null || true
-          cp dist/*.deb out/ 2>/dev/null || true
-          cp dist/*Setup*.exe out/ 2>/dev/null || true
-          cp dist/*.dmg out/ 2>/dev/null || true
+          case "$RUNNER_OS" in
+            Windows)
+              cp dist_portable/PyQuest.exe out/PyQuest-portable-windows.exe
+              cp dist/PyQuest-Setup-*.exe out/ ;;
+            Linux)
+              tar -czf out/PyQuest-portable-linux-x86_64.tar.gz -C dist_portable PyQuest
+              cp dist/*.deb out/ ;;
+            macOS)
+              tar -czf "out/PyQuest-portable-macos-$(uname -m).tar.gz" -C dist_portable PyQuest
+              cp dist/*.dmg out/ ;;
+          esac
           ls -la out
 
       - name: Subir artefactos
@@ -134,12 +144,33 @@ jobs:
     permissions:
       contents: write
     steps:
+      - uses: actions/checkout@v4
       - name: Descargar todos los artefactos
         uses: actions/download-artifact@v4
         with:
           path: artifacts
+      - name: Notas de la versión (desde CHANGELOG.md)
+        shell: bash
+        run: |
+          v="${GITHUB_REF_NAME#v}"
+          awk -v v="$v" 'index($0, "## [" v "]") == 1 {f=1; next} /^## \[/ {f=0} f' CHANGELOG.md > changes.md
+          {
+            echo "## Descargas / Downloads"
+            echo
+            echo "- **Windows**: \`PyQuest-Setup-$v.exe\` (instalador) o \`PyQuest-portable-windows.exe\` (sin instalar)."
+            echo "  Al no estar firmado, SmartScreen puede avisar: *Más información → Ejecutar de todas formas*."
+            echo "- **macOS** (Apple Silicon): \`PyQuest-$v.dmg\`; la primera vez, *clic derecho → Abrir*."
+            echo "- **Linux** (Debian/Ubuntu): \`sudo apt install ./pyquest_${v}_amd64.deb\`, o el portable \`.tar.gz\`."
+            echo
+            echo "No hace falta tener Python instalado / *no Python install needed*."
+            echo
+            cat changes.md
+          } > release_notes.md
+          cat release_notes.md
       - name: Publicar Release
         uses: softprops/action-gh-release@v2
         with:
+          name: PyQuest ${{ github.ref_name }}
+          body_path: release_notes.md
           files: artifacts/**/*
-          generate_release_notes: true
+          fail_on_unmatched_files: true

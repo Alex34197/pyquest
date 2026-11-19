@@ -33,6 +33,8 @@ Primera versión publicada en GitHub. Incluye también todo lo de 1.0.1.
   guarda como mucho 5000 líneas y recorta bloques gigantes.
 - En los botones de opción del examen desaparecía el círculo de la opción marcada al
   deshabilitarse.
+- macOS: el sandbox impedía escribir en la propia carpeta del alumno (`/var` es un enlace a
+  `/private/var`). Python 3.10: escribir con `pathlib` fallaba con un `TypeError`.
 
 ### Interno
 - CI: tests en **Windows, macOS y Linux** con Python 3.10 y 3.13 en cada *push* y *pull

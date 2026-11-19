@@ -1,5 +1,7 @@
 # PyQuest
 
+[![CI](https://github.com/Alex34197/pyquest/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/Alex34197/pyquest/actions/workflows/build.yml)
+[![Release](https://img.shields.io/github/v/release/Alex34197/pyquest?label=versi%C3%B3n)](https://github.com/Alex34197/pyquest/releases/latest)
 [![Licencia: MIT](https://img.shields.io/badge/licencia-MIT-green.svg)](LICENSE)
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)
 ![Windows · macOS · Linux](https://img.shields.io/badge/plataformas-Windows%20%C2%B7%20macOS%20%C2%B7%20Linux-lightgrey.svg)
@@ -32,9 +34,9 @@ tener Python instalado / *no Python install needed*:
 
 | Sistema | Archivo | Notas |
 |---------|---------|-------|
-| Windows | `PyQuest-Setup-x.y.z.exe` (instalador) o `PyQuest.exe` (portable) | Al no estar firmado, Windows SmartScreen puede avisar: **Más información → Ejecutar de todas formas**. |
-| macOS   | `PyQuest-x.y.z.dmg` | Firma *ad-hoc*: la primera vez, **clic derecho → Abrir**. |
-| Linux   | `pyquest_x.y.z_amd64.deb` (Debian/Ubuntu) o el binario portable | `sudo apt install ./pyquest_x.y.z_amd64.deb` |
+| Windows | `PyQuest-Setup-x.y.z.exe` (instalador) o `PyQuest-portable-windows.exe` (sin instalar) | Al no estar firmado, Windows SmartScreen puede avisar: **Más información → Ejecutar de todas formas**. |
+| macOS (Apple Silicon) | `PyQuest-x.y.z.dmg` o `PyQuest-portable-macos-arm64.tar.gz` | Firma *ad-hoc*: la primera vez, **clic derecho → Abrir**. |
+| Linux (x86-64)   | `pyquest_x.y.z_amd64.deb` (Debian/Ubuntu) o `PyQuest-portable-linux-x86_64.tar.gz` | `sudo apt install ./pyquest_x.y.z_amd64.deb` |
 
 Tu progreso se guarda en la carpeta de datos del usuario (`%APPDATA%\PyQuest`,
 `~/Library/Application Support/PyQuest` o `~/.local/share/PyQuest`) y se conserva al

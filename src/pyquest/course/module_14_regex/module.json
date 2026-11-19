@@ -1,0 +1,16 @@
+{
+  "id": "m14",
+  "order": 14,
+  "title": {
+    "es": "Expresiones regulares",
+    "en": "Regular expressions"
+  },
+  "summary": {
+    "es": "Buscar, extraer, sustituir y validar texto con el módulo re.",
+    "en": "Search, extract, replace and validate text with the re module."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "id": "m26l1",
+  "title": {
+    "es": "Rutas con pathlib",
+    "en": "Paths with pathlib"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Manejar rutas sin pelearte con cadenas"
+      },
+      {
+        "type": "text",
+        "value": "`pathlib.Path` representa rutas de ficheros de forma orientada a objetos y multiplataforma. Acceder a sus partes es mucho más claro que trocear cadenas a mano."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from pathlib import Path",
+          "p = Path('fotos/verano/playa.jpg')",
+          "print(p.name)",
+          "print(p.stem)",
+          "print(p.suffix)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "playa.jpg",
+          "playa",
+          ".jpg"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`.name` es el nombre con extensión, `.stem` sin extensión y `.suffix` la extensión (con el punto)."
+      },
+      {
+        "type": "note",
+        "value": "Path entiende '/' en cualquier sistema operativo; no mezcles separadores a mano."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Handling paths without fighting strings"
+      },
+      {
+        "type": "text",
+        "value": "`pathlib.Path` represents file paths in an object-oriented, cross-platform way. Reading its parts is far clearer than slicing strings by hand."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from pathlib import Path",
+          "p = Path('fotos/verano/playa.jpg')",
+          "print(p.name)",
+          "print(p.stem)",
+          "print(p.suffix)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "playa.jpg",
+          "playa",
+          ".jpg"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`.name` is the name with extension, `.stem` without it and `.suffix` the extension (with the dot)."
+      },
+      {
+        "type": "note",
+        "value": "Path understands '/' on any OS; don't mix separators by hand."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m26l1e1",
+      "prompt": {
+        "es": "Define `extension(ruta)` que devuelva la extensión del fichero (con el punto). Usa pathlib.",
+        "en": "Define `extension(ruta)` returning the file extension (with the dot). Use pathlib."
+      },
+      "starter_code": [
+        "from pathlib import Path",
+        "",
+        "def extension(ruta):",
+        "    pass"
+      ],
+      "solution": [
+        "from pathlib import Path",
+        "",
+        "def extension(ruta):",
+        "    return Path(ruta).suffix"
+      ],
+      "hints": {
+        "es": [
+          "Path(ruta).suffix da la extensión."
+        ],
+        "en": [
+          "Path(ruta).suffix gives the extension."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "extension",
+          "cases": [
+            {
+              "args": [
+                "a/b.txt"
+              ],
+              "expected": ".txt"
+            },
+            {
+              "args": [
+                "foto.PNG"
+              ],
+              "expected": ".PNG"
+            },
+            {
+              "args": [
+                "sinext"
+              ],
+              "expected": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m26l1e2",
+      "prompt": {
+        "es": "Define `nombre_sin_ext(ruta)` que devuelva el nombre del fichero sin la extensión.",
+        "en": "Define `nombre_sin_ext(ruta)` returning the file name without its extension."
+      },
+      "starter_code": [
+        "from pathlib import Path",
+        "",
+        "def nombre_sin_ext(ruta):",
+        "    pass"
+      ],
+      "solution": [
+        "from pathlib import Path",
+        "",
+        "def nombre_sin_ext(ruta):",
+        "    return Path(ruta).stem"
+      ],
+      "hints": {
+        "es": [
+          ".stem es el nombre sin la extensión."
+        ],
+        "en": [
+          ".stem is the name without the extension."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "nombre_sin_ext",
+          "cases": [
+            {
+              "args": [
+                "a/b.txt"
+              ],
+              "expected": "b"
+            },
+            {
+              "args": [
+                "archivo.tar.gz"
+              ],
+              "expected": "archivo.tar"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

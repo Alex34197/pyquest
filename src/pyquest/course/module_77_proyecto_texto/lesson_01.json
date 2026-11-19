@@ -1,0 +1,168 @@
+{
+  "id": "m77l1",
+  "title": {
+    "es": "Frecuencia de palabras",
+    "en": "Word frequency"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Mini-proyecto: analizar texto"
+      },
+      {
+        "type": "text",
+        "value": "Vamos a juntar varias herramientas (dividir, contar, ordenar) para analizar un texto. Empezamos contando cuántas veces aparece cada palabra."
+      },
+      {
+        "type": "code",
+        "value": [
+          "texto = 'la casa la luz'",
+          "cuenta = {}",
+          "for p in texto.split():",
+          "    cuenta[p] = cuenta.get(p, 0) + 1",
+          "print(cuenta)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "{'la': 2, 'casa': 1, 'luz': 1}"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`Counter` del módulo collections hace esto en una línea, pero conviene saber montarlo a mano."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Mini-project: analyzing text"
+      },
+      {
+        "type": "text",
+        "value": "We'll combine several tools (split, count, sort) to analyze text. We start by counting how many times each word appears."
+      },
+      {
+        "type": "code",
+        "value": [
+          "texto = 'la casa la luz'",
+          "cuenta = {}",
+          "for p in texto.split():",
+          "    cuenta[p] = cuenta.get(p, 0) + 1",
+          "print(cuenta)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "{'la': 2, 'casa': 1, 'luz': 1}"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`Counter` from collections does this in one line, but it's good to know how to build it by hand."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m77l1e1",
+      "prompt": {
+        "es": "Define `frecuencias(texto)` que devuelva un dict palabra -> nº de apariciones (separa por espacios).",
+        "en": "Define `frecuencias(texto)` returning a dict word -> count (split by spaces)."
+      },
+      "starter_code": [
+        "def frecuencias(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "def frecuencias(texto):",
+        "    cuenta = {}",
+        "    for p in texto.split():",
+        "        cuenta[p] = cuenta.get(p, 0) + 1",
+        "    return cuenta"
+      ],
+      "hints": {
+        "es": [
+          "Recorre texto.split() y usa cuenta.get(p, 0) + 1."
+        ],
+        "en": [
+          "Iterate texto.split() and use cuenta.get(p, 0) + 1."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "frecuencias",
+          "cases": [
+            {
+              "args": [
+                "la casa la luz"
+              ],
+              "expected": {
+                "la": 2,
+                "casa": 1,
+                "luz": 1
+              }
+            },
+            {
+              "args": [
+                ""
+              ],
+              "expected": {}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m77l1e2",
+      "prompt": {
+        "es": "Define `palabra_mas_comun(texto)` que devuelva la palabra que más se repite.",
+        "en": "Define `palabra_mas_comun(texto)` returning the most repeated word."
+      },
+      "starter_code": [
+        "from collections import Counter",
+        "",
+        "def palabra_mas_comun(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "from collections import Counter",
+        "",
+        "def palabra_mas_comun(texto):",
+        "    return Counter(texto.split()).most_common(1)[0][0]"
+      ],
+      "hints": {
+        "es": [
+          "Counter(texto.split()).most_common(1)[0][0]."
+        ],
+        "en": [
+          "Counter(texto.split()).most_common(1)[0][0]."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "palabra_mas_comun",
+          "cases": [
+            {
+              "args": [
+                "la casa la luz la"
+              ],
+              "expected": "la"
+            },
+            {
+              "args": [
+                "sol sol mar"
+              ],
+              "expected": "sol"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

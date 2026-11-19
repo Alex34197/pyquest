@@ -1,0 +1,146 @@
+{
+  "id": "m53l2",
+  "title": {
+    "es": "__slots__: objetos ligeros",
+    "en": "__slots__: lightweight objects"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Fijar los atributos permitidos"
+      },
+      {
+        "type": "text",
+        "value": "`__slots__` declara de antemano qué atributos puede tener una instancia. Ahorra memoria (no crea `__dict__`) y evita errores: asignar un atributo no declarado lanza `AttributeError`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Punto:",
+          "    __slots__ = ('x', 'y')",
+          "    def __init__(self, x, y):",
+          "        self.x = x",
+          "        self.y = y",
+          "",
+          "p = Punto(1, 2)",
+          "print(p.x, p.y)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "1 2"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Útil cuando creas MUCHOS objetos iguales: el ahorro de memoria se nota."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Fixing the allowed attributes"
+      },
+      {
+        "type": "text",
+        "value": "`__slots__` declares in advance which attributes an instance may have. It saves memory (no `__dict__`) and prevents bugs: assigning an undeclared attribute raises `AttributeError`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Punto:",
+          "    __slots__ = ('x', 'y')",
+          "    def __init__(self, x, y):",
+          "        self.x = x",
+          "        self.y = y",
+          "",
+          "p = Punto(1, 2)",
+          "print(p.x, p.y)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "1 2"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Handy when you create MANY identical objects: the memory saving adds up."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m53l2e1",
+      "prompt": {
+        "es": "Define `Punto` con `__slots__ = ('x', 'y')` e `__init__(x, y)`. No debe tener `__dict__`.",
+        "en": "Define `Punto` with `__slots__ = ('x', 'y')` and `__init__(x, y)`. It must not have `__dict__`."
+      },
+      "starter_code": [
+        "class Punto:",
+        "    # define __slots__ e __init__",
+        "    pass"
+      ],
+      "solution": [
+        "class Punto:",
+        "    __slots__ = ('x', 'y')",
+        "    def __init__(self, x, y):",
+        "        self.x = x",
+        "        self.y = y"
+      ],
+      "hints": {
+        "es": [
+          "Declara __slots__ = ('x', 'y') antes del __init__."
+        ],
+        "en": [
+          "Declare __slots__ = ('x', 'y') before __init__."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Punto",
+          "harness": "p = Punto(1, 2)\nassert (p.x, p.y) == (1, 2)\nassert not hasattr(p, '__dict__')"
+        }
+      ]
+    },
+    {
+      "id": "m53l2e2",
+      "prompt": {
+        "es": "Define `Punto3D` con `__slots__ = ('x', 'y', 'z')` e `__init__(x, y, z)`. Asignar un atributo fuera de slots debe dar AttributeError (lo comprueba el test).",
+        "en": "Define `Punto3D` with `__slots__ = ('x', 'y', 'z')` and `__init__(x, y, z)`. Assigning an attribute outside slots must raise AttributeError (the test checks it)."
+      },
+      "starter_code": [
+        "class Punto3D:",
+        "    # define __slots__ e __init__(x, y, z)",
+        "    pass"
+      ],
+      "solution": [
+        "class Punto3D:",
+        "    __slots__ = ('x', 'y', 'z')",
+        "    def __init__(self, x, y, z):",
+        "        self.x = x",
+        "        self.y = y",
+        "        self.z = z"
+      ],
+      "hints": {
+        "es": [
+          "Declara __slots__ = ('x', 'y', 'z') y asigna las tres en __init__."
+        ],
+        "en": [
+          "Declare __slots__ = ('x', 'y', 'z') and assign all three in __init__."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Punto3D",
+          "harness": "p = Punto3D(1, 2, 3)\nassert (p.x, p.y, p.z) == (1, 2, 3)\nassert not hasattr(p, '__dict__')\nerr = False\ntry:\n    p.w = 4\nexcept AttributeError:\n    err = True\nassert err is True"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "m59",
+  "order": 59,
+  "title": {
+    "es": "Sobrecarga de operadores",
+    "en": "Operator overloading"
+  },
+  "summary": {
+    "es": "Métodos dunder: __repr__, __eq__, __len__, __add__, __getitem__, __contains__.",
+    "en": "Dunder methods: __repr__, __eq__, __len__, __add__, __getitem__, __contains__."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "m75",
+  "order": 75,
+  "title": {
+    "es": "Programación dinámica",
+    "en": "Dynamic programming"
+  },
+  "summary": {
+    "es": "Subproblemas y tablas: escalera, cambio de monedas, LCS y Kadane.",
+    "en": "Subproblems and tables: staircase, coin change, LCS and Kadane."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "m71",
+  "order": 71,
+  "title": {
+    "es": "Pruebas (testing)",
+    "en": "Testing"
+  },
+  "summary": {
+    "es": "assert, unittest (TestCase), esperar excepciones y comparar con tolerancia.",
+    "en": "assert, unittest (TestCase), expecting exceptions and comparing with tolerance."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

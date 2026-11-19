@@ -1,0 +1,16 @@
+{
+  "id": "m49",
+  "order": 49,
+  "title": {
+    "es": "Pattern matching (match/case)",
+    "en": "Pattern matching (match/case)"
+  },
+  "summary": {
+    "es": "match/case: literales, patrón |, comodín _, guardas y secuencias (Python 3.10+).",
+    "en": "match/case: literals, | pattern, _ wildcard, guards and sequences (Python 3.10+)."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

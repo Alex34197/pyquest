@@ -1,0 +1,16 @@
+{
+  "id": "m74",
+  "order": 74,
+  "title": {
+    "es": "functools a fondo",
+    "en": "functools in depth"
+  },
+  "summary": {
+    "es": "total_ordering, singledispatch, cached_property y wraps.",
+    "en": "total_ordering, singledispatch, cached_property and wraps."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

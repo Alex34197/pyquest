@@ -1,0 +1,16 @@
+{
+  "id": "m69",
+  "order": 69,
+  "title": {
+    "es": "Bytes y struct",
+    "en": "Bytes and struct"
+  },
+  "summary": {
+    "es": "int<->bytes (to_bytes/from_bytes) y empaquetado binario con struct.",
+    "en": "int<->bytes (to_bytes/from_bytes) and binary packing with struct."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

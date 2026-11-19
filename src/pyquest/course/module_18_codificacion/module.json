@@ -1,0 +1,16 @@
+{
+  "id": "m18",
+  "order": 18,
+  "title": {
+    "es": "Codificación: bytes y base64",
+    "en": "Encoding: bytes and base64"
+  },
+  "summary": {
+    "es": "str vs bytes, UTF-8 y base64 (codificar no es cifrar).",
+    "en": "str vs bytes, UTF-8 and base64 (encoding is not encryption)."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

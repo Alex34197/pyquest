@@ -1,0 +1,182 @@
+{
+  "id": "m29l1",
+  "title": {
+    "es": "Matemáticas con math",
+    "en": "Math with the math module"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Funciones matemáticas listas"
+      },
+      {
+        "type": "text",
+        "value": "El módulo `math` trae operaciones habituales: `math.gcd` (máximo común divisor), `math.factorial`, `math.sqrt`, `math.floor`/`ceil`…"
+      },
+      {
+        "type": "code",
+        "value": [
+          "import math",
+          "print(math.gcd(12, 8))",
+          "print(math.factorial(5))",
+          "print(math.floor(3.7), math.ceil(3.2))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "4",
+          "120",
+          "3 4"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`math.sqrt` devuelve float; para potencias enteras usa `**`. `math.pi` y `math.e` son constantes útiles."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Ready-made math functions"
+      },
+      {
+        "type": "text",
+        "value": "The `math` module brings common operations: `math.gcd` (greatest common divisor), `math.factorial`, `math.sqrt`, `math.floor`/`ceil`…"
+      },
+      {
+        "type": "code",
+        "value": [
+          "import math",
+          "print(math.gcd(12, 8))",
+          "print(math.factorial(5))",
+          "print(math.floor(3.7), math.ceil(3.2))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "4",
+          "120",
+          "3 4"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`math.sqrt` returns a float; for integer powers use `**`. `math.pi` and `math.e` are handy constants."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m29l1e1",
+      "prompt": {
+        "es": "Define `mcd(a, b)` que devuelva el máximo común divisor (usa math.gcd).",
+        "en": "Define `mcd(a, b)` returning the greatest common divisor (use math.gcd)."
+      },
+      "starter_code": [
+        "import math",
+        "",
+        "def mcd(a, b):",
+        "    pass"
+      ],
+      "solution": [
+        "import math",
+        "",
+        "def mcd(a, b):",
+        "    return math.gcd(a, b)"
+      ],
+      "hints": {
+        "es": [
+          "math.gcd(a, b)."
+        ],
+        "en": [
+          "math.gcd(a, b)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "mcd",
+          "cases": [
+            {
+              "args": [
+                12,
+                8
+              ],
+              "expected": 4
+            },
+            {
+              "args": [
+                7,
+                3
+              ],
+              "expected": 1
+            },
+            {
+              "args": [
+                100,
+                60
+              ],
+              "expected": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m29l1e2",
+      "prompt": {
+        "es": "Define `factorial(n)` que devuelva n! (usa math.factorial).",
+        "en": "Define `factorial(n)` returning n! (use math.factorial)."
+      },
+      "starter_code": [
+        "import math",
+        "",
+        "def factorial(n):",
+        "    pass"
+      ],
+      "solution": [
+        "import math",
+        "",
+        "def factorial(n):",
+        "    return math.factorial(n)"
+      ],
+      "hints": {
+        "es": [
+          "math.factorial(n)."
+        ],
+        "en": [
+          "math.factorial(n)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "factorial",
+          "cases": [
+            {
+              "args": [
+                5
+              ],
+              "expected": 120
+            },
+            {
+              "args": [
+                0
+              ],
+              "expected": 1
+            },
+            {
+              "args": [
+                6
+              ],
+              "expected": 720
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

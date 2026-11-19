@@ -1,0 +1,189 @@
+{
+  "id": "m33l1",
+  "title": {
+    "es": "La pila (LIFO)",
+    "en": "The stack (LIFO)"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Último en entrar, primero en salir"
+      },
+      {
+        "type": "text",
+        "value": "Una **pila** (stack) guarda elementos y devuelve siempre el último que metiste (LIFO). Con una lista, `append` apila y `pop` desapila."
+      },
+      {
+        "type": "code",
+        "value": [
+          "pila = []",
+          "pila.append(1)",
+          "pila.append(2)",
+          "print(pila.pop())",
+          "print(pila.pop())"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "2",
+          "1"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Las pilas modelan el 'deshacer', la pila de llamadas de funciones o la comprobación de paréntesis."
+      },
+      {
+        "type": "note",
+        "value": "`pop()` sin argumento quita y devuelve el último elemento de la lista."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Last in, first out"
+      },
+      {
+        "type": "text",
+        "value": "A **stack** stores items and always returns the last one you pushed (LIFO). With a list, `append` pushes and `pop` pops."
+      },
+      {
+        "type": "code",
+        "value": [
+          "pila = []",
+          "pila.append(1)",
+          "pila.append(2)",
+          "print(pila.pop())",
+          "print(pila.pop())"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "2",
+          "1"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Stacks model 'undo', the function call stack or bracket matching."
+      },
+      {
+        "type": "note",
+        "value": "`pop()` with no argument removes and returns the list's last element."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m33l1e1",
+      "prompt": {
+        "es": "Define una clase `Pila` con métodos `push(x)`, `pop()` (devuelve el último) y `esta_vacia()`.",
+        "en": "Define a class `Pila` with methods `push(x)`, `pop()` (returns the last) and `esta_vacia()`."
+      },
+      "starter_code": [
+        "class Pila:",
+        "    def __init__(self):",
+        "        self._datos = []",
+        "    # completa push, pop y esta_vacia"
+      ],
+      "solution": [
+        "class Pila:",
+        "    def __init__(self):",
+        "        self._datos = []",
+        "    def push(self, x):",
+        "        self._datos.append(x)",
+        "    def pop(self):",
+        "        return self._datos.pop()",
+        "    def esta_vacia(self):",
+        "        return len(self._datos) == 0"
+      ],
+      "hints": {
+        "es": [
+          "Guarda en una lista; push=append, pop=pop, esta_vacia=¿len 0?"
+        ],
+        "en": [
+          "Store in a list; push=append, pop=pop, esta_vacia=is len 0?"
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Pila",
+          "harness": "p = Pila()\nassert p.esta_vacia() is True\np.push(1); p.push(2)\nassert p.esta_vacia() is False\nassert p.pop() == 2\nassert p.pop() == 1\nassert p.esta_vacia() is True"
+        }
+      ]
+    },
+    {
+      "id": "m33l1e2",
+      "prompt": {
+        "es": "Define `balanceados(texto)` que diga si los paréntesis () [] {} están bien emparejados (usa una pila).",
+        "en": "Define `balanceados(texto)` telling whether brackets () [] {} are well matched (use a stack)."
+      },
+      "starter_code": [
+        "def balanceados(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "def balanceados(texto):",
+        "    pares = {')': '(', ']': '[', '}': '{'}",
+        "    pila = []",
+        "    for ch in texto:",
+        "        if ch in '([{':",
+        "            pila.append(ch)",
+        "        elif ch in ')]}':",
+        "            if not pila or pila.pop() != pares[ch]:",
+        "                return False",
+        "    return not pila"
+      ],
+      "hints": {
+        "es": [
+          "Apila las aberturas; al cerrar, comprueba que la cima coincide."
+        ],
+        "en": [
+          "Push openings; on close, check the top matches."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "balanceados",
+          "cases": [
+            {
+              "args": [
+                "([])"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "(]"
+              ],
+              "expected": false
+            },
+            {
+              "args": [
+                ""
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "((("
+              ],
+              "expected": false
+            },
+            {
+              "args": [
+                "{[()]}"
+              ],
+              "expected": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

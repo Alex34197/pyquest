@@ -1,0 +1,197 @@
+{
+  "id": "m49l1",
+  "title": {
+    "es": "match/case: lo básico",
+    "en": "match/case: the basics"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Comparar por patrones (Python 3.10+)"
+      },
+      {
+        "type": "text",
+        "value": "`match` compara un valor contra varios **patrones** (`case`). Es como un `if/elif` más legible. `case _` es el comodín (cualquier cosa), como el `else`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def describir(n):",
+          "    match n:",
+          "        case 0:",
+          "            return 'cero'",
+          "        case 1:",
+          "            return 'uno'",
+          "        case _:",
+          "            return 'otro'",
+          "",
+          "print(describir(0), describir(5))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "cero otro"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Puedes combinar varios valores en un patrón con `|` (o lógico): `case 'sí' | 'vale':`."
+      },
+      {
+        "type": "note",
+        "value": "Disponible desde Python 3.10. No es un simple switch: también desestructura datos, como verás luego."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Matching by patterns (Python 3.10+)"
+      },
+      {
+        "type": "text",
+        "value": "`match` compares a value against several **patterns** (`case`). It's like a more readable `if/elif`. `case _` is the wildcard (anything), like `else`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def describir(n):",
+          "    match n:",
+          "        case 0:",
+          "            return 'cero'",
+          "        case 1:",
+          "            return 'uno'",
+          "        case _:",
+          "            return 'otro'",
+          "",
+          "print(describir(0), describir(5))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "cero otro"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "You can combine several values in one pattern with `|` (logical or): `case 'yes' | 'ok':`."
+      },
+      {
+        "type": "note",
+        "value": "Available since Python 3.10. It's not just a switch: it also destructures data, as you'll see next."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m49l1e1",
+      "prompt": {
+        "es": "Define `describir(n)` con match: 0 -> 'cero', 1 -> 'uno', cualquier otro -> 'otro'.",
+        "en": "Define `describir(n)` with match: 0 -> 'cero', 1 -> 'uno', anything else -> 'otro'."
+      },
+      "starter_code": [
+        "def describir(n):",
+        "    pass"
+      ],
+      "solution": [
+        "def describir(n):",
+        "    match n:",
+        "        case 0:",
+        "            return 'cero'",
+        "        case 1:",
+        "            return 'uno'",
+        "        case _:",
+        "            return 'otro'"
+      ],
+      "hints": {
+        "es": [
+          "Usa case 0, case 1 y case _."
+        ],
+        "en": [
+          "Use case 0, case 1 and case _."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "describir",
+          "cases": [
+            {
+              "args": [
+                0
+              ],
+              "expected": "cero"
+            },
+            {
+              "args": [
+                1
+              ],
+              "expected": "uno"
+            },
+            {
+              "args": [
+                7
+              ],
+              "expected": "otro"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m49l1e2",
+      "prompt": {
+        "es": "Define `tipo_dia(dia)` con match: 'sabado' o 'domingo' -> 'finde'; cualquier otro -> 'laborable' (usa el patrón |).",
+        "en": "Define `tipo_dia(dia)` with match: 'sabado' or 'domingo' -> 'finde'; otherwise -> 'laborable' (use the | pattern)."
+      },
+      "starter_code": [
+        "def tipo_dia(dia):",
+        "    pass"
+      ],
+      "solution": [
+        "def tipo_dia(dia):",
+        "    match dia:",
+        "        case 'sabado' | 'domingo':",
+        "            return 'finde'",
+        "        case _:",
+        "            return 'laborable'"
+      ],
+      "hints": {
+        "es": [
+          "case 'sabado' | 'domingo' combina ambos."
+        ],
+        "en": [
+          "case 'sabado' | 'domingo' combines both."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "tipo_dia",
+          "cases": [
+            {
+              "args": [
+                "sabado"
+              ],
+              "expected": "finde"
+            },
+            {
+              "args": [
+                "domingo"
+              ],
+              "expected": "finde"
+            },
+            {
+              "args": [
+                "lunes"
+              ],
+              "expected": "laborable"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

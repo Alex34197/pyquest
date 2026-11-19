@@ -1,0 +1,139 @@
+{
+  "id": "m65l2",
+  "title": {
+    "es": "Elegir y barajar",
+    "en": "Choosing and shuffling"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Selección aleatoria"
+      },
+      {
+        "type": "text",
+        "value": "`random.choice(secuencia)` elige un elemento al azar; `random.shuffle(lista)` baraja la lista **en el sitio** (la modifica). Con la semilla fijada, ambas son reproducibles."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import random",
+          "random.seed(1)",
+          "print(random.choice(['a', 'b', 'c']))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "(un elemento de la lista)"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Recuerda: para azar de seguridad (contraseñas, tokens) usa el módulo `secrets`, no `random`."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Random selection"
+      },
+      {
+        "type": "text",
+        "value": "`random.choice(sequence)` picks a random element; `random.shuffle(list)` shuffles the list **in place** (modifies it). With a fixed seed, both are reproducible."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import random",
+          "random.seed(1)",
+          "print(random.choice(['a', 'b', 'c']))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "(an element of the list)"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Remember: for security randomness (passwords, tokens) use the `secrets` module, not `random`."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m65l2e1",
+      "prompt": {
+        "es": "Define `elegir(opciones, semilla)` que fije la semilla y devuelva un elemento al azar (reproducible).",
+        "en": "Define `elegir(opciones, semilla)` that sets the seed and returns a random element (reproducible)."
+      },
+      "starter_code": [
+        "import random",
+        "",
+        "def elegir(opciones, semilla):",
+        "    pass"
+      ],
+      "solution": [
+        "import random",
+        "",
+        "def elegir(opciones, semilla):",
+        "    random.seed(semilla)",
+        "    return random.choice(opciones)"
+      ],
+      "hints": {
+        "es": [
+          "random.seed(semilla) y random.choice(opciones)."
+        ],
+        "en": [
+          "random.seed(semilla) and random.choice(opciones)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "elegir",
+          "harness": "opts = ['a', 'b', 'c']\nassert elegir(opts, 5) in opts\nassert elegir(opts, 5) == elegir(opts, 5)"
+        }
+      ]
+    },
+    {
+      "id": "m65l2e2",
+      "prompt": {
+        "es": "Define `barajar(lista, semilla)` que devuelva una NUEVA lista barajada (no modifiques la original), reproducible.",
+        "en": "Define `barajar(lista, semilla)` returning a NEW shuffled list (don't modify the original), reproducible."
+      },
+      "starter_code": [
+        "import random",
+        "",
+        "def barajar(lista, semilla):",
+        "    pass"
+      ],
+      "solution": [
+        "import random",
+        "",
+        "def barajar(lista, semilla):",
+        "    random.seed(semilla)",
+        "    copia = list(lista)",
+        "    random.shuffle(copia)",
+        "    return copia"
+      ],
+      "hints": {
+        "es": [
+          "Copia la lista, fija la semilla y usa random.shuffle sobre la copia."
+        ],
+        "en": [
+          "Copy the list, set the seed and use random.shuffle on the copy."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "barajar",
+          "harness": "r = barajar([1, 2, 3, 4], 5)\nassert sorted(r) == [1, 2, 3, 4]\nassert barajar([1, 2, 3, 4], 5) == barajar([1, 2, 3, 4], 5)"
+        }
+      ]
+    }
+  ]
+}

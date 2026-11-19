@@ -1,0 +1,204 @@
+{
+  "id": "m50l1",
+  "title": {
+    "es": "Desestructurar secuencias y diccionarios",
+    "en": "Destructuring sequences and dicts"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Sacar partes de los datos"
+      },
+      {
+        "type": "text",
+        "value": "Los patrones desestructuran: `case [x, *resto]` captura el primero y el resto de una lista. Con diccionarios, `case {'clave': valor}` coincide si existe esa clave y captura su valor."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def cabeza(lista):",
+          "    match lista:",
+          "        case []:",
+          "            return None",
+          "        case [x, *_]:",
+          "            return x",
+          "",
+          "print(cabeza([1, 2, 3]), cabeza([]))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "1 None"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`*resto` recoge el resto de la secuencia; `*_` lo ignora. En diccionarios solo importan las claves que nombras."
+      },
+      {
+        "type": "note",
+        "value": "Esto hace match/case ideal para interpretar mensajes, comandos o estructuras JSON."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Pulling parts out of data"
+      },
+      {
+        "type": "text",
+        "value": "Patterns destructure: `case [x, *rest]` captures the first and the rest of a list. With dicts, `case {'key': value}` matches if that key exists and captures its value."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def cabeza(lista):",
+          "    match lista:",
+          "        case []:",
+          "            return None",
+          "        case [x, *_]:",
+          "            return x",
+          "",
+          "print(cabeza([1, 2, 3]), cabeza([]))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "1 None"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`*rest` collects the rest of the sequence; `*_` ignores it. In dicts only the keys you name matter."
+      },
+      {
+        "type": "note",
+        "value": "This makes match/case ideal for interpreting messages, commands or JSON structures."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m50l1e1",
+      "prompt": {
+        "es": "Define `cabeza(lista)` con match: lista vacía -> None; si no, el primer elemento (usa [x, *_]).",
+        "en": "Define `cabeza(lista)` with match: empty list -> None; otherwise the first element (use [x, *_])."
+      },
+      "starter_code": [
+        "def cabeza(lista):",
+        "    pass"
+      ],
+      "solution": [
+        "def cabeza(lista):",
+        "    match lista:",
+        "        case []:",
+        "            return None",
+        "        case [x, *_]:",
+        "            return x"
+      ],
+      "hints": {
+        "es": [
+          "case [] y case [x, *_]."
+        ],
+        "en": [
+          "case [] and case [x, *_]."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "cabeza",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  2,
+                  3
+                ]
+              ],
+              "expected": 1
+            },
+            {
+              "args": [
+                []
+              ],
+              "expected": null
+            },
+            {
+              "args": [
+                [
+                  9
+                ]
+              ],
+              "expected": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m50l1e2",
+      "prompt": {
+        "es": "Define `comando(d)` (dict) con match: {'accion':'mover','dir':D} -> 'mover D'; {'accion':A} -> A; resto -> 'desconocido'.",
+        "en": "Define `comando(d)` (dict) with match: {'accion':'mover','dir':D} -> 'mover D'; {'accion':A} -> A; else -> 'desconocido'."
+      },
+      "starter_code": [
+        "def comando(d):",
+        "    pass"
+      ],
+      "solution": [
+        "def comando(d):",
+        "    match d:",
+        "        case {'accion': 'mover', 'dir': direccion}:",
+        "            return f'mover {direccion}'",
+        "        case {'accion': accion}:",
+        "            return accion",
+        "        case _:",
+        "            return 'desconocido'"
+      ],
+      "hints": {
+        "es": [
+          "Patrón de diccionario: {'accion': 'mover', 'dir': direccion}."
+        ],
+        "en": [
+          "Mapping pattern: {'accion': 'mover', 'dir': direccion}."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "comando",
+          "cases": [
+            {
+              "args": [
+                {
+                  "accion": "mover",
+                  "dir": "norte"
+                }
+              ],
+              "expected": "mover norte"
+            },
+            {
+              "args": [
+                {
+                  "accion": "saltar"
+                }
+              ],
+              "expected": "saltar"
+            },
+            {
+              "args": [
+                {}
+              ],
+              "expected": "desconocido"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

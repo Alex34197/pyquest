@@ -1,0 +1,228 @@
+{
+  "id": "m24l2",
+  "title": {
+    "es": "functools: reduce y caché",
+    "en": "functools: reduce and caching"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Combinar y recordar"
+      },
+      {
+        "type": "text",
+        "value": "`reduce(funcion, iterable)` combina los elementos de dos en dos hasta dejar un único resultado (p. ej. el producto de una lista)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from functools import reduce",
+          "print(reduce(lambda a, b: a * b, [1, 2, 3, 4]))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "24"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`@lru_cache` **memoiza**: guarda los resultados de una función para no recalcularlos. Acelera muchísimo la recursión, como en Fibonacci."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from functools import lru_cache",
+          "",
+          "@lru_cache",
+          "def fib(n):",
+          "    return n if n < 2 else fib(n-1) + fib(n-2)",
+          "",
+          "print(fib(10))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "55"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "lru_cache solo sirve si la función es 'pura' (mismos argumentos -> mismo resultado, sin efectos colaterales)."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Combine and remember"
+      },
+      {
+        "type": "text",
+        "value": "`reduce(function, iterable)` combines elements two at a time until a single result remains (e.g. the product of a list)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from functools import reduce",
+          "print(reduce(lambda a, b: a * b, [1, 2, 3, 4]))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "24"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`@lru_cache` **memoizes**: it stores a function's results so they aren't recomputed. It hugely speeds up recursion, like Fibonacci."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from functools import lru_cache",
+          "",
+          "@lru_cache",
+          "def fib(n):",
+          "    return n if n < 2 else fib(n-1) + fib(n-2)",
+          "",
+          "print(fib(10))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "55"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "lru_cache only works if the function is 'pure' (same arguments -> same result, no side effects)."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m24l2e1",
+      "prompt": {
+        "es": "Define `producto(numeros)` que devuelva el producto de todos los números de la lista (usa functools.reduce).",
+        "en": "Define `producto(numeros)` returning the product of all numbers in the list (use functools.reduce)."
+      },
+      "starter_code": [
+        "from functools import reduce",
+        "",
+        "def producto(numeros):",
+        "    pass"
+      ],
+      "solution": [
+        "from functools import reduce",
+        "",
+        "def producto(numeros):",
+        "    return reduce(lambda a, b: a * b, numeros)"
+      ],
+      "hints": {
+        "es": [
+          "reduce con lambda a, b: a * b."
+        ],
+        "en": [
+          "reduce with lambda a, b: a * b."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "producto",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  2,
+                  3,
+                  4
+                ]
+              ],
+              "expected": 24
+            },
+            {
+              "args": [
+                [
+                  5
+                ]
+              ],
+              "expected": 5
+            },
+            {
+              "args": [
+                [
+                  2,
+                  2,
+                  2
+                ]
+              ],
+              "expected": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m24l2e2",
+      "prompt": {
+        "es": "Define `fib(n)` (Fibonacci) usando recursión y `@lru_cache` para memoizar. fib(0)=0, fib(1)=1.",
+        "en": "Define `fib(n)` (Fibonacci) using recursion and `@lru_cache` to memoize. fib(0)=0, fib(1)=1."
+      },
+      "starter_code": [
+        "from functools import lru_cache",
+        "",
+        "@lru_cache",
+        "def fib(n):",
+        "    pass"
+      ],
+      "solution": [
+        "from functools import lru_cache",
+        "",
+        "@lru_cache",
+        "def fib(n):",
+        "    return n if n < 2 else fib(n-1) + fib(n-2)"
+      ],
+      "hints": {
+        "es": [
+          "Caso base n<2 devuelve n; si no, fib(n-1)+fib(n-2)."
+        ],
+        "en": [
+          "Base case n<2 returns n; otherwise fib(n-1)+fib(n-2)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "fib",
+          "cases": [
+            {
+              "args": [
+                0
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                1
+              ],
+              "expected": 1
+            },
+            {
+              "args": [
+                10
+              ],
+              "expected": 55
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

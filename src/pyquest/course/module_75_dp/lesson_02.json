@@ -1,0 +1,183 @@
+{
+  "id": "m75l2",
+  "title": {
+    "es": "Tablas y secuencias",
+    "en": "Tables and sequences"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Problemas clásicos de DP"
+      },
+      {
+        "type": "text",
+        "value": "Muchos problemas se resuelven con una **tabla** que se rellena combinando casillas vecinas. La **subsecuencia común más larga** (LCS) entre dos cadenas, o la **suma máxima** de un subarreglo, son ejemplos típicos."
+      },
+      {
+        "type": "code",
+        "value": [
+          "# LCS('abcde', 'ace') = 3   ->  a, c, e",
+          "# suma_maxima([-2, 1, -3, 4, -1, 2, 1]) = 6   ->  4, -1, 2, 1"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Identificar el subproblema y cómo se combinan es el 80% de la programación dinámica."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Tables and sequences"
+      },
+      {
+        "type": "text",
+        "value": "Many problems are solved with a **table** filled by combining neighbouring cells. The **longest common subsequence** (LCS) of two strings, or the **maximum sum** of a subarray, are typical examples."
+      },
+      {
+        "type": "code",
+        "value": [
+          "# LCS('abcde', 'ace') = 3   ->  a, c, e",
+          "# suma_maxima([-2, 1, -3, 4, -1, 2, 1]) = 6   ->  4, -1, 2, 1"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Identifying the subproblem and how they combine is 80% of dynamic programming."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m75l2e1",
+      "prompt": {
+        "es": "Define `subsecuencia_comun(a, b)` que devuelva la longitud de la subsecuencia común más larga (LCS).",
+        "en": "Define `subsecuencia_comun(a, b)` returning the length of the longest common subsequence (LCS)."
+      },
+      "starter_code": [
+        "def subsecuencia_comun(a, b):",
+        "    pass"
+      ],
+      "solution": [
+        "def subsecuencia_comun(a, b):",
+        "    n, m = len(a), len(b)",
+        "    dp = [[0] * (m + 1) for _ in range(n + 1)]",
+        "    for i in range(1, n + 1):",
+        "        for j in range(1, m + 1):",
+        "            if a[i - 1] == b[j - 1]:",
+        "                dp[i][j] = dp[i - 1][j - 1] + 1",
+        "            else:",
+        "                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])",
+        "    return dp[n][m]"
+      ],
+      "hints": {
+        "es": [
+          "Tabla dp[i][j]; si coinciden suma 1 a la diagonal, si no toma el máximo vecino."
+        ],
+        "en": [
+          "Table dp[i][j]; if equal add 1 to the diagonal, else take the max neighbour."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "subsecuencia_comun",
+          "cases": [
+            {
+              "args": [
+                "abcde",
+                "ace"
+              ],
+              "expected": 3
+            },
+            {
+              "args": [
+                "abc",
+                "xyz"
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                "aa",
+                "aaa"
+              ],
+              "expected": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m75l2e2",
+      "prompt": {
+        "es": "Define `suma_maxima(nums)` que devuelva la mayor suma de un subarreglo contiguo (algoritmo de Kadane).",
+        "en": "Define `suma_maxima(nums)` returning the largest sum of a contiguous subarray (Kadane's algorithm)."
+      },
+      "starter_code": [
+        "def suma_maxima(nums):",
+        "    pass"
+      ],
+      "solution": [
+        "def suma_maxima(nums):",
+        "    mejor = actual = nums[0]",
+        "    for x in nums[1:]:",
+        "        actual = max(x, actual + x)",
+        "        mejor = max(mejor, actual)",
+        "    return mejor"
+      ],
+      "hints": {
+        "es": [
+          "En cada paso: ¿empiezo de nuevo en x o sigo sumando? Guarda el mejor visto."
+        ],
+        "en": [
+          "At each step: restart at x or keep adding? Track the best seen."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "suma_maxima",
+          "cases": [
+            {
+              "args": [
+                [
+                  -2,
+                  1,
+                  -3,
+                  4,
+                  -1,
+                  2,
+                  1,
+                  -5,
+                  4
+                ]
+              ],
+              "expected": 6
+            },
+            {
+              "args": [
+                [
+                  1,
+                  2,
+                  3
+                ]
+              ],
+              "expected": 6
+            },
+            {
+              "args": [
+                [
+                  -1,
+                  -2
+                ]
+              ],
+              "expected": -1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

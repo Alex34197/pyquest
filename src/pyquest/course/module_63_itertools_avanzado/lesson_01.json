@@ -1,0 +1,217 @@
+{
+  "id": "m63l1",
+  "title": {
+    "es": "accumulate y product",
+    "en": "accumulate and product"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Sumas acumuladas y combinaciones"
+      },
+      {
+        "type": "text",
+        "value": "`itertools.accumulate(iterable)` da las sumas acumuladas (running totals). `itertools.product(a, b)` da el producto cartesiano: todas las parejas posibles."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from itertools import accumulate, product",
+          "print(list(accumulate([1, 2, 3, 4])))",
+          "print(list(product([1, 2], ['a', 'b'])))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[1, 3, 6, 10]",
+          "[(1, 'a'), (1, 'b'), (2, 'a'), (2, 'b')]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "product evita bucles anidados; accumulate sirve para totales progresivos (saldos, distancias)."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Running totals and combinations"
+      },
+      {
+        "type": "text",
+        "value": "`itertools.accumulate(iterable)` gives running totals. `itertools.product(a, b)` gives the cartesian product: all possible pairs."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from itertools import accumulate, product",
+          "print(list(accumulate([1, 2, 3, 4])))",
+          "print(list(product([1, 2], ['a', 'b'])))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[1, 3, 6, 10]",
+          "[(1, 'a'), (1, 'b'), (2, 'a'), (2, 'b')]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "product avoids nested loops; accumulate is great for progressive totals (balances, distances)."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m63l1e1",
+      "prompt": {
+        "es": "Define `acumulado(nums)` que devuelva las sumas acumuladas (usa itertools.accumulate).",
+        "en": "Define `acumulado(nums)` returning the running totals (use itertools.accumulate)."
+      },
+      "starter_code": [
+        "from itertools import accumulate",
+        "",
+        "def acumulado(nums):",
+        "    pass"
+      ],
+      "solution": [
+        "from itertools import accumulate",
+        "",
+        "def acumulado(nums):",
+        "    return list(accumulate(nums))"
+      ],
+      "hints": {
+        "es": [
+          "list(accumulate(nums))."
+        ],
+        "en": [
+          "list(accumulate(nums))."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "acumulado",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  2,
+                  3,
+                  4
+                ]
+              ],
+              "expected": [
+                1,
+                3,
+                6,
+                10
+              ]
+            },
+            {
+              "args": [
+                [
+                  5
+                ]
+              ],
+              "expected": [
+                5
+              ]
+            },
+            {
+              "args": [
+                []
+              ],
+              "expected": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m63l1e2",
+      "prompt": {
+        "es": "Define `parejas(a, b)` que devuelva todas las combinaciones [x, y] con x de `a` e y de `b` (usa product).",
+        "en": "Define `parejas(a, b)` returning all combinations [x, y] with x from `a` and y from `b` (use product)."
+      },
+      "starter_code": [
+        "from itertools import product",
+        "",
+        "def parejas(a, b):",
+        "    pass"
+      ],
+      "solution": [
+        "from itertools import product",
+        "",
+        "def parejas(a, b):",
+        "    return [list(p) for p in product(a, b)]"
+      ],
+      "hints": {
+        "es": [
+          "product(a, b) da tuplas; conviértelas a lista."
+        ],
+        "en": [
+          "product(a, b) yields tuples; convert them to lists."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "parejas",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  2
+                ],
+                [
+                  "a",
+                  "b"
+                ]
+              ],
+              "expected": [
+                [
+                  1,
+                  "a"
+                ],
+                [
+                  1,
+                  "b"
+                ],
+                [
+                  2,
+                  "a"
+                ],
+                [
+                  2,
+                  "b"
+                ]
+              ]
+            },
+            {
+              "args": [
+                [
+                  1
+                ],
+                [
+                  "x"
+                ]
+              ],
+              "expected": [
+                [
+                  1,
+                  "x"
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

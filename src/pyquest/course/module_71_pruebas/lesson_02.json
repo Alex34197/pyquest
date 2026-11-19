@@ -1,0 +1,168 @@
+{
+  "id": "m71l2",
+  "title": {
+    "es": "Patrones de prueba",
+    "en": "Testing patterns"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Esperar errores y comparar aproximado"
+      },
+      {
+        "type": "text",
+        "value": "Dos comprobaciones muy típicas: verificar que un código **lanza** la excepción correcta, y comparar números con **tolerancia** (los float casi nunca son exactamente iguales)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def lanza_value_error():",
+          "    try:",
+          "        int('x')",
+          "    except ValueError:",
+          "        return True",
+          "    return False",
+          "",
+          "print(lanza_value_error())"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "True"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "En unittest existen `assertRaises` y `assertAlmostEqual` justo para estos dos casos."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Expecting errors and comparing approximately"
+      },
+      {
+        "type": "text",
+        "value": "Two very typical checks: verifying that some code **raises** the right exception, and comparing numbers with **tolerance** (floats are almost never exactly equal)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def lanza_value_error():",
+          "    try:",
+          "        int('x')",
+          "    except ValueError:",
+          "        return True",
+          "    return False",
+          "",
+          "print(lanza_value_error())"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "True"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "In unittest there are `assertRaises` and `assertAlmostEqual` exactly for these two cases."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m71l2e1",
+      "prompt": {
+        "es": "Define `lanza(func, tipo_exc)` que devuelva True si llamar a func() lanza una excepción de ese tipo.",
+        "en": "Define `lanza(func, tipo_exc)` returning True if calling func() raises an exception of that type."
+      },
+      "starter_code": [
+        "def lanza(func, tipo_exc):",
+        "    pass"
+      ],
+      "solution": [
+        "def lanza(func, tipo_exc):",
+        "    try:",
+        "        func()",
+        "    except tipo_exc:",
+        "        return True",
+        "    except Exception:",
+        "        return False",
+        "    return False"
+      ],
+      "hints": {
+        "es": [
+          "Envuelve func() en try/except tipo_exc."
+        ],
+        "en": [
+          "Wrap func() in try/except tipo_exc."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "lanza",
+          "harness": "assert lanza(lambda: 1 / 0, ZeroDivisionError) is True\nassert lanza(lambda: int('x'), ValueError) is True\nassert lanza(lambda: 5, ValueError) is False"
+        }
+      ]
+    },
+    {
+      "id": "m71l2e2",
+      "prompt": {
+        "es": "Define `casi_igual(a, b, tol)` que devuelva True si a y b se diferencian como mucho en `tol`.",
+        "en": "Define `casi_igual(a, b, tol)` returning True if a and b differ by at most `tol`."
+      },
+      "starter_code": [
+        "def casi_igual(a, b, tol):",
+        "    pass"
+      ],
+      "solution": [
+        "def casi_igual(a, b, tol):",
+        "    return abs(a - b) <= tol"
+      ],
+      "hints": {
+        "es": [
+          "abs(a - b) <= tol."
+        ],
+        "en": [
+          "abs(a - b) <= tol."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "casi_igual",
+          "cases": [
+            {
+              "args": [
+                1.0,
+                1.05,
+                0.1
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                1.0,
+                2.0,
+                0.1
+              ],
+              "expected": false
+            },
+            {
+              "args": [
+                0.3,
+                0.3,
+                0
+              ],
+              "expected": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "id": "m12l2",
+  "title": {
+    "es": "El decorador @",
+    "en": "The @ decorator"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Envolver una función"
+      },
+      {
+        "type": "text",
+        "value": "Un **decorador** es una función que recibe otra función y devuelve una versión 'envuelta'. La sintaxis `@decorador` encima de una función la aplica automáticamente."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def con_log(func):",
+          "    def envoltura(*args, **kwargs):",
+          "        print('llamando...')",
+          "        return func(*args, **kwargs)",
+          "    return envoltura",
+          "",
+          "@con_log",
+          "def saluda():",
+          "    return 'hola'",
+          "",
+          "print(saluda())"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "llamando...",
+          "hola"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`*args, **kwargs` en la envoltura permiten decorar funciones con cualquier número de argumentos."
+      },
+      {
+        "type": "note",
+        "value": "Se usan muchísimo: medir tiempos, cachear, comprobar permisos (¡muy de ciberseguridad!), registrar accesos…"
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Wrapping a function"
+      },
+      {
+        "type": "text",
+        "value": "A **decorator** is a function that takes another function and returns a 'wrapped' version. The `@decorator` syntax above a function applies it automatically."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def con_log(func):",
+          "    def envoltura(*args, **kwargs):",
+          "        print('llamando...')",
+          "        return func(*args, **kwargs)",
+          "    return envoltura",
+          "",
+          "@con_log",
+          "def saluda():",
+          "    return 'hola'",
+          "",
+          "print(saluda())"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "llamando...",
+          "hola"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`*args, **kwargs` in the wrapper let you decorate functions with any number of arguments."
+      },
+      {
+        "type": "note",
+        "value": "They're everywhere: timing, caching, permission checks (very security-related!), access logging…"
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m12l2e1",
+      "prompt": {
+        "es": "Define un decorador `doble_resultado` que **duplique** el valor que devuelve la función decorada.",
+        "en": "Define a decorator `doble_resultado` that **doubles** the value the decorated function returns."
+      },
+      "starter_code": [
+        "def doble_resultado(func):",
+        "    pass"
+      ],
+      "solution": [
+        "def doble_resultado(func):",
+        "    def envoltura(*args, **kwargs):",
+        "        return func(*args, **kwargs) * 2",
+        "    return envoltura"
+      ],
+      "hints": {
+        "es": [
+          "Devuelve una envoltura que llama a func y multiplica por 2.",
+          "Usa *args, **kwargs para aceptar cualquier argumento."
+        ],
+        "en": [
+          "Return a wrapper that calls func and multiplies by 2.",
+          "Use *args, **kwargs to accept any arguments."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "doble_resultado",
+          "harness": "@doble_resultado\ndef cinco():\n    return 5\nassert cinco() == 10\n@doble_resultado\ndef suma(a, b):\n    return a + b\nassert suma(3, 4) == 14"
+        }
+      ]
+    },
+    {
+      "id": "m12l2e2",
+      "prompt": {
+        "es": "Define un decorador `mayusculas` que convierta a MAYÚSCULAS el texto que devuelve la función.",
+        "en": "Define a decorator `mayusculas` that uppercases the text the function returns."
+      },
+      "starter_code": [
+        "def mayusculas(func):",
+        "    pass"
+      ],
+      "solution": [
+        "def mayusculas(func):",
+        "    def envoltura(*args, **kwargs):",
+        "        return func(*args, **kwargs).upper()",
+        "    return envoltura"
+      ],
+      "hints": {
+        "es": [
+          "Aplica .upper() al resultado de func dentro de la envoltura."
+        ],
+        "en": [
+          "Apply .upper() to func's result inside the wrapper."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "mayusculas",
+          "harness": "@mayusculas\ndef saluda():\n    return 'hola'\nassert saluda() == 'HOLA'\n@mayusculas\ndef eco(t):\n    return t\nassert eco('abc') == 'ABC'"
+        }
+      ]
+    }
+  ]
+}

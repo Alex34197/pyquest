@@ -1,0 +1,16 @@
+{
+  "id": "m19",
+  "order": 19,
+  "title": {
+    "es": "Validación y saneado",
+    "en": "Validation and sanitizing"
+  },
+  "summary": {
+    "es": "Validar tipo/rango/formato, sanear y usar listas blancas.",
+    "en": "Validate type/range/format, sanitize and use allowlists."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

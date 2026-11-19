@@ -1,0 +1,154 @@
+{
+  "id": "m42l2",
+  "title": {
+    "es": "classmethod: constructores alternativos",
+    "en": "classmethod: alternative constructors"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Crear objetos de otra forma"
+      },
+      {
+        "type": "text",
+        "value": "Un `@classmethod` recibe la clase (`cls`) en vez de `self`. Se usa mucho para **constructores alternativos**: crear el objeto a partir de otro formato."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Fecha:",
+          "    def __init__(self, anio, mes, dia):",
+          "        self.anio, self.mes, self.dia = anio, mes, dia",
+          "    @classmethod",
+          "    def desde_texto(cls, s):",
+          "        a, m, d = s.split('-')",
+          "        return cls(int(a), int(m), int(d))",
+          "",
+          "f = Fecha.desde_texto('2024-01-15')",
+          "print(f.anio, f.mes, f.dia)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "2024 1 15"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Usa `cls(...)` (no `Fecha(...)`): así funciona también si alguien hereda de la clase."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Creating objects another way"
+      },
+      {
+        "type": "text",
+        "value": "A `@classmethod` receives the class (`cls`) instead of `self`. It's widely used for **alternative constructors**: building the object from another format."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Fecha:",
+          "    def __init__(self, anio, mes, dia):",
+          "        self.anio, self.mes, self.dia = anio, mes, dia",
+          "    @classmethod",
+          "    def desde_texto(cls, s):",
+          "        a, m, d = s.split('-')",
+          "        return cls(int(a), int(m), int(d))",
+          "",
+          "f = Fecha.desde_texto('2024-01-15')",
+          "print(f.anio, f.mes, f.dia)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "2024 1 15"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Use `cls(...)` (not `Fecha(...)`): that way it also works if someone subclasses it."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m42l2e1",
+      "prompt": {
+        "es": "Define `Fecha(anio, mes, dia)` con un classmethod `desde_texto('AAAA-MM-DD')` que cree la Fecha.",
+        "en": "Define `Fecha(anio, mes, dia)` with a classmethod `desde_texto('YYYY-MM-DD')` that builds the Fecha."
+      },
+      "starter_code": [
+        "class Fecha:",
+        "    def __init__(self, anio, mes, dia):",
+        "        self.anio, self.mes, self.dia = anio, mes, dia",
+        "    # añade el classmethod desde_texto"
+      ],
+      "solution": [
+        "class Fecha:",
+        "    def __init__(self, anio, mes, dia):",
+        "        self.anio, self.mes, self.dia = anio, mes, dia",
+        "    @classmethod",
+        "    def desde_texto(cls, s):",
+        "        a, m, d = s.split('-')",
+        "        return cls(int(a), int(m), int(d))"
+      ],
+      "hints": {
+        "es": [
+          "Divide por '-', convierte a int y devuelve cls(...)."
+        ],
+        "en": [
+          "Split on '-', convert to int and return cls(...)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Fecha",
+          "harness": "f = Fecha.desde_texto('2024-01-15')\nassert (f.anio, f.mes, f.dia) == (2024, 1, 15)"
+        }
+      ]
+    },
+    {
+      "id": "m42l2e2",
+      "prompt": {
+        "es": "Define `Punto(x, y)` con un classmethod `origen()` que devuelva el punto (0, 0).",
+        "en": "Define `Punto(x, y)` with a classmethod `origen()` returning the point (0, 0)."
+      },
+      "starter_code": [
+        "class Punto:",
+        "    def __init__(self, x, y):",
+        "        self.x, self.y = x, y",
+        "    # añade el classmethod origen"
+      ],
+      "solution": [
+        "class Punto:",
+        "    def __init__(self, x, y):",
+        "        self.x, self.y = x, y",
+        "    @classmethod",
+        "    def origen(cls):",
+        "        return cls(0, 0)"
+      ],
+      "hints": {
+        "es": [
+          "origen devuelve cls(0, 0)."
+        ],
+        "en": [
+          "origen returns cls(0, 0)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Punto",
+          "harness": "p = Punto.origen()\nassert (p.x, p.y) == (0, 0)"
+        }
+      ]
+    }
+  ]
+}

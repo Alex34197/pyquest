@@ -1,0 +1,270 @@
+{
+  "id": "m4l2",
+  "title": {
+    "es": "Índices, troceado y formato",
+    "en": "Indexing, slicing and formatting"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Acceder a partes del texto"
+      },
+      {
+        "type": "text",
+        "value": "Una cadena es una **secuencia** de caracteres. `texto[i]` da un carácter (índice desde 0; los negativos cuentan desde el final). `len(texto)` da su longitud."
+      },
+      {
+        "type": "code",
+        "value": [
+          "s = \"Python\"",
+          "print(s[0], s[-1])",
+          "print(len(s))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "P n",
+          "6"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Troceado (slicing)"
+      },
+      {
+        "type": "text",
+        "value": "`texto[inicio:fin]` devuelve un trozo (sin incluir `fin`). Puedes omitir extremos y usar un paso: `texto[::-1]` invierte la cadena."
+      },
+      {
+        "type": "code",
+        "value": [
+          "s = \"Python\"",
+          "print(s[0:3])",
+          "print(s[2:])",
+          "print(s[::-1])"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Pyt",
+          "thon",
+          "nohtyP"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Formato con f-strings"
+      },
+      {
+        "type": "text",
+        "value": "Dentro de una f-string puedes dar formato: `{valor:.2f}` con 2 decimales; `{n:>5}` alinea a la derecha en 5 huecos."
+      },
+      {
+        "type": "code",
+        "value": [
+          "pi = 3.14159",
+          "print(f\"{pi:.2f}\")",
+          "print(f\"{42:>5}\")"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "3.14",
+          "   42"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "El troceado **nunca** da error por pasarte de rango: `s[0:100]` simplemente devuelve hasta el final."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Accessing parts of text"
+      },
+      {
+        "type": "text",
+        "value": "A string is a **sequence** of characters. `text[i]` gives one character (index from 0; negatives count from the end). `len(text)` gives its length."
+      },
+      {
+        "type": "code",
+        "value": [
+          "s = \"Python\"",
+          "print(s[0], s[-1])",
+          "print(len(s))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "P n",
+          "6"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Slicing"
+      },
+      {
+        "type": "text",
+        "value": "`text[start:end]` returns a slice (excluding `end`). You can omit ends and use a step: `text[::-1]` reverses the string."
+      },
+      {
+        "type": "code",
+        "value": [
+          "s = \"Python\"",
+          "print(s[0:3])",
+          "print(s[2:])",
+          "print(s[::-1])"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Pyt",
+          "thon",
+          "nohtyP"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Formatting with f-strings"
+      },
+      {
+        "type": "text",
+        "value": "Inside an f-string you can format: `{value:.2f}` with 2 decimals; `{n:>5}` right-aligns within 5 slots."
+      },
+      {
+        "type": "code",
+        "value": [
+          "pi = 3.14159",
+          "print(f\"{pi:.2f}\")",
+          "print(f\"{42:>5}\")"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "3.14",
+          "   42"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Slicing **never** errors out of range: `s[0:100]` simply returns up to the end."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m4l2e1",
+      "prompt": {
+        "es": "Define `invertir_texto(s)` que devuelva la cadena al revés (usa el troceado `[::-1]`).",
+        "en": "Define `invertir_texto(s)` returning the reversed string (use slicing `[::-1]`)."
+      },
+      "starter_code": [
+        "def invertir_texto(s):",
+        "    pass"
+      ],
+      "solution": [
+        "def invertir_texto(s):",
+        "    return s[::-1]"
+      ],
+      "hints": {
+        "es": [
+          "s[::-1] recorre la cadena al revés."
+        ],
+        "en": [
+          "s[::-1] walks the string backwards."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "invertir_texto",
+          "cases": [
+            {
+              "args": [
+                "abc"
+              ],
+              "expected": "cba"
+            },
+            {
+              "args": [
+                ""
+              ],
+              "expected": ""
+            },
+            {
+              "args": [
+                "Python"
+              ],
+              "expected": "nohtyP"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m4l2e2",
+      "prompt": {
+        "es": "Define `truncar(s, n)`: si `s` tiene más de `n` caracteres, devuelve los primeros `n` y añade `…` al final; si no, devuelve `s` tal cual.",
+        "en": "Define `truncar(s, n)`: if `s` has more than `n` characters, return the first `n` plus `…`; otherwise return `s` unchanged."
+      },
+      "starter_code": [
+        "def truncar(s, n):",
+        "    pass"
+      ],
+      "solution": [
+        "def truncar(s, n):",
+        "    if len(s) > n:",
+        "        return s[:n] + \"…\"",
+        "    return s"
+      ],
+      "hints": {
+        "es": [
+          "Compara len(s) con n.",
+          "s[:n] son los primeros n caracteres."
+        ],
+        "en": [
+          "Compare len(s) with n.",
+          "s[:n] is the first n characters."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "truncar",
+          "cases": [
+            {
+              "args": [
+                "Hola mundo",
+                4
+              ],
+              "expected": "Hola…"
+            },
+            {
+              "args": [
+                "Hi",
+                5
+              ],
+              "expected": "Hi"
+            },
+            {
+              "args": [
+                "abcde",
+                5
+              ],
+              "expected": "abcde"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

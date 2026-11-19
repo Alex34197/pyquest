@@ -1,0 +1,133 @@
+{
+  "id": "m71l1",
+  "title": {
+    "es": "Probar con assert y unittest",
+    "en": "Testing with assert and unittest"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Comprobar que el código hace lo que debe"
+      },
+      {
+        "type": "text",
+        "value": "Un **test** ejecuta tu código con entradas conocidas y comprueba el resultado. Lo más simple es un `assert`. El módulo `unittest` organiza tests en clases con métodos `test_...` y métodos como `assertEqual`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import unittest",
+          "",
+          "class MiTest(unittest.TestCase):",
+          "    def test_suma(self):",
+          "        self.assertEqual(2 + 3, 5)"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Esta misma app usa esta idea: cada ejercicio es, en el fondo, una pequeña batería de tests sobre tu código."
+      },
+      {
+        "type": "note",
+        "value": "Escribir tests cuesta un poco al principio, pero ahorra muchísimas horas de depuración después."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Checking that code does what it should"
+      },
+      {
+        "type": "text",
+        "value": "A **test** runs your code with known inputs and checks the result. The simplest is an `assert`. The `unittest` module organizes tests into classes with `test_...` methods and methods like `assertEqual`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import unittest",
+          "",
+          "class MiTest(unittest.TestCase):",
+          "    def test_suma(self):",
+          "        self.assertEqual(2 + 3, 5)"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "This very app uses this idea: each exercise is, deep down, a small battery of tests on your code."
+      },
+      {
+        "type": "note",
+        "value": "Writing tests costs a bit at first, but saves many hours of debugging later."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m71l1e1",
+      "prompt": {
+        "es": "Define `comprobar(func, casos)`: casos es una lista de [entrada, esperado]; devuelve True si func(entrada)==esperado para todos.",
+        "en": "Define `comprobar(func, casos)`: casos is a list of [input, expected]; return True if func(input)==expected for all."
+      },
+      "starter_code": [
+        "def comprobar(func, casos):",
+        "    pass"
+      ],
+      "solution": [
+        "def comprobar(func, casos):",
+        "    return all(func(entrada) == esperado for entrada, esperado in casos)"
+      ],
+      "hints": {
+        "es": [
+          "all(func(e) == r for e, r in casos)."
+        ],
+        "en": [
+          "all(func(e) == r for e, r in casos)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "comprobar",
+          "harness": "assert comprobar(lambda x: x * 2, [[1, 2], [3, 6]]) is True\nassert comprobar(lambda x: x, [[1, 2]]) is False"
+        }
+      ]
+    },
+    {
+      "id": "m71l1e2",
+      "prompt": {
+        "es": "Define `correr_suite(clase)` que ejecute una clase de tests unittest y devuelva True si TODOS pasan.",
+        "en": "Define `correr_suite(clase)` that runs a unittest TestCase class and returns True if ALL pass."
+      },
+      "starter_code": [
+        "import unittest, io",
+        "",
+        "def correr_suite(clase):",
+        "    pass"
+      ],
+      "solution": [
+        "import unittest, io",
+        "",
+        "def correr_suite(clase):",
+        "    suite = unittest.TestLoader().loadTestsFromTestCase(clase)",
+        "    runner = unittest.TextTestRunner(stream=io.StringIO(), verbosity=0)",
+        "    return runner.run(suite).wasSuccessful()"
+      ],
+      "hints": {
+        "es": [
+          "loadTestsFromTestCase + TextTestRunner; usa .wasSuccessful()."
+        ],
+        "en": [
+          "loadTestsFromTestCase + TextTestRunner; use .wasSuccessful()."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "correr_suite",
+          "harness": "import unittest\nclass Bien(unittest.TestCase):\n    def test_ok(self):\n        self.assertEqual(1 + 1, 2)\nclass Mal(unittest.TestCase):\n    def test_no(self):\n        self.assertEqual(1 + 1, 3)\nassert correr_suite(Bien) is True\nassert correr_suite(Mal) is False"
+        }
+      ]
+    }
+  ]
+}

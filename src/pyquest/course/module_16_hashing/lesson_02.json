@@ -1,0 +1,148 @@
+{
+  "id": "m16l2",
+  "title": {
+    "es": "Sal (salt) y contraseñas",
+    "en": "Salt and passwords"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Por qué hace falta sal"
+      },
+      {
+        "type": "text",
+        "value": "Si dos personas tienen la misma contraseña, su hash sería idéntico y un atacante podría usar tablas precalculadas (rainbow tables). La **sal** es un valor aleatorio único que se añade antes de hashear, de modo que cada hash sea distinto."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import hashlib",
+          "salt = 'a8f3'",
+          "pwd = 'secreto'",
+          "h = hashlib.sha256((salt + pwd).encode()).hexdigest()",
+          "print(h[:12], '...')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "d2c1e0b9a7f6 ..."
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Guardas la **sal** junto al hash; al validar, repites el cálculo con la misma sal y comparas."
+      },
+      {
+        "type": "note",
+        "value": "Para contraseñas reales, lo ideal son algoritmos lentos y con sal incorporada como **bcrypt** o **argon2** (paquetes externos). SHA-256+sal vale para aprender el concepto."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Why salt is needed"
+      },
+      {
+        "type": "text",
+        "value": "If two people share a password their hash would be identical and an attacker could use precomputed tables (rainbow tables). A **salt** is a unique random value added before hashing, so every hash differs."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import hashlib",
+          "salt = 'a8f3'",
+          "pwd = 'secreto'",
+          "h = hashlib.sha256((salt + pwd).encode()).hexdigest()",
+          "print(h[:12], '...')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "d2c1e0b9a7f6 ..."
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Store the **salt** next to the hash; to validate, repeat the computation with the same salt and compare."
+      },
+      {
+        "type": "note",
+        "value": "For real passwords, prefer slow, salted algorithms like **bcrypt** or **argon2** (external packages). SHA-256+salt is fine to learn the concept."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m16l2e1",
+      "prompt": {
+        "es": "Define `hash_con_salt(password, salt)` que devuelva el SHA-256 de `salt + password` en hexadecimal.",
+        "en": "Define `hash_con_salt(password, salt)` returning the SHA-256 of `salt + password` in hex."
+      },
+      "starter_code": [
+        "import hashlib",
+        "",
+        "def hash_con_salt(password, salt):",
+        "    pass"
+      ],
+      "solution": [
+        "import hashlib",
+        "",
+        "def hash_con_salt(password, salt):",
+        "    return hashlib.sha256((salt + password).encode()).hexdigest()"
+      ],
+      "hints": {
+        "es": [
+          "Concatena salt + password antes de codificar."
+        ],
+        "en": [
+          "Concatenate salt + password before encoding."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "hash_con_salt",
+          "harness": "import hashlib\nassert hash_con_salt('secreto', 'a8f3') == hashlib.sha256(b'a8f3secreto').hexdigest()"
+        }
+      ]
+    },
+    {
+      "id": "m16l2e2",
+      "prompt": {
+        "es": "Define `verificar(password, salt, hash_guardado)` que devuelva True si la contraseña con esa sal genera `hash_guardado`.",
+        "en": "Define `verificar(password, salt, hash_guardado)` returning True if the password with that salt produces `hash_guardado`."
+      },
+      "starter_code": [
+        "import hashlib",
+        "",
+        "def verificar(password, salt, hash_guardado):",
+        "    pass"
+      ],
+      "solution": [
+        "import hashlib",
+        "",
+        "def verificar(password, salt, hash_guardado):",
+        "    actual = hashlib.sha256((salt + password).encode()).hexdigest()",
+        "    return actual == hash_guardado"
+      ],
+      "hints": {
+        "es": [
+          "Recalcula el hash con la sal y compáralo."
+        ],
+        "en": [
+          "Recompute the hash with the salt and compare it."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "verificar",
+          "harness": "import hashlib\nguardado = hashlib.sha256(b'a8f3secreto').hexdigest()\nassert verificar('secreto', 'a8f3', guardado) is True\nassert verificar('otra', 'a8f3', guardado) is False"
+        }
+      ]
+    }
+  ]
+}

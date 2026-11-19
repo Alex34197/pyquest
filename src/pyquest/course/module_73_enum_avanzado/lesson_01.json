@@ -1,0 +1,151 @@
+{
+  "id": "m73l1",
+  "title": {
+    "es": "IntEnum y métodos",
+    "en": "IntEnum and methods"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Enums que se comparan y tienen métodos"
+      },
+      {
+        "type": "text",
+        "value": "`IntEnum` es un Enum cuyos miembros **también son enteros**: se pueden comparar con `<`, `>` y ordenar. Además, cualquier Enum puede tener **métodos** propios."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from enum import IntEnum",
+          "",
+          "class Prioridad(IntEnum):",
+          "    BAJA = 1",
+          "    MEDIA = 2",
+          "    ALTA = 3",
+          "",
+          "print(Prioridad.ALTA > Prioridad.BAJA)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "True"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "IntEnum es cómodo para niveles ordenados (prioridades, severidades); el Enum normal no se ordena."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Enums that compare and have methods"
+      },
+      {
+        "type": "text",
+        "value": "`IntEnum` is an Enum whose members are **also integers**: they can be compared with `<`, `>` and sorted. Also, any Enum can have its own **methods**."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from enum import IntEnum",
+          "",
+          "class Prioridad(IntEnum):",
+          "    BAJA = 1",
+          "    MEDIA = 2",
+          "    ALTA = 3",
+          "",
+          "print(Prioridad.ALTA > Prioridad.BAJA)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "True"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "IntEnum is handy for ordered levels (priorities, severities); a normal Enum doesn't sort."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m73l1e1",
+      "prompt": {
+        "es": "Define un `IntEnum` `Prioridad` con BAJA=1, MEDIA=2, ALTA=3 (deben poder compararse y ordenarse).",
+        "en": "Define an `IntEnum` `Prioridad` with BAJA=1, MEDIA=2, ALTA=3 (must be comparable and sortable)."
+      },
+      "starter_code": [
+        "from enum import IntEnum",
+        "",
+        "# define Prioridad"
+      ],
+      "solution": [
+        "from enum import IntEnum",
+        "",
+        "class Prioridad(IntEnum):",
+        "    BAJA = 1",
+        "    MEDIA = 2",
+        "    ALTA = 3"
+      ],
+      "hints": {
+        "es": [
+          "Hereda de IntEnum para que se comporten como enteros."
+        ],
+        "en": [
+          "Inherit from IntEnum so they behave like integers."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Prioridad",
+          "harness": "assert Prioridad.ALTA > Prioridad.BAJA\nassert Prioridad.MEDIA == 2\nassert sorted([Prioridad.ALTA, Prioridad.BAJA]) == [Prioridad.BAJA, Prioridad.ALTA]"
+        }
+      ]
+    },
+    {
+      "id": "m73l1e2",
+      "prompt": {
+        "es": "Define un Enum `Color` (ROJO='r', VERDE='g') con un método `inicial()` que devuelva el valor en mayúscula.",
+        "en": "Define an Enum `Color` (ROJO='r', VERDE='g') with a method `inicial()` returning the value uppercased."
+      },
+      "starter_code": [
+        "from enum import Enum",
+        "",
+        "class Color(Enum):",
+        "    ROJO = 'r'",
+        "    VERDE = 'g'",
+        "    # añade el método inicial()"
+      ],
+      "solution": [
+        "from enum import Enum",
+        "",
+        "class Color(Enum):",
+        "    ROJO = 'r'",
+        "    VERDE = 'g'",
+        "    def inicial(self):",
+        "        return self.value.upper()"
+      ],
+      "hints": {
+        "es": [
+          "Un método normal dentro del Enum usa self.value."
+        ],
+        "en": [
+          "A normal method inside the Enum uses self.value."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Color",
+          "harness": "assert Color.ROJO.inicial() == 'R'\nassert Color.VERDE.inicial() == 'G'"
+        }
+      ]
+    }
+  ]
+}

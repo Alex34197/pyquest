@@ -1,0 +1,269 @@
+{
+  "id": "m8l1",
+  "title": {
+    "es": "Comprensiones de listas",
+    "en": "List comprehensions"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Construir listas en una línea"
+      },
+      {
+        "type": "text",
+        "value": "Una **comprensión de lista** crea una lista a partir de un iterable en una sola expresión: `[expresion for elemento in iterable]`. Es más corta y legible que un bucle con `append`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "cuadrados = [n * n for n in range(1, 6)]",
+          "print(cuadrados)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[1, 4, 9, 16, 25]"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Con condición (filtro)"
+      },
+      {
+        "type": "text",
+        "value": "Puedes filtrar añadiendo un `if` al final: solo entran los elementos que cumplen la condición."
+      },
+      {
+        "type": "code",
+        "value": [
+          "pares = [n for n in range(10) if n % 2 == 0]",
+          "print(pares)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[0, 2, 4, 6, 8]"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "También para diccionarios y conjuntos"
+      },
+      {
+        "type": "text",
+        "value": "La misma idea sirve para `{clave: valor for ...}` (diccionarios) y `{x for ...}` (conjuntos)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "cuadrados = {n: n * n for n in range(1, 4)}",
+          "print(cuadrados)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "{1: 1, 2: 4, 3: 9}"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Si una comprensión se vuelve difícil de leer, usa un bucle normal: la claridad manda."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Build lists in one line"
+      },
+      {
+        "type": "text",
+        "value": "A **list comprehension** builds a list from an iterable in a single expression: `[expression for item in iterable]`. Shorter and clearer than a loop with `append`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "cuadrados = [n * n for n in range(1, 6)]",
+          "print(cuadrados)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[1, 4, 9, 16, 25]"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "With a condition (filter)"
+      },
+      {
+        "type": "text",
+        "value": "You can filter by adding an `if` at the end: only items that meet the condition are kept."
+      },
+      {
+        "type": "code",
+        "value": [
+          "pares = [n for n in range(10) if n % 2 == 0]",
+          "print(pares)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[0, 2, 4, 6, 8]"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Also for dicts and sets"
+      },
+      {
+        "type": "text",
+        "value": "The same idea works for `{key: value for ...}` (dicts) and `{x for ...}` (sets)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "cuadrados = {n: n * n for n in range(1, 4)}",
+          "print(cuadrados)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "{1: 1, 2: 4, 3: 9}"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "If a comprehension becomes hard to read, use a normal loop: clarity wins."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m8l1e1",
+      "prompt": {
+        "es": "Define `cuadrados(n)` que devuelva la lista `[1, 4, 9, ...]` con los cuadrados de 1 a `n` (usa una comprensión).",
+        "en": "Define `cuadrados(n)` returning the list `[1, 4, 9, ...]` with the squares from 1 to `n` (use a comprehension)."
+      },
+      "starter_code": [
+        "def cuadrados(n):",
+        "    pass"
+      ],
+      "solution": [
+        "def cuadrados(n):",
+        "    return [i * i for i in range(1, n + 1)]"
+      ],
+      "hints": {
+        "es": [
+          "range(1, n+1) va de 1 a n.",
+          "[i*i for i in ...]"
+        ],
+        "en": [
+          "range(1, n+1) goes from 1 to n.",
+          "[i*i for i in ...]"
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "cuadrados",
+          "cases": [
+            {
+              "args": [
+                5
+              ],
+              "expected": [
+                1,
+                4,
+                9,
+                16,
+                25
+              ]
+            },
+            {
+              "args": [
+                1
+              ],
+              "expected": [
+                1
+              ]
+            },
+            {
+              "args": [
+                0
+              ],
+              "expected": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m8l1e2",
+      "prompt": {
+        "es": "Define `pares(numeros)` que devuelva solo los números pares de la lista (usa una comprensión con `if`).",
+        "en": "Define `pares(numeros)` returning only the even numbers of the list (use a comprehension with `if`)."
+      },
+      "starter_code": [
+        "def pares(numeros):",
+        "    pass"
+      ],
+      "solution": [
+        "def pares(numeros):",
+        "    return [x for x in numeros if x % 2 == 0]"
+      ],
+      "hints": {
+        "es": [
+          "Filtra con if x % 2 == 0."
+        ],
+        "en": [
+          "Filter with if x % 2 == 0."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "pares",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  2,
+                  3,
+                  4
+                ]
+              ],
+              "expected": [
+                2,
+                4
+              ]
+            },
+            {
+              "args": [
+                [
+                  1,
+                  3,
+                  5
+                ]
+              ],
+              "expected": []
+            },
+            {
+              "args": [
+                []
+              ],
+              "expected": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,213 @@
+{
+  "id": "m19l2",
+  "title": {
+    "es": "Saneado y listas blancas",
+    "en": "Sanitizing and allowlists"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Mejor permitir lo bueno que prohibir lo malo"
+      },
+      {
+        "type": "text",
+        "value": "Una **lista blanca** (allowlist) define lo que SÍ se acepta y rechaza todo lo demás. Es más segura que una lista negra, porque no tienes que adivinar todas las formas de ataque."
+      },
+      {
+        "type": "code",
+        "value": [
+          "permitidos = {'rojo', 'verde', 'azul'}",
+          "def color_ok(c):",
+          "    return c in permitidos",
+          "",
+          "print(color_ok('rojo'))",
+          "print(color_ok(\"'; DROP TABLE--\"))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "True",
+          "False"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "**Sanear** es quedarte solo con los caracteres permitidos. Por ejemplo, dejar únicamente letras y números."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def solo_alfanumerico(texto):",
+          "    return ''.join(c for c in texto if c.isalnum())",
+          "",
+          "print(solo_alfanumerico('a1!b#2'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "a1b2"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Validar (¿es aceptable?) y sanear (límpialo) son complementarios; aplica ambos según el caso."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Better allow the good than ban the bad"
+      },
+      {
+        "type": "text",
+        "value": "An **allowlist** defines what IS accepted and rejects everything else. It's safer than a denylist because you don't have to guess every attack form."
+      },
+      {
+        "type": "code",
+        "value": [
+          "permitidos = {'rojo', 'verde', 'azul'}",
+          "def color_ok(c):",
+          "    return c in permitidos",
+          "",
+          "print(color_ok('rojo'))",
+          "print(color_ok(\"'; DROP TABLE--\"))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "True",
+          "False"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "**Sanitizing** is keeping only the allowed characters. For example, keeping only letters and numbers."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def solo_alfanumerico(texto):",
+          "    return ''.join(c for c in texto if c.isalnum())",
+          "",
+          "print(solo_alfanumerico('a1!b#2'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "a1b2"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Validating (is it acceptable?) and sanitizing (clean it) are complementary; apply both as needed."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m19l2e1",
+      "prompt": {
+        "es": "Define `solo_alfanumerico(texto)` que devuelva el texto con solo letras y números (quita el resto).",
+        "en": "Define `solo_alfanumerico(texto)` returning the text with only letters and numbers (drop the rest)."
+      },
+      "starter_code": [
+        "def solo_alfanumerico(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "def solo_alfanumerico(texto):",
+        "    return ''.join(c for c in texto if c.isalnum())"
+      ],
+      "hints": {
+        "es": [
+          "Filtra con c.isalnum() dentro de un ''.join(...)."
+        ],
+        "en": [
+          "Filter with c.isalnum() inside a ''.join(...)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "solo_alfanumerico",
+          "cases": [
+            {
+              "args": [
+                "a1!b#2"
+              ],
+              "expected": "a1b2"
+            },
+            {
+              "args": [
+                "...---"
+              ],
+              "expected": ""
+            },
+            {
+              "args": [
+                "Hola Mundo"
+              ],
+              "expected": "HolaMundo"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m19l2e2",
+      "prompt": {
+        "es": "Define `en_lista_blanca(valor, permitidos)` que devuelva True si `valor` está en la colección `permitidos`.",
+        "en": "Define `en_lista_blanca(valor, permitidos)` returning True if `valor` is in the `permitidos` collection."
+      },
+      "starter_code": [
+        "def en_lista_blanca(valor, permitidos):",
+        "    pass"
+      ],
+      "solution": [
+        "def en_lista_blanca(valor, permitidos):",
+        "    return valor in permitidos"
+      ],
+      "hints": {
+        "es": [
+          "El operador in comprueba pertenencia."
+        ],
+        "en": [
+          "The in operator checks membership."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "en_lista_blanca",
+          "cases": [
+            {
+              "args": [
+                "rojo",
+                [
+                  "rojo",
+                  "azul"
+                ]
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "negro",
+                [
+                  "rojo",
+                  "azul"
+                ]
+              ],
+              "expected": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

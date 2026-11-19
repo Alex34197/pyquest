@@ -1,0 +1,16 @@
+{
+  "id": "m41",
+  "order": 41,
+  "title": {
+    "es": "POO: propiedades",
+    "en": "OOP: properties"
+  },
+  "summary": {
+    "es": "@property para atributos calculados y setters con validación.",
+    "en": "@property for computed attributes and setters with validation."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

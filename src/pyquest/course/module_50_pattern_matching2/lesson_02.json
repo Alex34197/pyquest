@@ -1,0 +1,204 @@
+{
+  "id": "m50l2",
+  "title": {
+    "es": "Patrones de clase",
+    "en": "Class patterns"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Coincidir con objetos"
+      },
+      {
+        "type": "text",
+        "value": "Puedes hacer match contra **clases** y sus atributos: `case Punto(x=0, y=0)`. Es muy potente con dataclasses para distinguir tipos de objetos y leer sus campos a la vez."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from dataclasses import dataclass",
+          "",
+          "@dataclass",
+          "class Punto:",
+          "    x: int",
+          "    y: int",
+          "",
+          "def donde(p):",
+          "    match p:",
+          "        case Punto(x=0, y=0):",
+          "            return 'origen'",
+          "        case _:",
+          "            return 'otro'",
+          "",
+          "print(donde(Punto(0, 0)))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "origen"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Con dataclasses, los patrones de clase por palabra clave (x=0) funcionan directamente."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Matching against objects"
+      },
+      {
+        "type": "text",
+        "value": "You can match against **classes** and their attributes: `case Punto(x=0, y=0)`. It's very powerful with dataclasses to distinguish object types and read their fields at once."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from dataclasses import dataclass",
+          "",
+          "@dataclass",
+          "class Punto:",
+          "    x: int",
+          "    y: int",
+          "",
+          "def donde(p):",
+          "    match p:",
+          "        case Punto(x=0, y=0):",
+          "            return 'origen'",
+          "        case _:",
+          "            return 'otro'",
+          "",
+          "print(donde(Punto(0, 0)))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "origen"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "With dataclasses, keyword class patterns (x=0) work out of the box."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m50l2e1",
+      "prompt": {
+        "es": "Define una dataclass `Punto(x, y)` y `describir(p)` con match: (0,0)->'origen'; x>0 e y>0 -> 'cuadrante I'; resto -> 'otro'.",
+        "en": "Define a dataclass `Punto(x, y)` and `describir(p)` with match: (0,0)->'origen'; x>0 and y>0 -> 'cuadrante I'; else -> 'otro'."
+      },
+      "starter_code": [
+        "from dataclasses import dataclass",
+        "",
+        "@dataclass",
+        "class Punto:",
+        "    x: int",
+        "    y: int",
+        "",
+        "def describir(p):",
+        "    pass"
+      ],
+      "solution": [
+        "from dataclasses import dataclass",
+        "",
+        "@dataclass",
+        "class Punto:",
+        "    x: int",
+        "    y: int",
+        "",
+        "def describir(p):",
+        "    match p:",
+        "        case Punto(x=0, y=0):",
+        "            return 'origen'",
+        "        case Punto(x=px, y=py) if px > 0 and py > 0:",
+        "            return 'cuadrante I'",
+        "        case _:",
+        "            return 'otro'"
+      ],
+      "hints": {
+        "es": [
+          "Patrón de clase Punto(x=..., y=...) con una guarda para el cuadrante I."
+        ],
+        "en": [
+          "Class pattern Punto(x=..., y=...) with a guard for quadrant I."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "describir",
+          "harness": "assert describir(Punto(0, 0)) == 'origen'\nassert describir(Punto(2, 3)) == 'cuadrante I'\nassert describir(Punto(-1, 1)) == 'otro'"
+        }
+      ]
+    },
+    {
+      "id": "m50l2e2",
+      "prompt": {
+        "es": "Define `interpretar(comando)` (lista) con match: ['ir', destino] -> 'ir a destino'; ['esperar', n] -> 'esperar n'; resto -> '??'.",
+        "en": "Define `interpretar(comando)` (list) with match: ['ir', dest] -> 'ir a dest'; ['esperar', n] -> 'esperar n'; else -> '??'."
+      },
+      "starter_code": [
+        "def interpretar(comando):",
+        "    pass"
+      ],
+      "solution": [
+        "def interpretar(comando):",
+        "    match comando:",
+        "        case ['ir', destino]:",
+        "            return f'ir a {destino}'",
+        "        case ['esperar', n]:",
+        "            return f'esperar {n}'",
+        "        case _:",
+        "            return '??'"
+      ],
+      "hints": {
+        "es": [
+          "Patrones de lista con literal + captura: ['ir', destino]."
+        ],
+        "en": [
+          "List patterns with literal + capture: ['ir', destino]."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "interpretar",
+          "cases": [
+            {
+              "args": [
+                [
+                  "ir",
+                  "casa"
+                ]
+              ],
+              "expected": "ir a casa"
+            },
+            {
+              "args": [
+                [
+                  "esperar",
+                  5
+                ]
+              ],
+              "expected": "esperar 5"
+            },
+            {
+              "args": [
+                [
+                  "girar"
+                ]
+              ],
+              "expected": "??"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "id": "m36l1",
+  "title": {
+    "es": "map y filter",
+    "en": "map and filter"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Transformar y filtrar colecciones"
+      },
+      {
+        "type": "text",
+        "value": "`map(funcion, iterable)` aplica una función a cada elemento; `filter(condicion, iterable)` se queda con los que cumplen. Ambas devuelven iteradores: envuélvelos en `list()`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "nums = [1, 2, 3, 4]",
+          "print(list(map(lambda x: x * 10, nums)))",
+          "print(list(filter(lambda x: x % 2 == 0, nums)))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[10, 20, 30, 40]",
+          "[2, 4]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "En la práctica, una comprensión de lista suele leerse mejor que map/filter, pero conviene conocerlos."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Transforming and filtering collections"
+      },
+      {
+        "type": "text",
+        "value": "`map(func, iterable)` applies a function to each element; `filter(cond, iterable)` keeps those that pass. Both return iterators: wrap them in `list()`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "nums = [1, 2, 3, 4]",
+          "print(list(map(lambda x: x * 10, nums)))",
+          "print(list(filter(lambda x: x % 2 == 0, nums)))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[10, 20, 30, 40]",
+          "[2, 4]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "In practice a list comprehension often reads better than map/filter, but it's worth knowing them."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m36l1e1",
+      "prompt": {
+        "es": "Define `dobles(numeros)` que devuelva cada número multiplicado por 2 (usa map).",
+        "en": "Define `dobles(numeros)` returning each number times 2 (use map)."
+      },
+      "starter_code": [
+        "def dobles(numeros):",
+        "    pass"
+      ],
+      "solution": [
+        "def dobles(numeros):",
+        "    return list(map(lambda x: x * 2, numeros))"
+      ],
+      "hints": {
+        "es": [
+          "list(map(lambda x: x*2, numeros))."
+        ],
+        "en": [
+          "list(map(lambda x: x*2, numeros))."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "dobles",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  2,
+                  3
+                ]
+              ],
+              "expected": [
+                2,
+                4,
+                6
+              ]
+            },
+            {
+              "args": [
+                []
+              ],
+              "expected": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m36l1e2",
+      "prompt": {
+        "es": "Define `solo_pares(numeros)` que devuelva solo los pares (usa filter).",
+        "en": "Define `solo_pares(numeros)` returning only the even ones (use filter)."
+      },
+      "starter_code": [
+        "def solo_pares(numeros):",
+        "    pass"
+      ],
+      "solution": [
+        "def solo_pares(numeros):",
+        "    return list(filter(lambda x: x % 2 == 0, numeros))"
+      ],
+      "hints": {
+        "es": [
+          "list(filter(lambda x: x%2==0, numeros))."
+        ],
+        "en": [
+          "list(filter(lambda x: x%2==0, numeros))."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "solo_pares",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  2,
+                  3,
+                  4
+                ]
+              ],
+              "expected": [
+                2,
+                4
+              ]
+            },
+            {
+              "args": [
+                [
+                  1,
+                  3
+                ]
+              ],
+              "expected": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

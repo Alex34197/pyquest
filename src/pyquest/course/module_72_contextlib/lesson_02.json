@@ -1,0 +1,134 @@
+{
+  "id": "m72l2",
+  "title": {
+    "es": "ExitStack y closing",
+    "en": "ExitStack and closing"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Gestionar varios recursos"
+      },
+      {
+        "type": "text",
+        "value": "`ExitStack` gestiona un número **variable** de context managers y los cierra en orden inverso al de apertura. `closing(obj)` garantiza que se llame a `obj.close()` al salir del bloque."
+      },
+      {
+        "type": "code",
+        "value": [
+          "# with ExitStack() as stack:",
+          "#     for r in recursos:",
+          "#         stack.enter_context(abrir(r))"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "ExitStack es ideal cuando no sabes de antemano cuántos recursos vas a abrir."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Managing several resources"
+      },
+      {
+        "type": "text",
+        "value": "`ExitStack` manages a **variable** number of context managers and closes them in reverse order of opening. `closing(obj)` ensures `obj.close()` is called on leaving the block."
+      },
+      {
+        "type": "code",
+        "value": [
+          "# with ExitStack() as stack:",
+          "#     for r in recursos:",
+          "#         stack.enter_context(abrir(r))"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "ExitStack is ideal when you don't know in advance how many resources you'll open."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m72l2e1",
+      "prompt": {
+        "es": "Define `cerrar_en_orden(nombres)`: abre un recurso por nombre con ExitStack y devuelve el log ['abre a','abre b','cierra b','cierra a'].",
+        "en": "Define `cerrar_en_orden(nombres)`: open a resource per name with ExitStack and return the log ['abre a','abre b','cierra b','cierra a']."
+      },
+      "starter_code": [
+        "from contextlib import ExitStack, contextmanager",
+        "",
+        "def cerrar_en_orden(nombres):",
+        "    pass"
+      ],
+      "solution": [
+        "from contextlib import ExitStack, contextmanager",
+        "",
+        "def cerrar_en_orden(nombres):",
+        "    log = []",
+        "    @contextmanager",
+        "    def recurso(n):",
+        "        log.append('abre ' + n)",
+        "        yield",
+        "        log.append('cierra ' + n)",
+        "    with ExitStack() as stack:",
+        "        for n in nombres:",
+        "            stack.enter_context(recurso(n))",
+        "    return log"
+      ],
+      "hints": {
+        "es": [
+          "Usa stack.enter_context(recurso(n)) en un bucle; ExitStack cierra en orden inverso."
+        ],
+        "en": [
+          "Use stack.enter_context(recurso(n)) in a loop; ExitStack closes in reverse order."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "cerrar_en_orden",
+          "harness": "assert cerrar_en_orden(['a', 'b']) == ['abre a', 'abre b', 'cierra b', 'cierra a']\nassert cerrar_en_orden(['x']) == ['abre x', 'cierra x']"
+        }
+      ]
+    },
+    {
+      "id": "m72l2e2",
+      "prompt": {
+        "es": "Define `cerrar_al_salir(recurso)` que use `closing` para llamar a recurso.close() al salir; devuelve recurso.cerrado.",
+        "en": "Define `cerrar_al_salir(recurso)` using `closing` to call recurso.close() on exit; return recurso.cerrado."
+      },
+      "starter_code": [
+        "from contextlib import closing",
+        "",
+        "def cerrar_al_salir(recurso):",
+        "    pass"
+      ],
+      "solution": [
+        "from contextlib import closing",
+        "",
+        "def cerrar_al_salir(recurso):",
+        "    with closing(recurso):",
+        "        pass",
+        "    return recurso.cerrado"
+      ],
+      "hints": {
+        "es": [
+          "with closing(recurso): pass; luego devuelve recurso.cerrado."
+        ],
+        "en": [
+          "with closing(recurso): pass; then return recurso.cerrado."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "cerrar_al_salir",
+          "harness": "class R:\n    def __init__(self):\n        self.cerrado = False\n    def close(self):\n        self.cerrado = True\nr = R()\nassert cerrar_al_salir(r) is True"
+        }
+      ]
+    }
+  ]
+}

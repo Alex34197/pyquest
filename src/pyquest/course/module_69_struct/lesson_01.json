@@ -1,0 +1,163 @@
+{
+  "id": "m69l1",
+  "title": {
+    "es": "Enteros y bytes",
+    "en": "Integers and bytes"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Pasar de número a bytes y volver"
+      },
+      {
+        "type": "text",
+        "value": "Un entero se puede representar como **bytes**. `n.to_bytes(longitud, 'big')` lo convierte (big-endian = byte más significativo primero) e `int.from_bytes(b, 'big')` hace lo contrario."
+      },
+      {
+        "type": "code",
+        "value": [
+          "n = 255",
+          "b = n.to_bytes(2, 'big')",
+          "print(b)",
+          "print(int.from_bytes(b, 'big'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "b'\\x00\\xff'",
+          "255"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`.hex()` muestra los bytes como texto hexadecimal, cómodo para depurar datos binarios."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "From number to bytes and back"
+      },
+      {
+        "type": "text",
+        "value": "An integer can be represented as **bytes**. `n.to_bytes(length, 'big')` converts it (big-endian = most significant byte first) and `int.from_bytes(b, 'big')` does the reverse."
+      },
+      {
+        "type": "code",
+        "value": [
+          "n = 255",
+          "b = n.to_bytes(2, 'big')",
+          "print(b)",
+          "print(int.from_bytes(b, 'big'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "b'\\x00\\xff'",
+          "255"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`.hex()` shows the bytes as hexadecimal text, handy for debugging binary data."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m69l1e1",
+      "prompt": {
+        "es": "Define `entero_a_hex(n)` que devuelva `n` como 4 bytes big-endian en hexadecimal (usa to_bytes y .hex()).",
+        "en": "Define `entero_a_hex(n)` returning `n` as 4 big-endian bytes in hexadecimal (use to_bytes and .hex())."
+      },
+      "starter_code": [
+        "def entero_a_hex(n):",
+        "    pass"
+      ],
+      "solution": [
+        "def entero_a_hex(n):",
+        "    return n.to_bytes(4, 'big').hex()"
+      ],
+      "hints": {
+        "es": [
+          "n.to_bytes(4, 'big').hex()."
+        ],
+        "en": [
+          "n.to_bytes(4, 'big').hex()."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "entero_a_hex",
+          "cases": [
+            {
+              "args": [
+                1
+              ],
+              "expected": "00000001"
+            },
+            {
+              "args": [
+                255
+              ],
+              "expected": "000000ff"
+            },
+            {
+              "args": [
+                256
+              ],
+              "expected": "00000100"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m69l1e2",
+      "prompt": {
+        "es": "Define `hex_a_entero(s)` que convierta una cadena hexadecimal en su entero (big-endian).",
+        "en": "Define `hex_a_entero(s)` converting a hex string into its integer (big-endian)."
+      },
+      "starter_code": [
+        "def hex_a_entero(s):",
+        "    pass"
+      ],
+      "solution": [
+        "def hex_a_entero(s):",
+        "    return int.from_bytes(bytes.fromhex(s), 'big')"
+      ],
+      "hints": {
+        "es": [
+          "bytes.fromhex(s) y luego int.from_bytes(..., 'big')."
+        ],
+        "en": [
+          "bytes.fromhex(s) then int.from_bytes(..., 'big')."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "hex_a_entero",
+          "cases": [
+            {
+              "args": [
+                "00000001"
+              ],
+              "expected": 1
+            },
+            {
+              "args": [
+                "000000ff"
+              ],
+              "expected": 255
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

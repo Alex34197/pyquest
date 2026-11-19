@@ -1,0 +1,16 @@
+{
+  "id": "m30",
+  "order": 30,
+  "title": {
+    "es": "Recursión",
+    "en": "Recursion"
+  },
+  "summary": {
+    "es": "Caso base y caso recursivo: factorial, suma, potencia y cuenta atrás.",
+    "en": "Base and recursive case: factorial, sum, power and countdown."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

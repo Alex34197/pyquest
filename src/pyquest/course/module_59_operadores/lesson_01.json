@@ -1,0 +1,155 @@
+{
+  "id": "m59l1",
+  "title": {
+    "es": "__repr__, __eq__ y __len__",
+    "en": "__repr__, __eq__ and __len__"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Métodos especiales (dunder)"
+      },
+      {
+        "type": "text",
+        "value": "Los métodos con doble guion bajo (**dunder**) personalizan cómo se comportan tus objetos con las operaciones del lenguaje. `__repr__` define cómo se ven, `__eq__` cómo se comparan con `==`, `__len__` qué devuelve `len()`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Vector:",
+          "    def __init__(self, x, y):",
+          "        self.x, self.y = x, y",
+          "    def __repr__(self):",
+          "        return f'Vector({self.x}, {self.y})'",
+          "    def __eq__(self, otro):",
+          "        return self.x == otro.x and self.y == otro.y",
+          "",
+          "print(Vector(1, 2))",
+          "print(Vector(1, 2) == Vector(1, 2))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Vector(1, 2)",
+          "True"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`__repr__` debería devolver algo que identifique el objeto sin ambigüedad; ayuda muchísimo al depurar."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Special (dunder) methods"
+      },
+      {
+        "type": "text",
+        "value": "Double-underscore (**dunder**) methods customize how your objects behave with the language's operations. `__repr__` defines how they look, `__eq__` how they compare with `==`, `__len__` what `len()` returns."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Vector:",
+          "    def __init__(self, x, y):",
+          "        self.x, self.y = x, y",
+          "    def __repr__(self):",
+          "        return f'Vector({self.x}, {self.y})'",
+          "    def __eq__(self, otro):",
+          "        return self.x == otro.x and self.y == otro.y",
+          "",
+          "print(Vector(1, 2))",
+          "print(Vector(1, 2) == Vector(1, 2))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Vector(1, 2)",
+          "True"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`__repr__` should return something that identifies the object unambiguously; it helps a lot when debugging."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m59l1e1",
+      "prompt": {
+        "es": "Define `Vector(x, y)` con `__eq__` (compara x e y) y `__repr__` que devuelva 'Vector(x, y)'.",
+        "en": "Define `Vector(x, y)` with `__eq__` (compares x and y) and `__repr__` returning 'Vector(x, y)'."
+      },
+      "starter_code": [
+        "class Vector:",
+        "    def __init__(self, x, y):",
+        "        self.x, self.y = x, y",
+        "    # añade __eq__ y __repr__"
+      ],
+      "solution": [
+        "class Vector:",
+        "    def __init__(self, x, y):",
+        "        self.x, self.y = x, y",
+        "    def __eq__(self, otro):",
+        "        return self.x == otro.x and self.y == otro.y",
+        "    def __repr__(self):",
+        "        return f'Vector({self.x}, {self.y})'"
+      ],
+      "hints": {
+        "es": [
+          "__repr__ devuelve una f-string; __eq__ compara los dos atributos."
+        ],
+        "en": [
+          "__repr__ returns an f-string; __eq__ compares both attributes."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Vector",
+          "harness": "assert Vector(1, 2) == Vector(1, 2)\nassert Vector(1, 2) != Vector(3, 4)\nassert repr(Vector(1, 2)) == 'Vector(1, 2)'"
+        }
+      ]
+    },
+    {
+      "id": "m59l1e2",
+      "prompt": {
+        "es": "Define `Bolsa(items)` con `__len__` que devuelva cuántos elementos contiene.",
+        "en": "Define `Bolsa(items)` with `__len__` returning how many items it holds."
+      },
+      "starter_code": [
+        "class Bolsa:",
+        "    def __init__(self, items):",
+        "        self.items = list(items)",
+        "    # añade __len__"
+      ],
+      "solution": [
+        "class Bolsa:",
+        "    def __init__(self, items):",
+        "        self.items = list(items)",
+        "    def __len__(self):",
+        "        return len(self.items)"
+      ],
+      "hints": {
+        "es": [
+          "__len__ devuelve len(self.items)."
+        ],
+        "en": [
+          "__len__ returns len(self.items)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Bolsa",
+          "harness": "assert len(Bolsa(['a', 'b', 'c'])) == 3\nassert len(Bolsa([])) == 0"
+        }
+      ]
+    }
+  ]
+}

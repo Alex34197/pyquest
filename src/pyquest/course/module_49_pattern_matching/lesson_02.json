@@ -1,0 +1,211 @@
+{
+  "id": "m49l2",
+  "title": {
+    "es": "Guardas y secuencias",
+    "en": "Guards and sequences"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Condiciones y desestructurar"
+      },
+      {
+        "type": "text",
+        "value": "Un `case` puede llevar una **guarda** `if`: solo coincide si además se cumple la condición. Y puedes capturar partes de una secuencia: `case (x, 0)` coincide con cualquier par cuyo segundo valor sea 0, y guarda el primero en `x`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def signo(n):",
+          "    match n:",
+          "        case n if n > 0:",
+          "            return 'positivo'",
+          "        case 0:",
+          "            return 'cero'",
+          "        case _:",
+          "            return 'negativo'",
+          "",
+          "print(signo(5), signo(0), signo(-2))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "positivo cero negativo"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "El patrón de secuencia funciona con listas y tuplas; los nombres en el patrón capturan valores."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Conditions and destructuring"
+      },
+      {
+        "type": "text",
+        "value": "A `case` can carry a **guard** `if`: it only matches if the condition also holds. And you can capture parts of a sequence: `case (x, 0)` matches any pair whose second value is 0, capturing the first in `x`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def signo(n):",
+          "    match n:",
+          "        case n if n > 0:",
+          "            return 'positivo'",
+          "        case 0:",
+          "            return 'cero'",
+          "        case _:",
+          "            return 'negativo'",
+          "",
+          "print(signo(5), signo(0), signo(-2))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "positivo cero negativo"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Sequence patterns work with lists and tuples; names in the pattern capture values."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m49l2e1",
+      "prompt": {
+        "es": "Define `signo(n)` con match y una guarda: >0 -> 'positivo', 0 -> 'cero', resto -> 'negativo'.",
+        "en": "Define `signo(n)` with match and a guard: >0 -> 'positivo', 0 -> 'cero', else -> 'negativo'."
+      },
+      "starter_code": [
+        "def signo(n):",
+        "    pass"
+      ],
+      "solution": [
+        "def signo(n):",
+        "    match n:",
+        "        case x if x > 0:",
+        "            return 'positivo'",
+        "        case 0:",
+        "            return 'cero'",
+        "        case _:",
+        "            return 'negativo'"
+      ],
+      "hints": {
+        "es": [
+          "case x if x > 0 es una guarda."
+        ],
+        "en": [
+          "case x if x > 0 is a guard."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "signo",
+          "cases": [
+            {
+              "args": [
+                5
+              ],
+              "expected": "positivo"
+            },
+            {
+              "args": [
+                0
+              ],
+              "expected": "cero"
+            },
+            {
+              "args": [
+                -3
+              ],
+              "expected": "negativo"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m49l2e2",
+      "prompt": {
+        "es": "Define `clasificar_punto(p)` (p es (x, y)) con match: (0,0)->'origen', (x,0)->'eje x', (0,y)->'eje y', resto->'otro'.",
+        "en": "Define `clasificar_punto(p)` (p is (x, y)) with match: (0,0)->'origen', (x,0)->'x axis', (0,y)->'y axis', else->'other'."
+      },
+      "starter_code": [
+        "def clasificar_punto(p):",
+        "    pass"
+      ],
+      "solution": [
+        "def clasificar_punto(p):",
+        "    match p:",
+        "        case (0, 0):",
+        "            return 'origen'",
+        "        case (x, 0):",
+        "            return 'eje x'",
+        "        case (0, y):",
+        "            return 'eje y'",
+        "        case _:",
+        "            return 'otro'"
+      ],
+      "hints": {
+        "es": [
+          "Ordena los case del más específico al más general."
+        ],
+        "en": [
+          "Order the cases from most specific to most general."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "clasificar_punto",
+          "cases": [
+            {
+              "args": [
+                [
+                  0,
+                  0
+                ]
+              ],
+              "expected": "origen"
+            },
+            {
+              "args": [
+                [
+                  3,
+                  0
+                ]
+              ],
+              "expected": "eje x"
+            },
+            {
+              "args": [
+                [
+                  0,
+                  4
+                ]
+              ],
+              "expected": "eje y"
+            },
+            {
+              "args": [
+                [
+                  2,
+                  2
+                ]
+              ],
+              "expected": "otro"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

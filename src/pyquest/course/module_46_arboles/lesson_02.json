@@ -1,0 +1,115 @@
+{
+  "id": "m46l2",
+  "title": {
+    "es": "Más recorridos y conteo",
+    "en": "More traversals and counting"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Preorden y contar nodos"
+      },
+      {
+        "type": "text",
+        "value": "El recorrido **preorden** visita primero la raíz, luego el subárbol izquierdo y después el derecho. Contar nodos es 1 (la raíz) más los nodos de cada hijo."
+      },
+      {
+        "type": "code",
+        "value": [
+          "# preorden de {2, izq=1, der=3} -> [2, 1, 3]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Cambiar el orden en que combinas raíz/izq/der te da los distintos recorridos (pre, in, post)."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Preorder and counting nodes"
+      },
+      {
+        "type": "text",
+        "value": "The **preorder** traversal visits the root first, then the left subtree, then the right. Counting nodes is 1 (the root) plus each child's nodes."
+      },
+      {
+        "type": "code",
+        "value": [
+          "# preorder of {2, izq=1, der=3} -> [2, 1, 3]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Changing the order in which you combine root/left/right gives the different traversals (pre, in, post)."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m46l2e1",
+      "prompt": {
+        "es": "Define `preorden(arbol)` que devuelva los valores en orden raíz-izquierda-derecha.",
+        "en": "Define `preorden(arbol)` returning the values root-left-right."
+      },
+      "starter_code": [
+        "def preorden(arbol):",
+        "    pass"
+      ],
+      "solution": [
+        "def preorden(arbol):",
+        "    if arbol is None:",
+        "        return []",
+        "    return [arbol['v']] + preorden(arbol['izq']) + preorden(arbol['der'])"
+      ],
+      "hints": {
+        "es": [
+          "[valor] + preorden(izq) + preorden(der)."
+        ],
+        "en": [
+          "[value] + preorden(izq) + preorden(der)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "preorden",
+          "harness": "A = {'v': 2, 'izq': {'v': 1, 'izq': None, 'der': None}, 'der': {'v': 3, 'izq': None, 'der': None}}\nassert preorden(A) == [2, 1, 3]"
+        }
+      ]
+    },
+    {
+      "id": "m46l2e2",
+      "prompt": {
+        "es": "Define `cuenta_nodos(arbol)` que devuelva el número total de nodos.",
+        "en": "Define `cuenta_nodos(arbol)` returning the total number of nodes."
+      },
+      "starter_code": [
+        "def cuenta_nodos(arbol):",
+        "    pass"
+      ],
+      "solution": [
+        "def cuenta_nodos(arbol):",
+        "    if arbol is None:",
+        "        return 0",
+        "    return 1 + cuenta_nodos(arbol['izq']) + cuenta_nodos(arbol['der'])"
+      ],
+      "hints": {
+        "es": [
+          "1 + nodos del hijo izquierdo + nodos del derecho."
+        ],
+        "en": [
+          "1 + left child's nodes + right child's nodes."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "cuenta_nodos",
+          "harness": "A = {'v': 2, 'izq': {'v': 1, 'izq': None, 'der': None}, 'der': {'v': 3, 'izq': None, 'der': None}}\nassert cuenta_nodos(A) == 3\nassert cuenta_nodos(None) == 0"
+        }
+      ]
+    }
+  ]
+}

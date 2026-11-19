@@ -1,0 +1,167 @@
+{
+  "id": "m58l1",
+  "title": {
+    "es": "Direcciones IP con ipaddress",
+    "en": "IP addresses with ipaddress"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Trabajar con IPs sin errores"
+      },
+      {
+        "type": "text",
+        "value": "El módulo `ipaddress` interpreta y valida direcciones IP. `ip_address(texto)` crea el objeto; `.version` dice si es IPv4 (4) o IPv6 (6); `.is_private` indica si es una IP privada (LAN)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import ipaddress",
+          "ip = ipaddress.ip_address('192.168.1.10')",
+          "print(ip.version, ip.is_private)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "4 True"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Saber distinguir IP pública/privada y validar direcciones es básico en redes y seguridad."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Working with IPs without errors"
+      },
+      {
+        "type": "text",
+        "value": "The `ipaddress` module parses and validates IP addresses. `ip_address(text)` creates the object; `.version` says whether it's IPv4 (4) or IPv6 (6); `.is_private` indicates a private (LAN) IP."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import ipaddress",
+          "ip = ipaddress.ip_address('192.168.1.10')",
+          "print(ip.version, ip.is_private)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "4 True"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Telling public from private IPs and validating addresses is fundamental in networking and security."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m58l1e1",
+      "prompt": {
+        "es": "Define `es_privada(ip)` que devuelva True si la IP (texto) es privada (usa ipaddress).",
+        "en": "Define `es_privada(ip)` returning True if the IP (text) is private (use ipaddress)."
+      },
+      "starter_code": [
+        "import ipaddress",
+        "",
+        "def es_privada(ip):",
+        "    pass"
+      ],
+      "solution": [
+        "import ipaddress",
+        "",
+        "def es_privada(ip):",
+        "    return ipaddress.ip_address(ip).is_private"
+      ],
+      "hints": {
+        "es": [
+          "ipaddress.ip_address(ip).is_private."
+        ],
+        "en": [
+          "ipaddress.ip_address(ip).is_private."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "es_privada",
+          "cases": [
+            {
+              "args": [
+                "192.168.1.1"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "8.8.8.8"
+              ],
+              "expected": false
+            },
+            {
+              "args": [
+                "10.0.0.5"
+              ],
+              "expected": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m58l1e2",
+      "prompt": {
+        "es": "Define `version_ip(ip)` que devuelva 4 o 6 según sea IPv4 o IPv6.",
+        "en": "Define `version_ip(ip)` returning 4 or 6 depending on IPv4 or IPv6."
+      },
+      "starter_code": [
+        "import ipaddress",
+        "",
+        "def version_ip(ip):",
+        "    pass"
+      ],
+      "solution": [
+        "import ipaddress",
+        "",
+        "def version_ip(ip):",
+        "    return ipaddress.ip_address(ip).version"
+      ],
+      "hints": {
+        "es": [
+          ".version devuelve 4 o 6."
+        ],
+        "en": [
+          ".version returns 4 or 6."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "version_ip",
+          "cases": [
+            {
+              "args": [
+                "127.0.0.1"
+              ],
+              "expected": 4
+            },
+            {
+              "args": [
+                "::1"
+              ],
+              "expected": 6
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

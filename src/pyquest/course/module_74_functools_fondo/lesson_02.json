@@ -1,0 +1,158 @@
+{
+  "id": "m74l2",
+  "title": {
+    "es": "cached_property y wraps",
+    "en": "cached_property and wraps"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Cachear y conservar metadatos"
+      },
+      {
+        "type": "text",
+        "value": "`@cached_property` calcula un atributo la primera vez y **guarda el resultado** para las siguientes (sin recalcular). `@wraps` se pone dentro de un decorador para que la función envuelta conserve su nombre y su docstring."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from functools import cached_property",
+          "",
+          "class Circulo:",
+          "    def __init__(self, r):",
+          "        self.r = r",
+          "    @cached_property",
+          "    def area(self):",
+          "        return 3 * self.r * self.r",
+          "",
+          "print(Circulo(2).area)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "12"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "cached_property es ideal para cálculos caros que no cambian; wraps evita que tus decoradores 'borren' la identidad de la función."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Caching and preserving metadata"
+      },
+      {
+        "type": "text",
+        "value": "`@cached_property` computes an attribute the first time and **stores the result** for subsequent accesses (no recompute). `@wraps` goes inside a decorator so the wrapped function keeps its name and docstring."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from functools import cached_property",
+          "",
+          "class Circulo:",
+          "    def __init__(self, r):",
+          "        self.r = r",
+          "    @cached_property",
+          "    def area(self):",
+          "        return 3 * self.r * self.r",
+          "",
+          "print(Circulo(2).area)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "12"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "cached_property is ideal for expensive computations that don't change; wraps keeps your decorators from 'erasing' the function's identity."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m74l2e1",
+      "prompt": {
+        "es": "Define `Circulo(r)` con una `@cached_property` `area` que devuelva 3*r*r.",
+        "en": "Define `Circulo(r)` with a `@cached_property` `area` returning 3*r*r."
+      },
+      "starter_code": [
+        "from functools import cached_property",
+        "",
+        "class Circulo:",
+        "    def __init__(self, r):",
+        "        self.r = r",
+        "    # añade la cached_property area"
+      ],
+      "solution": [
+        "from functools import cached_property",
+        "",
+        "class Circulo:",
+        "    def __init__(self, r):",
+        "        self.r = r",
+        "    @cached_property",
+        "    def area(self):",
+        "        return 3 * self.r * self.r"
+      ],
+      "hints": {
+        "es": [
+          "@cached_property encima del método area."
+        ],
+        "en": [
+          "@cached_property above the area method."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Circulo",
+          "harness": "c = Circulo(2)\nassert c.area == 12\nassert c.area == 12\nassert Circulo(3).area == 27"
+        }
+      ]
+    },
+    {
+      "id": "m74l2e2",
+      "prompt": {
+        "es": "Define un decorador `mi_deco` que use `@wraps` para que la función envuelta conserve su __name__ y __doc__.",
+        "en": "Define a decorator `mi_deco` that uses `@wraps` so the wrapped function keeps its __name__ and __doc__."
+      },
+      "starter_code": [
+        "from functools import wraps",
+        "",
+        "def mi_deco(func):",
+        "    pass"
+      ],
+      "solution": [
+        "from functools import wraps",
+        "",
+        "def mi_deco(func):",
+        "    @wraps(func)",
+        "    def envoltura(*args, **kwargs):",
+        "        return func(*args, **kwargs)",
+        "    return envoltura"
+      ],
+      "hints": {
+        "es": [
+          "Pon @wraps(func) sobre la función envoltura interna."
+        ],
+        "en": [
+          "Put @wraps(func) on the inner wrapper function."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "mi_deco",
+          "harness": "@mi_deco\ndef saluda():\n    'documentacion'\n    return 'hola'\nassert saluda() == 'hola'\nassert saluda.__name__ == 'saluda'\nassert saluda.__doc__ == 'documentacion'"
+        }
+      ]
+    }
+  ]
+}

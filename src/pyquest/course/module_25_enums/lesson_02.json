@@ -1,0 +1,186 @@
+{
+  "id": "m25l2",
+  "title": {
+    "es": "Usar enumeraciones",
+    "en": "Using enumerations"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Buscar, recorrer y comparar"
+      },
+      {
+        "type": "text",
+        "value": "Puedes obtener un miembro a partir de su valor llamando al Enum como una función: `Color(1)` -> `Color.ROJO`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from enum import Enum",
+          "",
+          "class Color(Enum):",
+          "    ROJO = 1",
+          "    VERDE = 2",
+          "",
+          "print(Color(2).name)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "VERDE"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Y puedes **recorrer** todos los miembros con un bucle for sobre el Enum."
+      },
+      {
+        "type": "code",
+        "value": [
+          "for c in Color:",
+          "    print(c.name)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "ROJO",
+          "VERDE"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Compara miembros por identidad (`estado is Estado.ACTIVO`); cada miembro es único."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Look up, iterate and compare"
+      },
+      {
+        "type": "text",
+        "value": "You can get a member from its value by calling the Enum like a function: `Color(1)` -> `Color.ROJO`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from enum import Enum",
+          "",
+          "class Color(Enum):",
+          "    ROJO = 1",
+          "    VERDE = 2",
+          "",
+          "print(Color(2).name)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "VERDE"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "And you can **iterate** over all members with a for loop on the Enum."
+      },
+      {
+        "type": "code",
+        "value": [
+          "for c in Color:",
+          "    print(c.name)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "ROJO",
+          "VERDE"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Compare members by identity (`estado is Estado.ACTIVO`); each member is unique."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m25l2e1",
+      "prompt": {
+        "es": "Define un Enum `Estado` (ACTIVO=1, INACTIVO=0) y una función `nombre_estado(n)` que devuelva el nombre del estado con valor `n`.",
+        "en": "Define an Enum `Estado` (ACTIVO=1, INACTIVO=0) and a function `nombre_estado(n)` returning the name of the state with value `n`."
+      },
+      "starter_code": [
+        "from enum import Enum",
+        "",
+        "# define Estado y nombre_estado(n)"
+      ],
+      "solution": [
+        "from enum import Enum",
+        "",
+        "class Estado(Enum):",
+        "    ACTIVO = 1",
+        "    INACTIVO = 0",
+        "",
+        "def nombre_estado(n):",
+        "    return Estado(n).name"
+      ],
+      "hints": {
+        "es": [
+          "Estado(n) te da el miembro; usa .name."
+        ],
+        "en": [
+          "Estado(n) gives the member; use .name."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "nombre_estado",
+          "harness": "assert nombre_estado(1) == 'ACTIVO'\nassert nombre_estado(0) == 'INACTIVO'"
+        }
+      ]
+    },
+    {
+      "id": "m25l2e2",
+      "prompt": {
+        "es": "Define un Enum `Talla` (S=1, M=2, L=3) y una función `listar()` que devuelva la lista de nombres ['S', 'M', 'L'] recorriendo el Enum.",
+        "en": "Define an Enum `Talla` (S=1, M=2, L=3) and a function `listar()` returning the list of names ['S', 'M', 'L'] by iterating the Enum."
+      },
+      "starter_code": [
+        "from enum import Enum",
+        "",
+        "# define Talla y listar()"
+      ],
+      "solution": [
+        "from enum import Enum",
+        "",
+        "class Talla(Enum):",
+        "    S = 1",
+        "    M = 2",
+        "    L = 3",
+        "",
+        "def listar():",
+        "    return [t.name for t in Talla]"
+      ],
+      "hints": {
+        "es": [
+          "Recorre el Enum con un for y recoge t.name."
+        ],
+        "en": [
+          "Iterate the Enum with a for and collect t.name."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "listar",
+          "harness": "assert listar() == ['S', 'M', 'L']"
+        }
+      ]
+    }
+  ]
+}

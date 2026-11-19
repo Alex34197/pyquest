@@ -1,0 +1,17 @@
+{
+  "id": "m3",
+  "order": 3,
+  "title": {
+    "es": "Estructuras de datos",
+    "en": "Data structures"
+  },
+  "summary": {
+    "es": "Colecciones: listas, diccionarios, tuplas y conjuntos.",
+    "en": "Collections: lists, dictionaries, tuples and sets."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json",
+    "lesson_03.json"
+  ]
+}

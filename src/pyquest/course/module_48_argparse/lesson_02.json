@@ -1,0 +1,176 @@
+{
+  "id": "m48l2",
+  "title": {
+    "es": "Valores por defecto y banderas",
+    "en": "Defaults and flags"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Opciones opcionales"
+      },
+      {
+        "type": "text",
+        "value": "`default=` da un valor cuando la opción no aparece. Una **bandera** booleana se define con `action='store_true'`: es True si está presente y False si no."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import argparse",
+          "p = argparse.ArgumentParser()",
+          "p.add_argument('--verbose', action='store_true')",
+          "print(p.parse_args([]).verbose)",
+          "print(p.parse_args(['--verbose']).verbose)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "False",
+          "True"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Las banderas no llevan valor: o están (True) o no están (False)."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Optional options"
+      },
+      {
+        "type": "text",
+        "value": "`default=` gives a value when the option is absent. A boolean **flag** is defined with `action='store_true'`: True if present, False otherwise."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import argparse",
+          "p = argparse.ArgumentParser()",
+          "p.add_argument('--verbose', action='store_true')",
+          "print(p.parse_args([]).verbose)",
+          "print(p.parse_args(['--verbose']).verbose)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "False",
+          "True"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Flags carry no value: they're either present (True) or not (False)."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m48l2e1",
+      "prompt": {
+        "es": "Define `leer_n(args)` con `--n` (entero) y valor por defecto 10; devuelve n.",
+        "en": "Define `leer_n(args)` with `--n` (integer) defaulting to 10; return n."
+      },
+      "starter_code": [
+        "import argparse",
+        "",
+        "def leer_n(args):",
+        "    pass"
+      ],
+      "solution": [
+        "import argparse",
+        "",
+        "def leer_n(args):",
+        "    p = argparse.ArgumentParser()",
+        "    p.add_argument('--n', type=int, default=10)",
+        "    return p.parse_args(args).n"
+      ],
+      "hints": {
+        "es": [
+          "add_argument('--n', type=int, default=10)."
+        ],
+        "en": [
+          "add_argument('--n', type=int, default=10)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "leer_n",
+          "cases": [
+            {
+              "args": [
+                []
+              ],
+              "expected": 10
+            },
+            {
+              "args": [
+                [
+                  "--n",
+                  "7"
+                ]
+              ],
+              "expected": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m48l2e2",
+      "prompt": {
+        "es": "Define `tiene_flag(args)` con una bandera `--verbose`; devuelve True/False según esté o no.",
+        "en": "Define `tiene_flag(args)` with a `--verbose` flag; return True/False depending on its presence."
+      },
+      "starter_code": [
+        "import argparse",
+        "",
+        "def tiene_flag(args):",
+        "    pass"
+      ],
+      "solution": [
+        "import argparse",
+        "",
+        "def tiene_flag(args):",
+        "    p = argparse.ArgumentParser()",
+        "    p.add_argument('--verbose', action='store_true')",
+        "    return p.parse_args(args).verbose"
+      ],
+      "hints": {
+        "es": [
+          "action='store_true' hace la bandera booleana."
+        ],
+        "en": [
+          "action='store_true' makes the boolean flag."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "tiene_flag",
+          "cases": [
+            {
+              "args": [
+                [
+                  "--verbose"
+                ]
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                []
+              ],
+              "expected": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

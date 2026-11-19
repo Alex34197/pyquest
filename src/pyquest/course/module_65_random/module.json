@@ -1,0 +1,16 @@
+{
+  "id": "m65",
+  "order": 65,
+  "title": {
+    "es": "Aleatoriedad reproducible",
+    "en": "Reproducible randomness"
+  },
+  "summary": {
+    "es": "random.seed, randint, choice y shuffle (deterministas con semilla).",
+    "en": "random.seed, randint, choice and shuffle (deterministic with a seed)."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

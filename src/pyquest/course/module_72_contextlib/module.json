@@ -1,0 +1,16 @@
+{
+  "id": "m72",
+  "order": 72,
+  "title": {
+    "es": "contextlib avanzado",
+    "en": "Advanced contextlib"
+  },
+  "summary": {
+    "es": "suppress, redirect_stdout, ExitStack y closing.",
+    "en": "suppress, redirect_stdout, ExitStack and closing."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

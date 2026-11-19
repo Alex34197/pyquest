@@ -1,0 +1,17 @@
+{
+  "id": "m2",
+  "order": 2,
+  "title": {
+    "es": "Control de flujo",
+    "en": "Control flow"
+  },
+  "summary": {
+    "es": "Decidir y repetir: condicionales, bucle while y bucle for con range.",
+    "en": "Deciding and repeating: conditionals, while loop and for loop with range."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json",
+    "lesson_03.json"
+  ]
+}

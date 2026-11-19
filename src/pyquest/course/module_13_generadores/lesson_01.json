@@ -1,0 +1,153 @@
+{
+  "id": "m13l1",
+  "title": {
+    "es": "yield: generar valores uno a uno",
+    "en": "yield: producing values one by one"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Producir valores bajo demanda"
+      },
+      {
+        "type": "text",
+        "value": "Una función con `yield` es un **generador**: en vez de devolver todo de golpe, va produciendo valores uno a uno, **bajo demanda** (de forma perezosa). Así ahorra memoria con secuencias grandes."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def cuenta(n):",
+          "    i = 1",
+          "    while i <= n:",
+          "        yield i",
+          "        i += 1",
+          "",
+          "for x in cuenta(3):",
+          "    print(x)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`list(generador)` recoge todos sus valores en una lista; `next(generador)` pide el siguiente."
+      },
+      {
+        "type": "note",
+        "value": "No guardan toda la secuencia en memoria: ideales para leer ficheros enormes o flujos de datos."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Producing values on demand"
+      },
+      {
+        "type": "text",
+        "value": "A function with `yield` is a **generator**: instead of returning everything at once, it produces values one by one, **on demand** (lazily). This saves memory with large sequences."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def cuenta(n):",
+          "    i = 1",
+          "    while i <= n:",
+          "        yield i",
+          "        i += 1",
+          "",
+          "for x in cuenta(3):",
+          "    print(x)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`list(generator)` collects all its values into a list; `next(generator)` asks for the next one."
+      },
+      {
+        "type": "note",
+        "value": "They don't keep the whole sequence in memory: ideal for reading huge files or data streams."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m13l1e1",
+      "prompt": {
+        "es": "Define un generador `cuenta_atras(n)` que produzca `n, n-1, ..., 1`.",
+        "en": "Define a generator `cuenta_atras(n)` producing `n, n-1, ..., 1`."
+      },
+      "starter_code": [
+        "def cuenta_atras(n):",
+        "    pass"
+      ],
+      "solution": [
+        "def cuenta_atras(n):",
+        "    while n >= 1:",
+        "        yield n",
+        "        n -= 1"
+      ],
+      "hints": {
+        "es": [
+          "Usa yield dentro de un while que baje de n hasta 1."
+        ],
+        "en": [
+          "Use yield inside a while counting down from n to 1."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "cuenta_atras",
+          "harness": "assert list(cuenta_atras(3)) == [3, 2, 1]\nassert list(cuenta_atras(1)) == [1]\nassert list(cuenta_atras(0)) == []"
+        }
+      ]
+    },
+    {
+      "id": "m13l1e2",
+      "prompt": {
+        "es": "Define un generador `pares(n)` que produzca los números pares desde 0 hasta `n` (incluido si es par).",
+        "en": "Define a generator `pares(n)` producing even numbers from 0 up to `n` (inclusive if even)."
+      },
+      "starter_code": [
+        "def pares(n):",
+        "    pass"
+      ],
+      "solution": [
+        "def pares(n):",
+        "    for i in range(0, n + 1):",
+        "        if i % 2 == 0:",
+        "            yield i"
+      ],
+      "hints": {
+        "es": [
+          "Recorre range(0, n+1) y haz yield solo de los pares."
+        ],
+        "en": [
+          "Iterate range(0, n+1) and yield only the even ones."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "pares",
+          "harness": "assert list(pares(6)) == [0, 2, 4, 6]\nassert list(pares(5)) == [0, 2, 4]\nassert list(pares(0)) == [0]"
+        }
+      ]
+    }
+  ]
+}

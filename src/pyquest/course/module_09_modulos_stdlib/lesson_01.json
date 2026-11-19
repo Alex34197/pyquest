@@ -1,0 +1,258 @@
+{
+  "id": "m9l1",
+  "title": {
+    "es": "Importar módulos: math y random",
+    "en": "Importing modules: math and random"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Reutilizar código: import"
+      },
+      {
+        "type": "text",
+        "value": "Python trae una enorme **librería estándar**. Con `import modulo` accedes a sus funciones como `modulo.funcion(...)`. También puedes `from modulo import funcion`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import math",
+          "print(math.sqrt(16))",
+          "print(math.pi)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "4.0",
+          "3.141592653589793"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Números: math"
+      },
+      {
+        "type": "text",
+        "value": "`math` ofrece `sqrt`, `ceil`, `floor`, `factorial`, `pi`… y `math.hypot(a, b)` calcula la hipotenusa."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import math",
+          "print(math.ceil(4.1), math.floor(4.9))",
+          "print(math.hypot(3, 4))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "5 4",
+          "5.0"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Azar: random"
+      },
+      {
+        "type": "text",
+        "value": "`random` genera valores aleatorios: `random.randint(a, b)`, `random.choice(lista)`, `random.shuffle(lista)`. Con `random.seed(x)` los resultados son **reproducibles**."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import random",
+          "random.seed(0)",
+          "valor = random.randint(1, 6)  # entre 1 y 6"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Usa `random.seed(...)` cuando necesites resultados repetibles (por ejemplo, en pruebas)."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Reuse code: import"
+      },
+      {
+        "type": "text",
+        "value": "Python ships a huge **standard library**. With `import module` you access its functions as `module.function(...)`. You can also `from module import function`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import math",
+          "print(math.sqrt(16))",
+          "print(math.pi)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "4.0",
+          "3.141592653589793"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Numbers: math"
+      },
+      {
+        "type": "text",
+        "value": "`math` offers `sqrt`, `ceil`, `floor`, `factorial`, `pi`… and `math.hypot(a, b)` computes the hypotenuse."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import math",
+          "print(math.ceil(4.1), math.floor(4.9))",
+          "print(math.hypot(3, 4))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "5 4",
+          "5.0"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Randomness: random"
+      },
+      {
+        "type": "text",
+        "value": "`random` generates random values: `random.randint(a, b)`, `random.choice(list)`, `random.shuffle(list)`. With `random.seed(x)` results are **reproducible**."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import random",
+          "random.seed(0)",
+          "valor = random.randint(1, 6)  # between 1 and 6"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Use `random.seed(...)` when you need repeatable results (for example, in tests)."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m9l1e1",
+      "prompt": {
+        "es": "Define `hipotenusa(a, b)` que devuelva la hipotenusa usando `math` (importa `math`).",
+        "en": "Define `hipotenusa(a, b)` returning the hypotenuse using `math` (import `math`)."
+      },
+      "starter_code": [
+        "import math",
+        "",
+        "def hipotenusa(a, b):",
+        "    pass"
+      ],
+      "solution": [
+        "import math",
+        "",
+        "def hipotenusa(a, b):",
+        "    return math.hypot(a, b)"
+      ],
+      "hints": {
+        "es": [
+          "math.hypot(a, b) lo calcula directamente."
+        ],
+        "en": [
+          "math.hypot(a, b) computes it directly."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "hipotenusa",
+          "cases": [
+            {
+              "args": [
+                3,
+                4
+              ],
+              "expected": 5.0
+            },
+            {
+              "args": [
+                6,
+                8
+              ],
+              "expected": 10.0
+            },
+            {
+              "args": [
+                5,
+                12
+              ],
+              "expected": 13.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m9l1e2",
+      "prompt": {
+        "es": "Define `redondea_arriba(x)` que devuelva `x` redondeado hacia arriba al entero más cercano (usa `math.ceil`).",
+        "en": "Define `redondea_arriba(x)` returning `x` rounded up to the nearest integer (use `math.ceil`)."
+      },
+      "starter_code": [
+        "import math",
+        "",
+        "def redondea_arriba(x):",
+        "    pass"
+      ],
+      "solution": [
+        "import math",
+        "",
+        "def redondea_arriba(x):",
+        "    return math.ceil(x)"
+      ],
+      "hints": {
+        "es": [
+          "math.ceil(4.1) == 5.",
+          "math.ceil(4.0) == 4."
+        ],
+        "en": [
+          "math.ceil(4.1) == 5.",
+          "math.ceil(4.0) == 4."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "redondea_arriba",
+          "cases": [
+            {
+              "args": [
+                4.1
+              ],
+              "expected": 5
+            },
+            {
+              "args": [
+                4.0
+              ],
+              "expected": 4
+            },
+            {
+              "args": [
+                -1.5
+              ],
+              "expected": -1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

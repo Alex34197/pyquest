@@ -1,0 +1,16 @@
+{
+  "id": "m70",
+  "order": 70,
+  "title": {
+    "es": "Configuración (INI)",
+    "en": "Configuration (INI)"
+  },
+  "summary": {
+    "es": "configparser: leer secciones/claves, getint y valores por defecto.",
+    "en": "configparser: read sections/keys, getint and default values."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "id": "m17l1",
+  "title": {
+    "es": "Aleatoriedad segura con secrets",
+    "en": "Secure randomness with secrets"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "random NO sirve para seguridad"
+      },
+      {
+        "type": "text",
+        "value": "El módulo `random` es predecible: vale para juegos, **no** para tokens ni contraseñas. Para eso está `secrets`, criptográficamente seguro."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import secrets",
+          "print(secrets.token_hex(16))",
+          "print(secrets.choice('ABCDEF0123456789'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "9f2c... (32 caracteres hex)",
+          "C"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`secrets.token_hex(n)` da `2*n` caracteres hexadecimales. `secrets.choice(seq)` elige un elemento al azar de forma segura; `secrets.randbelow(n)` da un entero en [0, n)."
+      },
+      {
+        "type": "note",
+        "value": "Regla: si el valor protege algo (sesión, token, recuperación de contraseña), usa `secrets`, nunca `random`."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "random is NOT for security"
+      },
+      {
+        "type": "text",
+        "value": "The `random` module is predictable: fine for games, **not** for tokens or passwords. Use `secrets`, which is cryptographically secure."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import secrets",
+          "print(secrets.token_hex(16))",
+          "print(secrets.choice('ABCDEF0123456789'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "9f2c... (32 hex characters)",
+          "C"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`secrets.token_hex(n)` gives `2*n` hex characters. `secrets.choice(seq)` securely picks an element; `secrets.randbelow(n)` gives an integer in [0, n)."
+      },
+      {
+        "type": "note",
+        "value": "Rule: if the value protects something (session, token, password reset), use `secrets`, never `random`."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m17l1e1",
+      "prompt": {
+        "es": "Define `token(n_bytes)` que devuelva un token hexadecimal seguro de `n_bytes` bytes (usa secrets.token_hex).",
+        "en": "Define `token(n_bytes)` returning a secure hex token of `n_bytes` bytes (use secrets.token_hex)."
+      },
+      "starter_code": [
+        "import secrets",
+        "",
+        "def token(n_bytes):",
+        "    pass"
+      ],
+      "solution": [
+        "import secrets",
+        "",
+        "def token(n_bytes):",
+        "    return secrets.token_hex(n_bytes)"
+      ],
+      "hints": {
+        "es": [
+          "token_hex(n) devuelve 2*n caracteres hex."
+        ],
+        "en": [
+          "token_hex(n) returns 2*n hex characters."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "token",
+          "harness": "t = token(16)\nassert len(t) == 32\nassert all(c in '0123456789abcdef' for c in t)\nassert token(8) != token(8)"
+        }
+      ]
+    },
+    {
+      "id": "m17l1e2",
+      "prompt": {
+        "es": "Define `pin(n)` que devuelva un PIN de `n` dígitos aleatorios y seguros (usa secrets.choice sobre '0123456789').",
+        "en": "Define `pin(n)` returning a PIN of `n` secure random digits (use secrets.choice over '0123456789')."
+      },
+      "starter_code": [
+        "import secrets",
+        "",
+        "def pin(n):",
+        "    pass"
+      ],
+      "solution": [
+        "import secrets",
+        "",
+        "def pin(n):",
+        "    return ''.join(secrets.choice('0123456789') for _ in range(n))"
+      ],
+      "hints": {
+        "es": [
+          "Une n elecciones de secrets.choice con ''.join(...)."
+        ],
+        "en": [
+          "Join n secrets.choice picks with ''.join(...)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "pin",
+          "harness": "p = pin(6)\nassert len(p) == 6 and p.isdigit()\nassert len(pin(4)) == 4"
+        }
+      ]
+    }
+  ]
+}

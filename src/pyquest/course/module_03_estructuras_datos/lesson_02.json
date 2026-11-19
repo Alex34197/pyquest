@@ -1,0 +1,313 @@
+{
+  "id": "m3l2",
+  "title": {
+    "es": "Diccionarios",
+    "en": "Dictionaries"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Pares clave -> valor"
+      },
+      {
+        "type": "text",
+        "value": "Un **diccionario** asocia claves con valores, entre llaves `{}`. En lugar de acceder por posición (como las listas), accedes por clave. Es ideal para representar 'fichas' de datos."
+      },
+      {
+        "type": "code",
+        "value": [
+          "persona = {'nombre': 'Ana', 'edad': 25}",
+          "print(persona['nombre'])"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Ana"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Añadir y modificar"
+      },
+      {
+        "type": "text",
+        "value": "Asignar a una clave nueva la crea; asignar a una existente la cambia."
+      },
+      {
+        "type": "code",
+        "value": [
+          "persona = {'nombre': 'Ana'}",
+          "persona['edad'] = 25",
+          "persona['nombre'] = 'Bea'",
+          "print(persona)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "{'nombre': 'Bea', 'edad': 25}"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Acceder a una clave que no existe con `dic['x']` da `KeyError`. Para evitarlo usa `dic.get('x')`, que devuelve `None` (o un valor por defecto) si no está."
+      },
+      {
+        "type": "code",
+        "value": [
+          "persona = {'nombre': 'Ana'}",
+          "print(persona.get('edad', 0))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "0"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Recorrer un diccionario"
+      },
+      {
+        "type": "text",
+        "value": "`.keys()` da las claves, `.values()` los valores y `.items()` los pares. Recorrer el diccionario directamente itera sobre las claves."
+      },
+      {
+        "type": "code",
+        "value": [
+          "notas = {'mates': 8, 'lengua': 6}",
+          "for asignatura, nota in notas.items():",
+          "    print(asignatura, nota)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "mates 8",
+          "lengua 6"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Comprobar si una clave existe es directo con `in`: `'mates' in notas` vale `True`."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Key -> value pairs"
+      },
+      {
+        "type": "text",
+        "value": "A **dictionary** maps keys to values, between braces `{}`. Instead of accessing by position (like lists), you access by key. Great for representing data 'records'."
+      },
+      {
+        "type": "code",
+        "value": [
+          "person = {'name': 'Ana', 'age': 25}",
+          "print(person['name'])"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Ana"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Adding and updating"
+      },
+      {
+        "type": "text",
+        "value": "Assigning to a new key creates it; assigning to an existing one changes it."
+      },
+      {
+        "type": "code",
+        "value": [
+          "person = {'name': 'Ana'}",
+          "person['age'] = 25",
+          "person['name'] = 'Bea'",
+          "print(person)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "{'name': 'Bea', 'age': 25}"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Accessing a missing key with `d['x']` raises `KeyError`. To avoid it use `d.get('x')`, which returns `None` (or a default) if absent."
+      },
+      {
+        "type": "code",
+        "value": [
+          "person = {'name': 'Ana'}",
+          "print(person.get('age', 0))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "0"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Iterating a dictionary"
+      },
+      {
+        "type": "text",
+        "value": "`.keys()` gives the keys, `.values()` the values and `.items()` the pairs. Iterating the dictionary directly loops over its keys."
+      },
+      {
+        "type": "code",
+        "value": [
+          "grades = {'math': 8, 'lang': 6}",
+          "for subject, grade in grades.items():",
+          "    print(subject, grade)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "math 8",
+          "lang 6"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Checking if a key exists is direct with `in`: `'math' in grades` is `True`."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m3l2e1",
+      "prompt": {
+        "es": "Define `contar_palabras(texto)` que devuelva un diccionario {palabra: nº de veces}. Las palabras se separan por espacios. Ejemplo: `'a a b'` -> `{'a': 2, 'b': 1}`.",
+        "en": "Define `contar_palabras(texto)` returning a dict {word: count}. Words are separated by spaces. Example: `'a a b'` -> `{'a': 2, 'b': 1}`."
+      },
+      "starter_code": [
+        "def contar_palabras(texto):",
+        "    conteo = {}",
+        "    # usa texto.split() y .get()",
+        "    return conteo"
+      ],
+      "solution": [
+        "def contar_palabras(texto):",
+        "    conteo = {}",
+        "    for palabra in texto.split():",
+        "        conteo[palabra] = conteo.get(palabra, 0) + 1",
+        "    return conteo"
+      ],
+      "hints": {
+        "es": [
+          "texto.split() devuelve la lista de palabras.",
+          "conteo[p] = conteo.get(p, 0) + 1 suma sin fallar la primera vez."
+        ],
+        "en": [
+          "texto.split() returns the list of words.",
+          "conteo[p] = conteo.get(p, 0) + 1 counts safely the first time."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "name": "contar_palabras",
+          "function": "contar_palabras",
+          "cases": [
+            {
+              "args": [
+                "a a b"
+              ],
+              "expected": {
+                "a": 2,
+                "b": 1
+              }
+            },
+            {
+              "args": [
+                ""
+              ],
+              "expected": {}
+            },
+            {
+              "args": [
+                "hola hola hola"
+              ],
+              "expected": {
+                "hola": 3
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m3l2e2",
+      "prompt": {
+        "es": "Define `invertir_dict(d)` que devuelva un nuevo diccionario con claves y valores intercambiados (los valores son textos). Ejemplo: `{'a': 'x'}` -> `{'x': 'a'}`.",
+        "en": "Define `invertir_dict(d)` returning a new dict with keys and values swapped (values are text). Example: `{'a': 'x'}` -> `{'x': 'a'}`."
+      },
+      "starter_code": [
+        "def invertir_dict(d):",
+        "    resultado = {}",
+        "    return resultado"
+      ],
+      "solution": [
+        "def invertir_dict(d):",
+        "    resultado = {}",
+        "    for clave, valor in d.items():",
+        "        resultado[valor] = clave",
+        "    return resultado"
+      ],
+      "hints": {
+        "es": [
+          "Recorre con .items() para tener clave y valor.",
+          "resultado[valor] = clave"
+        ],
+        "en": [
+          "Loop with .items() to get key and value.",
+          "resultado[valor] = clave"
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "name": "invertir_dict",
+          "function": "invertir_dict",
+          "cases": [
+            {
+              "args": [
+                {
+                  "a": "x",
+                  "b": "y"
+                }
+              ],
+              "expected": {
+                "x": "a",
+                "y": "b"
+              }
+            },
+            {
+              "args": [
+                {
+                  "k": "v"
+                }
+              ],
+              "expected": {
+                "v": "k"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

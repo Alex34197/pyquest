@@ -1,0 +1,178 @@
+{
+  "id": "m28l1",
+  "title": {
+    "es": "Leer CSV",
+    "en": "Reading CSV"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Datos en tablas de texto"
+      },
+      {
+        "type": "text",
+        "value": "Un CSV separa valores por comas, una fila por línea. El módulo `csv` lo lee bien (comillas, comas dentro de campos…). Para practicar con texto en memoria usamos `io.StringIO`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import csv, io",
+          "texto = 'nombre,edad\\nAna,30'",
+          "filas = list(csv.reader(io.StringIO(texto)))",
+          "print(filas)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[['nombre', 'edad'], ['Ana', '30']]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`csv.reader` siempre devuelve cadenas; convierte a int/float tú si lo necesitas."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Data in text tables"
+      },
+      {
+        "type": "text",
+        "value": "A CSV separates values with commas, one row per line. The `csv` module reads it correctly (quotes, commas inside fields…). To practice with in-memory text we use `io.StringIO`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import csv, io",
+          "texto = 'nombre,edad\\nAna,30'",
+          "filas = list(csv.reader(io.StringIO(texto)))",
+          "print(filas)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[['nombre', 'edad'], ['Ana', '30']]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`csv.reader` always returns strings; convert to int/float yourself if needed."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m28l1e1",
+      "prompt": {
+        "es": "Define `leer(texto)` que devuelva la lista de filas (cada fila, lista de cadenas) de un CSV.",
+        "en": "Define `leer(texto)` returning the list of rows (each a list of strings) from CSV text."
+      },
+      "starter_code": [
+        "import csv, io",
+        "",
+        "def leer(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "import csv, io",
+        "",
+        "def leer(texto):",
+        "    return list(csv.reader(io.StringIO(texto)))"
+      ],
+      "hints": {
+        "es": [
+          "Envuelve el texto en io.StringIO y pásalo a csv.reader."
+        ],
+        "en": [
+          "Wrap the text in io.StringIO and pass it to csv.reader."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "leer",
+          "cases": [
+            {
+              "args": [
+                "a,b\n1,2"
+              ],
+              "expected": [
+                [
+                  "a",
+                  "b"
+                ],
+                [
+                  "1",
+                  "2"
+                ]
+              ]
+            },
+            {
+              "args": [
+                "x,y,z"
+              ],
+              "expected": [
+                [
+                  "x",
+                  "y",
+                  "z"
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m28l1e2",
+      "prompt": {
+        "es": "Define `n_filas(texto)` que devuelva el número de filas del CSV.",
+        "en": "Define `n_filas(texto)` returning the number of rows in the CSV."
+      },
+      "starter_code": [
+        "import csv, io",
+        "",
+        "def n_filas(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "import csv, io",
+        "",
+        "def n_filas(texto):",
+        "    return len(list(csv.reader(io.StringIO(texto))))"
+      ],
+      "hints": {
+        "es": [
+          "len() sobre las filas leídas."
+        ],
+        "en": [
+          "len() over the rows read."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "n_filas",
+          "cases": [
+            {
+              "args": [
+                "a,b\n1,2\n3,4"
+              ],
+              "expected": 3
+            },
+            {
+              "args": [
+                "solo,una"
+              ],
+              "expected": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

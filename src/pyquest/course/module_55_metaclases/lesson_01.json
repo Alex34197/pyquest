@@ -1,0 +1,139 @@
+{
+  "id": "m55l1",
+  "title": {
+    "es": "Las clases son objetos",
+    "en": "Classes are objects"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Crear clases en tiempo de ejecución"
+      },
+      {
+        "type": "text",
+        "value": "En Python las **clases también son objetos**, instancias de `type`. Puedes crear una clase al vuelo con `type(nombre, bases, atributos)`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "Punto = type('Punto', (), {'x': 0})",
+          "p = Punto()",
+          "print(Punto.__name__, p.x)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Punto 0"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Además, `__init_subclass__` es un gancho que se ejecuta cada vez que alguien hereda de tu clase: perfecto para llevar un **registro** de subclases."
+      },
+      {
+        "type": "note",
+        "value": "`isinstance(int, type)` es True: int es una instancia de type, como cualquier clase."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Creating classes at runtime"
+      },
+      {
+        "type": "text",
+        "value": "In Python **classes are also objects**, instances of `type`. You can create a class on the fly with `type(name, bases, attributes)`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "Punto = type('Punto', (), {'x': 0})",
+          "p = Punto()",
+          "print(Punto.__name__, p.x)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Punto 0"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Also, `__init_subclass__` is a hook that runs whenever someone inherits from your class: perfect to keep a **registry** of subclasses."
+      },
+      {
+        "type": "note",
+        "value": "`isinstance(int, type)` is True: int is an instance of type, like every class."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m55l1e1",
+      "prompt": {
+        "es": "Define `Base` con un `__init_subclass__` que registre cada subclase en `Base.registro` (nombre -> clase).",
+        "en": "Define `Base` with an `__init_subclass__` that registers each subclass in `Base.registro` (name -> class)."
+      },
+      "starter_code": [
+        "class Base:",
+        "    registro = {}",
+        "    # añade __init_subclass__"
+      ],
+      "solution": [
+        "class Base:",
+        "    registro = {}",
+        "    def __init_subclass__(cls, **kwargs):",
+        "        super().__init_subclass__(**kwargs)",
+        "        Base.registro[cls.__name__] = cls"
+      ],
+      "hints": {
+        "es": [
+          "En __init_subclass__ haz Base.registro[cls.__name__] = cls."
+        ],
+        "en": [
+          "In __init_subclass__ do Base.registro[cls.__name__] = cls."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Base",
+          "harness": "class A(Base):\n    pass\nclass B(Base):\n    pass\nassert set(Base.registro) == {'A', 'B'}\nassert Base.registro['A'] is A"
+        }
+      ]
+    },
+    {
+      "id": "m55l1e2",
+      "prompt": {
+        "es": "Define `crear_clase(nombre, atributos)` que cree y devuelva una clase nueva con `type`.",
+        "en": "Define `crear_clase(nombre, atributos)` that creates and returns a new class with `type`."
+      },
+      "starter_code": [
+        "def crear_clase(nombre, atributos):",
+        "    pass"
+      ],
+      "solution": [
+        "def crear_clase(nombre, atributos):",
+        "    return type(nombre, (), atributos)"
+      ],
+      "hints": {
+        "es": [
+          "type(nombre, (), atributos) crea la clase."
+        ],
+        "en": [
+          "type(nombre, (), atributos) creates the class."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "crear_clase",
+          "harness": "C = crear_clase('C', {'x': 5})\nassert C.__name__ == 'C'\nassert C().x == 5"
+        }
+      ]
+    }
+  ]
+}

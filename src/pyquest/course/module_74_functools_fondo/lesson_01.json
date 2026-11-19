@@ -1,0 +1,172 @@
+{
+  "id": "m74l1",
+  "title": {
+    "es": "total_ordering y singledispatch",
+    "en": "total_ordering and singledispatch"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Generar comparaciones y despachar por tipo"
+      },
+      {
+        "type": "text",
+        "value": "`@total_ordering` genera `<=`, `>`, `>=` a partir de `__eq__` y `__lt__`: defines dos y tienes todas las comparaciones. `@singledispatch` permite que una función se comporte distinto según el **tipo** del primer argumento."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from functools import singledispatch",
+          "",
+          "@singledispatch",
+          "def describir(x):",
+          "    return 'otro'",
+          "",
+          "@describir.register",
+          "def _(x: int):",
+          "    return 'entero'",
+          "",
+          "print(describir(5), describir('a'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "entero otro"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "singledispatch es como un 'match por tipo' limpio, sin cadenas de isinstance."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Generating comparisons and dispatching by type"
+      },
+      {
+        "type": "text",
+        "value": "`@total_ordering` generates `<=`, `>`, `>=` from `__eq__` and `__lt__`: you define two and get all comparisons. `@singledispatch` lets a function behave differently based on the **type** of the first argument."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from functools import singledispatch",
+          "",
+          "@singledispatch",
+          "def describir(x):",
+          "    return 'otro'",
+          "",
+          "@describir.register",
+          "def _(x: int):",
+          "    return 'entero'",
+          "",
+          "print(describir(5), describir('a'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "entero otro"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "singledispatch is like a clean 'match by type', without chains of isinstance."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m74l1e1",
+      "prompt": {
+        "es": "Define `Temp(grados)` con `@total_ordering`, `__eq__` y `__lt__`, para tener todas las comparaciones.",
+        "en": "Define `Temp(grados)` with `@total_ordering`, `__eq__` and `__lt__`, to get all comparisons."
+      },
+      "starter_code": [
+        "from functools import total_ordering",
+        "",
+        "@total_ordering",
+        "class Temp:",
+        "    def __init__(self, grados):",
+        "        self.grados = grados",
+        "    # añade __eq__ y __lt__"
+      ],
+      "solution": [
+        "from functools import total_ordering",
+        "",
+        "@total_ordering",
+        "class Temp:",
+        "    def __init__(self, grados):",
+        "        self.grados = grados",
+        "    def __eq__(self, otro):",
+        "        return self.grados == otro.grados",
+        "    def __lt__(self, otro):",
+        "        return self.grados < otro.grados"
+      ],
+      "hints": {
+        "es": [
+          "Con __eq__ y __lt__, total_ordering deduce el resto."
+        ],
+        "en": [
+          "With __eq__ and __lt__, total_ordering derives the rest."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Temp",
+          "harness": "assert (Temp(5) < Temp(10)) is True\nassert (Temp(10) > Temp(5)) is True\nassert (Temp(5) <= Temp(5)) is True\nassert (Temp(10) >= Temp(5)) is True"
+        }
+      ]
+    },
+    {
+      "id": "m74l1e2",
+      "prompt": {
+        "es": "Define `describir` con `@singledispatch`: int -> 'entero', str -> 'cadena', cualquier otro -> 'otro'.",
+        "en": "Define `describir` with `@singledispatch`: int -> 'entero', str -> 'cadena', anything else -> 'otro'."
+      },
+      "starter_code": [
+        "from functools import singledispatch",
+        "",
+        "@singledispatch",
+        "def describir(x):",
+        "    return 'otro'",
+        "",
+        "# registra int y str"
+      ],
+      "solution": [
+        "from functools import singledispatch",
+        "",
+        "@singledispatch",
+        "def describir(x):",
+        "    return 'otro'",
+        "",
+        "@describir.register",
+        "def _(x: int):",
+        "    return 'entero'",
+        "",
+        "@describir.register",
+        "def _(x: str):",
+        "    return 'cadena'"
+      ],
+      "hints": {
+        "es": [
+          "Usa @describir.register con anotaciones de tipo (int, str)."
+        ],
+        "en": [
+          "Use @describir.register with type annotations (int, str)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "describir",
+          "harness": "assert describir(5) == 'entero'\nassert describir('x') == 'cadena'\nassert describir([]) == 'otro'"
+        }
+      ]
+    }
+  ]
+}

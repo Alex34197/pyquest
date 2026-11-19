@@ -1,0 +1,207 @@
+{
+  "id": "m14l1",
+  "title": {
+    "es": "Buscar patrones con re",
+    "en": "Searching patterns with re"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Patrones de texto"
+      },
+      {
+        "type": "text",
+        "value": "El módulo `re` busca **patrones** en texto. Atajos útiles: `\\d` = un dígito, `\\w` = letra/dígito/_, `+` = uno o más, `*` = cero o más, `.` = cualquier carácter."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import re",
+          "print(re.search(r'\\d+', 'abc123'))",
+          "print(bool(re.search(r'\\d', 'hola')))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "<re.Match object; span=(3, 6), match='123'>",
+          "False"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`re.findall(patron, texto)` devuelve **todas** las coincidencias en una lista. Usa cadenas 'raw' (`r'...'`) para escribir los patrones sin pelearte con las barras."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import re",
+          "print(re.findall(r'\\d+', 'tengo 2 gatos y 3 perros'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "['2', '3']"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Las regex son potentísimas para validar entradas y analizar logs (clave en ciberseguridad), pero se vuelven ilegibles rápido: úsalas con cabeza."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Text patterns"
+      },
+      {
+        "type": "text",
+        "value": "The `re` module searches for **patterns** in text. Handy shortcuts: `\\d` = a digit, `\\w` = letter/digit/_, `+` = one or more, `*` = zero or more, `.` = any character."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import re",
+          "print(re.search(r'\\d+', 'abc123'))",
+          "print(bool(re.search(r'\\d', 'hola')))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "<re.Match object; span=(3, 6), match='123'>",
+          "False"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`re.findall(pattern, text)` returns **all** matches in a list. Use 'raw' strings (`r'...'`) to write patterns without fighting backslashes."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import re",
+          "print(re.findall(r'\\d+', 'tengo 2 gatos y 3 perros'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "['2', '3']"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Regex are powerful for validating input and parsing logs (key in security), but get unreadable fast: use them wisely."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m14l1e1",
+      "prompt": {
+        "es": "Define `tiene_numero(texto)` que devuelva True si el texto contiene algún dígito (usa `re.search`).",
+        "en": "Define `tiene_numero(texto)` returning True if the text contains any digit (use `re.search`)."
+      },
+      "starter_code": [
+        "import re",
+        "",
+        "def tiene_numero(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "import re",
+        "",
+        "def tiene_numero(texto):",
+        "    return bool(re.search(r'\\d', texto))"
+      ],
+      "hints": {
+        "es": [
+          "re.search(r'\\d', texto) y conviértelo a bool."
+        ],
+        "en": [
+          "re.search(r'\\d', texto) and convert it to bool."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "tiene_numero",
+          "cases": [
+            {
+              "args": [
+                "abc1"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "abc"
+              ],
+              "expected": false
+            },
+            {
+              "args": [
+                "2023"
+              ],
+              "expected": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m14l1e2",
+      "prompt": {
+        "es": "Define `extraer_numeros(texto)` que devuelva la lista de todos los grupos de dígitos (usa `re.findall(r'\\d+', ...)`).",
+        "en": "Define `extraer_numeros(texto)` returning the list of all digit groups (use `re.findall(r'\\d+', ...)`)."
+      },
+      "starter_code": [
+        "import re",
+        "",
+        "def extraer_numeros(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "import re",
+        "",
+        "def extraer_numeros(texto):",
+        "    return re.findall(r'\\d+', texto)"
+      ],
+      "hints": {
+        "es": [
+          "re.findall devuelve directamente una lista."
+        ],
+        "en": [
+          "re.findall returns a list directly."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "extraer_numeros",
+          "cases": [
+            {
+              "args": [
+                "a1b22c333"
+              ],
+              "expected": [
+                "1",
+                "22",
+                "333"
+              ]
+            },
+            {
+              "args": [
+                "sin"
+              ],
+              "expected": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

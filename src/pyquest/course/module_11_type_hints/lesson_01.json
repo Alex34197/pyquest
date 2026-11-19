@@ -1,0 +1,145 @@
+{
+  "id": "m11l1",
+  "title": {
+    "es": "Anotar variables y funciones",
+    "en": "Annotating variables and functions"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Decir de qué tipo es cada cosa"
+      },
+      {
+        "type": "text",
+        "value": "Las **anotaciones de tipos** (type hints) indican qué tipo se espera. No cambian cómo se ejecuta el programa (Python no las comprueba al ejecutar), pero documentan el código y ayudan a tu editor a avisarte de errores antes de tiempo."
+      },
+      {
+        "type": "code",
+        "value": [
+          "edad: int = 25",
+          "nombre: str = 'Ana'",
+          "activo: bool = True"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "En funciones se anota cada parámetro y, tras `->`, el tipo que devuelve:"
+      },
+      {
+        "type": "code",
+        "value": [
+          "def saludar(nombre: str) -> str:",
+          "    return 'Hola, ' + nombre"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Herramientas como **mypy** o tu propio editor usan esas anotaciones para detectar errores sin ejecutar nada."
+      },
+      {
+        "type": "note",
+        "value": "Son una ayuda, no una obligación: el código funciona igual sin ellas, pero en proyectos grandes se agradecen muchísimo."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Saying the type of each thing"
+      },
+      {
+        "type": "text",
+        "value": "**Type hints** indicate the expected type. They don't change how the program runs (Python doesn't check them at runtime), but they document the code and help your editor warn you of errors early."
+      },
+      {
+        "type": "code",
+        "value": [
+          "edad: int = 25",
+          "nombre: str = 'Ana'",
+          "activo: bool = True"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "In functions you annotate each parameter and, after `->`, the return type:"
+      },
+      {
+        "type": "code",
+        "value": [
+          "def saludar(nombre: str) -> str:",
+          "    return 'Hola, ' + nombre"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Tools like **mypy** or your editor use those annotations to catch errors without running anything."
+      },
+      {
+        "type": "note",
+        "value": "They're a help, not a requirement: the code works the same without them, but they pay off in large projects."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m11l1e1",
+      "prompt": {
+        "es": "Define `sumar(a: int, b: int) -> int` que devuelva la suma, **con las anotaciones de tipo**.",
+        "en": "Define `sumar(a: int, b: int) -> int` returning the sum, **with the type annotations**."
+      },
+      "starter_code": [
+        "def sumar(a, b):",
+        "    pass"
+      ],
+      "solution": [
+        "def sumar(a: int, b: int) -> int:",
+        "    return a + b"
+      ],
+      "hints": {
+        "es": [
+          "Anota cada parámetro con `: int` y el retorno con `-> int`."
+        ],
+        "en": [
+          "Annotate each parameter with `: int` and the return with `-> int`."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "sumar",
+          "harness": "assert sumar(2, 3) == 5\nassert sumar(-1, 1) == 0\nassert sumar.__annotations__ == {'a': int, 'b': int, 'return': int}"
+        }
+      ]
+    },
+    {
+      "id": "m11l1e2",
+      "prompt": {
+        "es": "Define `area(base: float, altura: float) -> float` que devuelva base por altura, **anotando los tipos**.",
+        "en": "Define `area(base: float, altura: float) -> float` returning base times height, **with type annotations**."
+      },
+      "starter_code": [
+        "def area(base, altura):",
+        "    pass"
+      ],
+      "solution": [
+        "def area(base: float, altura: float) -> float:",
+        "    return base * altura"
+      ],
+      "hints": {
+        "es": [
+          "Tres anotaciones: base, altura y el retorno, todas float."
+        ],
+        "en": [
+          "Three annotations: base, altura and the return, all float."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "area",
+          "harness": "assert area(2.0, 3.0) == 6.0\nassert area.__annotations__ == {'base': float, 'altura': float, 'return': float}"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "id": "m18l1",
+  "title": {
+    "es": "Texto, bytes y codificación",
+    "en": "Text, bytes and encoding"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "str no es lo mismo que bytes"
+      },
+      {
+        "type": "text",
+        "value": "El texto (`str`) son caracteres; los **bytes** son datos en bruto. Para pasar de uno a otro se usa una **codificación**, normalmente UTF-8."
+      },
+      {
+        "type": "code",
+        "value": [
+          "texto = 'café'",
+          "b = texto.encode('utf-8')",
+          "print(b)",
+          "print(b.decode('utf-8'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "b'caf\\xc3\\xa9'",
+          "café"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "En UTF-8, un carácter puede ocupar varios bytes: 'é' ocupa 2, '€' ocupa 3. Por eso `len(texto)` (caracteres) no siempre coincide con `len(texto.encode())` (bytes)."
+      },
+      {
+        "type": "note",
+        "value": "Las redes y los ficheros trabajan con bytes; declara siempre la codificación (`encoding='utf-8'`) para evitar sorpresas."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "str is not the same as bytes"
+      },
+      {
+        "type": "text",
+        "value": "Text (`str`) is characters; **bytes** are raw data. To go from one to the other you use an **encoding**, usually UTF-8."
+      },
+      {
+        "type": "code",
+        "value": [
+          "texto = 'café'",
+          "b = texto.encode('utf-8')",
+          "print(b)",
+          "print(b.decode('utf-8'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "b'caf\\xc3\\xa9'",
+          "café"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "In UTF-8 a character may take several bytes: 'é' takes 2, '€' takes 3. That's why `len(text)` (characters) doesn't always equal `len(text.encode())` (bytes)."
+      },
+      {
+        "type": "note",
+        "value": "Networks and files work with bytes; always declare the encoding (`encoding='utf-8'`) to avoid surprises."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m18l1e1",
+      "prompt": {
+        "es": "Define `a_bytes(texto)` que devuelva el texto codificado en UTF-8 (bytes).",
+        "en": "Define `a_bytes(texto)` returning the text encoded in UTF-8 (bytes)."
+      },
+      "starter_code": [
+        "def a_bytes(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "def a_bytes(texto):",
+        "    return texto.encode('utf-8')"
+      ],
+      "hints": {
+        "es": [
+          "Usa .encode('utf-8')."
+        ],
+        "en": [
+          "Use .encode('utf-8')."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "a_bytes",
+          "harness": "assert a_bytes('ño') == 'ño'.encode('utf-8')\nassert isinstance(a_bytes('x'), bytes)"
+        }
+      ]
+    },
+    {
+      "id": "m18l1e2",
+      "prompt": {
+        "es": "Define `longitud_bytes(texto)` que devuelva cuántos bytes ocupa el texto en UTF-8.",
+        "en": "Define `longitud_bytes(texto)` returning how many bytes the text takes in UTF-8."
+      },
+      "starter_code": [
+        "def longitud_bytes(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "def longitud_bytes(texto):",
+        "    return len(texto.encode('utf-8'))"
+      ],
+      "hints": {
+        "es": [
+          "Codifica y mide con len()."
+        ],
+        "en": [
+          "Encode and measure with len()."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "longitud_bytes",
+          "cases": [
+            {
+              "args": [
+                "abc"
+              ],
+              "expected": 3
+            },
+            {
+              "args": [
+                "año"
+              ],
+              "expected": 4
+            },
+            {
+              "args": [
+                "€"
+              ],
+              "expected": 3
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

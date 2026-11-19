@@ -1,0 +1,174 @@
+{
+  "id": "m66l2",
+  "title": {
+    "es": "Palíndromos y anagramas",
+    "en": "Palindromes and anagrams"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Retos clásicos: cadenas"
+      },
+      {
+        "type": "text",
+        "value": "Un **palíndromo** se lee igual al derecho y al revés (`texto == texto[::-1]`). Dos palabras son **anagramas** si tienen exactamente las mismas letras (mismo `sorted`)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "print('oso' == 'oso'[::-1])",
+          "print(sorted('roma') == sorted('amor'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "True",
+          "True"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Comparar `sorted(a) == sorted(b)` es la forma más simple de detectar anagramas."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Classic challenges: strings"
+      },
+      {
+        "type": "text",
+        "value": "A **palindrome** reads the same forwards and backwards (`text == text[::-1]`). Two words are **anagrams** if they have exactly the same letters (same `sorted`)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "print('oso' == 'oso'[::-1])",
+          "print(sorted('roma') == sorted('amor'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "True",
+          "True"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Comparing `sorted(a) == sorted(b)` is the simplest way to detect anagrams."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m66l2e1",
+      "prompt": {
+        "es": "Define `es_palindromo(texto)` que devuelva True si el texto se lee igual al derecho y al revés.",
+        "en": "Define `es_palindromo(texto)` returning True if the text reads the same forwards and backwards."
+      },
+      "starter_code": [
+        "def es_palindromo(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "def es_palindromo(texto):",
+        "    return texto == texto[::-1]"
+      ],
+      "hints": {
+        "es": [
+          "Compara texto con texto[::-1]."
+        ],
+        "en": [
+          "Compare texto with texto[::-1]."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "es_palindromo",
+          "cases": [
+            {
+              "args": [
+                "oso"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "python"
+              ],
+              "expected": false
+            },
+            {
+              "args": [
+                ""
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "ana"
+              ],
+              "expected": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m66l2e2",
+      "prompt": {
+        "es": "Define `son_anagramas(a, b)` que devuelva True si `a` y `b` tienen exactamente las mismas letras.",
+        "en": "Define `son_anagramas(a, b)` returning True if `a` and `b` have exactly the same letters."
+      },
+      "starter_code": [
+        "def son_anagramas(a, b):",
+        "    pass"
+      ],
+      "solution": [
+        "def son_anagramas(a, b):",
+        "    return sorted(a) == sorted(b)"
+      ],
+      "hints": {
+        "es": [
+          "sorted(a) == sorted(b)."
+        ],
+        "en": [
+          "sorted(a) == sorted(b)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "son_anagramas",
+          "cases": [
+            {
+              "args": [
+                "roma",
+                "amor"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "abc",
+                "abd"
+              ],
+              "expected": false
+            },
+            {
+              "args": [
+                "",
+                ""
+              ],
+              "expected": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

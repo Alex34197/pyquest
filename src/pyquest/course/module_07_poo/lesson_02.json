@@ -1,0 +1,211 @@
+{
+  "id": "m7l2",
+  "title": {
+    "es": "Herencia y __str__",
+    "en": "Inheritance and __str__"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Reutilizar con herencia"
+      },
+      {
+        "type": "text",
+        "value": "Una clase puede **heredar** de otra: recibe sus atributos y métodos, y puede **redefinirlos**. `class Gato(Animal)` hereda de `Animal`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Animal:",
+          "    def hablar(self):",
+          "        return '...'",
+          "",
+          "class Gato(Animal):",
+          "    def hablar(self):",
+          "        return 'Miau'",
+          "",
+          "print(Gato().hablar())"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Miau"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Representación legible: __str__"
+      },
+      {
+        "type": "text",
+        "value": "El método especial `__str__` define cómo se ve el objeto al imprimirlo o al convertirlo a texto con `str()`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Punto:",
+          "    def __init__(self, x, y):",
+          "        self.x = x",
+          "        self.y = y",
+          "    def __str__(self):",
+          "        return f'({self.x}, {self.y})'",
+          "",
+          "print(Punto(3, 4))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "(3, 4)"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Existen más métodos especiales (`__eq__`, `__len__`…) que permiten que tus objetos se integren con el lenguaje."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Reuse with inheritance"
+      },
+      {
+        "type": "text",
+        "value": "A class can **inherit** from another: it gets its attributes and methods, and can **override** them. `class Gato(Animal)` inherits from `Animal`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Animal:",
+          "    def hablar(self):",
+          "        return '...'",
+          "",
+          "class Gato(Animal):",
+          "    def hablar(self):",
+          "        return 'Miau'",
+          "",
+          "print(Gato().hablar())"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Miau"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Readable representation: __str__"
+      },
+      {
+        "type": "text",
+        "value": "The special method `__str__` defines how the object looks when printed or converted to text with `str()`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Punto:",
+          "    def __init__(self, x, y):",
+          "        self.x = x",
+          "        self.y = y",
+          "    def __str__(self):",
+          "        return f'({self.x}, {self.y})'",
+          "",
+          "print(Punto(3, 4))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "(3, 4)"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "There are more special methods (`__eq__`, `__len__`…) that let your objects integrate with the language."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m7l2e1",
+      "prompt": {
+        "es": "Crea una clase `Animal` con un método `hablar()` que devuelva `'...'`, y una clase `Perro` que herede de `Animal` y redefina `hablar()` para devolver `'Guau'`.",
+        "en": "Create a class `Animal` with a method `hablar()` returning `'...'`, and a class `Perro` inheriting from `Animal` that overrides `hablar()` to return `'Guau'`."
+      },
+      "starter_code": [
+        "class Animal:",
+        "    def hablar(self):",
+        "        return '...'",
+        "",
+        "class Perro(Animal):",
+        "    pass"
+      ],
+      "solution": [
+        "class Animal:",
+        "    def hablar(self):",
+        "        return '...'",
+        "",
+        "class Perro(Animal):",
+        "    def hablar(self):",
+        "        return 'Guau'"
+      ],
+      "hints": {
+        "es": [
+          "Perro(Animal) hereda de Animal.",
+          "Redefine hablar() dentro de Perro."
+        ],
+        "en": [
+          "Perro(Animal) inherits from Animal.",
+          "Override hablar() inside Perro."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "herencia",
+          "harness": "assert Animal().hablar() == '...'\nassert Perro().hablar() == 'Guau'\nassert isinstance(Perro(), Animal)"
+        }
+      ]
+    },
+    {
+      "id": "m7l2e2",
+      "prompt": {
+        "es": "Crea una clase `Punto(x, y)` cuyo `str()` devuelva `'(x, y)'`. Ej: `str(Punto(3, 4))` → `'(3, 4)'`.",
+        "en": "Create a class `Punto(x, y)` whose `str()` returns `'(x, y)'`. E.g. `str(Punto(3, 4))` → `'(3, 4)'`."
+      },
+      "starter_code": [
+        "class Punto:",
+        "    def __init__(self, x, y):",
+        "        pass"
+      ],
+      "solution": [
+        "class Punto:",
+        "    def __init__(self, x, y):",
+        "        self.x = x",
+        "        self.y = y",
+        "    def __str__(self):",
+        "        return f'({self.x}, {self.y})'"
+      ],
+      "hints": {
+        "es": [
+          "Guarda x e y en __init__.",
+          "Define __str__ devolviendo una f-string '(x, y)'."
+        ],
+        "en": [
+          "Store x and y in __init__.",
+          "Define __str__ returning an f-string '(x, y)'."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "str",
+          "harness": "assert str(Punto(3, 4)) == '(3, 4)'\nassert str(Punto(0, -2)) == '(0, -2)'"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "id": "m76l2",
+  "title": {
+    "es": "Tabla hash desde cero",
+    "en": "Hash table from scratch"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Cómo funciona un diccionario por dentro"
+      },
+      {
+        "type": "text",
+        "value": "Un **diccionario** es, por dentro, una **tabla hash**: usa `hash(clave)` para elegir un 'cubo' (bucket) donde guardar el par clave/valor. Implementarlo con una lista de cubos enseña la idea."
+      },
+      {
+        "type": "code",
+        "value": [
+          "# bucket = self.cubos[hash(clave) % len(self.cubos)]",
+          "# busca la clave en ese cubo y actualiza o añade"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Cuando varias claves caen en el mismo cubo (colisión), se guardan juntas y se busca dentro."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "How a dictionary works inside"
+      },
+      {
+        "type": "text",
+        "value": "A **dictionary** is, internally, a **hash table**: it uses `hash(key)` to pick a 'bucket' where to store the key/value pair. Implementing it with a list of buckets teaches the idea."
+      },
+      {
+        "type": "code",
+        "value": [
+          "# bucket = self.cubos[hash(clave) % len(self.cubos)]",
+          "# find the key in that bucket and update or add"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "When several keys land in the same bucket (collision), they're stored together and searched within."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m76l2e1",
+      "prompt": {
+        "es": "Define `MiDic` (tabla hash) con `poner(clave, valor)` y `obtener(clave)` (devuelve None si no está).",
+        "en": "Define `MiDic` (hash table) with `poner(clave, valor)` and `obtener(clave)` (returns None if absent)."
+      },
+      "starter_code": [
+        "class MiDic:",
+        "    def __init__(self, n=8):",
+        "        self.cubos = [[] for _ in range(n)]",
+        "    # completa poner y obtener"
+      ],
+      "solution": [
+        "class MiDic:",
+        "    def __init__(self, n=8):",
+        "        self.cubos = [[] for _ in range(n)]",
+        "    def poner(self, clave, valor):",
+        "        cubo = self.cubos[hash(clave) % len(self.cubos)]",
+        "        for par in cubo:",
+        "            if par[0] == clave:",
+        "                par[1] = valor",
+        "                return",
+        "        cubo.append([clave, valor])",
+        "    def obtener(self, clave):",
+        "        cubo = self.cubos[hash(clave) % len(self.cubos)]",
+        "        for k, v in cubo:",
+        "            if k == clave:",
+        "                return v",
+        "        return None"
+      ],
+      "hints": {
+        "es": [
+          "Elige el cubo con hash(clave) % nº de cubos; busca la clave dentro."
+        ],
+        "en": [
+          "Pick the bucket with hash(clave) % number of buckets; search the key inside."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "MiDic",
+          "harness": "d = MiDic()\nd.poner('a', 1)\nd.poner('b', 2)\nassert d.obtener('a') == 1\nassert d.obtener('b') == 2\nassert d.obtener('z') is None\nd.poner('a', 9)\nassert d.obtener('a') == 9"
+        }
+      ]
+    },
+    {
+      "id": "m76l2e2",
+      "prompt": {
+        "es": "Amplía `MiDic` con un método `claves()` que devuelva la lista de todas las claves guardadas.",
+        "en": "Extend `MiDic` with a `claves()` method returning the list of all stored keys."
+      },
+      "starter_code": [
+        "class MiDic:",
+        "    def __init__(self, n=8):",
+        "        self.cubos = [[] for _ in range(n)]",
+        "    def poner(self, clave, valor):",
+        "        cubo = self.cubos[hash(clave) % len(self.cubos)]",
+        "        for par in cubo:",
+        "            if par[0] == clave:",
+        "                par[1] = valor",
+        "                return",
+        "        cubo.append([clave, valor])",
+        "    # añade claves()"
+      ],
+      "solution": [
+        "class MiDic:",
+        "    def __init__(self, n=8):",
+        "        self.cubos = [[] for _ in range(n)]",
+        "    def poner(self, clave, valor):",
+        "        cubo = self.cubos[hash(clave) % len(self.cubos)]",
+        "        for par in cubo:",
+        "            if par[0] == clave:",
+        "                par[1] = valor",
+        "                return",
+        "        cubo.append([clave, valor])",
+        "    def claves(self):",
+        "        return [k for cubo in self.cubos for k, v in cubo]"
+      ],
+      "hints": {
+        "es": [
+          "Recorre todos los cubos y recoge la primera componente de cada par."
+        ],
+        "en": [
+          "Iterate all buckets and collect the first component of each pair."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "MiDic",
+          "harness": "d = MiDic()\nd.poner('a', 1)\nd.poner('b', 2)\nassert sorted(d.claves()) == ['a', 'b']"
+        }
+      ]
+    }
+  ]
+}

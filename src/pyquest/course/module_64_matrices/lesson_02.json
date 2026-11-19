@@ -1,0 +1,215 @@
+{
+  "id": "m64l2",
+  "title": {
+    "es": "Diagonal y aplanar",
+    "en": "Diagonal and flatten"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Recorridos útiles"
+      },
+      {
+        "type": "text",
+        "value": "La **diagonal principal** son los elementos `m[i][i]`. **Aplanar** una matriz es convertirla en una sola lista, recorriendo fila a fila con una comprensión doble."
+      },
+      {
+        "type": "code",
+        "value": [
+          "m = [[1, 2], [3, 4]]",
+          "print([m[i][i] for i in range(len(m))])",
+          "print([x for fila in m for x in fila])"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[1, 4]",
+          "[1, 2, 3, 4]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "La comprensión doble `[x for fila in m for x in fila]` se lee como dos bucles anidados."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Useful traversals"
+      },
+      {
+        "type": "text",
+        "value": "The **main diagonal** are the elements `m[i][i]`. **Flattening** a matrix turns it into a single list, going row by row with a double comprehension."
+      },
+      {
+        "type": "code",
+        "value": [
+          "m = [[1, 2], [3, 4]]",
+          "print([m[i][i] for i in range(len(m))])",
+          "print([x for fila in m for x in fila])"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[1, 4]",
+          "[1, 2, 3, 4]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "The double comprehension `[x for fila in m for x in fila]` reads as two nested loops."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m64l2e1",
+      "prompt": {
+        "es": "Define `diagonal(m)` que devuelva la diagonal principal de una matriz cuadrada.",
+        "en": "Define `diagonal(m)` returning the main diagonal of a square matrix."
+      },
+      "starter_code": [
+        "def diagonal(m):",
+        "    pass"
+      ],
+      "solution": [
+        "def diagonal(m):",
+        "    return [m[i][i] for i in range(len(m))]"
+      ],
+      "hints": {
+        "es": [
+          "[m[i][i] for i in range(len(m))]."
+        ],
+        "en": [
+          "[m[i][i] for i in range(len(m))]."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "diagonal",
+          "cases": [
+            {
+              "args": [
+                [
+                  [
+                    1,
+                    2
+                  ],
+                  [
+                    3,
+                    4
+                  ]
+                ]
+              ],
+              "expected": [
+                1,
+                4
+              ]
+            },
+            {
+              "args": [
+                [
+                  [
+                    1,
+                    2,
+                    3
+                  ],
+                  [
+                    4,
+                    5,
+                    6
+                  ],
+                  [
+                    7,
+                    8,
+                    9
+                  ]
+                ]
+              ],
+              "expected": [
+                1,
+                5,
+                9
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m64l2e2",
+      "prompt": {
+        "es": "Define `aplanar(m)` que convierta la matriz en una sola lista (fila a fila).",
+        "en": "Define `aplanar(m)` turning the matrix into a single list (row by row)."
+      },
+      "starter_code": [
+        "def aplanar(m):",
+        "    pass"
+      ],
+      "solution": [
+        "def aplanar(m):",
+        "    return [x for fila in m for x in fila]"
+      ],
+      "hints": {
+        "es": [
+          "Comprensión doble: for fila in m, for x in fila."
+        ],
+        "en": [
+          "Double comprehension: for fila in m, for x in fila."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "aplanar",
+          "cases": [
+            {
+              "args": [
+                [
+                  [
+                    1,
+                    2
+                  ],
+                  [
+                    3,
+                    4
+                  ]
+                ]
+              ],
+              "expected": [
+                1,
+                2,
+                3,
+                4
+              ]
+            },
+            {
+              "args": [
+                [
+                  [
+                    1
+                  ],
+                  [
+                    2
+                  ],
+                  [
+                    3
+                  ]
+                ]
+              ],
+              "expected": [
+                1,
+                2,
+                3
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

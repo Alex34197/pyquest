@@ -1,0 +1,16 @@
+{
+  "id": "m9",
+  "order": 9,
+  "title": {
+    "es": "Módulos y librería estándar",
+    "en": "Modules and standard library"
+  },
+  "summary": {
+    "es": "Importar módulos y usar math, random y json de la librería estándar.",
+    "en": "Importing modules and using math, random and json from the standard library."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

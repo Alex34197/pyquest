@@ -1,0 +1,16 @@
+{
+  "id": "m36",
+  "order": 36,
+  "title": {
+    "es": "Funciones de orden superior",
+    "en": "Higher-order functions"
+  },
+  "summary": {
+    "es": "map, filter y sorted con key (lambda, len, abs).",
+    "en": "map, filter and sorted with a key (lambda, len, abs)."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

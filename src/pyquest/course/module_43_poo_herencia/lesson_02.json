@@ -1,0 +1,129 @@
+{
+  "id": "m43l2",
+  "title": {
+    "es": "Polimorfismo",
+    "en": "Polymorphism"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Mismo mensaje, distinto comportamiento"
+      },
+      {
+        "type": "text",
+        "value": "El **polimorfismo** permite tratar objetos de clases distintas de la misma forma, siempre que compartan el método. El código no necesita saber el tipo exacto."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def coro(animales):",
+          "    return [a.sonido() for a in animales]",
+          "",
+          "print(coro([Gato(), Perro()]))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "['miau', 'guau']"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Es la base del 'duck typing' de Python: si suena como un pato (tiene .sonido()), sirve."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Same message, different behaviour"
+      },
+      {
+        "type": "text",
+        "value": "**Polymorphism** lets you treat objects of different classes the same way, as long as they share the method. The code needn't know the exact type."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def coro(animales):",
+          "    return [a.sonido() for a in animales]",
+          "",
+          "print(coro([Gato(), Perro()]))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "['miau', 'guau']"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "It's the basis of Python's 'duck typing': if it sounds like a duck (has .sonido()), it works."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m43l2e1",
+      "prompt": {
+        "es": "Define `sonidos(animales)` que devuelva la lista con el `.sonido()` de cada animal (polimorfismo).",
+        "en": "Define `sonidos(animales)` returning the list with each animal's `.sonido()` (polymorphism)."
+      },
+      "starter_code": [
+        "def sonidos(animales):",
+        "    pass"
+      ],
+      "solution": [
+        "def sonidos(animales):",
+        "    return [a.sonido() for a in animales]"
+      ],
+      "hints": {
+        "es": [
+          "Comprensión: [a.sonido() for a in animales]."
+        ],
+        "en": [
+          "Comprehension: [a.sonido() for a in animales]."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "sonidos",
+          "harness": "class V:\n    def sonido(self):\n        return 'v'\nclass W:\n    def sonido(self):\n        return 'w'\nassert sonidos([V(), W(), V()]) == ['v', 'w', 'v']"
+        }
+      ]
+    },
+    {
+      "id": "m43l2e2",
+      "prompt": {
+        "es": "Define `area_total(figuras)` que sume el `.area()` de cada figura.",
+        "en": "Define `area_total(figuras)` summing each figure's `.area()`."
+      },
+      "starter_code": [
+        "def area_total(figuras):",
+        "    pass"
+      ],
+      "solution": [
+        "def area_total(figuras):",
+        "    return sum(f.area() for f in figuras)"
+      ],
+      "hints": {
+        "es": [
+          "sum(f.area() for f in figuras)."
+        ],
+        "en": [
+          "sum(f.area() for f in figuras)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "area_total",
+          "harness": "class Cuadrado:\n    def __init__(self, l):\n        self.l = l\n    def area(self):\n        return self.l * self.l\nassert area_total([Cuadrado(2), Cuadrado(3)]) == 13"
+        }
+      ]
+    }
+  ]
+}

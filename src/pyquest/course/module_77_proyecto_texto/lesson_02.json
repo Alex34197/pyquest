@@ -1,0 +1,153 @@
+{
+  "id": "m77l2",
+  "title": {
+    "es": "Ranking y estadísticas",
+    "en": "Ranking and statistics"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Ordenar por frecuencia y medir"
+      },
+      {
+        "type": "text",
+        "value": "Para un **ranking**, ordena las palabras por frecuencia descendente (y, en empate, alfabéticamente, para que sea reproducible). También podemos medir la **longitud media** de las palabras."
+      },
+      {
+        "type": "code",
+        "value": [
+          "# top 2 de 'a a b b b c'  ->  ['b', 'a']",
+          "# longitud media de 'sol casa'  ->  3.5"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Ordenar con key=(-frecuencia, palabra) resuelve los empates de forma determinista."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Ranking and statistics"
+      },
+      {
+        "type": "text",
+        "value": "For a **ranking**, sort words by descending frequency (and, on ties, alphabetically, so it's reproducible). We can also measure the **average length** of the words."
+      },
+      {
+        "type": "code",
+        "value": [
+          "# top 2 of 'a a b b b c'  ->  ['b', 'a']",
+          "# average length of 'sol casa'  ->  3.5"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Sorting with key=(-frequency, word) resolves ties deterministically."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m77l2e1",
+      "prompt": {
+        "es": "Define `top_n(texto, n)` que devuelva las n palabras más frecuentes (empates por orden alfabético).",
+        "en": "Define `top_n(texto, n)` returning the n most frequent words (ties broken alphabetically)."
+      },
+      "starter_code": [
+        "from collections import Counter",
+        "",
+        "def top_n(texto, n):",
+        "    pass"
+      ],
+      "solution": [
+        "from collections import Counter",
+        "",
+        "def top_n(texto, n):",
+        "    cuenta = Counter(texto.split())",
+        "    ordenadas = sorted(cuenta.items(), key=lambda kv: (-kv[1], kv[0]))",
+        "    return [palabra for palabra, _ in ordenadas[:n]]"
+      ],
+      "hints": {
+        "es": [
+          "Ordena los pares con key=(-frecuencia, palabra) y coge los n primeros."
+        ],
+        "en": [
+          "Sort the pairs with key=(-frequency, word) and take the first n."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "top_n",
+          "cases": [
+            {
+              "args": [
+                "a a b b b c",
+                2
+              ],
+              "expected": [
+                "b",
+                "a"
+              ]
+            },
+            {
+              "args": [
+                "x y x z y x",
+                1
+              ],
+              "expected": [
+                "x"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m77l2e2",
+      "prompt": {
+        "es": "Define `longitud_media(texto)` que devuelva la longitud media de las palabras, redondeada a 2 decimales.",
+        "en": "Define `longitud_media(texto)` returning the average word length, rounded to 2 decimals."
+      },
+      "starter_code": [
+        "def longitud_media(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "def longitud_media(texto):",
+        "    palabras = texto.split()",
+        "    return round(sum(len(p) for p in palabras) / len(palabras), 2)"
+      ],
+      "hints": {
+        "es": [
+          "Suma las longitudes, divide entre el nº de palabras y redondea a 2."
+        ],
+        "en": [
+          "Sum the lengths, divide by the number of words and round to 2."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "longitud_media",
+          "cases": [
+            {
+              "args": [
+                "sol casa"
+              ],
+              "expected": 3.5
+            },
+            {
+              "args": [
+                "uno dos tres"
+              ],
+              "expected": 3.33
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

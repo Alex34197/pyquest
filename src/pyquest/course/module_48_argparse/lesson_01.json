@@ -1,0 +1,195 @@
+{
+  "id": "m48l1",
+  "title": {
+    "es": "Argumentos de línea de comandos",
+    "en": "Command-line arguments"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Programas que reciben opciones"
+      },
+      {
+        "type": "text",
+        "value": "`argparse` define qué opciones acepta tu programa y las interpreta. Defines argumentos con `add_argument` y los lees con `parse_args`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import argparse",
+          "p = argparse.ArgumentParser()",
+          "p.add_argument('--nombre')",
+          "args = p.parse_args(['--nombre', 'Ana'])",
+          "print(args.nombre)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Ana"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Con `type=int` los convierte a entero; `parse_args` puede recibir una lista (útil para probar sin la terminal)."
+      },
+      {
+        "type": "note",
+        "value": "argparse genera solo la ayuda (-h) y los mensajes de error: te ahorra muchísimo trabajo."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Programs that take options"
+      },
+      {
+        "type": "text",
+        "value": "`argparse` defines which options your program accepts and parses them. You define arguments with `add_argument` and read them with `parse_args`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import argparse",
+          "p = argparse.ArgumentParser()",
+          "p.add_argument('--nombre')",
+          "args = p.parse_args(['--nombre', 'Ana'])",
+          "print(args.nombre)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Ana"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "With `type=int` it converts to integer; `parse_args` can take a list (handy for testing without the terminal)."
+      },
+      {
+        "type": "note",
+        "value": "argparse auto-generates help (-h) and error messages: it saves you a lot of work."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m48l1e1",
+      "prompt": {
+        "es": "Define `leer_nombre(args)` que defina la opción `--nombre` y devuelva su valor (args es una lista).",
+        "en": "Define `leer_nombre(args)` defining option `--nombre` and returning its value (args is a list)."
+      },
+      "starter_code": [
+        "import argparse",
+        "",
+        "def leer_nombre(args):",
+        "    pass"
+      ],
+      "solution": [
+        "import argparse",
+        "",
+        "def leer_nombre(args):",
+        "    p = argparse.ArgumentParser()",
+        "    p.add_argument('--nombre')",
+        "    return p.parse_args(args).nombre"
+      ],
+      "hints": {
+        "es": [
+          "add_argument('--nombre') y luego parse_args(args).nombre."
+        ],
+        "en": [
+          "add_argument('--nombre') then parse_args(args).nombre."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "leer_nombre",
+          "cases": [
+            {
+              "args": [
+                [
+                  "--nombre",
+                  "Ana"
+                ]
+              ],
+              "expected": "Ana"
+            },
+            {
+              "args": [
+                [
+                  "--nombre",
+                  "Bob"
+                ]
+              ],
+              "expected": "Bob"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m48l1e2",
+      "prompt": {
+        "es": "Define `sumar_args(args)` con opciones `--a` y `--b` (enteros) que devuelva su suma.",
+        "en": "Define `sumar_args(args)` with options `--a` and `--b` (integers) returning their sum."
+      },
+      "starter_code": [
+        "import argparse",
+        "",
+        "def sumar_args(args):",
+        "    pass"
+      ],
+      "solution": [
+        "import argparse",
+        "",
+        "def sumar_args(args):",
+        "    p = argparse.ArgumentParser()",
+        "    p.add_argument('--a', type=int)",
+        "    p.add_argument('--b', type=int)",
+        "    ns = p.parse_args(args)",
+        "    return ns.a + ns.b"
+      ],
+      "hints": {
+        "es": [
+          "Usa type=int en ambos add_argument."
+        ],
+        "en": [
+          "Use type=int in both add_argument."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "sumar_args",
+          "cases": [
+            {
+              "args": [
+                [
+                  "--a",
+                  "2",
+                  "--b",
+                  "3"
+                ]
+              ],
+              "expected": 5
+            },
+            {
+              "args": [
+                [
+                  "--a",
+                  "10",
+                  "--b",
+                  "-4"
+                ]
+              ],
+              "expected": 6
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

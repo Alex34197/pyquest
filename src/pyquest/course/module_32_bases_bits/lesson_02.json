@@ -1,0 +1,169 @@
+{
+  "id": "m32l2",
+  "title": {
+    "es": "Operaciones de bits",
+    "en": "Bitwise operations"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Trabajar bit a bit"
+      },
+      {
+        "type": "text",
+        "value": "Los operadores de bits actúan sobre la representación binaria: `&` (AND), `|` (OR), `^` (XOR), `<<` y `>>` (desplazar). `n & 1` te dice si el último bit es 1 (número impar)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "print(6 & 3)   # 110 & 011 = 010",
+          "print(6 | 1)   # 110 | 001 = 111",
+          "print(1 << 4)  # 1 desplazado 4 posiciones"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "2",
+          "7",
+          "16"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "XOR (`^`) aparece mucho en criptografía básica y en trucos de bajo nivel."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Working bit by bit"
+      },
+      {
+        "type": "text",
+        "value": "Bitwise operators act on the binary representation: `&` (AND), `|` (OR), `^` (XOR), `<<` and `>>` (shift). `n & 1` tells you whether the last bit is 1 (odd number)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "print(6 & 3)   # 110 & 011 = 010",
+          "print(6 | 1)   # 110 | 001 = 111",
+          "print(1 << 4)  # 1 shifted 4 places"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "2",
+          "7",
+          "16"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "XOR (`^`) shows up a lot in basic cryptography and low-level tricks."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m32l2e1",
+      "prompt": {
+        "es": "Define `es_par(n)` que use operación de bits (`n & 1`) para decir si n es par.",
+        "en": "Define `es_par(n)` using a bitwise operation (`n & 1`) to tell whether n is even."
+      },
+      "starter_code": [
+        "def es_par(n):",
+        "    pass"
+      ],
+      "solution": [
+        "def es_par(n):",
+        "    return n & 1 == 0"
+      ],
+      "hints": {
+        "es": [
+          "n & 1 vale 0 si n es par."
+        ],
+        "en": [
+          "n & 1 is 0 when n is even."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "es_par",
+          "cases": [
+            {
+              "args": [
+                4
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                7
+              ],
+              "expected": false
+            },
+            {
+              "args": [
+                0
+              ],
+              "expected": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m32l2e2",
+      "prompt": {
+        "es": "Define `cuenta_bits(n)` que devuelva cuántos bits a 1 tiene n en binario.",
+        "en": "Define `cuenta_bits(n)` returning how many 1-bits n has in binary."
+      },
+      "starter_code": [
+        "def cuenta_bits(n):",
+        "    pass"
+      ],
+      "solution": [
+        "def cuenta_bits(n):",
+        "    return bin(n).count('1')"
+      ],
+      "hints": {
+        "es": [
+          "bin(n) da la cadena binaria; cuenta los '1'."
+        ],
+        "en": [
+          "bin(n) gives the binary string; count the '1's."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "cuenta_bits",
+          "cases": [
+            {
+              "args": [
+                7
+              ],
+              "expected": 3
+            },
+            {
+              "args": [
+                8
+              ],
+              "expected": 1
+            },
+            {
+              "args": [
+                0
+              ],
+              "expected": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

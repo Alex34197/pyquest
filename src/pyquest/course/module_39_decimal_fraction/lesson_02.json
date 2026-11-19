@@ -1,0 +1,178 @@
+{
+  "id": "m39l2",
+  "title": {
+    "es": "Fraction: fracciones exactas",
+    "en": "Fraction: exact fractions"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Números racionales sin pérdida"
+      },
+      {
+        "type": "text",
+        "value": "`fractions.Fraction` representa fracciones exactas y las simplifica sola. Ideal cuando dividir con float perdería precisión."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from fractions import Fraction",
+          "print(Fraction(2, 4))",
+          "print(Fraction(1, 2) + Fraction(1, 3))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "1/2",
+          "5/6"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Fraction simplifica automáticamente: Fraction(2, 4) se guarda como 1/2."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Rational numbers without loss"
+      },
+      {
+        "type": "text",
+        "value": "`fractions.Fraction` represents exact fractions and simplifies them on its own. Ideal when dividing with float would lose precision."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from fractions import Fraction",
+          "print(Fraction(2, 4))",
+          "print(Fraction(1, 2) + Fraction(1, 3))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "1/2",
+          "5/6"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Fraction simplifies automatically: Fraction(2, 4) is stored as 1/2."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m39l2e1",
+      "prompt": {
+        "es": "Define `fraccion(a, b)` que devuelva la fracción a/b simplificada como cadena (usa Fraction).",
+        "en": "Define `fraccion(a, b)` returning the simplified fraction a/b as a string (use Fraction)."
+      },
+      "starter_code": [
+        "from fractions import Fraction",
+        "",
+        "def fraccion(a, b):",
+        "    pass"
+      ],
+      "solution": [
+        "from fractions import Fraction",
+        "",
+        "def fraccion(a, b):",
+        "    return str(Fraction(a, b))"
+      ],
+      "hints": {
+        "es": [
+          "str(Fraction(a, b)) ya viene simplificado."
+        ],
+        "en": [
+          "str(Fraction(a, b)) is already simplified."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "fraccion",
+          "cases": [
+            {
+              "args": [
+                2,
+                4
+              ],
+              "expected": "1/2"
+            },
+            {
+              "args": [
+                3,
+                1
+              ],
+              "expected": "3"
+            },
+            {
+              "args": [
+                6,
+                8
+              ],
+              "expected": "3/4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m39l2e2",
+      "prompt": {
+        "es": "Define `suma_fracciones(a, b, c, d)` que devuelva a/b + c/d como cadena simplificada.",
+        "en": "Define `suma_fracciones(a, b, c, d)` returning a/b + c/d as a simplified string."
+      },
+      "starter_code": [
+        "from fractions import Fraction",
+        "",
+        "def suma_fracciones(a, b, c, d):",
+        "    pass"
+      ],
+      "solution": [
+        "from fractions import Fraction",
+        "",
+        "def suma_fracciones(a, b, c, d):",
+        "    return str(Fraction(a, b) + Fraction(c, d))"
+      ],
+      "hints": {
+        "es": [
+          "Suma dos Fraction y conviértelo a str."
+        ],
+        "en": [
+          "Add two Fraction and convert to str."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "suma_fracciones",
+          "cases": [
+            {
+              "args": [
+                1,
+                2,
+                1,
+                3
+              ],
+              "expected": "5/6"
+            },
+            {
+              "args": [
+                1,
+                4,
+                1,
+                4
+              ],
+              "expected": "1/2"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "id": "m36l2",
+  "title": {
+    "es": "sorted con key",
+    "en": "sorted with a key"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Ordenar por un criterio"
+      },
+      {
+        "type": "text",
+        "value": "`sorted(iterable, key=funcion)` ordena usando el resultado de `funcion` para cada elemento. Así ordenas por longitud, por valor absoluto, por un campo…"
+      },
+      {
+        "type": "code",
+        "value": [
+          "palabras = ['casa', 'sol', 'arbol']",
+          "print(sorted(palabras, key=len))",
+          "print(sorted([-5, 2, -1], key=abs))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "['sol', 'casa', 'arbol']",
+          "[-1, 2, -5]"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Añade `reverse=True` para orden descendente. El orden es **estable**: empates conservan su orden original."
+      },
+      {
+        "type": "note",
+        "value": "`key` recibe una función que se aplica a cada elemento; suele ser una lambda o `len`, `abs`, `str.lower`…"
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Sorting by a criterion"
+      },
+      {
+        "type": "text",
+        "value": "`sorted(iterable, key=func)` sorts using the result of `func` for each element. That's how you sort by length, absolute value, a field…"
+      },
+      {
+        "type": "code",
+        "value": [
+          "palabras = ['casa', 'sol', 'arbol']",
+          "print(sorted(palabras, key=len))",
+          "print(sorted([-5, 2, -1], key=abs))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "['sol', 'casa', 'arbol']",
+          "[-1, 2, -5]"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Add `reverse=True` for descending order. Sorting is **stable**: ties keep their original order."
+      },
+      {
+        "type": "note",
+        "value": "`key` takes a function applied to each element; often a lambda or `len`, `abs`, `str.lower`…"
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m36l2e1",
+      "prompt": {
+        "es": "Define `por_longitud(palabras)` que devuelva las palabras ordenadas de más corta a más larga.",
+        "en": "Define `por_longitud(palabras)` returning the words sorted from shortest to longest."
+      },
+      "starter_code": [
+        "def por_longitud(palabras):",
+        "    pass"
+      ],
+      "solution": [
+        "def por_longitud(palabras):",
+        "    return sorted(palabras, key=len)"
+      ],
+      "hints": {
+        "es": [
+          "sorted(palabras, key=len)."
+        ],
+        "en": [
+          "sorted(palabras, key=len)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "por_longitud",
+          "cases": [
+            {
+              "args": [
+                [
+                  "casa",
+                  "sol",
+                  "arbol"
+                ]
+              ],
+              "expected": [
+                "sol",
+                "casa",
+                "arbol"
+              ]
+            },
+            {
+              "args": [
+                [
+                  "bb",
+                  "a"
+                ]
+              ],
+              "expected": [
+                "a",
+                "bb"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m36l2e2",
+      "prompt": {
+        "es": "Define `por_valor_absoluto(numeros)` que ordene por valor absoluto (usa key=abs).",
+        "en": "Define `por_valor_absoluto(numeros)` sorting by absolute value (use key=abs)."
+      },
+      "starter_code": [
+        "def por_valor_absoluto(numeros):",
+        "    pass"
+      ],
+      "solution": [
+        "def por_valor_absoluto(numeros):",
+        "    return sorted(numeros, key=abs)"
+      ],
+      "hints": {
+        "es": [
+          "sorted(numeros, key=abs)."
+        ],
+        "en": [
+          "sorted(numeros, key=abs)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "por_valor_absoluto",
+          "cases": [
+            {
+              "args": [
+                [
+                  -5,
+                  2,
+                  -1
+                ]
+              ],
+              "expected": [
+                -1,
+                2,
+                -5
+              ]
+            },
+            {
+              "args": [
+                [
+                  3,
+                  -3,
+                  1
+                ]
+              ],
+              "expected": [
+                1,
+                3,
+                -3
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

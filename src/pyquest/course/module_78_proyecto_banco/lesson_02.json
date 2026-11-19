@@ -1,0 +1,130 @@
+{
+  "id": "m78l2",
+  "title": {
+    "es": "Operaciones del banco",
+    "en": "Bank operations"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Transferencias y totales"
+      },
+      {
+        "type": "text",
+        "value": "Con la cuenta lista, montamos operaciones que la usan: una **transferencia** retira de una cuenta y deposita en otra; el **total del banco** suma los saldos de todas las cuentas."
+      },
+      {
+        "type": "code",
+        "value": [
+          "# transferir(origen, destino, 50)  ->  mueve 50 de una cuenta a otra",
+          "# saldo_total([c1, c2, c3])  ->  suma de los tres saldos"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Reutilizar métodos (retirar/depositar) para construir operaciones mayores es buena ingeniería."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Transfers and totals"
+      },
+      {
+        "type": "text",
+        "value": "With the account ready, we build operations that use it: a **transfer** withdraws from one account and deposits into another; the **bank total** sums all accounts' balances."
+      },
+      {
+        "type": "code",
+        "value": [
+          "# transferir(origen, destino, 50)  ->  moves 50 from one account to another",
+          "# saldo_total([c1, c2, c3])  ->  sum of the three balances"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Reusing methods (retirar/depositar) to build larger operations is good engineering."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m78l2e1",
+      "prompt": {
+        "es": "Define `Cuenta(saldo=0)` (con depositar/retirar) y `transferir(origen, destino, cantidad)` que mueva el dinero entre dos cuentas.",
+        "en": "Define `Cuenta(saldo=0)` (with depositar/retirar) and `transferir(origen, destino, cantidad)` moving money between two accounts."
+      },
+      "starter_code": [
+        "class Cuenta:",
+        "    def __init__(self, saldo=0):",
+        "        self.saldo = saldo",
+        "    def depositar(self, c):",
+        "        self.saldo += c",
+        "    def retirar(self, c):",
+        "        self.saldo -= c",
+        "",
+        "def transferir(origen, destino, cantidad):",
+        "    pass"
+      ],
+      "solution": [
+        "class Cuenta:",
+        "    def __init__(self, saldo=0):",
+        "        self.saldo = saldo",
+        "    def depositar(self, c):",
+        "        self.saldo += c",
+        "    def retirar(self, c):",
+        "        self.saldo -= c",
+        "",
+        "def transferir(origen, destino, cantidad):",
+        "    origen.retirar(cantidad)",
+        "    destino.depositar(cantidad)"
+      ],
+      "hints": {
+        "es": [
+          "Retira de origen y deposita en destino."
+        ],
+        "en": [
+          "Withdraw from origen and deposit into destino."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "transferir",
+          "harness": "a = Cuenta(100)\nb = Cuenta(0)\ntransferir(a, b, 40)\nassert a.saldo == 60\nassert b.saldo == 40"
+        }
+      ]
+    },
+    {
+      "id": "m78l2e2",
+      "prompt": {
+        "es": "Define `saldo_total(cuentas)` que devuelva la suma de los saldos de una lista de cuentas.",
+        "en": "Define `saldo_total(cuentas)` returning the sum of the balances of a list of accounts."
+      },
+      "starter_code": [
+        "def saldo_total(cuentas):",
+        "    pass"
+      ],
+      "solution": [
+        "def saldo_total(cuentas):",
+        "    return sum(c.saldo for c in cuentas)"
+      ],
+      "hints": {
+        "es": [
+          "sum(c.saldo for c in cuentas)."
+        ],
+        "en": [
+          "sum(c.saldo for c in cuentas)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "saldo_total",
+          "harness": "class Cuenta:\n    def __init__(self, saldo=0):\n        self.saldo = saldo\nassert saldo_total([Cuenta(100), Cuenta(50), Cuenta(0)]) == 150\nassert saldo_total([]) == 0"
+        }
+      ]
+    }
+  ]
+}

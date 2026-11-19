@@ -1,0 +1,16 @@
+{
+  "id": "m26",
+  "order": 26,
+  "title": {
+    "es": "Rutas con pathlib",
+    "en": "Paths with pathlib"
+  },
+  "summary": {
+    "es": "name/stem/suffix, with_suffix y parts con pathlib.",
+    "en": "name/stem/suffix, with_suffix and parts with pathlib."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

@@ -1,0 +1,207 @@
+{
+  "id": "m19l1",
+  "title": {
+    "es": "Validar la entrada del usuario",
+    "en": "Validating user input"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Nunca confíes en la entrada"
+      },
+      {
+        "type": "text",
+        "value": "Toda entrada externa (formularios, ficheros, red) es **sospechosa** hasta que la validas. Comprueba tipo, rango y formato antes de usarla. Es la primera línea de defensa contra errores y ataques."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def edad_valida(texto):",
+          "    return texto.isdigit() and 0 <= int(texto) <= 120",
+          "",
+          "print(edad_valida('30'))",
+          "print(edad_valida('999'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "True",
+          "False"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`.isdigit()` evita que `int()` reviente con texto no numérico, y el rango descarta valores absurdos."
+      },
+      {
+        "type": "note",
+        "value": "Valida en el servidor/programa, no solo en la interfaz: el atacante puede saltarse la interfaz."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Never trust input"
+      },
+      {
+        "type": "text",
+        "value": "All external input (forms, files, network) is **suspicious** until you validate it. Check type, range and format before using it. It's the first line of defense against bugs and attacks."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def edad_valida(texto):",
+          "    return texto.isdigit() and 0 <= int(texto) <= 120",
+          "",
+          "print(edad_valida('30'))",
+          "print(edad_valida('999'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "True",
+          "False"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`.isdigit()` keeps `int()` from crashing on non-numeric text, and the range rejects absurd values."
+      },
+      {
+        "type": "note",
+        "value": "Validate on the server/program, not only in the UI: an attacker can bypass the UI."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m19l1e1",
+      "prompt": {
+        "es": "Define `edad_valida(texto)` que devuelva True si el texto son solo dígitos y representa una edad entre 0 y 120.",
+        "en": "Define `edad_valida(texto)` returning True if the text is digits only and represents an age between 0 and 120."
+      },
+      "starter_code": [
+        "def edad_valida(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "def edad_valida(texto):",
+        "    return texto.isdigit() and 0 <= int(texto) <= 120"
+      ],
+      "hints": {
+        "es": [
+          "Comprueba .isdigit() antes de convertir a int."
+        ],
+        "en": [
+          "Check .isdigit() before converting to int."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "edad_valida",
+          "cases": [
+            {
+              "args": [
+                "30"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "0"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "999"
+              ],
+              "expected": false
+            },
+            {
+              "args": [
+                "-5"
+              ],
+              "expected": false
+            },
+            {
+              "args": [
+                "abc"
+              ],
+              "expected": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m19l1e2",
+      "prompt": {
+        "es": "Define `email_basico(texto)` que devuelva True si el texto tiene forma de email simple: algo@algo.algo (usa re.fullmatch).",
+        "en": "Define `email_basico(texto)` returning True if the text looks like a simple email: something@something.something (use re.fullmatch)."
+      },
+      "starter_code": [
+        "import re",
+        "",
+        "def email_basico(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "import re",
+        "",
+        "def email_basico(texto):",
+        "    return bool(re.fullmatch(r'[^@\\s]+@[^@\\s]+\\.[^@\\s]+', texto))"
+      ],
+      "hints": {
+        "es": [
+          "Patrón: usuario, @, dominio, punto y extensión, sin espacios ni @ extra."
+        ],
+        "en": [
+          "Pattern: user, @, domain, dot and extension, no spaces or extra @."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "email_basico",
+          "cases": [
+            {
+              "args": [
+                "a@b.com"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "x@y.z"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "mal"
+              ],
+              "expected": false
+            },
+            {
+              "args": [
+                "a@b"
+              ],
+              "expected": false
+            },
+            {
+              "args": [
+                "a b@c.com"
+              ],
+              "expected": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

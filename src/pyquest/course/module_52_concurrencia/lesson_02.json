@@ -1,0 +1,172 @@
+{
+  "id": "m52l2",
+  "title": {
+    "es": "Tareas y timeouts",
+    "en": "Tasks and timeouts"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Lanzar tareas y limitar el tiempo"
+      },
+      {
+        "type": "text",
+        "value": "`asyncio.create_task(corutina())` programa una corutina para que avance en segundo plano; luego la esperas con `await`. `asyncio.wait_for(corutina(), timeout)` cancela si tarda demasiado y lanza `TimeoutError`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import asyncio",
+          "",
+          "async def trabajo():",
+          "    await asyncio.sleep(0)",
+          "    return 'listo'",
+          "",
+          "async def main():",
+          "    t = asyncio.create_task(trabajo())",
+          "    return await t",
+          "",
+          "print(asyncio.run(main()))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "listo"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "create_task arranca ya la corutina; gather internamente también crea tareas por ti."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Launching tasks and capping time"
+      },
+      {
+        "type": "text",
+        "value": "`asyncio.create_task(coroutine())` schedules a coroutine to progress in the background; then you await it. `asyncio.wait_for(coroutine(), timeout)` cancels if it takes too long and raises `TimeoutError`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import asyncio",
+          "",
+          "async def trabajo():",
+          "    await asyncio.sleep(0)",
+          "    return 'listo'",
+          "",
+          "async def main():",
+          "    t = asyncio.create_task(trabajo())",
+          "    return await t",
+          "",
+          "print(asyncio.run(main()))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "listo"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "create_task starts the coroutine right away; gather internally also creates tasks for you."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m52l2e1",
+      "prompt": {
+        "es": "Define `async def con_timeout()`: ejecuta una corutina rápida con `asyncio.wait_for(..., timeout=1)` y devuelve su resultado, o 'timeout' si salta TimeoutError.",
+        "en": "Define `async def con_timeout()`: run a fast coroutine with `asyncio.wait_for(..., timeout=1)` and return its result, or 'timeout' on TimeoutError."
+      },
+      "starter_code": [
+        "import asyncio",
+        "",
+        "async def rapida():",
+        "    await asyncio.sleep(0)",
+        "    return 'ok'",
+        "",
+        "async def con_timeout():",
+        "    pass"
+      ],
+      "solution": [
+        "import asyncio",
+        "",
+        "async def rapida():",
+        "    await asyncio.sleep(0)",
+        "    return 'ok'",
+        "",
+        "async def con_timeout():",
+        "    try:",
+        "        return await asyncio.wait_for(rapida(), timeout=1)",
+        "    except asyncio.TimeoutError:",
+        "        return 'timeout'"
+      ],
+      "hints": {
+        "es": [
+          "Envuelve await asyncio.wait_for(rapida(), timeout=1) en try/except."
+        ],
+        "en": [
+          "Wrap await asyncio.wait_for(rapida(), timeout=1) in try/except."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "con_timeout",
+          "harness": "import asyncio\nassert asyncio.run(con_timeout()) == 'ok'"
+        }
+      ]
+    },
+    {
+      "id": "m52l2e2",
+      "prompt": {
+        "es": "Define `async def valor(x)` y `async def dos_tareas(a, b)` que cree dos tareas (create_task) y devuelva [a, b] tras esperarlas.",
+        "en": "Define `async def valor(x)` and `async def dos_tareas(a, b)` creating two tasks (create_task) and returning [a, b] after awaiting them."
+      },
+      "starter_code": [
+        "import asyncio",
+        "",
+        "async def valor(x):",
+        "    await asyncio.sleep(0)",
+        "    return x",
+        "",
+        "async def dos_tareas(a, b):",
+        "    pass"
+      ],
+      "solution": [
+        "import asyncio",
+        "",
+        "async def valor(x):",
+        "    await asyncio.sleep(0)",
+        "    return x",
+        "",
+        "async def dos_tareas(a, b):",
+        "    t1 = asyncio.create_task(valor(a))",
+        "    t2 = asyncio.create_task(valor(b))",
+        "    return [await t1, await t2]"
+      ],
+      "hints": {
+        "es": [
+          "Crea dos tareas con create_task y devuélvelas con await."
+        ],
+        "en": [
+          "Create two tasks with create_task and return them with await."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "dos_tareas",
+          "harness": "import asyncio\nassert asyncio.run(dos_tareas(10, 20)) == [10, 20]"
+        }
+      ]
+    }
+  ]
+}

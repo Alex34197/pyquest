@@ -1,0 +1,16 @@
+{
+  "id": "m64",
+  "order": 64,
+  "title": {
+    "es": "Matrices",
+    "en": "Matrices"
+  },
+  "summary": {
+    "es": "Listas de listas: acceso, transponer (zip*), sumar, diagonal y aplanar.",
+    "en": "Lists of lists: access, transpose (zip*), add, diagonal and flatten."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

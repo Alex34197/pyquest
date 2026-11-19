@@ -1,0 +1,243 @@
+{
+  "id": "m40l1",
+  "title": {
+    "es": "Mezcla y mergesort",
+    "en": "Merge and mergesort"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Dividir y vencer"
+      },
+      {
+        "type": "text",
+        "value": "**Mergesort** divide la lista en mitades, ordena cada mitad (recursivamente) y luego **mezcla** las dos mitades ordenadas. Mezclar dos listas ya ordenadas es fácil y rápido."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def mezclar(a, b):",
+          "    r, i, j = [], 0, 0",
+          "    while i < len(a) and j < len(b):",
+          "        if a[i] <= b[j]:",
+          "            r.append(a[i]); i += 1",
+          "        else:",
+          "            r.append(b[j]); j += 1",
+          "    return r + a[i:] + b[j:]",
+          "",
+          "print(mezclar([1, 3], [2, 4]))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[1, 2, 3, 4]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Mergesort es O(n log n): muchísimo mejor que burbuja para listas grandes."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Divide and conquer"
+      },
+      {
+        "type": "text",
+        "value": "**Mergesort** splits the list into halves, sorts each half (recursively) and then **merges** the two sorted halves. Merging two already-sorted lists is easy and fast."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def mezclar(a, b):",
+          "    r, i, j = [], 0, 0",
+          "    while i < len(a) and j < len(b):",
+          "        if a[i] <= b[j]:",
+          "            r.append(a[i]); i += 1",
+          "        else:",
+          "            r.append(b[j]); j += 1",
+          "    return r + a[i:] + b[j:]",
+          "",
+          "print(mezclar([1, 3], [2, 4]))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[1, 2, 3, 4]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Mergesort is O(n log n): far better than bubble sort for large lists."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m40l1e1",
+      "prompt": {
+        "es": "Define `mezclar(a, b)` que combine dos listas YA ORDENADAS en una sola lista ordenada.",
+        "en": "Define `mezclar(a, b)` combining two ALREADY-SORTED lists into one sorted list."
+      },
+      "starter_code": [
+        "def mezclar(a, b):",
+        "    pass"
+      ],
+      "solution": [
+        "def mezclar(a, b):",
+        "    r, i, j = [], 0, 0",
+        "    while i < len(a) and j < len(b):",
+        "        if a[i] <= b[j]:",
+        "            r.append(a[i]); i += 1",
+        "        else:",
+        "            r.append(b[j]); j += 1",
+        "    return r + a[i:] + b[j:]"
+      ],
+      "hints": {
+        "es": [
+          "Avanza dos índices comparando, y añade el resto al final."
+        ],
+        "en": [
+          "Advance two indices comparing, then append the rest."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "mezclar",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ]
+              ],
+              "expected": [
+                1,
+                2,
+                3,
+                4
+              ]
+            },
+            {
+              "args": [
+                [],
+                [
+                  1,
+                  2
+                ]
+              ],
+              "expected": [
+                1,
+                2
+              ]
+            },
+            {
+              "args": [
+                [
+                  5
+                ],
+                [
+                  1
+                ]
+              ],
+              "expected": [
+                1,
+                5
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m40l1e2",
+      "prompt": {
+        "es": "Define `mergesort(lista)` que ordene de forma recursiva con la técnica de mezcla.",
+        "en": "Define `mergesort(lista)` sorting recursively with the merge technique."
+      },
+      "starter_code": [
+        "def mergesort(lista):",
+        "    pass"
+      ],
+      "solution": [
+        "def mergesort(lista):",
+        "    if len(lista) <= 1:",
+        "        return list(lista)",
+        "    medio = len(lista) // 2",
+        "    izq = mergesort(lista[:medio])",
+        "    der = mergesort(lista[medio:])",
+        "    r, i, j = [], 0, 0",
+        "    while i < len(izq) and j < len(der):",
+        "        if izq[i] <= der[j]:",
+        "            r.append(izq[i]); i += 1",
+        "        else:",
+        "            r.append(der[j]); j += 1",
+        "    return r + izq[i:] + der[j:]"
+      ],
+      "hints": {
+        "es": [
+          "Caso base len<=1; divide por la mitad, ordena cada mitad y mezcla."
+        ],
+        "en": [
+          "Base case len<=1; split in half, sort each half and merge."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "mergesort",
+          "cases": [
+            {
+              "args": [
+                [
+                  3,
+                  1,
+                  2
+                ]
+              ],
+              "expected": [
+                1,
+                2,
+                3
+              ]
+            },
+            {
+              "args": [
+                []
+              ],
+              "expected": []
+            },
+            {
+              "args": [
+                [
+                  5,
+                  4,
+                  3,
+                  2,
+                  1
+                ]
+              ],
+              "expected": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

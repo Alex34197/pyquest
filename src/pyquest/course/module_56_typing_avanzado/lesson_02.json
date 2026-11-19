@@ -1,0 +1,177 @@
+{
+  "id": "m56l2",
+  "title": {
+    "es": "Protocolos (duck typing tipado)",
+    "en": "Protocols (typed duck typing)"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Comprobar por forma, no por herencia"
+      },
+      {
+        "type": "text",
+        "value": "Un `Protocol` define qué métodos debe tener un objeto, sin exigir herencia. Con `@runtime_checkable`, `isinstance(obj, MiProtocolo)` comprueba en ejecución si el objeto encaja."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from typing import Protocol, runtime_checkable",
+          "",
+          "@runtime_checkable",
+          "class TieneArea(Protocol):",
+          "    def area(self): ...",
+          "",
+          "class Circulo:",
+          "    def area(self):",
+          "        return 3.14",
+          "",
+          "print(isinstance(Circulo(), TieneArea))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "True"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "También es típico anotar 'esto o nada' con `X | None` (un valor opcional)."
+      },
+      {
+        "type": "note",
+        "value": "Los Protocol formalizan el 'duck typing': si tiene los métodos correctos, vale, sin importar su clase."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Checking by shape, not inheritance"
+      },
+      {
+        "type": "text",
+        "value": "A `Protocol` defines which methods an object must have, without requiring inheritance. With `@runtime_checkable`, `isinstance(obj, MyProtocol)` checks at runtime whether the object fits."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from typing import Protocol, runtime_checkable",
+          "",
+          "@runtime_checkable",
+          "class TieneArea(Protocol):",
+          "    def area(self): ...",
+          "",
+          "class Circulo:",
+          "    def area(self):",
+          "        return 3.14",
+          "",
+          "print(isinstance(Circulo(), TieneArea))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "True"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "It's also common to annotate 'this or nothing' with `X | None` (an optional value)."
+      },
+      {
+        "type": "note",
+        "value": "Protocols formalize 'duck typing': if it has the right methods, it works, regardless of its class."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m56l2e1",
+      "prompt": {
+        "es": "Define un Protocol `@runtime_checkable` `TieneArea` (método area) y `es_figura(obj)` que use isinstance.",
+        "en": "Define a `@runtime_checkable` Protocol `TieneArea` (method area) and `es_figura(obj)` using isinstance."
+      },
+      "starter_code": [
+        "from typing import Protocol, runtime_checkable",
+        "",
+        "# define TieneArea y es_figura"
+      ],
+      "solution": [
+        "from typing import Protocol, runtime_checkable",
+        "",
+        "@runtime_checkable",
+        "class TieneArea(Protocol):",
+        "    def area(self): ...",
+        "",
+        "def es_figura(obj):",
+        "    return isinstance(obj, TieneArea)"
+      ],
+      "hints": {
+        "es": [
+          "Marca el Protocol con @runtime_checkable para poder usar isinstance."
+        ],
+        "en": [
+          "Mark the Protocol with @runtime_checkable to use isinstance."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "es_figura",
+          "harness": "class Circ:\n    def area(self):\n        return 1.0\nclass Sin:\n    pass\nassert es_figura(Circ()) is True\nassert es_figura(Sin()) is False"
+        }
+      ]
+    },
+    {
+      "id": "m56l2e2",
+      "prompt": {
+        "es": "Define `longitud(x)` anotada como `x: str | None` que devuelva len(x), o 0 si x es None.",
+        "en": "Define `longitud(x)` annotated as `x: str | None` returning len(x), or 0 if x is None."
+      },
+      "starter_code": [
+        "def longitud(x: 'str | None') -> int:",
+        "    pass"
+      ],
+      "solution": [
+        "def longitud(x: 'str | None') -> int:",
+        "    return len(x) if x is not None else 0"
+      ],
+      "hints": {
+        "es": [
+          "Si x es None, devuelve 0; si no, len(x)."
+        ],
+        "en": [
+          "If x is None, return 0; else len(x)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "longitud",
+          "cases": [
+            {
+              "args": [
+                "abc"
+              ],
+              "expected": 3
+            },
+            {
+              "args": [
+                null
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                ""
+              ],
+              "expected": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

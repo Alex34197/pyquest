@@ -1,0 +1,16 @@
+{
+  "id": "m8",
+  "order": 8,
+  "title": {
+    "es": "Comprensiones e iterables",
+    "en": "Comprehensions and iterables"
+  },
+  "summary": {
+    "es": "Comprensiones de listas/dicts/sets y los iterables enumerate y zip.",
+    "en": "List/dict/set comprehensions and the enumerate and zip iterables."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

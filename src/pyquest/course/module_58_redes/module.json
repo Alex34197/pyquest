@@ -1,0 +1,16 @@
+{
+  "id": "m58",
+  "order": 58,
+  "title": {
+    "es": "Redes e IPs",
+    "en": "Networking and IPs"
+  },
+  "summary": {
+    "es": "ipaddress: validar IPs, pública/privada, versión, subredes (CIDR) y IP como entero.",
+    "en": "ipaddress: validate IPs, public/private, version, subnets (CIDR) and IP as integer."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "m55",
+  "order": 55,
+  "title": {
+    "es": "Metaclases",
+    "en": "Metaclasses"
+  },
+  "summary": {
+    "es": "Clases como objetos, type(), __init_subclass__ y metaclases.",
+    "en": "Classes as objects, type(), __init_subclass__ and metaclasses."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

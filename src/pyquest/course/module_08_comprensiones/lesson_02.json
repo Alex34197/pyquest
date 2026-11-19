@@ -1,0 +1,177 @@
+{
+  "id": "m8l2",
+  "title": {
+    "es": "Iterables útiles: enumerate y zip",
+    "en": "Useful iterables: enumerate and zip"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Recorrer con índice: enumerate"
+      },
+      {
+        "type": "text",
+        "value": "`enumerate(iterable)` te da pares `(indice, elemento)` mientras recorres, sin tener que llevar un contador a mano."
+      },
+      {
+        "type": "code",
+        "value": [
+          "for i, letra in enumerate(['a', 'b', 'c']):",
+          "    print(i, letra)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "0 a",
+          "1 b",
+          "2 c"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Combinar a la vez: zip"
+      },
+      {
+        "type": "text",
+        "value": "`zip(a, b)` empareja elemento a elemento dos (o más) secuencias, hasta que se agota la más corta."
+      },
+      {
+        "type": "code",
+        "value": [
+          "nombres = ['Ana', 'Bea']",
+          "edades = [25, 30]",
+          "for n, e in zip(nombres, edades):",
+          "    print(n, e)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Ana 25",
+          "Bea 30"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`enumerate` y `zip` devuelven iteradores 'perezosos'; envuélvelos en `list(...)` para ver su contenido de golpe."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Iterate with index: enumerate"
+      },
+      {
+        "type": "text",
+        "value": "`enumerate(iterable)` gives `(index, item)` pairs as you iterate, with no manual counter."
+      },
+      {
+        "type": "code",
+        "value": [
+          "for i, letra in enumerate(['a', 'b', 'c']):",
+          "    print(i, letra)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "0 a",
+          "1 b",
+          "2 c"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Combine in parallel: zip"
+      },
+      {
+        "type": "text",
+        "value": "`zip(a, b)` pairs two (or more) sequences item by item, until the shortest runs out."
+      },
+      {
+        "type": "code",
+        "value": [
+          "nombres = ['Ana', 'Bea']",
+          "edades = [25, 30]",
+          "for n, e in zip(nombres, edades):",
+          "    print(n, e)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Ana 25",
+          "Bea 30"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`enumerate` and `zip` return lazy iterators; wrap them in `list(...)` to see their contents at once."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m8l2e1",
+      "prompt": {
+        "es": "Define `indexar(items)` que devuelva una lista de pares `(indice, elemento)` usando `enumerate`. Ej: `['a','b']` → `[(0,'a'),(1,'b')]`.",
+        "en": "Define `indexar(items)` returning a list of `(index, item)` pairs using `enumerate`. E.g. `['a','b']` → `[(0,'a'),(1,'b')]`."
+      },
+      "starter_code": [
+        "def indexar(items):",
+        "    pass"
+      ],
+      "solution": [
+        "def indexar(items):",
+        "    return list(enumerate(items))"
+      ],
+      "hints": {
+        "es": [
+          "list(enumerate(items)) ya da los pares."
+        ],
+        "en": [
+          "list(enumerate(items)) gives the pairs."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "indexar",
+          "harness": "assert indexar(['a', 'b']) == [(0, 'a'), (1, 'b')]\nassert indexar([]) == []\nassert indexar([9]) == [(0, 9)]"
+        }
+      ]
+    },
+    {
+      "id": "m8l2e2",
+      "prompt": {
+        "es": "Define `emparejar(a, b)` que devuelva la lista de pares de `zip(a, b)`. Ej: `[1,2],['x','y']` → `[(1,'x'),(2,'y')]`.",
+        "en": "Define `emparejar(a, b)` returning the list of pairs from `zip(a, b)`. E.g. `[1,2],['x','y']` → `[(1,'x'),(2,'y')]`."
+      },
+      "starter_code": [
+        "def emparejar(a, b):",
+        "    pass"
+      ],
+      "solution": [
+        "def emparejar(a, b):",
+        "    return list(zip(a, b))"
+      ],
+      "hints": {
+        "es": [
+          "list(zip(a, b)) empareja hasta la más corta."
+        ],
+        "en": [
+          "list(zip(a, b)) pairs up to the shortest."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "emparejar",
+          "harness": "assert emparejar([1, 2], ['x', 'y']) == [(1, 'x'), (2, 'y')]\nassert emparejar([1, 2, 3], ['a']) == [(1, 'a')]\nassert emparejar([], []) == []"
+        }
+      ]
+    }
+  ]
+}

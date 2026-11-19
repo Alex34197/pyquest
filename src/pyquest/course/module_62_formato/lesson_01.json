@@ -1,0 +1,171 @@
+{
+  "id": "m62l1",
+  "title": {
+    "es": "Formatear números",
+    "en": "Formatting numbers"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "El mini-lenguaje de formato"
+      },
+      {
+        "type": "text",
+        "value": "Dentro de una f-string, tras `:` puedes dar un **formato**. `:.2f` muestra 2 decimales; `:,` agrupa los miles; `:.0%` muestra un porcentaje."
+      },
+      {
+        "type": "code",
+        "value": [
+          "precio = 1234.5",
+          "print(f'{precio:.2f}')",
+          "print(f'{1000000:,}')",
+          "print(f'{0.25:.0%}')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "1234.50",
+          "1,000,000",
+          "25%"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "El mismo mini-lenguaje vale en str.format(); las f-strings solo son una forma más cómoda."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "The format mini-language"
+      },
+      {
+        "type": "text",
+        "value": "Inside an f-string, after `:` you can give a **format**. `:.2f` shows 2 decimals; `:,` groups thousands; `:.0%` shows a percentage."
+      },
+      {
+        "type": "code",
+        "value": [
+          "precio = 1234.5",
+          "print(f'{precio:.2f}')",
+          "print(f'{1000000:,}')",
+          "print(f'{0.25:.0%}')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "1234.50",
+          "1,000,000",
+          "25%"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "The same mini-language works in str.format(); f-strings are just a handier form."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m62l1e1",
+      "prompt": {
+        "es": "Define `dos_decimales(x)` que devuelva `x` como texto con exactamente 2 decimales.",
+        "en": "Define `dos_decimales(x)` returning `x` as text with exactly 2 decimals."
+      },
+      "starter_code": [
+        "def dos_decimales(x):",
+        "    pass"
+      ],
+      "solution": [
+        "def dos_decimales(x):",
+        "    return f'{x:.2f}'"
+      ],
+      "hints": {
+        "es": [
+          "f'{x:.2f}'."
+        ],
+        "en": [
+          "f'{x:.2f}'."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "dos_decimales",
+          "cases": [
+            {
+              "args": [
+                3.14159
+              ],
+              "expected": "3.14"
+            },
+            {
+              "args": [
+                2
+              ],
+              "expected": "2.00"
+            },
+            {
+              "args": [
+                0
+              ],
+              "expected": "0.00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m62l1e2",
+      "prompt": {
+        "es": "Define `con_miles(n)` que devuelva el número con separadores de millar (p. ej. 1234567 -> '1,234,567').",
+        "en": "Define `con_miles(n)` returning the number with thousands separators (e.g. 1234567 -> '1,234,567')."
+      },
+      "starter_code": [
+        "def con_miles(n):",
+        "    pass"
+      ],
+      "solution": [
+        "def con_miles(n):",
+        "    return f'{n:,}'"
+      ],
+      "hints": {
+        "es": [
+          "f'{n:,}'."
+        ],
+        "en": [
+          "f'{n:,}'."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "con_miles",
+          "cases": [
+            {
+              "args": [
+                1234567
+              ],
+              "expected": "1,234,567"
+            },
+            {
+              "args": [
+                1000
+              ],
+              "expected": "1,000"
+            },
+            {
+              "args": [
+                5
+              ],
+              "expected": "5"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "id": "m53l1",
+  "title": {
+    "es": "Atributos dinámicos",
+    "en": "Dynamic attributes"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Leer y escribir atributos por nombre"
+      },
+      {
+        "type": "text",
+        "value": "`getattr(obj, 'x', defecto)` lee un atributo por su nombre (con valor por defecto si no existe), `setattr` lo asigna y `hasattr` comprueba si existe. Útil cuando el nombre del atributo no se conoce hasta la ejecución."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class C:",
+          "    pass",
+          "",
+          "c = C()",
+          "setattr(c, 'x', 5)",
+          "print(getattr(c, 'x'), getattr(c, 'y', 0))",
+          "print(hasattr(c, 'y'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "5 0",
+          "False"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Los atributos de instancia viven en `c.__dict__`, un diccionario que Python mantiene por ti."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Reading and writing attributes by name"
+      },
+      {
+        "type": "text",
+        "value": "`getattr(obj, 'x', default)` reads an attribute by name (with a default if missing), `setattr` assigns it and `hasattr` checks existence. Useful when the attribute name isn't known until runtime."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class C:",
+          "    pass",
+          "",
+          "c = C()",
+          "setattr(c, 'x', 5)",
+          "print(getattr(c, 'x'), getattr(c, 'y', 0))",
+          "print(hasattr(c, 'y'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "5 0",
+          "False"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Instance attributes live in `c.__dict__`, a dictionary Python keeps for you."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m53l1e1",
+      "prompt": {
+        "es": "Define `leer(obj, nombre, defecto)` que devuelva el atributo `nombre` de obj, o `defecto` si no existe.",
+        "en": "Define `leer(obj, nombre, defecto)` returning obj's `nombre` attribute, or `defecto` if missing."
+      },
+      "starter_code": [
+        "def leer(obj, nombre, defecto):",
+        "    pass"
+      ],
+      "solution": [
+        "def leer(obj, nombre, defecto):",
+        "    return getattr(obj, nombre, defecto)"
+      ],
+      "hints": {
+        "es": [
+          "getattr(obj, nombre, defecto)."
+        ],
+        "en": [
+          "getattr(obj, nombre, defecto)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "leer",
+          "harness": "class C:\n    pass\nc = C()\nc.x = 5\nassert leer(c, 'x', 0) == 5\nassert leer(c, 'y', -1) == -1"
+        }
+      ]
+    },
+    {
+      "id": "m53l1e2",
+      "prompt": {
+        "es": "Define `poner(obj, nombre, valor)` que asigne el atributo y devuelva su valor leído de vuelta.",
+        "en": "Define `poner(obj, nombre, valor)` that sets the attribute and returns its value read back."
+      },
+      "starter_code": [
+        "def poner(obj, nombre, valor):",
+        "    pass"
+      ],
+      "solution": [
+        "def poner(obj, nombre, valor):",
+        "    setattr(obj, nombre, valor)",
+        "    return getattr(obj, nombre)"
+      ],
+      "hints": {
+        "es": [
+          "setattr para asignar y getattr para leer."
+        ],
+        "en": [
+          "setattr to assign and getattr to read."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "poner",
+          "harness": "class C:\n    pass\nc = C()\nassert poner(c, 'x', 9) == 9\nassert c.x == 9"
+        }
+      ]
+    }
+  ]
+}

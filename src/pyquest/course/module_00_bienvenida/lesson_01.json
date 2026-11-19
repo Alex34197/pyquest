@@ -1,0 +1,125 @@
+{
+  "id": "m00l1",
+  "title": {
+    "es": "Bienvenida: tu primer programa",
+    "en": "Welcome: your first program"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "¡Bienvenido a PyQuest!"
+      },
+      {
+        "type": "text",
+        "value": "Aquí vas a aprender Python **escribiendo código de verdad**. En cada lección lees una explicación breve con ejemplos y luego practicas: escribes en el editor y pulsas **▶ Ejecutar** para verlo correr, o **✓ Comprobar** para que la app revise si es correcto. Si te atascas, tienes **pistas** y la opción de ver la solución."
+      },
+      {
+        "type": "text",
+        "value": "Programar es darle instrucciones al ordenador, una por línea. La más famosa muestra un texto en pantalla con `print`:"
+      },
+      {
+        "type": "code",
+        "value": [
+          "print('Hola, mundo')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Hola, mundo"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "No necesitas instalar nada: la app ejecuta tu código por ti. Equivócate sin miedo, que así se aprende."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Welcome to PyQuest!"
+      },
+      {
+        "type": "text",
+        "value": "Here you'll learn Python by **writing real code**. Each lesson has a short explanation with examples, then you practice: type in the editor and press **▶ Run** to see it run, or **✓ Check** to let the app verify it. If you get stuck, there are **hints** and a show-solution option."
+      },
+      {
+        "type": "text",
+        "value": "Programming is giving the computer instructions, one per line. The most famous one shows text on screen with `print`:"
+      },
+      {
+        "type": "code",
+        "value": [
+          "print('Hola, mundo')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Hola, mundo"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Nothing to install: the app runs your code for you. Don't be afraid to make mistakes — that's how you learn."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m00l1e1",
+      "prompt": {
+        "es": "Escribe un programa que muestre exactamente: Hola, mundo",
+        "en": "Write a program that prints exactly: Hola, mundo"
+      },
+      "starter_code": [
+        "# escribe aquí tu código"
+      ],
+      "solution": [
+        "print('Hola, mundo')"
+      ],
+      "hints": {
+        "es": [
+          "Usa print('...') con el texto entre comillas."
+        ],
+        "en": [
+          "Use print('...') with the text in quotes."
+        ]
+      },
+      "tests": [
+        {
+          "type": "stdout",
+          "expected": "Hola, mundo"
+        }
+      ]
+    },
+    {
+      "id": "m00l1e2",
+      "prompt": {
+        "es": "Muestra por pantalla: Estoy aprendiendo Python",
+        "en": "Print to the screen: Estoy aprendiendo Python"
+      },
+      "starter_code": [
+        "# escribe aquí tu código"
+      ],
+      "solution": [
+        "print('Estoy aprendiendo Python')"
+      ],
+      "hints": {
+        "es": [
+          "print('Estoy aprendiendo Python')."
+        ],
+        "en": [
+          "print('Estoy aprendiendo Python')."
+        ]
+      },
+      "tests": [
+        {
+          "type": "stdout",
+          "expected": "Estoy aprendiendo Python"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "m46",
+  "order": 46,
+  "title": {
+    "es": "Árboles binarios",
+    "en": "Binary trees"
+  },
+  "summary": {
+    "es": "Árbol como dict; recorridos inorden/preorden, altura y conteo de nodos.",
+    "en": "Tree as dict; inorder/preorder traversals, height and node count."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "id": "m73l2",
+  "title": {
+    "es": "Flag: combinar opciones",
+    "en": "Flag: combining options"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Banderas que se combinan con bits"
+      },
+      {
+        "type": "text",
+        "value": "`Flag` permite combinar miembros con `|` (como permisos de fichero). Para saber si una bandera está activa, comprueba con `&`: `(combo & X) == X`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from enum import Flag, auto",
+          "",
+          "class Permisos(Flag):",
+          "    LEER = auto()",
+          "    ESCRIBIR = auto()",
+          "    EJECUTAR = auto()",
+          "",
+          "p = Permisos.LEER | Permisos.ESCRIBIR",
+          "print((p & Permisos.LEER) == Permisos.LEER)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "True"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Flag es la forma 'pythónica' de las máscaras de bits que viste en el módulo de bases y bits."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Flags combined with bits"
+      },
+      {
+        "type": "text",
+        "value": "`Flag` lets you combine members with `|` (like file permissions). To check if a flag is active, test with `&`: `(combo & X) == X`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from enum import Flag, auto",
+          "",
+          "class Permisos(Flag):",
+          "    LEER = auto()",
+          "    ESCRIBIR = auto()",
+          "    EJECUTAR = auto()",
+          "",
+          "p = Permisos.LEER | Permisos.ESCRIBIR",
+          "print((p & Permisos.LEER) == Permisos.LEER)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "True"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Flag is the 'pythonic' form of the bit masks you saw in the bases-and-bits module."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m73l2e1",
+      "prompt": {
+        "es": "Define un `Flag` `Permisos` con LEER, ESCRIBIR y EJECUTAR (usa auto()).",
+        "en": "Define a `Flag` `Permisos` with LEER, ESCRIBIR and EJECUTAR (use auto())."
+      },
+      "starter_code": [
+        "from enum import Flag, auto",
+        "",
+        "# define Permisos"
+      ],
+      "solution": [
+        "from enum import Flag, auto",
+        "",
+        "class Permisos(Flag):",
+        "    LEER = auto()",
+        "    ESCRIBIR = auto()",
+        "    EJECUTAR = auto()"
+      ],
+      "hints": {
+        "es": [
+          "Hereda de Flag y usa auto() en cada miembro."
+        ],
+        "en": [
+          "Inherit from Flag and use auto() for each member."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Permisos",
+          "harness": "p = Permisos.LEER | Permisos.ESCRIBIR\nassert (p & Permisos.LEER) == Permisos.LEER\nassert (p & Permisos.EJECUTAR) != Permisos.EJECUTAR"
+        }
+      ]
+    },
+    {
+      "id": "m73l2e2",
+      "prompt": {
+        "es": "Define `tiene(combo, permiso)` que devuelva True si `permiso` está activo dentro de `combo` (usa &).",
+        "en": "Define `tiene(combo, permiso)` returning True if `permiso` is active within `combo` (use &)."
+      },
+      "starter_code": [
+        "from enum import Flag, auto",
+        "",
+        "class Permisos(Flag):",
+        "    LEER = auto()",
+        "    ESCRIBIR = auto()",
+        "    EJECUTAR = auto()",
+        "",
+        "def tiene(combo, permiso):",
+        "    pass"
+      ],
+      "solution": [
+        "from enum import Flag, auto",
+        "",
+        "class Permisos(Flag):",
+        "    LEER = auto()",
+        "    ESCRIBIR = auto()",
+        "    EJECUTAR = auto()",
+        "",
+        "def tiene(combo, permiso):",
+        "    return (combo & permiso) == permiso"
+      ],
+      "hints": {
+        "es": [
+          "(combo & permiso) == permiso."
+        ],
+        "en": [
+          "(combo & permiso) == permiso."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "tiene",
+          "harness": "p = Permisos.LEER | Permisos.EJECUTAR\nassert tiene(p, Permisos.LEER) is True\nassert tiene(p, Permisos.ESCRIBIR) is False"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "id": "m22l2",
+  "title": {
+    "es": "Métodos y campos mutables",
+    "en": "Methods and mutable fields"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Más que datos"
+      },
+      {
+        "type": "text",
+        "value": "Una dataclass puede tener **métodos** normales que usan sus campos."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from dataclasses import dataclass",
+          "",
+          "@dataclass",
+          "class Rectangulo:",
+          "    ancho: float",
+          "    alto: float",
+          "    def area(self):",
+          "        return self.ancho * self.alto",
+          "",
+          "print(Rectangulo(2, 3).area())"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "6"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Para un campo **mutable** (lista, dict) NO uses `[]` como valor por defecto: usa `field(default_factory=list)`, que crea una lista nueva para cada objeto."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from dataclasses import dataclass, field",
+          "",
+          "@dataclass",
+          "class Cesta:",
+          "    items: list = field(default_factory=list)"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Compartir una lista por defecto entre objetos es un error clásico; default_factory lo evita."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "More than data"
+      },
+      {
+        "type": "text",
+        "value": "A dataclass can have normal **methods** that use its fields."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from dataclasses import dataclass",
+          "",
+          "@dataclass",
+          "class Rectangulo:",
+          "    ancho: float",
+          "    alto: float",
+          "    def area(self):",
+          "        return self.ancho * self.alto",
+          "",
+          "print(Rectangulo(2, 3).area())"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "6"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "For a **mutable** field (list, dict) do NOT use `[]` as default: use `field(default_factory=list)`, which creates a fresh list for each object."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from dataclasses import dataclass, field",
+          "",
+          "@dataclass",
+          "class Cesta:",
+          "    items: list = field(default_factory=list)"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Sharing one default list across objects is a classic bug; default_factory prevents it."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m22l2e1",
+      "prompt": {
+        "es": "Define una dataclass `Rectangulo` con `ancho` y `alto`, y un método `area()` que devuelva su producto.",
+        "en": "Define a dataclass `Rectangulo` with `ancho` and `alto`, and an `area()` method returning their product."
+      },
+      "starter_code": [
+        "from dataclasses import dataclass",
+        "",
+        "# completa la dataclass con el método area()"
+      ],
+      "solution": [
+        "from dataclasses import dataclass",
+        "",
+        "@dataclass",
+        "class Rectangulo:",
+        "    ancho: float",
+        "    alto: float",
+        "    def area(self):",
+        "        return self.ancho * self.alto"
+      ],
+      "hints": {
+        "es": [
+          "El método usa self.ancho y self.alto."
+        ],
+        "en": [
+          "The method uses self.ancho and self.alto."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Rectangulo",
+          "harness": "assert Rectangulo(2, 3).area() == 6\nassert Rectangulo(5, 4).area() == 20"
+        }
+      ]
+    },
+    {
+      "id": "m22l2e2",
+      "prompt": {
+        "es": "Define una dataclass `Cesta` con `items` (lista por defecto vacía con default_factory) y un método `add(x)` que lo añada.",
+        "en": "Define a dataclass `Cesta` with `items` (empty list default via default_factory) and an `add(x)` method that appends it."
+      },
+      "starter_code": [
+        "from dataclasses import dataclass, field",
+        "",
+        "# completa la dataclass con add(x)"
+      ],
+      "solution": [
+        "from dataclasses import dataclass, field",
+        "",
+        "@dataclass",
+        "class Cesta:",
+        "    items: list = field(default_factory=list)",
+        "    def add(self, x):",
+        "        self.items.append(x)"
+      ],
+      "hints": {
+        "es": [
+          "items: list = field(default_factory=list).",
+          "add hace self.items.append(x)."
+        ],
+        "en": [
+          "items: list = field(default_factory=list).",
+          "add does self.items.append(x)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Cesta",
+          "harness": "c = Cesta()\nc.add('a'); c.add('b')\nassert c.items == ['a', 'b']\nassert Cesta().items == []"
+        }
+      ]
+    }
+  ]
+}

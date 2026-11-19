@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+
+# Entornos virtuales / virtual envs
+.venv/
+venv/
+env/
+
+# PyInstaller
+build/*/
+dist/
+*.spec.bak
+
+# Sistema / OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+
+# Compilaciones portables del CI / CI portable builds
+build_portable/
+dist_portable/
+
+# Tests, cobertura y cachés de herramientas / tests, coverage and tool caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+*.log

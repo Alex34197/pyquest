@@ -1,0 +1,16 @@
+{
+  "id": "m33",
+  "order": 33,
+  "title": {
+    "es": "Pilas y colas",
+    "en": "Stacks and queues"
+  },
+  "summary": {
+    "es": "Pila (LIFO), cola (FIFO) con deque y aplicaciones (paréntesis, historial).",
+    "en": "Stack (LIFO), queue (FIFO) with deque and applications (brackets, history)."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

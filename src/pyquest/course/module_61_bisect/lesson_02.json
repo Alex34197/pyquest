@@ -1,0 +1,212 @@
+{
+  "id": "m61l2",
+  "title": {
+    "es": "Insertar y clasificar",
+    "en": "Inserting and classifying"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Mantener el orden e intervalos"
+      },
+      {
+        "type": "text",
+        "value": "`insort(lista, x)` inserta `x` en su sitio manteniendo el orden. Y `bisect` sirve para clasificar por intervalos: dado unos cortes, decide en qué tramo cae un valor."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import bisect",
+          "datos = [1, 3, 5]",
+          "bisect.insort(datos, 4)",
+          "print(datos)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[1, 3, 4, 5]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Clasificar por tramos (notas, baremos, percentiles) es un uso muy típico de bisect."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Keeping order and intervals"
+      },
+      {
+        "type": "text",
+        "value": "`insort(list, x)` inserts `x` in place keeping the order. And `bisect` is useful to classify by intervals: given some cut points, decide which band a value falls into."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import bisect",
+          "datos = [1, 3, 5]",
+          "bisect.insort(datos, 4)",
+          "print(datos)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[1, 3, 4, 5]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Classifying by bands (grades, scales, percentiles) is a very typical use of bisect."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m61l2e1",
+      "prompt": {
+        "es": "Define `insertar_ordenado(ordenada, x)` que devuelva una NUEVA lista con `x` insertado en orden (usa insort sobre una copia).",
+        "en": "Define `insertar_ordenado(ordenada, x)` returning a NEW list with `x` inserted in order (use insort on a copy)."
+      },
+      "starter_code": [
+        "import bisect",
+        "",
+        "def insertar_ordenado(ordenada, x):",
+        "    pass"
+      ],
+      "solution": [
+        "import bisect",
+        "",
+        "def insertar_ordenado(ordenada, x):",
+        "    copia = list(ordenada)",
+        "    bisect.insort(copia, x)",
+        "    return copia"
+      ],
+      "hints": {
+        "es": [
+          "Copia la lista e inserta con bisect.insort."
+        ],
+        "en": [
+          "Copy the list and insert with bisect.insort."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "insertar_ordenado",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  3,
+                  5
+                ],
+                4
+              ],
+              "expected": [
+                1,
+                3,
+                4,
+                5
+              ]
+            },
+            {
+              "args": [
+                [],
+                9
+              ],
+              "expected": [
+                9
+              ]
+            },
+            {
+              "args": [
+                [
+                  2,
+                  4
+                ],
+                1
+              ],
+              "expected": [
+                1,
+                2,
+                4
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m61l2e2",
+      "prompt": {
+        "es": "Define `nota_letra(nota)`: F<60, D 60-69, C 70-79, B 80-89, A 90+ (usa bisect sobre los cortes 60,70,80,90).",
+        "en": "Define `nota_letra(nota)`: F<60, D 60-69, C 70-79, B 80-89, A 90+ (use bisect over cuts 60,70,80,90)."
+      },
+      "starter_code": [
+        "import bisect",
+        "",
+        "def nota_letra(nota):",
+        "    pass"
+      ],
+      "solution": [
+        "import bisect",
+        "",
+        "def nota_letra(nota):",
+        "    cortes = [60, 70, 80, 90]",
+        "    letras = ['F', 'D', 'C', 'B', 'A']",
+        "    return letras[bisect.bisect_right(cortes, nota)]"
+      ],
+      "hints": {
+        "es": [
+          "bisect_right(cortes, nota) da el índice de la letra."
+        ],
+        "en": [
+          "bisect_right(cortes, nota) gives the letter's index."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "nota_letra",
+          "cases": [
+            {
+              "args": [
+                59
+              ],
+              "expected": "F"
+            },
+            {
+              "args": [
+                60
+              ],
+              "expected": "D"
+            },
+            {
+              "args": [
+                75
+              ],
+              "expected": "C"
+            },
+            {
+              "args": [
+                85
+              ],
+              "expected": "B"
+            },
+            {
+              "args": [
+                95
+              ],
+              "expected": "A"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

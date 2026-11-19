@@ -1,0 +1,178 @@
+{
+  "id": "m35l2",
+  "title": {
+    "es": "Fusionar y comprensiones",
+    "en": "Merging and comprehensions"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Combinar y construir diccionarios"
+      },
+      {
+        "type": "text",
+        "value": "`{**a, **b}` fusiona dos diccionarios; si una clave coincide, gana la de `b`. Las **comprensiones de diccionario** construyen dicts en una línea."
+      },
+      {
+        "type": "code",
+        "value": [
+          "a = {'x': 1}",
+          "b = {'y': 2, 'x': 9}",
+          "print({**a, **b})",
+          "print({p: len(p) for p in ['sol', 'casa']})"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "{'x': 9, 'y': 2}",
+          "{'sol': 3, 'casa': 4}"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "En Python 3.9+ también puedes fusionar con el operador `a | b`."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Combining and building dicts"
+      },
+      {
+        "type": "text",
+        "value": "`{**a, **b}` merges two dicts; on a key clash, `b` wins. **Dict comprehensions** build dicts in one line."
+      },
+      {
+        "type": "code",
+        "value": [
+          "a = {'x': 1}",
+          "b = {'y': 2, 'x': 9}",
+          "print({**a, **b})",
+          "print({p: len(p) for p in ['sol', 'casa']})"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "{'x': 9, 'y': 2}",
+          "{'sol': 3, 'casa': 4}"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "In Python 3.9+ you can also merge with the `a | b` operator."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m35l2e1",
+      "prompt": {
+        "es": "Define `fusionar(a, b)` que devuelva la fusión de dos diccionarios (si hay conflicto, gana `b`).",
+        "en": "Define `fusionar(a, b)` returning the merge of two dicts (on conflict, `b` wins)."
+      },
+      "starter_code": [
+        "def fusionar(a, b):",
+        "    pass"
+      ],
+      "solution": [
+        "def fusionar(a, b):",
+        "    return {**a, **b}"
+      ],
+      "hints": {
+        "es": [
+          "{**a, **b}."
+        ],
+        "en": [
+          "{**a, **b}."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "fusionar",
+          "cases": [
+            {
+              "args": [
+                {
+                  "a": 1
+                },
+                {
+                  "b": 2
+                }
+              ],
+              "expected": {
+                "a": 1,
+                "b": 2
+              }
+            },
+            {
+              "args": [
+                {
+                  "a": 1
+                },
+                {
+                  "a": 9
+                }
+              ],
+              "expected": {
+                "a": 9
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m35l2e2",
+      "prompt": {
+        "es": "Define `longitudes(palabras)` que devuelva un dict palabra -> longitud (comprensión de dict).",
+        "en": "Define `longitudes(palabras)` returning a dict word -> length (dict comprehension)."
+      },
+      "starter_code": [
+        "def longitudes(palabras):",
+        "    pass"
+      ],
+      "solution": [
+        "def longitudes(palabras):",
+        "    return {p: len(p) for p in palabras}"
+      ],
+      "hints": {
+        "es": [
+          "{p: len(p) for p in palabras}."
+        ],
+        "en": [
+          "{p: len(p) for p in palabras}."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "longitudes",
+          "cases": [
+            {
+              "args": [
+                [
+                  "sol",
+                  "casa"
+                ]
+              ],
+              "expected": {
+                "sol": 3,
+                "casa": 4
+              }
+            },
+            {
+              "args": [
+                []
+              ],
+              "expected": {}
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

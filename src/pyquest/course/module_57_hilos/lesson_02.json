@@ -1,0 +1,184 @@
+{
+  "id": "m57l2",
+  "title": {
+    "es": "concurrent.futures",
+    "en": "concurrent.futures"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Un pool de trabajadores"
+      },
+      {
+        "type": "text",
+        "value": "`ThreadPoolExecutor` gestiona un grupo de hilos por ti. `.map(funcion, iterable)` aplica la función en paralelo y devuelve resultados **en orden**; `.submit(funcion, arg)` lanza una tarea y te da un *future* del que pides `.result()`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from concurrent.futures import ThreadPoolExecutor",
+          "with ThreadPoolExecutor() as ex:",
+          "    print(list(ex.map(lambda x: x * 2, [1, 2, 3])))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[2, 4, 6]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Es la forma moderna y cómoda de paralelizar tareas de espera sin gestionar hilos a mano."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "A pool of workers"
+      },
+      {
+        "type": "text",
+        "value": "`ThreadPoolExecutor` manages a group of threads for you. `.map(function, iterable)` applies the function in parallel and returns results **in order**; `.submit(function, arg)` launches a task and gives you a *future* whose `.result()` you request."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from concurrent.futures import ThreadPoolExecutor",
+          "with ThreadPoolExecutor() as ex:",
+          "    print(list(ex.map(lambda x: x * 2, [1, 2, 3])))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[2, 4, 6]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "It's the modern, convenient way to parallelize waiting tasks without managing threads by hand."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m57l2e1",
+      "prompt": {
+        "es": "Define `con_pool(nums)` que devuelva el doble de cada número usando ThreadPoolExecutor.map.",
+        "en": "Define `con_pool(nums)` returning each number doubled using ThreadPoolExecutor.map."
+      },
+      "starter_code": [
+        "from concurrent.futures import ThreadPoolExecutor",
+        "",
+        "def con_pool(nums):",
+        "    pass"
+      ],
+      "solution": [
+        "from concurrent.futures import ThreadPoolExecutor",
+        "",
+        "def con_pool(nums):",
+        "    with ThreadPoolExecutor() as ex:",
+        "        return list(ex.map(lambda x: x * 2, nums))"
+      ],
+      "hints": {
+        "es": [
+          "list(ex.map(lambda x: x*2, nums)) dentro del with."
+        ],
+        "en": [
+          "list(ex.map(lambda x: x*2, nums)) inside the with."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "con_pool",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  2,
+                  3
+                ]
+              ],
+              "expected": [
+                2,
+                4,
+                6
+              ]
+            },
+            {
+              "args": [
+                []
+              ],
+              "expected": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m57l2e2",
+      "prompt": {
+        "es": "Define `cuadrados_pool(nums)` que use `submit` y `.result()` para devolver los cuadrados en orden.",
+        "en": "Define `cuadrados_pool(nums)` using `submit` and `.result()` to return the squares in order."
+      },
+      "starter_code": [
+        "from concurrent.futures import ThreadPoolExecutor",
+        "",
+        "def cuadrados_pool(nums):",
+        "    pass"
+      ],
+      "solution": [
+        "from concurrent.futures import ThreadPoolExecutor",
+        "",
+        "def cuadrados_pool(nums):",
+        "    with ThreadPoolExecutor() as ex:",
+        "        futuros = [ex.submit(lambda v: v * v, n) for n in nums]",
+        "        return [f.result() for f in futuros]"
+      ],
+      "hints": {
+        "es": [
+          "Guarda los futures de submit y recoge f.result() en orden."
+        ],
+        "en": [
+          "Keep the submit futures and collect f.result() in order."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "cuadrados_pool",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  2,
+                  3
+                ]
+              ],
+              "expected": [
+                1,
+                4,
+                9
+              ]
+            },
+            {
+              "args": [
+                [
+                  4
+                ]
+              ],
+              "expected": [
+                16
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

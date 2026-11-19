@@ -1,0 +1,16 @@
+{
+  "id": "m48",
+  "order": 48,
+  "title": {
+    "es": "Línea de comandos (argparse)",
+    "en": "Command line (argparse)"
+  },
+  "summary": {
+    "es": "add_argument, parse_args, type=int, default y banderas store_true.",
+    "en": "add_argument, parse_args, type=int, default and store_true flags."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

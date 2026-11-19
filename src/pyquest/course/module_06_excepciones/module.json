@@ -1,0 +1,16 @@
+{
+  "id": "m6",
+  "order": 6,
+  "title": {
+    "es": "Errores y excepciones",
+    "en": "Errors and exceptions"
+  },
+  "summary": {
+    "es": "Capturar con try/except/else/finally y lanzar errores con raise.",
+    "en": "Catch with try/except/else/finally and raise your own errors."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

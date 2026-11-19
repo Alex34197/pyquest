@@ -1,0 +1,238 @@
+{
+  "id": "m64l1",
+  "title": {
+    "es": "Matrices como listas de listas",
+    "en": "Matrices as lists of lists"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Tablas de números"
+      },
+      {
+        "type": "text",
+        "value": "Una matriz se representa como una **lista de listas** (cada lista es una fila). Se accede con `m[fila][columna]`. `zip(*m)` es el truco para **transponer** (intercambiar filas por columnas)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "m = [[1, 2, 3], [4, 5, 6]]",
+          "print(m[1][2])",
+          "print([list(f) for f in zip(*m)])"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "6",
+          "[[1, 4], [2, 5], [3, 6]]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Para matemática seria de matrices se usa NumPy, pero entender la versión con listas es la base."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Tables of numbers"
+      },
+      {
+        "type": "text",
+        "value": "A matrix is represented as a **list of lists** (each list is a row). Access it with `m[row][column]`. `zip(*m)` is the trick to **transpose** (swap rows for columns)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "m = [[1, 2, 3], [4, 5, 6]]",
+          "print(m[1][2])",
+          "print([list(f) for f in zip(*m)])"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "6",
+          "[[1, 4], [2, 5], [3, 6]]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "For serious matrix math use NumPy, but understanding the list version is the foundation."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m64l1e1",
+      "prompt": {
+        "es": "Define `transponer(m)` que devuelva la matriz transpuesta (filas <-> columnas).",
+        "en": "Define `transponer(m)` returning the transposed matrix (rows <-> columns)."
+      },
+      "starter_code": [
+        "def transponer(m):",
+        "    pass"
+      ],
+      "solution": [
+        "def transponer(m):",
+        "    return [list(f) for f in zip(*m)]"
+      ],
+      "hints": {
+        "es": [
+          "zip(*m) transpone; conviértelo a listas."
+        ],
+        "en": [
+          "zip(*m) transposes; convert to lists."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "transponer",
+          "cases": [
+            {
+              "args": [
+                [
+                  [
+                    1,
+                    2,
+                    3
+                  ],
+                  [
+                    4,
+                    5,
+                    6
+                  ]
+                ]
+              ],
+              "expected": [
+                [
+                  1,
+                  4
+                ],
+                [
+                  2,
+                  5
+                ],
+                [
+                  3,
+                  6
+                ]
+              ]
+            },
+            {
+              "args": [
+                [
+                  [
+                    1,
+                    2
+                  ],
+                  [
+                    3,
+                    4
+                  ]
+                ]
+              ],
+              "expected": [
+                [
+                  1,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m64l1e2",
+      "prompt": {
+        "es": "Define `suma_matrices(a, b)` que sume dos matrices del mismo tamaño elemento a elemento.",
+        "en": "Define `suma_matrices(a, b)` adding two same-size matrices element by element."
+      },
+      "starter_code": [
+        "def suma_matrices(a, b):",
+        "    pass"
+      ],
+      "solution": [
+        "def suma_matrices(a, b):",
+        "    return [[a[i][j] + b[i][j] for j in range(len(a[i]))] for i in range(len(a))]"
+      ],
+      "hints": {
+        "es": [
+          "Recorre filas y columnas sumando a[i][j] + b[i][j]."
+        ],
+        "en": [
+          "Iterate rows and columns adding a[i][j] + b[i][j]."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "suma_matrices",
+          "cases": [
+            {
+              "args": [
+                [
+                  [
+                    1,
+                    2
+                  ],
+                  [
+                    3,
+                    4
+                  ]
+                ],
+                [
+                  [
+                    5,
+                    6
+                  ],
+                  [
+                    7,
+                    8
+                  ]
+                ]
+              ],
+              "expected": [
+                [
+                  6,
+                  8
+                ],
+                [
+                  10,
+                  12
+                ]
+              ]
+            },
+            {
+              "args": [
+                [
+                  [
+                    1
+                  ]
+                ],
+                [
+                  [
+                    9
+                  ]
+                ]
+              ],
+              "expected": [
+                [
+                  10
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

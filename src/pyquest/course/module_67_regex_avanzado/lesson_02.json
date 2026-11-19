@@ -1,0 +1,172 @@
+{
+  "id": "m67l2",
+  "title": {
+    "es": "Encontrar y censurar",
+    "en": "Finding and censoring"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "findall y sustitución con límites de palabra"
+      },
+      {
+        "type": "text",
+        "value": "`re.findall(r'\\w+', texto)` saca todas las palabras. `\\b` marca un **límite de palabra**, útil para sustituir una palabra exacta sin tocar las que la contienen."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import re",
+          "print(re.findall(r'\\w+', 'hola, mundo!'))",
+          "print(re.sub(r'\\bsol\\b', '***', 'el sol y los soles'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "['hola', 'mundo']",
+          "el *** y los soles"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`re.escape(texto)` te protege si la palabra a buscar pudiera tener caracteres especiales de regex."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "findall and substitution with word boundaries"
+      },
+      {
+        "type": "text",
+        "value": "`re.findall(r'\\w+', text)` extracts all words. `\\b` marks a **word boundary**, useful to replace an exact word without touching those containing it."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import re",
+          "print(re.findall(r'\\w+', 'hola, mundo!'))",
+          "print(re.sub(r'\\bsol\\b', '***', 'el sol y los soles'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "['hola', 'mundo']",
+          "el *** y los soles"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`re.escape(text)` protects you if the word to search could contain regex special characters."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m67l2e1",
+      "prompt": {
+        "es": "Define `palabras(texto)` que devuelva la lista de palabras (secuencias de \\w+).",
+        "en": "Define `palabras(texto)` returning the list of words (sequences of \\w+)."
+      },
+      "starter_code": [
+        "import re",
+        "",
+        "def palabras(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "import re",
+        "",
+        "def palabras(texto):",
+        "    return re.findall(r'\\w+', texto)"
+      ],
+      "hints": {
+        "es": [
+          "re.findall(r'\\w+', texto)."
+        ],
+        "en": [
+          "re.findall(r'\\w+', texto)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "palabras",
+          "cases": [
+            {
+              "args": [
+                "hola, mundo!"
+              ],
+              "expected": [
+                "hola",
+                "mundo"
+              ]
+            },
+            {
+              "args": [
+                "a1 b2 c3"
+              ],
+              "expected": [
+                "a1",
+                "b2",
+                "c3"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m67l2e2",
+      "prompt": {
+        "es": "Define `censurar(texto, palabra)` que reemplace la palabra exacta por '***', sin distinguir mayúsculas (usa \\b y IGNORECASE).",
+        "en": "Define `censurar(texto, palabra)` replacing the exact word with '***', case-insensitive (use \\b and IGNORECASE)."
+      },
+      "starter_code": [
+        "import re",
+        "",
+        "def censurar(texto, palabra):",
+        "    pass"
+      ],
+      "solution": [
+        "import re",
+        "",
+        "def censurar(texto, palabra):",
+        "    return re.sub(r'\\b' + re.escape(palabra) + r'\\b', '***', texto, flags=re.IGNORECASE)"
+      ],
+      "hints": {
+        "es": [
+          "Construye el patrón con \\b...\\b y pasa flags=re.IGNORECASE."
+        ],
+        "en": [
+          "Build the pattern with \\b...\\b and pass flags=re.IGNORECASE."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "censurar",
+          "cases": [
+            {
+              "args": [
+                "di la PALABRA ya",
+                "palabra"
+              ],
+              "expected": "di la *** ya"
+            },
+            {
+              "args": [
+                "sol y soles",
+                "sol"
+              ],
+              "expected": "*** y soles"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

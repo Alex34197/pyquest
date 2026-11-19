@@ -1,0 +1,179 @@
+{
+  "id": "m18l2",
+  "title": {
+    "es": "base64: binario como texto",
+    "en": "base64: binary as text"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Transportar datos, no cifrarlos"
+      },
+      {
+        "type": "text",
+        "value": "**base64** representa bytes usando solo caracteres imprimibles. Se usa para meter datos binarios en sitios pensados para texto (correos, JSON, URLs). **No cifra nada**: cualquiera puede decodificarlo."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import base64",
+          "b = base64.b64encode('hola'.encode())",
+          "print(b.decode())",
+          "print(base64.b64decode(b).decode())"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "aG9sYQ==",
+          "hola"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`b64encode` recibe bytes y devuelve bytes; por eso se suele `.encode()` antes y `.decode()` después para trabajar con texto."
+      },
+      {
+        "type": "note",
+        "value": "Si ves base64, NO asumas que está protegido: es codificación, no seguridad."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Transport data, don't encrypt it"
+      },
+      {
+        "type": "text",
+        "value": "**base64** represents bytes using only printable characters. Used to put binary data where text is expected (emails, JSON, URLs). It **doesn't encrypt**: anyone can decode it."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import base64",
+          "b = base64.b64encode('hola'.encode())",
+          "print(b.decode())",
+          "print(base64.b64decode(b).decode())"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "aG9sYQ==",
+          "hola"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`b64encode` takes bytes and returns bytes; that's why you `.encode()` before and `.decode()` after to work with text."
+      },
+      {
+        "type": "note",
+        "value": "If you see base64, do NOT assume it's protected: it's encoding, not security."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m18l2e1",
+      "prompt": {
+        "es": "Define `a_base64(texto)` que devuelva el texto en base64 (como str).",
+        "en": "Define `a_base64(texto)` returning the text in base64 (as str)."
+      },
+      "starter_code": [
+        "import base64",
+        "",
+        "def a_base64(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "import base64",
+        "",
+        "def a_base64(texto):",
+        "    return base64.b64encode(texto.encode()).decode()"
+      ],
+      "hints": {
+        "es": [
+          "encode -> b64encode -> decode."
+        ],
+        "en": [
+          "encode -> b64encode -> decode."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "a_base64",
+          "cases": [
+            {
+              "args": [
+                "hola"
+              ],
+              "expected": "aG9sYQ=="
+            },
+            {
+              "args": [
+                "abc"
+              ],
+              "expected": "YWJj"
+            },
+            {
+              "args": [
+                "man"
+              ],
+              "expected": "bWFu"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m18l2e2",
+      "prompt": {
+        "es": "Define `desde_base64(s)` que reciba base64 (str) y devuelva el texto original.",
+        "en": "Define `desde_base64(s)` taking base64 (str) and returning the original text."
+      },
+      "starter_code": [
+        "import base64",
+        "",
+        "def desde_base64(s):",
+        "    pass"
+      ],
+      "solution": [
+        "import base64",
+        "",
+        "def desde_base64(s):",
+        "    return base64.b64decode(s).decode()"
+      ],
+      "hints": {
+        "es": [
+          "b64decode devuelve bytes; usa .decode()."
+        ],
+        "en": [
+          "b64decode returns bytes; use .decode()."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "desde_base64",
+          "cases": [
+            {
+              "args": [
+                "aG9sYQ=="
+              ],
+              "expected": "hola"
+            },
+            {
+              "args": [
+                "YWJj"
+              ],
+              "expected": "abc"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

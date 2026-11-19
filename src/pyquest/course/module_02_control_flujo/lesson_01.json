@@ -1,0 +1,306 @@
+{
+  "id": "m2l1",
+  "title": {
+    "es": "Condicionales: if / elif / else",
+    "en": "Conditionals: if / elif / else"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Tomar decisiones"
+      },
+      {
+        "type": "text",
+        "value": "Un programa interesante reacciona a los datos. Para eso usamos condicionales: ejecutan un bloque **solo si** se cumple una condición."
+      },
+      {
+        "type": "heading",
+        "value": "Comparaciones y booleanos"
+      },
+      {
+        "type": "text",
+        "value": "Una condición es una expresión que vale `True` o `False`. Los operadores de comparación son: `==` (igual), `!=` (distinto), `<`, `>`, `<=`, `>=`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "print(5 > 3)",
+          "print(5 == 3)",
+          "print('hola' != 'adios')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "True",
+          "False",
+          "True"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Ojo: `=` asigna una variable, `==` compara. Confundirlos es un error clásico."
+      },
+      {
+        "type": "heading",
+        "value": "if, elif, else"
+      },
+      {
+        "type": "text",
+        "value": "`if` ejecuta su bloque si la condición es verdadera. `elif` (else if) prueba otra condición si la anterior falló. `else` recoge todos los demás casos. El bloque de cada uno va indentado."
+      },
+      {
+        "type": "code",
+        "value": [
+          "nota = 7",
+          "if nota >= 9:",
+          "    print('sobresaliente')",
+          "elif nota >= 5:",
+          "    print('aprobado')",
+          "else:",
+          "    print('suspenso')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "aprobado"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Operadores lógicos"
+      },
+      {
+        "type": "text",
+        "value": "Puedes combinar condiciones con `and` (ambas), `or` (al menos una) y `not` (negar)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "edad = 20",
+          "if edad >= 18 and edad < 65:",
+          "    print('en edad laboral')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "en edad laboral"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Cuando hay varias condiciones, Python las evalúa de izquierda a derecha y se detiene en cuanto sabe el resultado (evaluación perezosa)."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Making decisions"
+      },
+      {
+        "type": "text",
+        "value": "An interesting program reacts to data. For that we use conditionals: they run a block **only if** a condition holds."
+      },
+      {
+        "type": "heading",
+        "value": "Comparisons and booleans"
+      },
+      {
+        "type": "text",
+        "value": "A condition is an expression that is `True` or `False`. The comparison operators are: `==` (equal), `!=` (not equal), `<`, `>`, `<=`, `>=`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "print(5 > 3)",
+          "print(5 == 3)",
+          "print('hi' != 'bye')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "True",
+          "False",
+          "True"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Careful: `=` assigns a variable, `==` compares. Mixing them up is a classic mistake."
+      },
+      {
+        "type": "heading",
+        "value": "if, elif, else"
+      },
+      {
+        "type": "text",
+        "value": "`if` runs its block if the condition is true. `elif` (else if) tests another condition if the previous one failed. `else` catches every other case. Each block is indented."
+      },
+      {
+        "type": "code",
+        "value": [
+          "grade = 7",
+          "if grade >= 9:",
+          "    print('excellent')",
+          "elif grade >= 5:",
+          "    print('pass')",
+          "else:",
+          "    print('fail')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "pass"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Logical operators"
+      },
+      {
+        "type": "text",
+        "value": "You can combine conditions with `and` (both), `or` (at least one) and `not` (negate)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "age = 20",
+          "if age >= 18 and age < 65:",
+          "    print('working age')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "working age"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "With several conditions, Python evaluates left to right and stops as soon as it knows the result (short-circuit evaluation)."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m2l1e1",
+      "prompt": {
+        "es": "Define `signo(n)` que devuelva `1` si `n` es positivo, `-1` si es negativo y `0` si es cero.",
+        "en": "Define `signo(n)` that returns `1` if `n` is positive, `-1` if negative and `0` if zero."
+      },
+      "starter_code": [
+        "def signo(n):",
+        "    pass"
+      ],
+      "solution": [
+        "def signo(n):",
+        "    if n > 0:",
+        "        return 1",
+        "    elif n < 0:",
+        "        return -1",
+        "    else:",
+        "        return 0"
+      ],
+      "hints": {
+        "es": [
+          "Tres casos: mayor que 0, menor que 0, y el resto.",
+          "Usa if / elif / else con return en cada uno."
+        ],
+        "en": [
+          "Three cases: greater than 0, less than 0, and the rest.",
+          "Use if / elif / else with a return in each."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "name": "signo",
+          "function": "signo",
+          "cases": [
+            {
+              "args": [
+                8
+              ],
+              "expected": 1
+            },
+            {
+              "args": [
+                -2
+              ],
+              "expected": -1
+            },
+            {
+              "args": [
+                0
+              ],
+              "expected": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m2l1e2",
+      "prompt": {
+        "es": "Define `es_bisiesto(anio)` que devuelva `True` si el año es bisiesto. Regla: divisible por 4, salvo los divisibles por 100 que no lo sean por 400.",
+        "en": "Define `es_bisiesto(anio)` returning `True` if the year is a leap year. Rule: divisible by 4, except those divisible by 100 unless also by 400."
+      },
+      "starter_code": [
+        "def es_bisiesto(anio):",
+        "    pass"
+      ],
+      "solution": [
+        "def es_bisiesto(anio):",
+        "    return anio % 4 == 0 and (anio % 100 != 0 or anio % 400 == 0)"
+      ],
+      "hints": {
+        "es": [
+          "Usa el módulo % para comprobar divisibilidad.",
+          "Combina con and / or: %4==0 y (%100!=0 o %400==0)."
+        ],
+        "en": [
+          "Use modulo % to check divisibility.",
+          "Combine with and / or: %4==0 and (%100!=0 or %400==0)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "name": "es_bisiesto",
+          "function": "es_bisiesto",
+          "cases": [
+            {
+              "args": [
+                2024
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                1900
+              ],
+              "expected": false
+            },
+            {
+              "args": [
+                2000
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                2023
+              ],
+              "expected": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

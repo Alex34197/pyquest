@@ -1,0 +1,151 @@
+{
+  "id": "m78l1",
+  "title": {
+    "es": "La cuenta bancaria",
+    "en": "The bank account"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Mini-proyecto: un banco con clases"
+      },
+      {
+        "type": "text",
+        "value": "Juntamos POO y excepciones en un pequeño banco. Una `Cuenta` guarda un saldo, permite `depositar` y `retirar`, y lanza una excepción propia si no hay saldo suficiente."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class SaldoInsuficiente(Exception):",
+          "    pass",
+          "",
+          "class Cuenta:",
+          "    def __init__(self, saldo=0):",
+          "        self.saldo = saldo",
+          "    def depositar(self, cantidad):",
+          "        self.saldo += cantidad"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Modelar el dominio con clases (Cuenta, Cliente, Movimiento) es la base de cualquier app real."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Mini-project: a bank with classes"
+      },
+      {
+        "type": "text",
+        "value": "We combine OOP and exceptions in a small bank. An account (`Cuenta`) holds a balance, allows `depositar` and `retirar`, and raises its own exception if there isn't enough balance."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class SaldoInsuficiente(Exception):",
+          "    pass",
+          "",
+          "class Cuenta:",
+          "    def __init__(self, saldo=0):",
+          "        self.saldo = saldo",
+          "    def depositar(self, cantidad):",
+          "        self.saldo += cantidad"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Modeling the domain with classes (Account, Customer, Transaction) is the basis of any real app."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m78l1e1",
+      "prompt": {
+        "es": "Define `SaldoInsuficiente(Exception)` y `Cuenta(saldo=0)` con `depositar(c)` y `retirar(c)` (lanza la excepción si c > saldo).",
+        "en": "Define `SaldoInsuficiente(Exception)` and `Cuenta(saldo=0)` with `depositar(c)` and `retirar(c)` (raises the exception if c > saldo)."
+      },
+      "starter_code": [
+        "class SaldoInsuficiente(Exception):",
+        "    pass",
+        "",
+        "class Cuenta:",
+        "    def __init__(self, saldo=0):",
+        "        self.saldo = saldo",
+        "    # completa depositar y retirar"
+      ],
+      "solution": [
+        "class SaldoInsuficiente(Exception):",
+        "    pass",
+        "",
+        "class Cuenta:",
+        "    def __init__(self, saldo=0):",
+        "        self.saldo = saldo",
+        "    def depositar(self, cantidad):",
+        "        self.saldo += cantidad",
+        "    def retirar(self, cantidad):",
+        "        if cantidad > self.saldo:",
+        "            raise SaldoInsuficiente('no hay suficiente')",
+        "        self.saldo -= cantidad"
+      ],
+      "hints": {
+        "es": [
+          "retirar comprueba cantidad > self.saldo y lanza SaldoInsuficiente."
+        ],
+        "en": [
+          "retirar checks cantidad > self.saldo and raises SaldoInsuficiente."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Cuenta",
+          "harness": "c = Cuenta(100)\nc.depositar(50)\nassert c.saldo == 150\nc.retirar(30)\nassert c.saldo == 120\nerr = False\ntry:\n    c.retirar(1000)\nexcept SaldoInsuficiente:\n    err = True\nassert err is True"
+        }
+      ]
+    },
+    {
+      "id": "m78l1e2",
+      "prompt": {
+        "es": "Amplía `Cuenta` con una lista `movimientos` que registre ('deposito', c) y ('retiro', c) en cada operación.",
+        "en": "Extend `Cuenta` with a `movimientos` list recording ('deposito', c) and ('retiro', c) on each operation."
+      },
+      "starter_code": [
+        "class Cuenta:",
+        "    def __init__(self, saldo=0):",
+        "        self.saldo = saldo",
+        "        self.movimientos = []",
+        "    # completa depositar y retirar registrando el movimiento"
+      ],
+      "solution": [
+        "class Cuenta:",
+        "    def __init__(self, saldo=0):",
+        "        self.saldo = saldo",
+        "        self.movimientos = []",
+        "    def depositar(self, cantidad):",
+        "        self.saldo += cantidad",
+        "        self.movimientos.append(('deposito', cantidad))",
+        "    def retirar(self, cantidad):",
+        "        self.saldo -= cantidad",
+        "        self.movimientos.append(('retiro', cantidad))"
+      ],
+      "hints": {
+        "es": [
+          "Tras cambiar el saldo, añade la tupla a self.movimientos."
+        ],
+        "en": [
+          "After changing the balance, append the tuple to self.movimientos."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Cuenta",
+          "harness": "c = Cuenta()\nc.depositar(10)\nc.retirar(5)\nassert c.saldo == 5\nassert c.movimientos == [('deposito', 10), ('retiro', 5)]"
+        }
+      ]
+    }
+  ]
+}

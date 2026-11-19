@@ -1,0 +1,169 @@
+{
+  "id": "m21l2",
+  "title": {
+    "es": "contextlib.contextmanager",
+    "en": "contextlib.contextmanager"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Un context manager con un generador"
+      },
+      {
+        "type": "text",
+        "value": "Escribir una clase entera es mucho para casos sencillos. Con `@contextmanager` conviertes un **generador** en context manager: lo que va antes de `yield` es la preparación y lo que va después, la limpieza."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from contextlib import contextmanager",
+          "",
+          "@contextmanager",
+          "def etiqueta(nombre):",
+          "    print(f'<{nombre}>')",
+          "    yield",
+          "    print(f'</{nombre}>')",
+          "",
+          "with etiqueta('p'):",
+          "    print('hola')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "<p>",
+          "hola",
+          "</p>"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "El `yield` puede entregar un valor (se recibe con `as`). Todo lo posterior al `yield` se ejecuta al salir del bloque."
+      },
+      {
+        "type": "note",
+        "value": "Para recursos sencillos, `@contextmanager` es más corto y legible que una clase con __enter__/__exit__."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "A context manager from a generator"
+      },
+      {
+        "type": "text",
+        "value": "Writing a whole class is a lot for simple cases. With `@contextmanager` you turn a **generator** into a context manager: code before `yield` is setup, code after it is cleanup."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from contextlib import contextmanager",
+          "",
+          "@contextmanager",
+          "def etiqueta(nombre):",
+          "    print(f'<{nombre}>')",
+          "    yield",
+          "    print(f'</{nombre}>')",
+          "",
+          "with etiqueta('p'):",
+          "    print('hola')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "<p>",
+          "hola",
+          "</p>"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "The `yield` can hand out a value (received with `as`). Everything after `yield` runs on leaving the block."
+      },
+      {
+        "type": "note",
+        "value": "For simple resources, `@contextmanager` is shorter and clearer than a class with __enter__/__exit__."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m21l2e1",
+      "prompt": {
+        "es": "Crea con `@contextmanager` un gestor `etiqueta(nombre)` que imprima `<nombre>` al entrar y `</nombre>` al salir.",
+        "en": "Using `@contextmanager`, create a manager `etiqueta(nombre)` that prints `<nombre>` on entry and `</nombre>` on exit."
+      },
+      "starter_code": [
+        "from contextlib import contextmanager",
+        "",
+        "@contextmanager",
+        "def etiqueta(nombre):",
+        "    pass"
+      ],
+      "solution": [
+        "from contextlib import contextmanager",
+        "",
+        "@contextmanager",
+        "def etiqueta(nombre):",
+        "    print(f'<{nombre}>')",
+        "    yield",
+        "    print(f'</{nombre}>')"
+      ],
+      "hints": {
+        "es": [
+          "print de apertura, luego yield, luego print de cierre."
+        ],
+        "en": [
+          "opening print, then yield, then closing print."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "etiqueta",
+          "harness": "import io, contextlib\nbuf = io.StringIO()\nwith contextlib.redirect_stdout(buf):\n    with etiqueta('p'):\n        print('hola')\nassert buf.getvalue() == '<p>\\nhola\\n</p>\\n'"
+        }
+      ]
+    },
+    {
+      "id": "m21l2e2",
+      "prompt": {
+        "es": "Crea con `@contextmanager` un gestor `gestor()` que entregue una lista vacía y, al salir, le añada la cadena 'fin'.",
+        "en": "Using `@contextmanager`, create a manager `gestor()` that yields an empty list and, on exit, appends the string 'fin'."
+      },
+      "starter_code": [
+        "from contextlib import contextmanager",
+        "",
+        "@contextmanager",
+        "def gestor():",
+        "    pass"
+      ],
+      "solution": [
+        "from contextlib import contextmanager",
+        "",
+        "@contextmanager",
+        "def gestor():",
+        "    datos = []",
+        "    yield datos",
+        "    datos.append('fin')"
+      ],
+      "hints": {
+        "es": [
+          "yield la lista; tras el yield, haz append('fin')."
+        ],
+        "en": [
+          "yield the list; after yield, append('fin')."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "gestor",
+          "harness": "with gestor() as L:\n    L.append('a')\nassert L == ['a', 'fin']"
+        }
+      ]
+    }
+  ]
+}

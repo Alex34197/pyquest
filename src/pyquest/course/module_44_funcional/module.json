@@ -1,0 +1,16 @@
+{
+  "id": "m44",
+  "order": 44,
+  "title": {
+    "es": "Programación funcional",
+    "en": "Functional programming"
+  },
+  "summary": {
+    "es": "Closures con nonlocal, functools.partial, composición y reduce.",
+    "en": "Closures with nonlocal, functools.partial, composition and reduce."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "m78",
+  "order": 78,
+  "title": {
+    "es": "Proyecto: mini-banco",
+    "en": "Project: mini-bank"
+  },
+  "summary": {
+    "es": "Mini-proyecto POO + excepciones: Cuenta, movimientos, transferencias y totales.",
+    "en": "OOP + exceptions mini-project: Account, transactions, transfers and totals."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

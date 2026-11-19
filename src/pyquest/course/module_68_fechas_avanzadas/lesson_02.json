@@ -1,0 +1,158 @@
+{
+  "id": "m68l2",
+  "title": {
+    "es": "Zonas horarias",
+    "en": "Time zones"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Fechas conscientes de su zona"
+      },
+      {
+        "type": "text",
+        "value": "Una fecha 'consciente' lleva su zona horaria. `timezone(timedelta(hours=2))` crea una zona con un desfase fijo respecto a UTC. `astimezone` convierte una fecha de una zona a otra."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from datetime import datetime, timezone, timedelta",
+          "dt = datetime(2024, 1, 1, 12, tzinfo=timezone.utc)",
+          "print(dt.astimezone(timezone(timedelta(hours=2))).hour)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "14"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Para zonas con nombre (y horario de verano) está `zoneinfo`, pero necesita la base de datos de zonas instalada."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Timezone-aware dates"
+      },
+      {
+        "type": "text",
+        "value": "An 'aware' date carries its timezone. `timezone(timedelta(hours=2))` creates a zone with a fixed offset from UTC. `astimezone` converts a date from one zone to another."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from datetime import datetime, timezone, timedelta",
+          "dt = datetime(2024, 1, 1, 12, tzinfo=timezone.utc)",
+          "print(dt.astimezone(timezone(timedelta(hours=2))).hour)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "14"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "For named zones (with daylight saving) there's `zoneinfo`, but it needs the timezone database installed."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m68l2e1",
+      "prompt": {
+        "es": "Define `crear_zona(horas)` que devuelva una zona horaria con un desfase de `horas` respecto a UTC.",
+        "en": "Define `crear_zona(horas)` returning a timezone with an offset of `horas` from UTC."
+      },
+      "starter_code": [
+        "from datetime import timezone, timedelta",
+        "",
+        "def crear_zona(horas):",
+        "    pass"
+      ],
+      "solution": [
+        "from datetime import timezone, timedelta",
+        "",
+        "def crear_zona(horas):",
+        "    return timezone(timedelta(hours=horas))"
+      ],
+      "hints": {
+        "es": [
+          "timezone(timedelta(hours=horas))."
+        ],
+        "en": [
+          "timezone(timedelta(hours=horas))."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "crear_zona",
+          "harness": "from datetime import timedelta\nassert crear_zona(2).utcoffset(None) == timedelta(hours=2)\nassert crear_zona(-5).utcoffset(None) == timedelta(hours=-5)"
+        }
+      ]
+    },
+    {
+      "id": "m68l2e2",
+      "prompt": {
+        "es": "Define `hora_local(hora_utc, desfase)` que, dada una hora UTC (0-23), devuelva la hora en una zona con ese desfase.",
+        "en": "Define `hora_local(hora_utc, desfase)` that, given a UTC hour (0-23), returns the hour in a zone with that offset."
+      },
+      "starter_code": [
+        "from datetime import datetime, timezone, timedelta",
+        "",
+        "def hora_local(hora_utc, desfase):",
+        "    pass"
+      ],
+      "solution": [
+        "from datetime import datetime, timezone, timedelta",
+        "",
+        "def hora_local(hora_utc, desfase):",
+        "    dt = datetime(2024, 1, 1, hora_utc, tzinfo=timezone.utc)",
+        "    return dt.astimezone(timezone(timedelta(hours=desfase))).hour"
+      ],
+      "hints": {
+        "es": [
+          "Crea un datetime UTC y conviértelo con astimezone."
+        ],
+        "en": [
+          "Create a UTC datetime and convert it with astimezone."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "hora_local",
+          "cases": [
+            {
+              "args": [
+                12,
+                2
+              ],
+              "expected": 14
+            },
+            {
+              "args": [
+                23,
+                3
+              ],
+              "expected": 2
+            },
+            {
+              "args": [
+                1,
+                -2
+              ],
+              "expected": 23
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

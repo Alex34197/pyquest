@@ -1,0 +1,127 @@
+{
+  "id": "m46l1",
+  "title": {
+    "es": "Árboles binarios y recorridos",
+    "en": "Binary trees and traversals"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Una estructura jerárquica"
+      },
+      {
+        "type": "text",
+        "value": "Un **árbol binario** tiene un valor y dos hijos (izquierdo y derecho), que a su vez son árboles o `None`. Lo representamos con diccionarios `{'v': ..., 'izq': ..., 'der': ...}`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "arbol = {'v': 2,",
+          "         'izq': {'v': 1, 'izq': None, 'der': None},",
+          "         'der': {'v': 3, 'izq': None, 'der': None}}"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "El recorrido **inorden** (izquierda, raíz, derecha) de un árbol de búsqueda devuelve los valores ordenados."
+      },
+      {
+        "type": "note",
+        "value": "Los recorridos se escriben de forma natural con recursión sobre 'izq' y 'der'."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "A hierarchical structure"
+      },
+      {
+        "type": "text",
+        "value": "A **binary tree** has a value and two children (left and right), which are themselves trees or `None`. We represent it with dicts `{'v': ..., 'izq': ..., 'der': ...}`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "arbol = {'v': 2,",
+          "         'izq': {'v': 1, 'izq': None, 'der': None},",
+          "         'der': {'v': 3, 'izq': None, 'der': None}}"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "The **inorder** traversal (left, root, right) of a search tree returns the values in sorted order."
+      },
+      {
+        "type": "note",
+        "value": "Traversals are written naturally with recursion over 'izq' and 'der'."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m46l1e1",
+      "prompt": {
+        "es": "Define `inorden(arbol)` que devuelva la lista de valores en orden izquierda-raíz-derecha (None -> []).",
+        "en": "Define `inorden(arbol)` returning the values left-root-right (None -> [])."
+      },
+      "starter_code": [
+        "def inorden(arbol):",
+        "    pass"
+      ],
+      "solution": [
+        "def inorden(arbol):",
+        "    if arbol is None:",
+        "        return []",
+        "    return inorden(arbol['izq']) + [arbol['v']] + inorden(arbol['der'])"
+      ],
+      "hints": {
+        "es": [
+          "Caso base None -> []; si no, izq + [valor] + der."
+        ],
+        "en": [
+          "Base case None -> []; else izq + [value] + der."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "inorden",
+          "harness": "A = {'v': 2, 'izq': {'v': 1, 'izq': None, 'der': None}, 'der': {'v': 3, 'izq': None, 'der': None}}\nassert inorden(A) == [1, 2, 3]\nassert inorden(None) == []"
+        }
+      ]
+    },
+    {
+      "id": "m46l1e2",
+      "prompt": {
+        "es": "Define `altura(arbol)` que devuelva la altura (None -> 0; una hoja -> 1).",
+        "en": "Define `altura(arbol)` returning the height (None -> 0; a leaf -> 1)."
+      },
+      "starter_code": [
+        "def altura(arbol):",
+        "    pass"
+      ],
+      "solution": [
+        "def altura(arbol):",
+        "    if arbol is None:",
+        "        return 0",
+        "    return 1 + max(altura(arbol['izq']), altura(arbol['der']))"
+      ],
+      "hints": {
+        "es": [
+          "1 + el máximo de las alturas de los dos hijos."
+        ],
+        "en": [
+          "1 + the max of the two children's heights."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "altura",
+          "harness": "A = {'v': 2, 'izq': {'v': 1, 'izq': None, 'der': None}, 'der': {'v': 3, 'izq': None, 'der': None}}\nassert altura(A) == 2\nassert altura(None) == 0\nassert altura({'v': 5, 'izq': None, 'der': None}) == 1"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "id": "m27l2",
+  "title": {
+    "es": "Consultas: filtrar y ordenar",
+    "en": "Queries: filter and order"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "WHERE y ORDER BY"
+      },
+      {
+        "type": "text",
+        "value": "`WHERE` filtra filas por una condición y `ORDER BY` las ordena. Son la base de cualquier consulta."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import sqlite3",
+          "con = sqlite3.connect(':memory:')",
+          "con.execute('CREATE TABLE t(n INTEGER)')",
+          "con.executemany('INSERT INTO t VALUES (?)', [(5,), (1,), (9,)])",
+          "print([r[0] for r in con.execute('SELECT n FROM t ORDER BY n')])"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[1, 5, 9]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Recorrer el cursor con un for da las filas una a una, cada una como tupla."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "WHERE and ORDER BY"
+      },
+      {
+        "type": "text",
+        "value": "`WHERE` filters rows by a condition and `ORDER BY` sorts them. They're the basis of any query."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import sqlite3",
+          "con = sqlite3.connect(':memory:')",
+          "con.execute('CREATE TABLE t(n INTEGER)')",
+          "con.executemany('INSERT INTO t VALUES (?)', [(5,), (1,), (9,)])",
+          "print([r[0] for r in con.execute('SELECT n FROM t ORDER BY n')])"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[1, 5, 9]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Iterating the cursor with a for yields rows one by one, each as a tuple."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m27l2e1",
+      "prompt": {
+        "es": "Define `mayores_que(valores, umbral)` que devuelva cuántos valores superan `umbral` (usa WHERE).",
+        "en": "Define `mayores_que(valores, umbral)` returning how many values exceed `umbral` (use WHERE)."
+      },
+      "starter_code": [
+        "import sqlite3",
+        "",
+        "def mayores_que(valores, umbral):",
+        "    pass"
+      ],
+      "solution": [
+        "import sqlite3",
+        "",
+        "def mayores_que(valores, umbral):",
+        "    con = sqlite3.connect(':memory:')",
+        "    con.execute('CREATE TABLE t(n INTEGER)')",
+        "    con.executemany('INSERT INTO t VALUES (?)', [(v,) for v in valores])",
+        "    return con.execute('SELECT COUNT(*) FROM t WHERE n > ?', (umbral,)).fetchone()[0]"
+      ],
+      "hints": {
+        "es": [
+          "WHERE n > ? con parámetro."
+        ],
+        "en": [
+          "WHERE n > ? with a parameter."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "mayores_que",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  5,
+                  10
+                ],
+                4
+              ],
+              "expected": 2
+            },
+            {
+              "args": [
+                [
+                  1,
+                  2,
+                  3
+                ],
+                9
+              ],
+              "expected": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m27l2e2",
+      "prompt": {
+        "es": "Define `ordenados(valores)` que devuelva la lista ordenada de menor a mayor usando SQL (ORDER BY).",
+        "en": "Define `ordenados(valores)` returning the list sorted ascending using SQL (ORDER BY)."
+      },
+      "starter_code": [
+        "import sqlite3",
+        "",
+        "def ordenados(valores):",
+        "    pass"
+      ],
+      "solution": [
+        "import sqlite3",
+        "",
+        "def ordenados(valores):",
+        "    con = sqlite3.connect(':memory:')",
+        "    con.execute('CREATE TABLE t(n INTEGER)')",
+        "    con.executemany('INSERT INTO t VALUES (?)', [(v,) for v in valores])",
+        "    return [r[0] for r in con.execute('SELECT n FROM t ORDER BY n')]"
+      ],
+      "hints": {
+        "es": [
+          "Recorre el cursor de SELECT ... ORDER BY n."
+        ],
+        "en": [
+          "Iterate the SELECT ... ORDER BY n cursor."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "ordenados",
+          "cases": [
+            {
+              "args": [
+                [
+                  3,
+                  1,
+                  2
+                ]
+              ],
+              "expected": [
+                1,
+                2,
+                3
+              ]
+            },
+            {
+              "args": [
+                [
+                  9
+                ]
+              ],
+              "expected": [
+                9
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

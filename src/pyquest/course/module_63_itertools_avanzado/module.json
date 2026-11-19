@@ -1,0 +1,16 @@
+{
+  "id": "m63",
+  "order": 63,
+  "title": {
+    "es": "itertools avanzado",
+    "en": "Advanced itertools"
+  },
+  "summary": {
+    "es": "accumulate, product, groupby y takewhile.",
+    "en": "accumulate, product, groupby and takewhile."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

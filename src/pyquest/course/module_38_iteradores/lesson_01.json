@@ -1,0 +1,171 @@
+{
+  "id": "m38l1",
+  "title": {
+    "es": "El protocolo de iteración",
+    "en": "The iteration protocol"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Qué hace funcionar a un for"
+      },
+      {
+        "type": "text",
+        "value": "Un objeto es **iterable** si tiene `__iter__`, que devuelve un **iterador**. El iterador tiene `__next__`, que da el siguiente valor o lanza `StopIteration` cuando se acaba. El `for` usa esto por dentro."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Contador:",
+          "    def __init__(self, n):",
+          "        self.n = n",
+          "        self.i = 0",
+          "    def __iter__(self):",
+          "        return self",
+          "    def __next__(self):",
+          "        if self.i >= self.n:",
+          "            raise StopIteration",
+          "        self.i += 1",
+          "        return self.i",
+          "",
+          "print(list(Contador(3)))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[1, 2, 3]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Los generadores (con yield) son la forma fácil de crear iteradores sin escribir __iter__/__next__ a mano."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "What makes a for work"
+      },
+      {
+        "type": "text",
+        "value": "An object is **iterable** if it has `__iter__`, returning an **iterator**. The iterator has `__next__`, giving the next value or raising `StopIteration` when done. The `for` uses this under the hood."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Contador:",
+          "    def __init__(self, n):",
+          "        self.n = n",
+          "        self.i = 0",
+          "    def __iter__(self):",
+          "        return self",
+          "    def __next__(self):",
+          "        if self.i >= self.n:",
+          "            raise StopIteration",
+          "        self.i += 1",
+          "        return self.i",
+          "",
+          "print(list(Contador(3)))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[1, 2, 3]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Generators (with yield) are the easy way to create iterators without writing __iter__/__next__ by hand."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m38l1e1",
+      "prompt": {
+        "es": "Define un iterador `Contador(n)` que produzca 1, 2, ..., n (con __iter__ y __next__).",
+        "en": "Define an iterator `Contador(n)` producing 1, 2, ..., n (with __iter__ and __next__)."
+      },
+      "starter_code": [
+        "class Contador:",
+        "    def __init__(self, n):",
+        "        self.n = n",
+        "        self.i = 0",
+        "    # completa __iter__ y __next__"
+      ],
+      "solution": [
+        "class Contador:",
+        "    def __init__(self, n):",
+        "        self.n = n",
+        "        self.i = 0",
+        "    def __iter__(self):",
+        "        return self",
+        "    def __next__(self):",
+        "        if self.i >= self.n:",
+        "            raise StopIteration",
+        "        self.i += 1",
+        "        return self.i"
+      ],
+      "hints": {
+        "es": [
+          "__iter__ devuelve self; __next__ lanza StopIteration al final."
+        ],
+        "en": [
+          "__iter__ returns self; __next__ raises StopIteration at the end."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Contador",
+          "harness": "assert list(Contador(3)) == [1, 2, 3]\nassert list(Contador(0)) == []"
+        }
+      ]
+    },
+    {
+      "id": "m38l1e2",
+      "prompt": {
+        "es": "Define un iterador `Repetidor(valor, veces)` que produzca `valor` repetido `veces` veces.",
+        "en": "Define an iterator `Repetidor(valor, veces)` producing `valor` repeated `veces` times."
+      },
+      "starter_code": [
+        "class Repetidor:",
+        "    def __init__(self, valor, veces):",
+        "        self.valor = valor",
+        "        self.veces = veces",
+        "    # completa __iter__ y __next__"
+      ],
+      "solution": [
+        "class Repetidor:",
+        "    def __init__(self, valor, veces):",
+        "        self.valor = valor",
+        "        self.veces = veces",
+        "    def __iter__(self):",
+        "        return self",
+        "    def __next__(self):",
+        "        if self.veces <= 0:",
+        "            raise StopIteration",
+        "        self.veces -= 1",
+        "        return self.valor"
+      ],
+      "hints": {
+        "es": [
+          "Decrementa veces en cada __next__ y lanza StopIteration en 0."
+        ],
+        "en": [
+          "Decrement veces each __next__ and raise StopIteration at 0."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Repetidor",
+          "harness": "assert list(Repetidor('a', 3)) == ['a', 'a', 'a']\nassert list(Repetidor('x', 0)) == []"
+        }
+      ]
+    }
+  ]
+}

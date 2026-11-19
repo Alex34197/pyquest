@@ -1,0 +1,16 @@
+{
+  "id": "m61",
+  "order": 61,
+  "title": {
+    "es": "Búsqueda ordenada (bisect)",
+    "en": "Sorted search (bisect)"
+  },
+  "summary": {
+    "es": "bisect_left/right, insort y clasificación por intervalos.",
+    "en": "bisect_left/right, insort and interval classification."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

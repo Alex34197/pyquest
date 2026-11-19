@@ -1,0 +1,193 @@
+{
+  "id": "m28l2",
+  "title": {
+    "es": "Escribir CSV y columnas",
+    "en": "Writing CSV and columns"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Generar CSV y extraer columnas"
+      },
+      {
+        "type": "text",
+        "value": "`csv.writer` escribe filas. Fija `lineterminator='\\n'` para un salto de línea simple. Para sacar una columna, recoge el elemento `i` de cada fila."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import csv, io",
+          "buf = io.StringIO()",
+          "w = csv.writer(buf, lineterminator='\\n')",
+          "w.writerow(['a', 'b'])",
+          "w.writerow(['1', '2'])",
+          "print(buf.getvalue())"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "a,b",
+          "1,2"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Cada writerow añade una fila; getvalue() te da todo el texto generado."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Generating CSV and extracting columns"
+      },
+      {
+        "type": "text",
+        "value": "`csv.writer` writes rows. Set `lineterminator='\\n'` for a simple newline. To get a column, take element `i` from each row."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import csv, io",
+          "buf = io.StringIO()",
+          "w = csv.writer(buf, lineterminator='\\n')",
+          "w.writerow(['a', 'b'])",
+          "w.writerow(['1', '2'])",
+          "print(buf.getvalue())"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "a,b",
+          "1,2"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Each writerow adds a row; getvalue() gives you all the generated text."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m28l2e1",
+      "prompt": {
+        "es": "Define `escribir(filas)` que devuelva el texto CSV de una lista de filas (usa lineterminator='\\n').",
+        "en": "Define `escribir(filas)` returning the CSV text of a list of rows (use lineterminator='\\n')."
+      },
+      "starter_code": [
+        "import csv, io",
+        "",
+        "def escribir(filas):",
+        "    pass"
+      ],
+      "solution": [
+        "import csv, io",
+        "",
+        "def escribir(filas):",
+        "    buf = io.StringIO()",
+        "    w = csv.writer(buf, lineterminator='\\n')",
+        "    w.writerows(filas)",
+        "    return buf.getvalue()"
+      ],
+      "hints": {
+        "es": [
+          "writerows escribe todas las filas; devuelve buf.getvalue()."
+        ],
+        "en": [
+          "writerows writes all rows; return buf.getvalue()."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "escribir",
+          "cases": [
+            {
+              "args": [
+                [
+                  [
+                    "a",
+                    "b"
+                  ],
+                  [
+                    "1",
+                    "2"
+                  ]
+                ]
+              ],
+              "expected": "a,b\n1,2\n"
+            },
+            {
+              "args": [
+                [
+                  [
+                    "x"
+                  ]
+                ]
+              ],
+              "expected": "x\n"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m28l2e2",
+      "prompt": {
+        "es": "Define `columna(texto, i)` que devuelva la lista con el valor `i` de cada fila del CSV.",
+        "en": "Define `columna(texto, i)` returning the list with the `i`-th value of each CSV row."
+      },
+      "starter_code": [
+        "import csv, io",
+        "",
+        "def columna(texto, i):",
+        "    pass"
+      ],
+      "solution": [
+        "import csv, io",
+        "",
+        "def columna(texto, i):",
+        "    return [fila[i] for fila in csv.reader(io.StringIO(texto))]"
+      ],
+      "hints": {
+        "es": [
+          "Recorre las filas y coge fila[i]."
+        ],
+        "en": [
+          "Iterate rows and take fila[i]."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "columna",
+          "cases": [
+            {
+              "args": [
+                "a,b\nc,d",
+                0
+              ],
+              "expected": [
+                "a",
+                "c"
+              ]
+            },
+            {
+              "args": [
+                "a,b\nc,d",
+                1
+              ],
+              "expected": [
+                "b",
+                "d"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

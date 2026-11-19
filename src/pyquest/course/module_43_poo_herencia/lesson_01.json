@@ -1,0 +1,160 @@
+{
+  "id": "m43l1",
+  "title": {
+    "es": "Herencia y super()",
+    "en": "Inheritance and super()"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Reutilizar y extender clases"
+      },
+      {
+        "type": "text",
+        "value": "Una clase puede **heredar** de otra y reutilizar sus métodos, sobreescribiendo los que necesite. `super()` llama al método de la clase padre."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Animal:",
+          "    def sonido(self):",
+          "        return 'generico'",
+          "",
+          "class Perro(Animal):",
+          "    def sonido(self):",
+          "        return 'guau'",
+          "",
+          "print(Animal().sonido(), Perro().sonido())",
+          "print(isinstance(Perro(), Animal))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "generico guau",
+          "True"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`isinstance(obj, Clase)` es True también para subclases: un Perro es un Animal."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Reusing and extending classes"
+      },
+      {
+        "type": "text",
+        "value": "A class can **inherit** from another and reuse its methods, overriding the ones it needs. `super()` calls the parent's method."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Animal:",
+          "    def sonido(self):",
+          "        return 'generico'",
+          "",
+          "class Perro(Animal):",
+          "    def sonido(self):",
+          "        return 'guau'",
+          "",
+          "print(Animal().sonido(), Perro().sonido())",
+          "print(isinstance(Perro(), Animal))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "generico guau",
+          "True"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`isinstance(obj, Class)` is True for subclasses too: a Perro is an Animal."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m43l1e1",
+      "prompt": {
+        "es": "Define `Animal` con `sonido()` que devuelva 'generico', y `Gato(Animal)` que lo sobreescriba devolviendo 'miau'.",
+        "en": "Define `Animal` with `sonido()` returning 'generico', and `Gato(Animal)` overriding it to return 'miau'."
+      },
+      "starter_code": [
+        "class Animal:",
+        "    def sonido(self):",
+        "        return 'generico'",
+        "",
+        "# define Gato(Animal)"
+      ],
+      "solution": [
+        "class Animal:",
+        "    def sonido(self):",
+        "        return 'generico'",
+        "",
+        "class Gato(Animal):",
+        "    def sonido(self):",
+        "        return 'miau'"
+      ],
+      "hints": {
+        "es": [
+          "Gato hereda de Animal y redefine sonido()."
+        ],
+        "en": [
+          "Gato inherits from Animal and redefines sonido()."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Gato",
+          "harness": "assert Animal().sonido() == 'generico'\nassert Gato().sonido() == 'miau'\nassert isinstance(Gato(), Animal) is True"
+        }
+      ]
+    },
+    {
+      "id": "m43l1e2",
+      "prompt": {
+        "es": "Define `Base(x)` que guarde self.x, y `Derivada(x, y)` que con `super().__init__(x)` herede x y añada self.y.",
+        "en": "Define `Base(x)` storing self.x, and `Derivada(x, y)` that uses `super().__init__(x)` to inherit x and add self.y."
+      },
+      "starter_code": [
+        "class Base:",
+        "    def __init__(self, x):",
+        "        self.x = x",
+        "",
+        "# define Derivada(Base)"
+      ],
+      "solution": [
+        "class Base:",
+        "    def __init__(self, x):",
+        "        self.x = x",
+        "",
+        "class Derivada(Base):",
+        "    def __init__(self, x, y):",
+        "        super().__init__(x)",
+        "        self.y = y"
+      ],
+      "hints": {
+        "es": [
+          "Llama a super().__init__(x) y luego asigna self.y."
+        ],
+        "en": [
+          "Call super().__init__(x) then set self.y."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Derivada",
+          "harness": "d = Derivada(1, 2)\nassert d.x == 1 and d.y == 2"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,213 @@
+{
+  "id": "m40l2",
+  "title": {
+    "es": "Quicksort y selección",
+    "en": "Quicksort and selection"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Particionar alrededor de un pivote"
+      },
+      {
+        "type": "text",
+        "value": "**Quicksort** elige un **pivote** y separa los elementos menores y mayores que él; luego ordena cada grupo recursivamente. En promedio es O(n log n)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def quicksort(lista):",
+          "    if len(lista) <= 1:",
+          "        return list(lista)",
+          "    p = lista[0]",
+          "    menores = [x for x in lista[1:] if x < p]",
+          "    mayores = [x for x in lista[1:] if x >= p]",
+          "    return quicksort(menores) + [p] + quicksort(mayores)",
+          "",
+          "print(quicksort([3, 1, 2]))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[1, 2, 3]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Para encontrar el k-ésimo menor sin ordenar del todo existe 'quickselect', una variante de esta idea."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Partition around a pivot"
+      },
+      {
+        "type": "text",
+        "value": "**Quicksort** picks a **pivot** and separates elements smaller and larger than it; then it sorts each group recursively. On average it's O(n log n)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def quicksort(lista):",
+          "    if len(lista) <= 1:",
+          "        return list(lista)",
+          "    p = lista[0]",
+          "    menores = [x for x in lista[1:] if x < p]",
+          "    mayores = [x for x in lista[1:] if x >= p]",
+          "    return quicksort(menores) + [p] + quicksort(mayores)",
+          "",
+          "print(quicksort([3, 1, 2]))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[1, 2, 3]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "To find the k-th smallest without fully sorting there's 'quickselect', a variant of this idea."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m40l2e1",
+      "prompt": {
+        "es": "Define `quicksort(lista)` de forma recursiva (pivote + menores/mayores).",
+        "en": "Define `quicksort(lista)` recursively (pivot + smaller/larger)."
+      },
+      "starter_code": [
+        "def quicksort(lista):",
+        "    pass"
+      ],
+      "solution": [
+        "def quicksort(lista):",
+        "    if len(lista) <= 1:",
+        "        return list(lista)",
+        "    p = lista[0]",
+        "    menores = [x for x in lista[1:] if x < p]",
+        "    mayores = [x for x in lista[1:] if x >= p]",
+        "    return quicksort(menores) + [p] + quicksort(mayores)"
+      ],
+      "hints": {
+        "es": [
+          "Pivote = primer elemento; comprensiones para menores y mayores."
+        ],
+        "en": [
+          "Pivot = first element; comprehensions for smaller and larger."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "quicksort",
+          "cases": [
+            {
+              "args": [
+                [
+                  3,
+                  1,
+                  2
+                ]
+              ],
+              "expected": [
+                1,
+                2,
+                3
+              ]
+            },
+            {
+              "args": [
+                []
+              ],
+              "expected": []
+            },
+            {
+              "args": [
+                [
+                  2,
+                  2,
+                  1
+                ]
+              ],
+              "expected": [
+                1,
+                2,
+                2
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m40l2e2",
+      "prompt": {
+        "es": "Define `kesimo_menor(lista, k)` que devuelva el k-ésimo valor más pequeño (1-based).",
+        "en": "Define `kesimo_menor(lista, k)` returning the k-th smallest value (1-based)."
+      },
+      "starter_code": [
+        "def kesimo_menor(lista, k):",
+        "    pass"
+      ],
+      "solution": [
+        "def kesimo_menor(lista, k):",
+        "    return sorted(lista)[k - 1]"
+      ],
+      "hints": {
+        "es": [
+          "Ordena y coge el índice k-1."
+        ],
+        "en": [
+          "Sort and take index k-1."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "kesimo_menor",
+          "cases": [
+            {
+              "args": [
+                [
+                  3,
+                  1,
+                  2
+                ],
+                1
+              ],
+              "expected": 1
+            },
+            {
+              "args": [
+                [
+                  3,
+                  1,
+                  2
+                ],
+                2
+              ],
+              "expected": 2
+            },
+            {
+              "args": [
+                [
+                  5,
+                  2,
+                  8
+                ],
+                3
+              ],
+              "expected": 8
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

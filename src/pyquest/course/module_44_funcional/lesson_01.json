@@ -1,0 +1,194 @@
+{
+  "id": "m44l1",
+  "title": {
+    "es": "Closures con estado y partial",
+    "en": "Stateful closures and partial"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Funciones que recuerdan"
+      },
+      {
+        "type": "text",
+        "value": "Una función interna puede modificar una variable de la externa con `nonlocal`: así mantiene **estado** entre llamadas (un acumulador, un contador…)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def acumulador():",
+          "    total = 0",
+          "    def add(x):",
+          "        nonlocal total",
+          "        total += x",
+          "        return total",
+          "    return add",
+          "",
+          "a = acumulador()",
+          "print(a(10), a(5))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "10 15"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`functools.partial` fija algunos argumentos de una función y devuelve otra con menos parámetros."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from functools import partial",
+          "def multiplicar(a, b):",
+          "    return a * b",
+          "doblar = partial(multiplicar, 2)",
+          "print(doblar(5))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "10"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "partial es como dejar 'preconfigurada' una función para no repetir siempre el mismo argumento."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Functions that remember"
+      },
+      {
+        "type": "text",
+        "value": "An inner function can modify a variable of the outer one with `nonlocal`: that's how it keeps **state** between calls (an accumulator, a counter…)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def acumulador():",
+          "    total = 0",
+          "    def add(x):",
+          "        nonlocal total",
+          "        total += x",
+          "        return total",
+          "    return add",
+          "",
+          "a = acumulador()",
+          "print(a(10), a(5))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "10 15"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`functools.partial` fixes some arguments of a function and returns another with fewer parameters."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from functools import partial",
+          "def multiplicar(a, b):",
+          "    return a * b",
+          "doblar = partial(multiplicar, 2)",
+          "print(doblar(5))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "10"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "partial is like leaving a function 'preconfigured' so you don't repeat the same argument."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m44l1e1",
+      "prompt": {
+        "es": "Define `acumulador()` que devuelva una función que SUMA cada valor recibido y devuelve el total acumulado.",
+        "en": "Define `acumulador()` returning a function that ADDS each received value and returns the running total."
+      },
+      "starter_code": [
+        "def acumulador():",
+        "    pass"
+      ],
+      "solution": [
+        "def acumulador():",
+        "    total = 0",
+        "    def add(x):",
+        "        nonlocal total",
+        "        total += x",
+        "        return total",
+        "    return add"
+      ],
+      "hints": {
+        "es": [
+          "Usa nonlocal para modificar total dentro de la función interna."
+        ],
+        "en": [
+          "Use nonlocal to modify total inside the inner function."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "acumulador",
+          "harness": "a = acumulador()\nassert a(10) == 10\nassert a(5) == 15\nassert a(100) == 115\nb = acumulador()\nassert b(1) == 1"
+        }
+      ]
+    },
+    {
+      "id": "m44l1e2",
+      "prompt": {
+        "es": "Define `multiplicar(a, b)` y, con `partial`, una función `triple` que multiplique por 3.",
+        "en": "Define `multiplicar(a, b)` and, with `partial`, a function `triple` that multiplies by 3."
+      },
+      "starter_code": [
+        "from functools import partial",
+        "",
+        "def multiplicar(a, b):",
+        "    return a * b",
+        "",
+        "# define triple con partial"
+      ],
+      "solution": [
+        "from functools import partial",
+        "",
+        "def multiplicar(a, b):",
+        "    return a * b",
+        "",
+        "triple = partial(multiplicar, 3)"
+      ],
+      "hints": {
+        "es": [
+          "triple = partial(multiplicar, 3)."
+        ],
+        "en": [
+          "triple = partial(multiplicar, 3)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "triple",
+          "harness": "assert triple(5) == 15\nassert triple(0) == 0"
+        }
+      ]
+    }
+  ]
+}

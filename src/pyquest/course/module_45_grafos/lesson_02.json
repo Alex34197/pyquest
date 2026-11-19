@@ -1,0 +1,145 @@
+{
+  "id": "m45l2",
+  "title": {
+    "es": "BFS y caminos",
+    "en": "BFS and paths"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Explorar por niveles"
+      },
+      {
+        "type": "text",
+        "value": "La **búsqueda en anchura (BFS)** visita primero los vecinos directos, luego los de ellos, etc. Usa una **cola** (`deque`) y un conjunto de visitados."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from collections import deque",
+          "# recorre por niveles: primero a, luego b y c, luego d"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Con BFS o DFS puedes saber si existe un **camino** entre dos nodos: ¿se alcanza el destino partiendo del origen?"
+      },
+      {
+        "type": "note",
+        "value": "BFS encuentra el camino más corto en número de saltos; DFS no lo garantiza."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Exploring by levels"
+      },
+      {
+        "type": "text",
+        "value": "**Breadth-first search (BFS)** visits direct neighbours first, then theirs, etc. It uses a **queue** (`deque`) and a visited set."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from collections import deque",
+          "# visit by levels: first a, then b and c, then d"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "With BFS or DFS you can tell whether a **path** exists between two nodes: is the destination reachable from the origin?"
+      },
+      {
+        "type": "note",
+        "value": "BFS finds the shortest path in number of hops; DFS does not guarantee it."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m45l2e1",
+      "prompt": {
+        "es": "Define `bfs(grafo, inicio)` que devuelva la lista de nodos en anchura (usa deque).",
+        "en": "Define `bfs(grafo, inicio)` returning the nodes in breadth-first order (use deque)."
+      },
+      "starter_code": [
+        "from collections import deque",
+        "",
+        "def bfs(grafo, inicio):",
+        "    pass"
+      ],
+      "solution": [
+        "from collections import deque",
+        "",
+        "def bfs(grafo, inicio):",
+        "    visitados = []",
+        "    cola = deque([inicio])",
+        "    while cola:",
+        "        n = cola.popleft()",
+        "        if n in visitados:",
+        "            continue",
+        "        visitados.append(n)",
+        "        for v in grafo.get(n, []):",
+        "            if v not in visitados:",
+        "                cola.append(v)",
+        "    return visitados"
+      ],
+      "hints": {
+        "es": [
+          "Cola con popleft; añade vecinos no visitados al final."
+        ],
+        "en": [
+          "Queue with popleft; append unvisited neighbours."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "bfs",
+          "harness": "G = {'a': ['b', 'c'], 'b': ['d'], 'c': [], 'd': []}\nassert bfs(G, 'a') == ['a', 'b', 'c', 'd']"
+        }
+      ]
+    },
+    {
+      "id": "m45l2e2",
+      "prompt": {
+        "es": "Define `hay_camino(grafo, origen, destino)` que devuelva True si se puede llegar de origen a destino.",
+        "en": "Define `hay_camino(grafo, origen, destino)` returning True if destino is reachable from origen."
+      },
+      "starter_code": [
+        "def hay_camino(grafo, origen, destino):",
+        "    pass"
+      ],
+      "solution": [
+        "def hay_camino(grafo, origen, destino):",
+        "    vistos = set()",
+        "    pila = [origen]",
+        "    while pila:",
+        "        n = pila.pop()",
+        "        if n == destino:",
+        "            return True",
+        "        if n in vistos:",
+        "            continue",
+        "        vistos.add(n)",
+        "        pila.extend(grafo.get(n, []))",
+        "    return False"
+      ],
+      "hints": {
+        "es": [
+          "Recorre (pila o cola); devuelve True si llegas al destino."
+        ],
+        "en": [
+          "Traverse (stack or queue); return True if you reach destino."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "hay_camino",
+          "harness": "G = {'a': ['b', 'c'], 'b': ['d'], 'c': [], 'd': []}\nassert hay_camino(G, 'a', 'd') is True\nassert hay_camino(G, 'd', 'a') is False"
+        }
+      ]
+    }
+  ]
+}

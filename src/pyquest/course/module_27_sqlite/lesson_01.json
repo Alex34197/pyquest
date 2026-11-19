@@ -1,0 +1,175 @@
+{
+  "id": "m27l1",
+  "title": {
+    "es": "Bases de datos con sqlite3",
+    "en": "Databases with sqlite3"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Una base de datos SQL incluida en Python"
+      },
+      {
+        "type": "text",
+        "value": "`sqlite3` trae una base de datos SQL completa sin instalar nada. `:memory:` crea una base de datos temporal en RAM, perfecta para practicar."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import sqlite3",
+          "con = sqlite3.connect(':memory:')",
+          "con.execute('CREATE TABLE t(n INTEGER)')",
+          "con.execute('INSERT INTO t VALUES (1), (2), (3)')",
+          "print(con.execute('SELECT COUNT(*) FROM t').fetchone()[0])"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "3"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`execute` lanza SQL; `fetchone()` trae una fila (una tupla) y `fetchall()` todas."
+      },
+      {
+        "type": "note",
+        "value": "Para datos reales usa parámetros `?` en vez de meter valores en la cadena SQL: evita la inyección SQL."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "A SQL database bundled with Python"
+      },
+      {
+        "type": "text",
+        "value": "`sqlite3` ships a full SQL database with nothing to install. `:memory:` creates a temporary in-RAM database, perfect for practice."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import sqlite3",
+          "con = sqlite3.connect(':memory:')",
+          "con.execute('CREATE TABLE t(n INTEGER)')",
+          "con.execute('INSERT INTO t VALUES (1), (2), (3)')",
+          "print(con.execute('SELECT COUNT(*) FROM t').fetchone()[0])"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "3"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`execute` runs SQL; `fetchone()` returns one row (a tuple) and `fetchall()` all of them."
+      },
+      {
+        "type": "note",
+        "value": "For real data use `?` parameters instead of putting values into the SQL string: it prevents SQL injection."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m27l1e1",
+      "prompt": {
+        "es": "Define `cuantas()` que cree una tabla en memoria, inserte 3 filas y devuelva cuántas hay.",
+        "en": "Define `cuantas()` that creates an in-memory table, inserts 3 rows and returns how many there are."
+      },
+      "starter_code": [
+        "import sqlite3",
+        "",
+        "def cuantas():",
+        "    pass"
+      ],
+      "solution": [
+        "import sqlite3",
+        "",
+        "def cuantas():",
+        "    con = sqlite3.connect(':memory:')",
+        "    con.execute('CREATE TABLE t(n INTEGER)')",
+        "    con.execute('INSERT INTO t VALUES (1), (2), (3)')",
+        "    return con.execute('SELECT COUNT(*) FROM t').fetchone()[0]"
+      ],
+      "hints": {
+        "es": [
+          "COUNT(*) y fetchone()[0]."
+        ],
+        "en": [
+          "COUNT(*) and fetchone()[0]."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "cuantas",
+          "harness": "assert cuantas() == 3"
+        }
+      ]
+    },
+    {
+      "id": "m27l1e2",
+      "prompt": {
+        "es": "Define `suma_columna(valores)` que inserte los enteros de la lista en una tabla y devuelva su suma con SQL.",
+        "en": "Define `suma_columna(valores)` inserting the list integers into a table and returning their sum via SQL."
+      },
+      "starter_code": [
+        "import sqlite3",
+        "",
+        "def suma_columna(valores):",
+        "    pass"
+      ],
+      "solution": [
+        "import sqlite3",
+        "",
+        "def suma_columna(valores):",
+        "    con = sqlite3.connect(':memory:')",
+        "    con.execute('CREATE TABLE t(n INTEGER)')",
+        "    con.executemany('INSERT INTO t VALUES (?)', [(v,) for v in valores])",
+        "    return con.execute('SELECT COALESCE(SUM(n), 0) FROM t').fetchone()[0]"
+      ],
+      "hints": {
+        "es": [
+          "executemany con parámetros ?",
+          "COALESCE(SUM(n),0) evita None si está vacía."
+        ],
+        "en": [
+          "executemany with ? parameters",
+          "COALESCE(SUM(n),0) avoids None when empty."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "suma_columna",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  2,
+                  3
+                ]
+              ],
+              "expected": 6
+            },
+            {
+              "args": [
+                [
+                  10,
+                  20
+                ]
+              ],
+              "expected": 30
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

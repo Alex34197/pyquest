@@ -1,0 +1,149 @@
+{
+  "id": "m37l1",
+  "title": {
+    "es": "Crear tus excepciones",
+    "en": "Creating your own exceptions"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Errores con significado"
+      },
+      {
+        "type": "text",
+        "value": "Puedes definir tus propias excepciones heredando de `Exception`. Lanzarlas con `raise` hace tu código más claro que devolver códigos de error."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class SaldoInsuficiente(Exception):",
+          "    pass",
+          "",
+          "def retirar(saldo, cantidad):",
+          "    if cantidad > saldo:",
+          "        raise SaldoInsuficiente('no hay suficiente')",
+          "    return saldo - cantidad",
+          "",
+          "print(retirar(100, 30))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "70"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Hereda siempre de Exception (o de una subclase), nunca de BaseException directamente."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Errors with meaning"
+      },
+      {
+        "type": "text",
+        "value": "You can define your own exceptions by inheriting from `Exception`. Raising them with `raise` makes your code clearer than returning error codes."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class SaldoInsuficiente(Exception):",
+          "    pass",
+          "",
+          "def retirar(saldo, cantidad):",
+          "    if cantidad > saldo:",
+          "        raise SaldoInsuficiente('no hay suficiente')",
+          "    return saldo - cantidad",
+          "",
+          "print(retirar(100, 30))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "70"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Always inherit from Exception (or a subclass), never from BaseException directly."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m37l1e1",
+      "prompt": {
+        "es": "Define la excepción `SaldoInsuficiente` y `retirar(saldo, cantidad)`: devuelve el saldo restante, o lanza la excepción si no hay suficiente.",
+        "en": "Define exception `SaldoInsuficiente` and `retirar(saldo, cantidad)`: return the remaining balance, or raise the exception if there isn't enough."
+      },
+      "starter_code": [
+        "class SaldoInsuficiente(Exception):",
+        "    pass",
+        "",
+        "def retirar(saldo, cantidad):",
+        "    pass"
+      ],
+      "solution": [
+        "class SaldoInsuficiente(Exception):",
+        "    pass",
+        "",
+        "def retirar(saldo, cantidad):",
+        "    if cantidad > saldo:",
+        "        raise SaldoInsuficiente('no hay suficiente')",
+        "    return saldo - cantidad"
+      ],
+      "hints": {
+        "es": [
+          "raise SaldoInsuficiente(...) cuando cantidad > saldo."
+        ],
+        "en": [
+          "raise SaldoInsuficiente(...) when cantidad > saldo."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "retirar",
+          "harness": "assert retirar(100, 30) == 70\nok = False\ntry:\n    retirar(50, 80)\nexcept SaldoInsuficiente:\n    ok = True\nassert ok is True"
+        }
+      ]
+    },
+    {
+      "id": "m37l1e2",
+      "prompt": {
+        "es": "Define `validar_edad(edad)`: devuelve la edad si está entre 0 y 120; si no, lanza `ValueError`.",
+        "en": "Define `validar_edad(edad)`: return the age if between 0 and 120; otherwise raise `ValueError`."
+      },
+      "starter_code": [
+        "def validar_edad(edad):",
+        "    pass"
+      ],
+      "solution": [
+        "def validar_edad(edad):",
+        "    if edad < 0 or edad > 120:",
+        "        raise ValueError('edad fuera de rango')",
+        "    return edad"
+      ],
+      "hints": {
+        "es": [
+          "raise ValueError(...) fuera de rango; si no, devuelve edad."
+        ],
+        "en": [
+          "raise ValueError(...) out of range; else return edad."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "validar_edad",
+          "harness": "assert validar_edad(30) == 30\nfor mala in (-1, 200):\n    err = False\n    try:\n        validar_edad(mala)\n    except ValueError:\n        err = True\n    assert err is True"
+        }
+      ]
+    }
+  ]
+}

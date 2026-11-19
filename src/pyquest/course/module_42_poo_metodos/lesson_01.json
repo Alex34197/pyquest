@@ -1,0 +1,183 @@
+{
+  "id": "m42l1",
+  "title": {
+    "es": "Variables de clase y staticmethod",
+    "en": "Class variables and staticmethod"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Lo que comparten todas las instancias"
+      },
+      {
+        "type": "text",
+        "value": "Una **variable de clase** se define en el cuerpo de la clase y la comparten todas las instancias (p. ej. un contador global de objetos)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Contador:",
+          "    total = 0",
+          "    def __init__(self):",
+          "        Contador.total += 1",
+          "",
+          "Contador(); Contador()",
+          "print(Contador.total)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "2"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Un `@staticmethod` es una función dentro de la clase que NO usa `self`: agrupa utilidades relacionadas."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Mate:",
+          "    @staticmethod",
+          "    def doble(x):",
+          "        return x * 2",
+          "",
+          "print(Mate.doble(5))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "10"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Variable de instancia (self.x) = de cada objeto; variable de clase = compartida por todos."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "What all instances share"
+      },
+      {
+        "type": "text",
+        "value": "A **class variable** is defined in the class body and shared by all instances (e.g. a global object counter)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Contador:",
+          "    total = 0",
+          "    def __init__(self):",
+          "        Contador.total += 1",
+          "",
+          "Contador(); Contador()",
+          "print(Contador.total)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "2"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "A `@staticmethod` is a function inside the class that does NOT use `self`: it groups related utilities."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Mate:",
+          "    @staticmethod",
+          "    def doble(x):",
+          "        return x * 2",
+          "",
+          "print(Mate.doble(5))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "10"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Instance variable (self.x) = per object; class variable = shared by all."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m42l1e1",
+      "prompt": {
+        "es": "Define `Contador` con variable de clase `total` que cuente cuántas instancias se han creado.",
+        "en": "Define `Contador` with a class variable `total` counting how many instances were created."
+      },
+      "starter_code": [
+        "class Contador:",
+        "    # variable de clase + __init__",
+        "    pass"
+      ],
+      "solution": [
+        "class Contador:",
+        "    total = 0",
+        "    def __init__(self):",
+        "        Contador.total += 1"
+      ],
+      "hints": {
+        "es": [
+          "total = 0 en el cuerpo; en __init__ haz Contador.total += 1."
+        ],
+        "en": [
+          "total = 0 in the body; in __init__ do Contador.total += 1."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Contador",
+          "harness": "Contador(); Contador(); Contador()\nassert Contador.total == 3"
+        }
+      ]
+    },
+    {
+      "id": "m42l1e2",
+      "prompt": {
+        "es": "Define `Mate` con un `@staticmethod` `es_par(n)` que devuelva True si n es par.",
+        "en": "Define `Mate` with a `@staticmethod` `es_par(n)` returning True if n is even."
+      },
+      "starter_code": [
+        "class Mate:",
+        "    # añade el staticmethod es_par",
+        "    pass"
+      ],
+      "solution": [
+        "class Mate:",
+        "    @staticmethod",
+        "    def es_par(n):",
+        "        return n % 2 == 0"
+      ],
+      "hints": {
+        "es": [
+          "@staticmethod encima; es_par(n) sin self."
+        ],
+        "en": [
+          "@staticmethod on top; es_par(n) without self."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Mate",
+          "harness": "assert Mate.es_par(4) is True\nassert Mate.es_par(7) is False"
+        }
+      ]
+    }
+  ]
+}

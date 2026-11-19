@@ -1,0 +1,178 @@
+{
+  "id": "m67l1",
+  "title": {
+    "es": "Grupos en expresiones regulares",
+    "en": "Groups in regular expressions"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Capturar partes del patrón"
+      },
+      {
+        "type": "text",
+        "value": "Los paréntesis en una regex crean **grupos** que capturan trozos del texto. Con `(?P<nombre>...)` el grupo tiene nombre y se lee con `.group('nombre')`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import re",
+          "m = re.search(r'(?P<dia>\\d{2})/(?P<mes>\\d{2})/(?P<anio>\\d{4})', '25/12/2024')",
+          "print(m.group('dia'), m.group('anio'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "25 2024"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "En `re.sub` puedes referenciar los grupos con `\\1`, `\\2`… para reordenar el texto."
+      },
+      {
+        "type": "note",
+        "value": "Los grupos con nombre hacen las regex mucho más legibles que `\\1`, `\\2` sueltos."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Capturing parts of the pattern"
+      },
+      {
+        "type": "text",
+        "value": "Parentheses in a regex create **groups** that capture pieces of text. With `(?P<name>...)` the group has a name, read with `.group('name')`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import re",
+          "m = re.search(r'(?P<dia>\\d{2})/(?P<mes>\\d{2})/(?P<anio>\\d{4})', '25/12/2024')",
+          "print(m.group('dia'), m.group('anio'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "25 2024"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "In `re.sub` you can reference groups with `\\1`, `\\2`… to reorder the text."
+      },
+      {
+        "type": "note",
+        "value": "Named groups make regexes far more readable than bare `\\1`, `\\2`."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m67l1e1",
+      "prompt": {
+        "es": "Define `extraer_fecha(texto)` que devuelva [dia, mes, anio] de una fecha DD/MM/AAAA (usa grupos con nombre).",
+        "en": "Define `extraer_fecha(texto)` returning [day, month, year] from a DD/MM/YYYY date (use named groups)."
+      },
+      "starter_code": [
+        "import re",
+        "",
+        "def extraer_fecha(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "import re",
+        "",
+        "def extraer_fecha(texto):",
+        "    m = re.search(r'(?P<dia>\\d{2})/(?P<mes>\\d{2})/(?P<anio>\\d{4})', texto)",
+        "    return [m.group('dia'), m.group('mes'), m.group('anio')]"
+      ],
+      "hints": {
+        "es": [
+          "Usa (?P<dia>\\d{2})/(?P<mes>\\d{2})/(?P<anio>\\d{4})."
+        ],
+        "en": [
+          "Use (?P<dia>\\d{2})/(?P<mes>\\d{2})/(?P<anio>\\d{4})."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "extraer_fecha",
+          "cases": [
+            {
+              "args": [
+                "hoy 25/12/2024 fin"
+              ],
+              "expected": [
+                "25",
+                "12",
+                "2024"
+              ]
+            },
+            {
+              "args": [
+                "01/06/1999"
+              ],
+              "expected": [
+                "01",
+                "06",
+                "1999"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m67l1e2",
+      "prompt": {
+        "es": "Define `voltear_nombre(texto)` que convierta 'Apellido, Nombre' en 'Nombre Apellido' (usa re.sub con \\1 \\2).",
+        "en": "Define `voltear_nombre(texto)` that turns 'Surname, Name' into 'Name Surname' (use re.sub with \\1 \\2)."
+      },
+      "starter_code": [
+        "import re",
+        "",
+        "def voltear_nombre(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "import re",
+        "",
+        "def voltear_nombre(texto):",
+        "    return re.sub(r'(\\w+), (\\w+)', r'\\2 \\1', texto)"
+      ],
+      "hints": {
+        "es": [
+          "re.sub(r'(\\w+), (\\w+)', r'\\2 \\1', texto)."
+        ],
+        "en": [
+          "re.sub(r'(\\w+), (\\w+)', r'\\2 \\1', texto)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "voltear_nombre",
+          "cases": [
+            {
+              "args": [
+                "Garcia, Ana"
+              ],
+              "expected": "Ana Garcia"
+            },
+            {
+              "args": [
+                "Perez, Juan"
+              ],
+              "expected": "Juan Perez"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

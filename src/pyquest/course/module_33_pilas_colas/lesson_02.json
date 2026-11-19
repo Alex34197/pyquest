@@ -1,0 +1,191 @@
+{
+  "id": "m33l2",
+  "title": {
+    "es": "La cola (FIFO) y deque",
+    "en": "The queue (FIFO) and deque"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Primero en entrar, primero en salir"
+      },
+      {
+        "type": "text",
+        "value": "Una **cola** (queue) devuelve los elementos en el orden en que llegaron (FIFO). `collections.deque` lo hace eficiente con `append` y `popleft`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from collections import deque",
+          "cola = deque()",
+          "cola.append('a')",
+          "cola.append('b')",
+          "print(cola.popleft())",
+          "print(cola.popleft())"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`deque(maxlen=n)` mantiene solo los últimos n elementos: ideal para historiales de tamaño fijo."
+      },
+      {
+        "type": "note",
+        "value": "Usar `list.pop(0)` como cola es lento (O(n)); `deque.popleft()` es O(1)."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "First in, first out"
+      },
+      {
+        "type": "text",
+        "value": "A **queue** returns items in the order they arrived (FIFO). `collections.deque` makes it efficient with `append` and `popleft`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from collections import deque",
+          "cola = deque()",
+          "cola.append('a')",
+          "cola.append('b')",
+          "print(cola.popleft())",
+          "print(cola.popleft())"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`deque(maxlen=n)` keeps only the last n items: ideal for fixed-size histories."
+      },
+      {
+        "type": "note",
+        "value": "Using `list.pop(0)` as a queue is slow (O(n)); `deque.popleft()` is O(1)."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m33l2e1",
+      "prompt": {
+        "es": "Define una clase `Cola` con `encolar(x)`, `desencolar()` (devuelve el primero) y `esta_vacia()` (usa deque).",
+        "en": "Define a class `Cola` with `encolar(x)`, `desencolar()` (returns the first) and `esta_vacia()` (use deque)."
+      },
+      "starter_code": [
+        "from collections import deque",
+        "",
+        "class Cola:",
+        "    def __init__(self):",
+        "        self._datos = deque()",
+        "    # completa encolar, desencolar y esta_vacia"
+      ],
+      "solution": [
+        "from collections import deque",
+        "",
+        "class Cola:",
+        "    def __init__(self):",
+        "        self._datos = deque()",
+        "    def encolar(self, x):",
+        "        self._datos.append(x)",
+        "    def desencolar(self):",
+        "        return self._datos.popleft()",
+        "    def esta_vacia(self):",
+        "        return len(self._datos) == 0"
+      ],
+      "hints": {
+        "es": [
+          "encolar=append, desencolar=popleft."
+        ],
+        "en": [
+          "encolar=append, desencolar=popleft."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Cola",
+          "harness": "q = Cola()\nassert q.esta_vacia() is True\nq.encolar('a'); q.encolar('b')\nassert q.desencolar() == 'a'\nassert q.desencolar() == 'b'\nassert q.esta_vacia() is True"
+        }
+      ]
+    },
+    {
+      "id": "m33l2e2",
+      "prompt": {
+        "es": "Define `ultimos(items, n)` que devuelva los últimos `n` elementos de la lista (usa deque(maxlen=n)).",
+        "en": "Define `ultimos(items, n)` returning the last `n` elements of the list (use deque(maxlen=n))."
+      },
+      "starter_code": [
+        "from collections import deque",
+        "",
+        "def ultimos(items, n):",
+        "    pass"
+      ],
+      "solution": [
+        "from collections import deque",
+        "",
+        "def ultimos(items, n):",
+        "    return list(deque(items, maxlen=n))"
+      ],
+      "hints": {
+        "es": [
+          "deque(items, maxlen=n) se queda con los últimos n."
+        ],
+        "en": [
+          "deque(items, maxlen=n) keeps the last n."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "ultimos",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                3
+              ],
+              "expected": [
+                3,
+                4,
+                5
+              ]
+            },
+            {
+              "args": [
+                [
+                  1,
+                  2
+                ],
+                5
+              ],
+              "expected": [
+                1,
+                2
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

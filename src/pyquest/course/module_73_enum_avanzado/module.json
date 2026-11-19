@@ -1,0 +1,16 @@
+{
+  "id": "m73",
+  "order": 73,
+  "title": {
+    "es": "Enum avanzado",
+    "en": "Advanced enum"
+  },
+  "summary": {
+    "es": "IntEnum (ordenable), métodos en Enum y Flag (combinar con bits).",
+    "en": "IntEnum (sortable), methods in Enum and Flag (combine with bits)."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

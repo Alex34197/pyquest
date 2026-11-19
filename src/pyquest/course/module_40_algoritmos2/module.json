@@ -1,0 +1,16 @@
+{
+  "id": "m40",
+  "order": 40,
+  "title": {
+    "es": "Algoritmos: divide y vencerás",
+    "en": "Algorithms: divide and conquer"
+  },
+  "summary": {
+    "es": "Mergesort y quicksort recursivos; mezcla y k-ésimo menor.",
+    "en": "Recursive mergesort and quicksort; merge and k-th smallest."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

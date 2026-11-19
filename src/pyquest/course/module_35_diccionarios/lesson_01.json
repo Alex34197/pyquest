@@ -1,0 +1,175 @@
+{
+  "id": "m35l1",
+  "title": {
+    "es": "Técnicas con diccionarios",
+    "en": "Dictionary techniques"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Más allá de clave/valor"
+      },
+      {
+        "type": "text",
+        "value": "`dict.get(clave, defecto)` evita errores si la clave no existe. Es la base para contar cosas sin comprobar antes si la clave está."
+      },
+      {
+        "type": "code",
+        "value": [
+          "cuenta = {}",
+          "for ch in 'banana':",
+          "    cuenta[ch] = cuenta.get(ch, 0) + 1",
+          "print(cuenta)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "{'b': 1, 'a': 3, 'n': 2}"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`.items()` recorre pares (clave, valor); `.keys()` y `.values()` dan claves y valores."
+      },
+      {
+        "type": "note",
+        "value": "Para invertir un dict, recuerda que las claves deben ser únicas (si hay valores repetidos, perderás alguno)."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Beyond key/value"
+      },
+      {
+        "type": "text",
+        "value": "`dict.get(key, default)` avoids errors if the key is missing. It's the basis for counting things without checking first."
+      },
+      {
+        "type": "code",
+        "value": [
+          "cuenta = {}",
+          "for ch in 'banana':",
+          "    cuenta[ch] = cuenta.get(ch, 0) + 1",
+          "print(cuenta)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "{'b': 1, 'a': 3, 'n': 2}"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`.items()` iterates (key, value) pairs; `.keys()` and `.values()` give keys and values."
+      },
+      {
+        "type": "note",
+        "value": "To invert a dict, remember keys must be unique (with repeated values you'll lose some)."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m35l1e1",
+      "prompt": {
+        "es": "Define `contar_letras(texto)` que devuelva un dict letra -> nº de apariciones (usa get).",
+        "en": "Define `contar_letras(texto)` returning a dict letter -> count (use get)."
+      },
+      "starter_code": [
+        "def contar_letras(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "def contar_letras(texto):",
+        "    cuenta = {}",
+        "    for ch in texto:",
+        "        cuenta[ch] = cuenta.get(ch, 0) + 1",
+        "    return cuenta"
+      ],
+      "hints": {
+        "es": [
+          "cuenta[ch] = cuenta.get(ch, 0) + 1."
+        ],
+        "en": [
+          "cuenta[ch] = cuenta.get(ch, 0) + 1."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "contar_letras",
+          "cases": [
+            {
+              "args": [
+                "aab"
+              ],
+              "expected": {
+                "a": 2,
+                "b": 1
+              }
+            },
+            {
+              "args": [
+                ""
+              ],
+              "expected": {}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m35l1e2",
+      "prompt": {
+        "es": "Define `invertir(d)` que intercambie claves y valores (todos cadenas).",
+        "en": "Define `invertir(d)` swapping keys and values (all strings)."
+      },
+      "starter_code": [
+        "def invertir(d):",
+        "    pass"
+      ],
+      "solution": [
+        "def invertir(d):",
+        "    return {v: k for k, v in d.items()}"
+      ],
+      "hints": {
+        "es": [
+          "Comprensión de dict: {v: k for k, v in d.items()}."
+        ],
+        "en": [
+          "Dict comprehension: {v: k for k, v in d.items()}."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "invertir",
+          "cases": [
+            {
+              "args": [
+                {
+                  "a": "x",
+                  "b": "y"
+                }
+              ],
+              "expected": {
+                "x": "a",
+                "y": "b"
+              }
+            },
+            {
+              "args": [
+                {}
+              ],
+              "expected": {}
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

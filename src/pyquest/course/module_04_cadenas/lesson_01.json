@@ -1,0 +1,253 @@
+{
+  "id": "m4l1",
+  "title": {
+    "es": "Métodos de texto",
+    "en": "String methods"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Las cadenas tienen superpoderes"
+      },
+      {
+        "type": "text",
+        "value": "Una cadena (`str`) trae muchos métodos para transformar y consultar texto. No modifican la original (son **inmutables**): devuelven una **nueva** cadena."
+      },
+      {
+        "type": "code",
+        "value": [
+          "s = \"  Hola Mundo  \"",
+          "print(s.strip())",
+          "print(s.lower())",
+          "print(s.upper())"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Hola Mundo",
+          "  hola mundo  ",
+          "  HOLA MUNDO  "
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`strip()` quita espacios de los extremos; `lower()`/`upper()` cambian mayúsculas; `replace(a, b)` sustituye; `title()` pone iniciales en mayúscula."
+      },
+      {
+        "type": "code",
+        "value": [
+          "print(\"ana,bea,sol\".replace(\",\", \" y \"))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "ana y bea y sol"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Buscar y partir"
+      },
+      {
+        "type": "text",
+        "value": "`'x' in texto` indica si aparece. `find(sub)` da la posición (o -1). `split(sep)` parte en una lista, y `sep.join(lista)` une una lista en una cadena."
+      },
+      {
+        "type": "code",
+        "value": [
+          "partes = \"a,b,c\".split(\",\")",
+          "print(partes)",
+          "print(\"-\".join(partes))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "['a', 'b', 'c']",
+          "a-b-c"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Como devuelven copias, puedes **encadenar**: `texto.strip().lower().replace(' ', '_')`."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Strings have superpowers"
+      },
+      {
+        "type": "text",
+        "value": "A string (`str`) comes with many methods to transform and query text. They never change the original (strings are **immutable**): they return a **new** string."
+      },
+      {
+        "type": "code",
+        "value": [
+          "s = \"  Hola Mundo  \"",
+          "print(s.strip())",
+          "print(s.lower())",
+          "print(s.upper())"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Hola Mundo",
+          "  hola mundo  ",
+          "  HOLA MUNDO  "
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`strip()` removes edge whitespace; `lower()`/`upper()` change case; `replace(a, b)` substitutes; `title()` capitalises each word."
+      },
+      {
+        "type": "code",
+        "value": [
+          "print(\"ana,bea,sol\".replace(\",\", \" y \"))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "ana y bea y sol"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Searching and splitting"
+      },
+      {
+        "type": "text",
+        "value": "`'x' in text` tells if it appears. `find(sub)` gives the position (or -1). `split(sep)` splits into a list, and `sep.join(list)` joins a list into a string."
+      },
+      {
+        "type": "code",
+        "value": [
+          "partes = \"a,b,c\".split(\",\")",
+          "print(partes)",
+          "print(\"-\".join(partes))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "['a', 'b', 'c']",
+          "a-b-c"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Since they return copies, you can **chain** them: `text.strip().lower().replace(' ', '_')`."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m4l1e1",
+      "prompt": {
+        "es": "Define `normaliza(texto)` que devuelva el texto **sin espacios** al inicio/fin y en **minúsculas**.",
+        "en": "Define `normaliza(texto)` returning the text **without** leading/trailing spaces and in **lowercase**."
+      },
+      "starter_code": [
+        "def normaliza(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "def normaliza(texto):",
+        "    return texto.strip().lower()"
+      ],
+      "hints": {
+        "es": [
+          "Encadena strip() y lower().",
+          "return texto.strip().lower()"
+        ],
+        "en": [
+          "Chain strip() and lower().",
+          "return texto.strip().lower()"
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "normaliza",
+          "cases": [
+            {
+              "args": [
+                "  Hola "
+              ],
+              "expected": "hola"
+            },
+            {
+              "args": [
+                "PYTHON"
+              ],
+              "expected": "python"
+            },
+            {
+              "args": [
+                "  a B c "
+              ],
+              "expected": "a b c"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m4l1e2",
+      "prompt": {
+        "es": "Define `iniciales(nombre)` que devuelva las iniciales en mayúscula. Ej: `'ana perez lopez'` → `'APL'`.",
+        "en": "Define `iniciales(nombre)` returning the uppercase initials. E.g. `'ana perez lopez'` → `'APL'`."
+      },
+      "starter_code": [
+        "def iniciales(nombre):",
+        "    pass"
+      ],
+      "solution": [
+        "def iniciales(nombre):",
+        "    return \"\".join(p[0].upper() for p in nombre.split())"
+      ],
+      "hints": {
+        "es": [
+          "nombre.split() separa por espacios.",
+          "Toma p[0] de cada palabra y únelos."
+        ],
+        "en": [
+          "nombre.split() splits on spaces.",
+          "Take p[0] of each word and join them."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "iniciales",
+          "cases": [
+            {
+              "args": [
+                "ana perez lopez"
+              ],
+              "expected": "APL"
+            },
+            {
+              "args": [
+                "juan"
+              ],
+              "expected": "J"
+            },
+            {
+              "args": [
+                "  maria jose  "
+              ],
+              "expected": "MJ"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

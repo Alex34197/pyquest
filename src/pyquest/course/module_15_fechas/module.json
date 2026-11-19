@@ -1,0 +1,16 @@
+{
+  "id": "m15",
+  "order": 15,
+  "title": {
+    "es": "Fechas y horas",
+    "en": "Dates and times"
+  },
+  "summary": {
+    "es": "Crear fechas, restarlas, días de la semana y formateo con strftime/strptime.",
+    "en": "Create dates, subtract them, weekdays and formatting with strftime/strptime."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

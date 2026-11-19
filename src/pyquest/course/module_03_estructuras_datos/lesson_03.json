@@ -1,0 +1,303 @@
+{
+  "id": "m3l3",
+  "title": {
+    "es": "Tuplas y conjuntos",
+    "en": "Tuples and sets"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Tuplas: colecciones inmutables"
+      },
+      {
+        "type": "text",
+        "value": "Una **tupla** es como una lista pero **no se puede modificar** una vez creada. Se escribe entre paréntesis. Se usa para datos que van juntos y no deberían cambiar, como unas coordenadas."
+      },
+      {
+        "type": "code",
+        "value": [
+          "punto = (3, 4)",
+          "print(punto[0])",
+          "print(punto[1])"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "3",
+          "4"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Una función puede devolver varios valores a la vez como una tupla, y se pueden 'desempaquetar' en varias variables."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def minmax(lista):",
+          "    return min(lista), max(lista)",
+          "",
+          "menor, mayor = minmax([4, 1, 7])",
+          "print(menor, mayor)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "1 7"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Conjuntos: elementos únicos"
+      },
+      {
+        "type": "text",
+        "value": "Un **conjunto** (`set`) es una colección **sin duplicados y sin orden**, entre llaves. Convertir una lista a `set` elimina los repetidos al instante."
+      },
+      {
+        "type": "code",
+        "value": [
+          "s = {1, 2, 2, 3, 3, 3}",
+          "print(s)",
+          "print(len(s))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "{1, 2, 3}",
+          "3"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Operaciones de conjuntos"
+      },
+      {
+        "type": "text",
+        "value": "Los conjuntos permiten operaciones matemáticas: `&` (intersección, lo común), `|` (unión, todo) y `-` (diferencia)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "a = {1, 2, 3}",
+          "b = {2, 3, 4}",
+          "print(a & b)",
+          "print(a | b)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "{2, 3}",
+          "{1, 2, 3, 4}"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Comprobar si algo está en un `set` es muy rápido (mucho más que en una lista grande). Úsalos cuando solo te importe la pertenencia y la unicidad."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Tuples: immutable collections"
+      },
+      {
+        "type": "text",
+        "value": "A **tuple** is like a list but **cannot be modified** once created. It is written with parentheses. Use it for data that belongs together and shouldn't change, like coordinates."
+      },
+      {
+        "type": "code",
+        "value": [
+          "point = (3, 4)",
+          "print(point[0])",
+          "print(point[1])"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "3",
+          "4"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "A function can return several values at once as a tuple, and they can be 'unpacked' into several variables."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def minmax(items):",
+          "    return min(items), max(items)",
+          "",
+          "low, high = minmax([4, 1, 7])",
+          "print(low, high)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "1 7"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Sets: unique elements"
+      },
+      {
+        "type": "text",
+        "value": "A **set** is a collection **without duplicates and without order**, between braces. Converting a list to a `set` removes repeats instantly."
+      },
+      {
+        "type": "code",
+        "value": [
+          "s = {1, 2, 2, 3, 3, 3}",
+          "print(s)",
+          "print(len(s))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "{1, 2, 3}",
+          "3"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Set operations"
+      },
+      {
+        "type": "text",
+        "value": "Sets allow mathematical operations: `&` (intersection, the common ones), `|` (union, everything) and `-` (difference)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "a = {1, 2, 3}",
+          "b = {2, 3, 4}",
+          "print(a & b)",
+          "print(a | b)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "{2, 3}",
+          "{1, 2, 3, 4}"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Checking membership in a `set` is very fast (much faster than in a large list). Use them when you only care about membership and uniqueness."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m3l3e1",
+      "prompt": {
+        "es": "Define `unicos(lista)` que devuelva una lista **ordenada** con los elementos sin repetir. Ejemplo: `[3, 1, 3, 2, 1]` -> `[1, 2, 3]`.",
+        "en": "Define `unicos(lista)` returning a **sorted** list with the elements without repeats. Example: `[3, 1, 3, 2, 1]` -> `[1, 2, 3]`."
+      },
+      "starter_code": [
+        "def unicos(lista):",
+        "    pass"
+      ],
+      "solution": [
+        "def unicos(lista):",
+        "    return sorted(set(lista))"
+      ],
+      "hints": {
+        "es": [
+          "set(lista) elimina duplicados.",
+          "sorted(...) devuelve una lista ordenada."
+        ],
+        "en": [
+          "set(lista) removes duplicates.",
+          "sorted(...) returns a sorted list."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "name": "unicos",
+          "function": "unicos",
+          "cases": [
+            {
+              "args": [
+                [
+                  3,
+                  1,
+                  3,
+                  2,
+                  1
+                ]
+              ],
+              "expected": [
+                1,
+                2,
+                3
+              ]
+            },
+            {
+              "args": [
+                []
+              ],
+              "expected": []
+            },
+            {
+              "args": [
+                [
+                  5,
+                  5,
+                  5
+                ]
+              ],
+              "expected": [
+                5
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m3l3e2",
+      "prompt": {
+        "es": "Define `minmax(numeros)` que devuelva una **tupla** `(menor, mayor)` con el mínimo y el máximo de la lista (no vacía).",
+        "en": "Define `minmax(numeros)` returning a **tuple** `(min, max)` with the smallest and largest of the (non-empty) list."
+      },
+      "starter_code": [
+        "def minmax(numeros):",
+        "    pass"
+      ],
+      "solution": [
+        "def minmax(numeros):",
+        "    return (min(numeros), max(numeros))"
+      ],
+      "hints": {
+        "es": [
+          "Puedes usar min() y max().",
+          "Devuélvelos como tupla: return (min(...), max(...))"
+        ],
+        "en": [
+          "You can use min() and max().",
+          "Return them as a tuple: return (min(...), max(...))"
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "minmax devuelve tupla",
+          "harness": "assert minmax([4, 1, 7]) == (1, 7), 'minmax([4,1,7]) debe ser (1, 7)'\nassert minmax([5]) == (5, 5)\nassert minmax([-3, -1, -9]) == (-9, -1)\nassert isinstance(minmax([1, 2]), tuple), 'debe devolver una tupla'"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "id": "m65l1",
+  "title": {
+    "es": "random y la semilla",
+    "en": "random and the seed"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Azar... pero reproducible"
+      },
+      {
+        "type": "text",
+        "value": "El módulo `random` genera números pseudoaleatorios. Si fijas la **semilla** con `random.seed(s)`, la secuencia es siempre la misma: clave para que un experimento o un test sea reproducible."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import random",
+          "random.seed(7)",
+          "print(random.randint(1, 6))",
+          "random.seed(7)",
+          "print(random.randint(1, 6))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "(el mismo número las dos veces)"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Misma semilla -> mismos resultados. Útil para depurar y para tests deterministas."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Randomness... but reproducible"
+      },
+      {
+        "type": "text",
+        "value": "The `random` module generates pseudo-random numbers. If you fix the **seed** with `random.seed(s)`, the sequence is always the same: key for an experiment or test to be reproducible."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import random",
+          "random.seed(7)",
+          "print(random.randint(1, 6))",
+          "random.seed(7)",
+          "print(random.randint(1, 6))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "(the same number both times)"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Same seed -> same results. Useful for debugging and for deterministic tests."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m65l1e1",
+      "prompt": {
+        "es": "Define `reproducible(semilla)`: con la misma semilla, genera dos valores y devuelve True si son iguales.",
+        "en": "Define `reproducible(semilla)`: with the same seed, generate two values and return True if they're equal."
+      },
+      "starter_code": [
+        "import random",
+        "",
+        "def reproducible(semilla):",
+        "    pass"
+      ],
+      "solution": [
+        "import random",
+        "",
+        "def reproducible(semilla):",
+        "    random.seed(semilla)",
+        "    a = random.random()",
+        "    random.seed(semilla)",
+        "    b = random.random()",
+        "    return a == b"
+      ],
+      "hints": {
+        "es": [
+          "Vuelve a poner la misma semilla antes de generar el segundo valor."
+        ],
+        "en": [
+          "Re-set the same seed before generating the second value."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "reproducible",
+          "cases": [
+            {
+              "args": [
+                42
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                0
+              ],
+              "expected": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m65l1e2",
+      "prompt": {
+        "es": "Define `dado(semilla)` que fije la semilla y devuelva un entero de 1 a 6 (con la misma semilla, mismo resultado).",
+        "en": "Define `dado(semilla)` that sets the seed and returns an int from 1 to 6 (same seed, same result)."
+      },
+      "starter_code": [
+        "import random",
+        "",
+        "def dado(semilla):",
+        "    pass"
+      ],
+      "solution": [
+        "import random",
+        "",
+        "def dado(semilla):",
+        "    random.seed(semilla)",
+        "    return random.randint(1, 6)"
+      ],
+      "hints": {
+        "es": [
+          "random.seed(semilla) y luego random.randint(1, 6)."
+        ],
+        "en": [
+          "random.seed(semilla) then random.randint(1, 6)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "dado",
+          "harness": "v = dado(7)\nassert 1 <= v <= 6\nassert dado(7) == dado(7)\nassert isinstance(dado(3), int)"
+        }
+      ]
+    }
+  ]
+}

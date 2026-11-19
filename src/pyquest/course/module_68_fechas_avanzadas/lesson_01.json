@@ -1,0 +1,171 @@
+{
+  "id": "m68l1",
+  "title": {
+    "es": "Aritmética con timedelta",
+    "en": "Arithmetic with timedelta"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Sumar y medir tiempo"
+      },
+      {
+        "type": "text",
+        "value": "`timedelta` representa una duración. Sumarla a una fecha la desplaza; `total_seconds()` convierte una duración a segundos."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from datetime import date, timedelta",
+          "print(date(2024, 1, 30) + timedelta(days=5))",
+          "print(timedelta(hours=2).total_seconds())"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "2024-02-04",
+          "7200.0"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "timedelta admite days, hours, minutes, seconds… y se puede sumar, restar y multiplicar."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Adding and measuring time"
+      },
+      {
+        "type": "text",
+        "value": "`timedelta` represents a duration. Adding it to a date shifts it; `total_seconds()` converts a duration to seconds."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from datetime import date, timedelta",
+          "print(date(2024, 1, 30) + timedelta(days=5))",
+          "print(timedelta(hours=2).total_seconds())"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "2024-02-04",
+          "7200.0"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "timedelta accepts days, hours, minutes, seconds… and can be added, subtracted and multiplied."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m68l1e1",
+      "prompt": {
+        "es": "Define `sumar_dias(iso, dias)` que reciba una fecha 'AAAA-MM-DD', le sume `dias` y devuelva la nueva fecha en ISO.",
+        "en": "Define `sumar_dias(iso, dias)` taking a date 'YYYY-MM-DD', adding `dias` and returning the new ISO date."
+      },
+      "starter_code": [
+        "from datetime import date, timedelta",
+        "",
+        "def sumar_dias(iso, dias):",
+        "    pass"
+      ],
+      "solution": [
+        "from datetime import date, timedelta",
+        "",
+        "def sumar_dias(iso, dias):",
+        "    return (date.fromisoformat(iso) + timedelta(days=dias)).isoformat()"
+      ],
+      "hints": {
+        "es": [
+          "date.fromisoformat(iso) + timedelta(days=dias), luego .isoformat()."
+        ],
+        "en": [
+          "date.fromisoformat(iso) + timedelta(days=dias), then .isoformat()."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "sumar_dias",
+          "cases": [
+            {
+              "args": [
+                "2024-01-30",
+                5
+              ],
+              "expected": "2024-02-04"
+            },
+            {
+              "args": [
+                "2024-12-31",
+                1
+              ],
+              "expected": "2025-01-01"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m68l1e2",
+      "prompt": {
+        "es": "Define `horas_a_segundos(h)` que devuelva los segundos que hay en `h` horas (usa timedelta).",
+        "en": "Define `horas_a_segundos(h)` returning the seconds in `h` hours (use timedelta)."
+      },
+      "starter_code": [
+        "from datetime import timedelta",
+        "",
+        "def horas_a_segundos(h):",
+        "    pass"
+      ],
+      "solution": [
+        "from datetime import timedelta",
+        "",
+        "def horas_a_segundos(h):",
+        "    return int(timedelta(hours=h).total_seconds())"
+      ],
+      "hints": {
+        "es": [
+          "timedelta(hours=h).total_seconds(), conviértelo a int."
+        ],
+        "en": [
+          "timedelta(hours=h).total_seconds(), convert to int."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "horas_a_segundos",
+          "cases": [
+            {
+              "args": [
+                2
+              ],
+              "expected": 7200
+            },
+            {
+              "args": [
+                0
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                24
+              ],
+              "expected": 86400
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

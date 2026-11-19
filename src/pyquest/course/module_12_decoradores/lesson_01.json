@@ -1,0 +1,169 @@
+{
+  "id": "m12l1",
+  "title": {
+    "es": "Funciones de primera clase",
+    "en": "First-class functions"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Las funciones son objetos"
+      },
+      {
+        "type": "text",
+        "value": "En Python las funciones se pueden guardar en variables, pasar como argumento y **devolver** desde otra función. Son 'ciudadanos de primera clase'."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def doblar(x):",
+          "    return x * 2",
+          "",
+          "operacion = doblar",
+          "print(operacion(5))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "10"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Una función puede devolver otra función (un **closure**), que recuerda valores del entorno donde se creó:"
+      },
+      {
+        "type": "code",
+        "value": [
+          "def multiplicador(n):",
+          "    def aplicar(x):",
+          "        return x * n",
+          "    return aplicar",
+          "",
+          "por3 = multiplicador(3)",
+          "print(por3(10))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "30"
+        ]
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Functions are objects"
+      },
+      {
+        "type": "text",
+        "value": "In Python functions can be stored in variables, passed as arguments and **returned** from other functions. They are 'first-class citizens'."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def doblar(x):",
+          "    return x * 2",
+          "",
+          "operacion = doblar",
+          "print(operacion(5))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "10"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "A function can return another function (a **closure**) that remembers values from where it was created:"
+      },
+      {
+        "type": "code",
+        "value": [
+          "def multiplicador(n):",
+          "    def aplicar(x):",
+          "        return x * n",
+          "    return aplicar",
+          "",
+          "por3 = multiplicador(3)",
+          "print(por3(10))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "30"
+        ]
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m12l1e1",
+      "prompt": {
+        "es": "Define `multiplicador(n)` que **devuelva una función** que multiplica su argumento por `n`. Ej: `multiplicador(3)(10)` → 30.",
+        "en": "Define `multiplicador(n)` that **returns a function** multiplying its argument by `n`. E.g. `multiplicador(3)(10)` → 30."
+      },
+      "starter_code": [
+        "def multiplicador(n):",
+        "    pass"
+      ],
+      "solution": [
+        "def multiplicador(n):",
+        "    def aplicar(x):",
+        "        return x * n",
+        "    return aplicar"
+      ],
+      "hints": {
+        "es": [
+          "Define una función dentro y devuélvela (sin llamarla)."
+        ],
+        "en": [
+          "Define an inner function and return it (without calling it)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "multiplicador",
+          "harness": "assert multiplicador(3)(10) == 30\nassert multiplicador(5)(2) == 10\nassert multiplicador(0)(99) == 0"
+        }
+      ]
+    },
+    {
+      "id": "m12l1e2",
+      "prompt": {
+        "es": "Define `aplicar_dos_veces(func, x)` que devuelva `func(func(x))`.",
+        "en": "Define `aplicar_dos_veces(func, x)` returning `func(func(x))`."
+      },
+      "starter_code": [
+        "def aplicar_dos_veces(func, x):",
+        "    pass"
+      ],
+      "solution": [
+        "def aplicar_dos_veces(func, x):",
+        "    return func(func(x))"
+      ],
+      "hints": {
+        "es": [
+          "Llama a func sobre x, y luego sobre el resultado."
+        ],
+        "en": [
+          "Call func on x, then on the result."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "aplicar_dos_veces",
+          "harness": "assert aplicar_dos_veces(lambda y: y + 1, 5) == 7\nassert aplicar_dos_veces(lambda y: y * 2, 3) == 12"
+        }
+      ]
+    }
+  ]
+}

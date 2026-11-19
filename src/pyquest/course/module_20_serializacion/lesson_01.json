@@ -1,0 +1,198 @@
+{
+  "id": "m20l1",
+  "title": {
+    "es": "El peligro de eval y exec",
+    "en": "The danger of eval and exec"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "eval ejecuta lo que le des"
+      },
+      {
+        "type": "text",
+        "value": "`eval()` y `exec()` ejecutan texto como si fuera código. Si ese texto viene del usuario, le estás dando control total de tu programa: es una puerta abierta a la **inyección de código**."
+      },
+      {
+        "type": "code",
+        "value": [
+          "# NUNCA hagas esto con datos externos:",
+          "# eval(entrada_del_usuario)",
+          "# entrada = \"__import__('os').system('rm -rf /')\"  # desastre"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Para convertir texto en un dato de Python de forma **segura** usa `ast.literal_eval`: solo acepta literales (números, cadenas, listas, dicts, tuplas, booleanos, None) y nunca ejecuta funciones."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import ast",
+          "print(ast.literal_eval('[1, 2, 3]'))",
+          "print(ast.literal_eval('42'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[1, 2, 3]",
+          "42"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Regla de oro: si necesitas 'evaluar' datos externos, casi siempre es `ast.literal_eval` o un parser específico (json), nunca `eval`."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "eval runs whatever you give it"
+      },
+      {
+        "type": "text",
+        "value": "`eval()` and `exec()` run text as code. If that text comes from the user, you hand them full control of your program: an open door to **code injection**."
+      },
+      {
+        "type": "code",
+        "value": [
+          "# NEVER do this with external data:",
+          "# eval(user_input)",
+          "# user_input = \"__import__('os').system('rm -rf /')\"  # disaster"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "To turn text into a Python value **safely** use `ast.literal_eval`: it only accepts literals (numbers, strings, lists, dicts, tuples, booleans, None) and never runs functions."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import ast",
+          "print(ast.literal_eval('[1, 2, 3]'))",
+          "print(ast.literal_eval('42'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[1, 2, 3]",
+          "42"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Golden rule: if you must 'evaluate' external data, it's almost always `ast.literal_eval` or a specific parser (json), never `eval`."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m20l1e1",
+      "prompt": {
+        "es": "Define `dato_seguro(texto)` que convierta el texto en el dato Python que representa, de forma segura (usa ast.literal_eval).",
+        "en": "Define `dato_seguro(texto)` that safely turns the text into the Python value it represents (use ast.literal_eval)."
+      },
+      "starter_code": [
+        "import ast",
+        "",
+        "def dato_seguro(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "import ast",
+        "",
+        "def dato_seguro(texto):",
+        "    return ast.literal_eval(texto)"
+      ],
+      "hints": {
+        "es": [
+          "ast.literal_eval no ejecuta funciones, solo lee literales."
+        ],
+        "en": [
+          "ast.literal_eval doesn't run functions, only reads literals."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "dato_seguro",
+          "cases": [
+            {
+              "args": [
+                "42"
+              ],
+              "expected": 42
+            },
+            {
+              "args": [
+                "[1, 2]"
+              ],
+              "expected": [
+                1,
+                2
+              ]
+            },
+            {
+              "args": [
+                "{'a': 1}"
+              ],
+              "expected": {
+                "a": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m20l1e2",
+      "prompt": {
+        "es": "Define `suma_segura(texto)` que reciba el texto de una lista (p. ej. '[1, 2, 3]') y devuelva la suma, sin usar eval.",
+        "en": "Define `suma_segura(texto)` taking the text of a list (e.g. '[1, 2, 3]') and returning the sum, without using eval."
+      },
+      "starter_code": [
+        "import ast",
+        "",
+        "def suma_segura(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "import ast",
+        "",
+        "def suma_segura(texto):",
+        "    return sum(ast.literal_eval(texto))"
+      ],
+      "hints": {
+        "es": [
+          "Convierte con literal_eval y aplica sum()."
+        ],
+        "en": [
+          "Convert with literal_eval and apply sum()."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "suma_segura",
+          "cases": [
+            {
+              "args": [
+                "[1, 2, 3]"
+              ],
+              "expected": 6
+            },
+            {
+              "args": [
+                "[10]"
+              ],
+              "expected": 10
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

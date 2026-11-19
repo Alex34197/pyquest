@@ -1,0 +1,16 @@
+{
+  "id": "m4",
+  "order": 4,
+  "title": {
+    "es": "Cadenas de texto",
+    "en": "Strings"
+  },
+  "summary": {
+    "es": "Métodos de texto, índices, troceado y formato con f-strings.",
+    "en": "String methods, indexing, slicing and f-string formatting."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

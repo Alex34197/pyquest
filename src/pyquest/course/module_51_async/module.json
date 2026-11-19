@@ -1,0 +1,16 @@
+{
+  "id": "m51",
+  "order": 51,
+  "title": {
+    "es": "Programación asíncrona",
+    "en": "Asynchronous programming"
+  },
+  "summary": {
+    "es": "Corutinas async/await, asyncio.run y asyncio.sleep.",
+    "en": "async/await coroutines, asyncio.run and asyncio.sleep."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

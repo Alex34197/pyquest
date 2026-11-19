@@ -1,0 +1,16 @@
+{
+  "id": "m24",
+  "order": 24,
+  "title": {
+    "es": "itertools y functools",
+    "en": "itertools and functools"
+  },
+  "summary": {
+    "es": "chain, combinations; reduce y memoización con lru_cache.",
+    "en": "chain, combinations; reduce and memoization with lru_cache."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

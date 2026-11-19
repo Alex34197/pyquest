@@ -1,0 +1,173 @@
+{
+  "id": "m69l2",
+  "title": {
+    "es": "Empaquetar con struct",
+    "en": "Packing with struct"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Formatos binarios"
+      },
+      {
+        "type": "text",
+        "value": "`struct.pack(formato, *valores)` empaqueta varios números en bytes según un formato. `>HH` significa: big-endian (`>`), dos enteros sin signo de 16 bits (`H`). `struct.unpack` hace lo inverso."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import struct",
+          "b = struct.pack('>HH', 1, 2)",
+          "print(b.hex())",
+          "print(struct.unpack('>HH', b))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "00010002",
+          "(1, 2)"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "struct es clave para leer formatos de fichero binarios y protocolos de red."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Binary formats"
+      },
+      {
+        "type": "text",
+        "value": "`struct.pack(format, *values)` packs several numbers into bytes according to a format. `>HH` means: big-endian (`>`), two unsigned 16-bit integers (`H`). `struct.unpack` does the reverse."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import struct",
+          "b = struct.pack('>HH', 1, 2)",
+          "print(b.hex())",
+          "print(struct.unpack('>HH', b))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "00010002",
+          "(1, 2)"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "struct is key to reading binary file formats and network protocols."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m69l2e1",
+      "prompt": {
+        "es": "Define `empaquetar(a, b)` que empaquete dos enteros de 16 bits big-endian y devuelva el hexadecimal (struct.pack '>HH').",
+        "en": "Define `empaquetar(a, b)` packing two 16-bit big-endian ints and returning the hexadecimal (struct.pack '>HH')."
+      },
+      "starter_code": [
+        "import struct",
+        "",
+        "def empaquetar(a, b):",
+        "    pass"
+      ],
+      "solution": [
+        "import struct",
+        "",
+        "def empaquetar(a, b):",
+        "    return struct.pack('>HH', a, b).hex()"
+      ],
+      "hints": {
+        "es": [
+          "struct.pack('>HH', a, b).hex()."
+        ],
+        "en": [
+          "struct.pack('>HH', a, b).hex()."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "empaquetar",
+          "cases": [
+            {
+              "args": [
+                1,
+                2
+              ],
+              "expected": "00010002"
+            },
+            {
+              "args": [
+                255,
+                256
+              ],
+              "expected": "00ff0100"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m69l2e2",
+      "prompt": {
+        "es": "Define `desempaquetar(s)` que reciba el hexadecimal de dos enteros de 16 bits y devuelva [a, b] (struct.unpack '>HH').",
+        "en": "Define `desempaquetar(s)` taking the hexadecimal of two 16-bit ints and returning [a, b] (struct.unpack '>HH')."
+      },
+      "starter_code": [
+        "import struct",
+        "",
+        "def desempaquetar(s):",
+        "    pass"
+      ],
+      "solution": [
+        "import struct",
+        "",
+        "def desempaquetar(s):",
+        "    return list(struct.unpack('>HH', bytes.fromhex(s)))"
+      ],
+      "hints": {
+        "es": [
+          "struct.unpack devuelve una tupla; conviértela a list."
+        ],
+        "en": [
+          "struct.unpack returns a tuple; convert it to a list."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "desempaquetar",
+          "cases": [
+            {
+              "args": [
+                "00010002"
+              ],
+              "expected": [
+                1,
+                2
+              ]
+            },
+            {
+              "args": [
+                "00ff0100"
+              ],
+              "expected": [
+                255,
+                256
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

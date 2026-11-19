@@ -1,0 +1,174 @@
+{
+  "id": "m26l2",
+  "title": {
+    "es": "Cambiar extensión y partes",
+    "en": "Changing extension and parts"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Transformar rutas"
+      },
+      {
+        "type": "text",
+        "value": "`with_suffix(ext)` devuelve una ruta nueva con otra extensión. `parts` da la tupla de componentes de la ruta."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from pathlib import PurePosixPath",
+          "p = PurePosixPath('docs/python/intro.txt')",
+          "print(p.with_suffix('.md').name)",
+          "print(p.parts)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "intro.md",
+          "('docs', 'python', 'intro.txt')"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`with_suffix` no toca el disco: solo construye una ruta nueva en memoria."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Transforming paths"
+      },
+      {
+        "type": "text",
+        "value": "`with_suffix(ext)` returns a new path with a different extension. `parts` gives the tuple of path components."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from pathlib import PurePosixPath",
+          "p = PurePosixPath('docs/python/intro.txt')",
+          "print(p.with_suffix('.md').name)",
+          "print(p.parts)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "intro.md",
+          "('docs', 'python', 'intro.txt')"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`with_suffix` doesn't touch the disk: it just builds a new path in memory."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m26l2e1",
+      "prompt": {
+        "es": "Define `cambiar_ext(nombre, ext)` que devuelva el nombre con otra extensión. Ej: ('foto.png', '.jpg') -> 'foto.jpg'.",
+        "en": "Define `cambiar_ext(nombre, ext)` returning the name with another extension. E.g. ('foto.png', '.jpg') -> 'foto.jpg'."
+      },
+      "starter_code": [
+        "from pathlib import PurePosixPath",
+        "",
+        "def cambiar_ext(nombre, ext):",
+        "    pass"
+      ],
+      "solution": [
+        "from pathlib import PurePosixPath",
+        "",
+        "def cambiar_ext(nombre, ext):",
+        "    return PurePosixPath(nombre).with_suffix(ext).name"
+      ],
+      "hints": {
+        "es": [
+          "with_suffix(ext) y luego .name."
+        ],
+        "en": [
+          "with_suffix(ext) then .name."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "cambiar_ext",
+          "cases": [
+            {
+              "args": [
+                "foto.png",
+                ".jpg"
+              ],
+              "expected": "foto.jpg"
+            },
+            {
+              "args": [
+                "a/b.txt",
+                ".md"
+              ],
+              "expected": "b.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m26l2e2",
+      "prompt": {
+        "es": "Define `partes(ruta)` que devuelva la lista de componentes de la ruta (usa PurePosixPath).",
+        "en": "Define `partes(ruta)` returning the list of path components (use PurePosixPath)."
+      },
+      "starter_code": [
+        "from pathlib import PurePosixPath",
+        "",
+        "def partes(ruta):",
+        "    pass"
+      ],
+      "solution": [
+        "from pathlib import PurePosixPath",
+        "",
+        "def partes(ruta):",
+        "    return list(PurePosixPath(ruta).parts)"
+      ],
+      "hints": {
+        "es": [
+          "parts es una tupla; conviértela a list."
+        ],
+        "en": [
+          "parts is a tuple; convert it to list."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "partes",
+          "cases": [
+            {
+              "args": [
+                "docs/python/intro.txt"
+              ],
+              "expected": [
+                "docs",
+                "python",
+                "intro.txt"
+              ]
+            },
+            {
+              "args": [
+                "a/b"
+              ],
+              "expected": [
+                "a",
+                "b"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

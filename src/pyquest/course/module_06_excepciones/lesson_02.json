@@ -1,0 +1,149 @@
+{
+  "id": "m6l2",
+  "title": {
+    "es": "Lanzar errores: raise",
+    "en": "Raising errors: raise"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Avisar de un problema"
+      },
+      {
+        "type": "text",
+        "value": "Con `raise` lanzas una excepción tú mismo cuando detectas algo inválido. Es mejor que devolver un valor 'raro': deja claro que es un error."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def raiz(n):",
+          "    if n < 0:",
+          "        raise ValueError('n no puede ser negativo')",
+          "    return n ** 0.5",
+          "",
+          "print(raiz(9))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "3.0"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Quien llame a la función puede capturarlo con `try`/`except`. Elige el tipo adecuado: `ValueError` para un valor inválido, `TypeError` para un tipo incorrecto…"
+      },
+      {
+        "type": "note",
+        "value": "Un mensaje claro en el `raise` ayuda muchísimo a quien depura el error después."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Signalling a problem"
+      },
+      {
+        "type": "text",
+        "value": "With `raise` you throw an exception yourself when you detect something invalid. It's better than returning a 'weird' value: it makes the error explicit."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def raiz(n):",
+          "    if n < 0:",
+          "        raise ValueError('n cannot be negative')",
+          "    return n ** 0.5",
+          "",
+          "print(raiz(9))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "3.0"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "The caller can catch it with `try`/`except`. Pick the right type: `ValueError` for an invalid value, `TypeError` for a wrong type…"
+      },
+      {
+        "type": "note",
+        "value": "A clear message in the `raise` helps a lot whoever debugs the error later."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m6l2e1",
+      "prompt": {
+        "es": "Define `raiz(n)` que devuelva `n ** 0.5`, pero lance `ValueError` si `n` es negativo.",
+        "en": "Define `raiz(n)` returning `n ** 0.5`, but raising `ValueError` if `n` is negative."
+      },
+      "starter_code": [
+        "def raiz(n):",
+        "    pass"
+      ],
+      "solution": [
+        "def raiz(n):",
+        "    if n < 0:",
+        "        raise ValueError('n negativo')",
+        "    return n ** 0.5"
+      ],
+      "hints": {
+        "es": [
+          "Comprueba n < 0 y usa raise ValueError(...).",
+          "Si no, devuelve n ** 0.5."
+        ],
+        "en": [
+          "Check n < 0 and use raise ValueError(...).",
+          "Otherwise return n ** 0.5."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "raiz",
+          "harness": "assert raiz(9) == 3.0\nassert raiz(0) == 0.0\ntry:\n    raiz(-1)\n    assert False, 'deberia lanzar ValueError'\nexcept ValueError:\n    pass"
+        }
+      ]
+    },
+    {
+      "id": "m6l2e2",
+      "prompt": {
+        "es": "Define `retirar(saldo, cantidad)` que devuelva el saldo restante, pero lance `ValueError` si `cantidad` es mayor que `saldo`.",
+        "en": "Define `retirar(saldo, cantidad)` returning the remaining balance, but raising `ValueError` if `cantidad` exceeds `saldo`."
+      },
+      "starter_code": [
+        "def retirar(saldo, cantidad):",
+        "    pass"
+      ],
+      "solution": [
+        "def retirar(saldo, cantidad):",
+        "    if cantidad > saldo:",
+        "        raise ValueError('fondos insuficientes')",
+        "    return saldo - cantidad"
+      ],
+      "hints": {
+        "es": [
+          "Si cantidad > saldo, raise ValueError.",
+          "Si no, return saldo - cantidad."
+        ],
+        "en": [
+          "If cantidad > saldo, raise ValueError.",
+          "Otherwise return saldo - cantidad."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "retirar",
+          "harness": "assert retirar(100, 30) == 70\nassert retirar(50, 50) == 0\ntry:\n    retirar(50, 80)\n    assert False, 'deberia lanzar ValueError'\nexcept ValueError:\n    pass"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "id": "m25l1",
+  "title": {
+    "es": "Enumeraciones con Enum",
+    "en": "Enumerations with Enum"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Constantes con nombre"
+      },
+      {
+        "type": "text",
+        "value": "Un **Enum** agrupa constantes relacionadas bajo nombres claros, en vez de usar números 'mágicos' sueltos por el código."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from enum import Enum",
+          "",
+          "class Color(Enum):",
+          "    ROJO = 1",
+          "    VERDE = 2",
+          "    AZUL = 3",
+          "",
+          "print(Color.ROJO)",
+          "print(Color.ROJO.value)",
+          "print(Color.ROJO.name)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Color.ROJO",
+          "1",
+          "ROJO"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Si no te importa el valor concreto, `auto()` los asigna por ti (empezando en 1)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from enum import Enum, auto",
+          "",
+          "class Dia(Enum):",
+          "    LUNES = auto()",
+          "    MARTES = auto()"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Los enums hacen el código más legible y evitan errores: `Color.ROJO` se entiende mejor que un 1 suelto."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Named constants"
+      },
+      {
+        "type": "text",
+        "value": "An **Enum** groups related constants under clear names, instead of scattering 'magic' numbers through the code."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from enum import Enum",
+          "",
+          "class Color(Enum):",
+          "    ROJO = 1",
+          "    VERDE = 2",
+          "    AZUL = 3",
+          "",
+          "print(Color.ROJO)",
+          "print(Color.ROJO.value)",
+          "print(Color.ROJO.name)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Color.ROJO",
+          "1",
+          "ROJO"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "If you don't care about the exact value, `auto()` assigns them for you (starting at 1)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from enum import Enum, auto",
+          "",
+          "class Dia(Enum):",
+          "    LUNES = auto()",
+          "    MARTES = auto()"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Enums make code more readable and avoid errors: `Color.ROJO` reads better than a lone 1."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m25l1e1",
+      "prompt": {
+        "es": "Define un Enum `Color` con ROJO=1, VERDE=2 y AZUL=3.",
+        "en": "Define an Enum `Color` with ROJO=1, VERDE=2 and AZUL=3."
+      },
+      "starter_code": [
+        "from enum import Enum",
+        "",
+        "# define el Enum Color"
+      ],
+      "solution": [
+        "from enum import Enum",
+        "",
+        "class Color(Enum):",
+        "    ROJO = 1",
+        "    VERDE = 2",
+        "    AZUL = 3"
+      ],
+      "hints": {
+        "es": [
+          "Hereda de Enum y asigna un valor a cada nombre."
+        ],
+        "en": [
+          "Inherit from Enum and assign a value to each name."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Color",
+          "harness": "assert Color.ROJO.value == 1\nassert Color.VERDE.name == 'VERDE'\nassert isinstance(Color.AZUL, Color)"
+        }
+      ]
+    },
+    {
+      "id": "m25l1e2",
+      "prompt": {
+        "es": "Define un Enum `Dia` con LUNES, MARTES y MIERCOLES usando `auto()` (sus valores serán 1, 2 y 3).",
+        "en": "Define an Enum `Dia` with LUNES, MARTES and MIERCOLES using `auto()` (values will be 1, 2 and 3)."
+      },
+      "starter_code": [
+        "from enum import Enum, auto",
+        "",
+        "# define el Enum Dia"
+      ],
+      "solution": [
+        "from enum import Enum, auto",
+        "",
+        "class Dia(Enum):",
+        "    LUNES = auto()",
+        "    MARTES = auto()",
+        "    MIERCOLES = auto()"
+      ],
+      "hints": {
+        "es": [
+          "auto() asigna 1, 2, 3... en orden."
+        ],
+        "en": [
+          "auto() assigns 1, 2, 3... in order."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Dia",
+          "harness": "assert Dia.LUNES.value == 1\nassert Dia.MARTES.value == 2\nassert Dia.MIERCOLES.value == 3"
+        }
+      ]
+    }
+  ]
+}

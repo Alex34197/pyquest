@@ -1,0 +1,341 @@
+{
+  "id": "m1l4",
+  "title": {
+    "es": "Funciones: def, parámetros y return",
+    "en": "Functions: def, parameters and return"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "¿Qué es una función?"
+      },
+      {
+        "type": "text",
+        "value": "Una **función** es un bloque de código con nombre que puedes reutilizar. Se define con `def`, recibe datos de entrada (parámetros) y puede devolver un resultado con `return`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def saludar(nombre):",
+          "    return 'Hola, ' + nombre",
+          "",
+          "print(saludar('Ana'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Hola, Ana"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Fíjate en la estructura: `def nombre(parametros):` y, debajo, el cuerpo **indentado** (sangrado con 4 espacios). La indentación es la que delimita qué pertenece a la función."
+      },
+      {
+        "type": "heading",
+        "value": "return frente a print"
+      },
+      {
+        "type": "text",
+        "value": "`print` solo *muestra* algo en pantalla; `return` *entrega* un valor a quien llamó a la función para poder seguir trabajando con él. Casi siempre querrás `return`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def doble(n):",
+          "    return n * 2",
+          "",
+          "resultado = doble(5)",
+          "print(resultado + 1)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "11"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Cuando se ejecuta `return`, la función termina inmediatamente. Si una función no tiene `return`, devuelve `None` (nada)."
+      },
+      {
+        "type": "heading",
+        "value": "Varios parámetros y valores por defecto"
+      },
+      {
+        "type": "text",
+        "value": "Una función puede recibir varios parámetros separados por comas, y puedes darles un valor por defecto que se usa si no se pasa ese argumento."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def potencia(base, exponente=2):",
+          "    return base ** exponente",
+          "",
+          "print(potencia(3))",
+          "print(potencia(2, 10))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "9",
+          "1024"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Una función bien hecha hace **una sola cosa** y tiene un nombre que describe qué devuelve. Si te cuesta nombrarla, quizá hace demasiado."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "What is a function?"
+      },
+      {
+        "type": "text",
+        "value": "A **function** is a named block of code you can reuse. You define it with `def`, it receives input data (parameters) and can return a result with `return`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def greet(name):",
+          "    return 'Hello, ' + name",
+          "",
+          "print(greet('Ana'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Hello, Ana"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Notice the structure: `def name(parameters):` and, below, the **indented** body (4 spaces). Indentation is what defines what belongs to the function."
+      },
+      {
+        "type": "heading",
+        "value": "return versus print"
+      },
+      {
+        "type": "text",
+        "value": "`print` only *shows* something on screen; `return` *hands* a value back to the caller so you can keep working with it. You will almost always want `return`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def double(n):",
+          "    return n * 2",
+          "",
+          "result = double(5)",
+          "print(result + 1)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "11"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "When `return` runs, the function ends immediately. If a function has no `return`, it returns `None` (nothing)."
+      },
+      {
+        "type": "heading",
+        "value": "Several parameters and default values"
+      },
+      {
+        "type": "text",
+        "value": "A function can take several comma-separated parameters, and you can give them a default value used when that argument is not passed."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def power(base, exponent=2):",
+          "    return base ** exponent",
+          "",
+          "print(power(3))",
+          "print(power(2, 10))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "9",
+          "1024"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "A well-made function does **one thing** and has a name that describes what it returns. If it is hard to name, it may be doing too much."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m1l4e1",
+      "prompt": {
+        "es": "Define una función `doble(n)` que devuelva el doble de `n` (es decir, `n * 2`).",
+        "en": "Define a function `doble(n)` that returns the double of `n` (that is, `n * 2`)."
+      },
+      "starter_code": [
+        "def doble(n):",
+        "    # devuelve el doble de n",
+        "    pass"
+      ],
+      "solution": [
+        "def doble(n):",
+        "    return n * 2"
+      ],
+      "hints": {
+        "es": [
+          "Usa return, no print.",
+          "return n * 2"
+        ],
+        "en": [
+          "Use return, not print.",
+          "return n * 2"
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "name": "doble",
+          "function": "doble",
+          "cases": [
+            {
+              "args": [
+                5
+              ],
+              "expected": 10
+            },
+            {
+              "args": [
+                0
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                -3
+              ],
+              "expected": -6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m1l4e2",
+      "prompt": {
+        "es": "Define `area_rectangulo(base, altura)` que devuelva el área del rectángulo (base por altura).",
+        "en": "Define `area_rectangulo(base, altura)` that returns the rectangle area (base times height)."
+      },
+      "starter_code": [
+        "def area_rectangulo(base, altura):",
+        "    pass"
+      ],
+      "solution": [
+        "def area_rectangulo(base, altura):",
+        "    return base * altura"
+      ],
+      "hints": {
+        "es": [
+          "El área es base * altura."
+        ],
+        "en": [
+          "Area is base * height."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "name": "area",
+          "function": "area_rectangulo",
+          "cases": [
+            {
+              "args": [
+                2,
+                3
+              ],
+              "expected": 6
+            },
+            {
+              "args": [
+                5,
+                5
+              ],
+              "expected": 25
+            },
+            {
+              "args": [
+                10,
+                0
+              ],
+              "expected": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m1l4e3",
+      "prompt": {
+        "es": "Define `es_par(n)` que devuelva `True` si `n` es par y `False` si es impar. Pista: usa el operador módulo `%`.",
+        "en": "Define `es_par(n)` that returns `True` if `n` is even and `False` if it is odd. Hint: use the modulo operator `%`."
+      },
+      "starter_code": [
+        "def es_par(n):",
+        "    pass"
+      ],
+      "solution": [
+        "def es_par(n):",
+        "    return n % 2 == 0"
+      ],
+      "hints": {
+        "es": [
+          "Un número es par si el resto de dividir entre 2 es 0.",
+          "return n % 2 == 0"
+        ],
+        "en": [
+          "A number is even if the remainder of dividing by 2 is 0.",
+          "return n % 2 == 0"
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "name": "es_par",
+          "function": "es_par",
+          "cases": [
+            {
+              "args": [
+                4
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                7
+              ],
+              "expected": false
+            },
+            {
+              "args": [
+                0
+              ],
+              "expected": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

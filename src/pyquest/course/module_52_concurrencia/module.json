@@ -1,0 +1,16 @@
+{
+  "id": "m52",
+  "order": 52,
+  "title": {
+    "es": "Concurrencia con asyncio",
+    "en": "Concurrency with asyncio"
+  },
+  "summary": {
+    "es": "asyncio.gather, create_task y wait_for (timeouts).",
+    "en": "asyncio.gather, create_task and wait_for (timeouts)."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

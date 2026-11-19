@@ -1,0 +1,182 @@
+{
+  "id": "m37l2",
+  "title": {
+    "es": "Jerarquías y manejo",
+    "en": "Hierarchies and handling"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Excepciones que heredan"
+      },
+      {
+        "type": "text",
+        "value": "Si tus excepciones heredan de una común, puedes capturarlas todas con la clase padre. Capturar `ErrorApp` atrapa también sus subclases."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class ErrorApp(Exception):",
+          "    pass",
+          "",
+          "class ErrorRed(ErrorApp):",
+          "    pass",
+          "",
+          "try:",
+          "    raise ErrorRed('caída')",
+          "except ErrorApp as e:",
+          "    print('capturado:', e)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "capturado: caída"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`try/except` puede capturar varios tipos: `except (TypeError, ValueError):`. Captura siempre lo más específico primero."
+      },
+      {
+        "type": "note",
+        "value": "Evita `except Exception` 'a pelo' salvo para registrar y relanzar: puede ocultar errores reales."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Inheriting exceptions"
+      },
+      {
+        "type": "text",
+        "value": "If your exceptions inherit from a common one, you can catch them all with the parent class. Catching `ErrorApp` also catches its subclasses."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class ErrorApp(Exception):",
+          "    pass",
+          "",
+          "class ErrorRed(ErrorApp):",
+          "    pass",
+          "",
+          "try:",
+          "    raise ErrorRed('caída')",
+          "except ErrorApp as e:",
+          "    print('capturado:', e)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "capturado: caída"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`try/except` can catch several types: `except (TypeError, ValueError):`. Always catch the most specific first."
+      },
+      {
+        "type": "note",
+        "value": "Avoid a bare `except Exception` except to log and re-raise: it can hide real errors."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m37l2e1",
+      "prompt": {
+        "es": "Define `ErrorApp(Exception)` y `ErrorRed(ErrorApp)`, y `fallar()` que lance `ErrorRed`. Debe poder capturarse como `ErrorApp`.",
+        "en": "Define `ErrorApp(Exception)` and `ErrorRed(ErrorApp)`, and `fallar()` raising `ErrorRed`. It must be catchable as `ErrorApp`."
+      },
+      "starter_code": [
+        "class ErrorApp(Exception):",
+        "    pass",
+        "",
+        "# define ErrorRed y fallar()"
+      ],
+      "solution": [
+        "class ErrorApp(Exception):",
+        "    pass",
+        "",
+        "class ErrorRed(ErrorApp):",
+        "    pass",
+        "",
+        "def fallar():",
+        "    raise ErrorRed('boom')"
+      ],
+      "hints": {
+        "es": [
+          "ErrorRed hereda de ErrorApp; fallar() hace raise ErrorRed(...)."
+        ],
+        "en": [
+          "ErrorRed inherits from ErrorApp; fallar() does raise ErrorRed(...)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "fallar",
+          "harness": "ok = False\ntry:\n    fallar()\nexcept ErrorApp:\n    ok = True\nassert ok is True\nassert issubclass(ErrorRed, ErrorApp)"
+        }
+      ]
+    },
+    {
+      "id": "m37l2e2",
+      "prompt": {
+        "es": "Define `dividir_seguro(a, b)` que devuelva a/b, o `None` si b es 0 (captura ZeroDivisionError).",
+        "en": "Define `dividir_seguro(a, b)` returning a/b, or `None` if b is 0 (catch ZeroDivisionError)."
+      },
+      "starter_code": [
+        "def dividir_seguro(a, b):",
+        "    pass"
+      ],
+      "solution": [
+        "def dividir_seguro(a, b):",
+        "    try:",
+        "        return a / b",
+        "    except ZeroDivisionError:",
+        "        return None"
+      ],
+      "hints": {
+        "es": [
+          "Envuelve a/b en try/except ZeroDivisionError."
+        ],
+        "en": [
+          "Wrap a/b in try/except ZeroDivisionError."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "dividir_seguro",
+          "cases": [
+            {
+              "args": [
+                10,
+                2
+              ],
+              "expected": 5.0
+            },
+            {
+              "args": [
+                5,
+                0
+              ],
+              "expected": null
+            },
+            {
+              "args": [
+                6,
+                3
+              ],
+              "expected": 2.0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

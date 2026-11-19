@@ -1,0 +1,181 @@
+{
+  "id": "m30l1",
+  "title": {
+    "es": "Recursión: funciones que se llaman a sí mismas",
+    "en": "Recursion: functions that call themselves"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Resolver dividiendo en casos más pequeños"
+      },
+      {
+        "type": "text",
+        "value": "Una función **recursiva** se llama a sí misma con una entrada menor hasta llegar a un **caso base** que se resuelve directamente. Sin caso base, la recursión no termina."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def factorial(n):",
+          "    if n <= 1:        # caso base",
+          "        return 1",
+          "    return n * factorial(n - 1)   # caso recursivo",
+          "",
+          "print(factorial(4))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "24"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Toda recursión necesita: 1) un caso base, y 2) acercarse a él en cada llamada."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Solving by splitting into smaller cases"
+      },
+      {
+        "type": "text",
+        "value": "A **recursive** function calls itself with a smaller input until it reaches a **base case** that's solved directly. Without a base case, recursion never ends."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def factorial(n):",
+          "    if n <= 1:        # base case",
+          "        return 1",
+          "    return n * factorial(n - 1)   # recursive case",
+          "",
+          "print(factorial(4))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "24"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Every recursion needs: 1) a base case, and 2) to move toward it on each call."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m30l1e1",
+      "prompt": {
+        "es": "Define `factorial_rec(n)` de forma recursiva (sin usar bucles ni math).",
+        "en": "Define `factorial_rec(n)` recursively (no loops, no math)."
+      },
+      "starter_code": [
+        "def factorial_rec(n):",
+        "    pass"
+      ],
+      "solution": [
+        "def factorial_rec(n):",
+        "    if n <= 1:",
+        "        return 1",
+        "    return n * factorial_rec(n - 1)"
+      ],
+      "hints": {
+        "es": [
+          "Caso base n<=1 -> 1; si no, n * factorial_rec(n-1)."
+        ],
+        "en": [
+          "Base case n<=1 -> 1; else n * factorial_rec(n-1)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "factorial_rec",
+          "cases": [
+            {
+              "args": [
+                5
+              ],
+              "expected": 120
+            },
+            {
+              "args": [
+                0
+              ],
+              "expected": 1
+            },
+            {
+              "args": [
+                1
+              ],
+              "expected": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m30l1e2",
+      "prompt": {
+        "es": "Define `suma_rec(lista)` que sume la lista de forma recursiva.",
+        "en": "Define `suma_rec(lista)` summing the list recursively."
+      },
+      "starter_code": [
+        "def suma_rec(lista):",
+        "    pass"
+      ],
+      "solution": [
+        "def suma_rec(lista):",
+        "    if not lista:",
+        "        return 0",
+        "    return lista[0] + suma_rec(lista[1:])"
+      ],
+      "hints": {
+        "es": [
+          "Caso base: lista vacía -> 0; si no, primero + suma del resto."
+        ],
+        "en": [
+          "Base case: empty list -> 0; else first + sum of the rest."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "suma_rec",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  2,
+                  3
+                ]
+              ],
+              "expected": 6
+            },
+            {
+              "args": [
+                []
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                [
+                  10
+                ]
+              ],
+              "expected": 10
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "m16",
+  "order": 16,
+  "title": {
+    "es": "Hashing con hashlib",
+    "en": "Hashing with hashlib"
+  },
+  "summary": {
+    "es": "Resúmenes SHA-256, integridad, sal y contraseñas (no en claro).",
+    "en": "SHA-256 digests, integrity, salt and passwords (never plaintext)."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "id": "m59l2",
+  "title": {
+    "es": "__add__, __getitem__ y __contains__",
+    "en": "__add__, __getitem__ and __contains__"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Operadores aritméticos y de acceso"
+      },
+      {
+        "type": "text",
+        "value": "`__add__` define el `+`, `__getitem__` el acceso con corchetes `obj[i]`, y `__contains__` el operador `in`. Así tus objetos se usan con la misma sintaxis que los tipos nativos."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Vector:",
+          "    def __init__(self, x, y):",
+          "        self.x, self.y = x, y",
+          "    def __add__(self, otro):",
+          "        return Vector(self.x + otro.x, self.y + otro.y)",
+          "",
+          "v = Vector(1, 2) + Vector(3, 4)",
+          "print(v.x, v.y)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "4 6"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Sobrecargar operadores con cabeza hace el código expresivo; abusar de ello lo hace confuso."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Arithmetic and access operators"
+      },
+      {
+        "type": "text",
+        "value": "`__add__` defines `+`, `__getitem__` bracket access `obj[i]`, and `__contains__` the `in` operator. So your objects use the same syntax as built-in types."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Vector:",
+          "    def __init__(self, x, y):",
+          "        self.x, self.y = x, y",
+          "    def __add__(self, otro):",
+          "        return Vector(self.x + otro.x, self.y + otro.y)",
+          "",
+          "v = Vector(1, 2) + Vector(3, 4)",
+          "print(v.x, v.y)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "4 6"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Overloading operators sensibly makes code expressive; abusing it makes it confusing."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m59l2e1",
+      "prompt": {
+        "es": "Define `Vector(x, y)` con `__add__` que devuelva un nuevo Vector con las coordenadas sumadas.",
+        "en": "Define `Vector(x, y)` with `__add__` returning a new Vector with the coordinates added."
+      },
+      "starter_code": [
+        "class Vector:",
+        "    def __init__(self, x, y):",
+        "        self.x, self.y = x, y",
+        "    # añade __add__"
+      ],
+      "solution": [
+        "class Vector:",
+        "    def __init__(self, x, y):",
+        "        self.x, self.y = x, y",
+        "    def __add__(self, otro):",
+        "        return Vector(self.x + otro.x, self.y + otro.y)"
+      ],
+      "hints": {
+        "es": [
+          "__add__ devuelve Vector(self.x + otro.x, self.y + otro.y)."
+        ],
+        "en": [
+          "__add__ returns Vector(self.x + otro.x, self.y + otro.y)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Vector",
+          "harness": "v = Vector(1, 2) + Vector(3, 4)\nassert (v.x, v.y) == (4, 6)\nw = Vector(0, 0) + Vector(5, -5)\nassert (w.x, w.y) == (5, -5)"
+        }
+      ]
+    },
+    {
+      "id": "m59l2e2",
+      "prompt": {
+        "es": "Define `Lista(datos)` con `__getitem__` (acceso por índice) y `__contains__` (operador in).",
+        "en": "Define `Lista(datos)` with `__getitem__` (index access) and `__contains__` (the in operator)."
+      },
+      "starter_code": [
+        "class Lista:",
+        "    def __init__(self, datos):",
+        "        self.datos = list(datos)",
+        "    # añade __getitem__ y __contains__"
+      ],
+      "solution": [
+        "class Lista:",
+        "    def __init__(self, datos):",
+        "        self.datos = list(datos)",
+        "    def __getitem__(self, i):",
+        "        return self.datos[i]",
+        "    def __contains__(self, x):",
+        "        return x in self.datos"
+      ],
+      "hints": {
+        "es": [
+          "__getitem__ devuelve self.datos[i]; __contains__ usa x in self.datos."
+        ],
+        "en": [
+          "__getitem__ returns self.datos[i]; __contains__ uses x in self.datos."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Lista",
+          "harness": "l = Lista([10, 20, 30])\nassert l[1] == 20\nassert (20 in l) is True\nassert (99 in l) is False"
+        }
+      ]
+    }
+  ]
+}

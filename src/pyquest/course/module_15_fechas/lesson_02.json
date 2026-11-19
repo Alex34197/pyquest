@@ -1,0 +1,167 @@
+{
+  "id": "m15l2",
+  "title": {
+    "es": "Formatear fechas (strftime)",
+    "en": "Formatting dates (strftime)"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "De fecha a texto y de texto a fecha"
+      },
+      {
+        "type": "text",
+        "value": "`fecha.strftime(formato)` convierte una fecha en texto con el formato que elijas. Códigos: `%Y` año (4 cifras), `%m` mes, `%d` día."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from datetime import date",
+          "d = date(2024, 3, 5)",
+          "print(d.strftime('%d/%m/%Y'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "05/03/2024"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Al revés, `datetime.strptime(texto, formato)` interpreta un texto y crea la fecha:"
+      },
+      {
+        "type": "code",
+        "value": [
+          "from datetime import datetime",
+          "d = datetime.strptime('2024-03-05', '%Y-%m-%d')",
+          "print(d.date())"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "2024-03-05"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`%Y-%m-%d` es el formato ISO 8601: ordena bien alfabéticamente y evita ambigüedades."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "From date to text and back"
+      },
+      {
+        "type": "text",
+        "value": "`date.strftime(format)` turns a date into text with the format you choose. Codes: `%Y` 4-digit year, `%m` month, `%d` day."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from datetime import date",
+          "d = date(2024, 3, 5)",
+          "print(d.strftime('%d/%m/%Y'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "05/03/2024"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Conversely, `datetime.strptime(text, format)` parses text and builds the date:"
+      },
+      {
+        "type": "code",
+        "value": [
+          "from datetime import datetime",
+          "d = datetime.strptime('2024-03-05', '%Y-%m-%d')",
+          "print(d.date())"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "2024-03-05"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`%Y-%m-%d` is ISO 8601: it sorts well alphabetically and avoids ambiguity."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m15l2e1",
+      "prompt": {
+        "es": "Define `formato_iso(d)` que reciba un `date` y devuelva su texto en formato 'AAAA-MM-DD' (usa strftime con '%Y-%m-%d').",
+        "en": "Define `formato_iso(d)` taking a `date` and returning its text as 'YYYY-MM-DD' (use strftime with '%Y-%m-%d')."
+      },
+      "starter_code": [
+        "def formato_iso(d):",
+        "    pass"
+      ],
+      "solution": [
+        "def formato_iso(d):",
+        "    return d.strftime('%Y-%m-%d')"
+      ],
+      "hints": {
+        "es": [
+          "d.strftime('%Y-%m-%d')."
+        ],
+        "en": [
+          "d.strftime('%Y-%m-%d')."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "formato_iso",
+          "harness": "from datetime import date\nassert formato_iso(date(2024,3,5)) == '2024-03-05'\nassert formato_iso(date(1999,12,31)) == '1999-12-31'"
+        }
+      ]
+    },
+    {
+      "id": "m15l2e2",
+      "prompt": {
+        "es": "Define `desde_iso(texto)` que reciba 'AAAA-MM-DD' y devuelva el `date` correspondiente (usa datetime.strptime y .date()).",
+        "en": "Define `desde_iso(texto)` taking 'YYYY-MM-DD' and returning the corresponding `date` (use datetime.strptime and .date())."
+      },
+      "starter_code": [
+        "from datetime import datetime",
+        "",
+        "def desde_iso(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "from datetime import datetime",
+        "",
+        "def desde_iso(texto):",
+        "    return datetime.strptime(texto, '%Y-%m-%d').date()"
+      ],
+      "hints": {
+        "es": [
+          "strptime devuelve un datetime; usa .date() para quedarte con la fecha."
+        ],
+        "en": [
+          "strptime returns a datetime; use .date() to keep just the date."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "desde_iso",
+          "harness": "from datetime import date\nassert desde_iso('2024-03-05') == date(2024,3,5)\nassert desde_iso('1999-12-31') == date(1999,12,31)"
+        }
+      ]
+    }
+  ]
+}

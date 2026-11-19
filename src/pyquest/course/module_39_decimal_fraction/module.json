@@ -1,0 +1,16 @@
+{
+  "id": "m39",
+  "order": 39,
+  "title": {
+    "es": "Decimal y Fraction",
+    "en": "Decimal and Fraction"
+  },
+  "summary": {
+    "es": "Aritmética exacta para dinero (Decimal) y fracciones racionales (Fraction).",
+    "en": "Exact arithmetic for money (Decimal) and rational fractions (Fraction)."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

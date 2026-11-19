@@ -1,0 +1,16 @@
+{
+  "id": "m13",
+  "order": 13,
+  "title": {
+    "es": "Generadores e iteradores",
+    "en": "Generators and iterators"
+  },
+  "summary": {
+    "es": "yield, generadores perezosos y expresiones generadoras.",
+    "en": "yield, lazy generators and generator expressions."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "id": "m23l2",
+  "title": {
+    "es": "deque y namedtuple",
+    "en": "deque and namedtuple"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Cola eficiente y registros ligeros"
+      },
+      {
+        "type": "text",
+        "value": "`deque` (doble cola) añade y quita por **ambos extremos** de forma eficiente, y puede **rotar**."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from collections import deque",
+          "d = deque([1, 2, 3])",
+          "d.appendleft(0)",
+          "d.rotate(1)",
+          "print(list(d))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[3, 0, 1, 2]"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`namedtuple` crea una tupla con **campos con nombre**: ligera como una tupla, pero legible como un objeto."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from collections import namedtuple",
+          "Punto = namedtuple('Punto', ['x', 'y'])",
+          "p = Punto(1, 2)",
+          "print(p.x, p.y)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "1 2"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "deque es la estructura correcta para colas (FIFO) y para historiales con tamaño máximo (maxlen)."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Efficient queue and lightweight records"
+      },
+      {
+        "type": "text",
+        "value": "`deque` (double-ended queue) adds and removes from **both ends** efficiently, and can **rotate**."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from collections import deque",
+          "d = deque([1, 2, 3])",
+          "d.appendleft(0)",
+          "d.rotate(1)",
+          "print(list(d))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[3, 0, 1, 2]"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`namedtuple` creates a tuple with **named fields**: light as a tuple, readable as an object."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from collections import namedtuple",
+          "Punto = namedtuple('Punto', ['x', 'y'])",
+          "p = Punto(1, 2)",
+          "print(p.x, p.y)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "1 2"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "deque is the right structure for queues (FIFO) and for capped histories (maxlen)."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m23l2e1",
+      "prompt": {
+        "es": "Crea un `namedtuple` llamado `Punto` con campos `x` e `y`.",
+        "en": "Create a `namedtuple` named `Punto` with fields `x` and `y`."
+      },
+      "starter_code": [
+        "from collections import namedtuple",
+        "",
+        "# define Punto"
+      ],
+      "solution": [
+        "from collections import namedtuple",
+        "",
+        "Punto = namedtuple('Punto', ['x', 'y'])"
+      ],
+      "hints": {
+        "es": [
+          "namedtuple('Punto', ['x', 'y'])."
+        ],
+        "en": [
+          "namedtuple('Punto', ['x', 'y'])."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Punto",
+          "harness": "p = Punto(1, 2)\nassert p.x == 1 and p.y == 2\nassert tuple(p) == (1, 2)"
+        }
+      ]
+    },
+    {
+      "id": "m23l2e2",
+      "prompt": {
+        "es": "Define `rotar(lista, n)` que devuelva la lista rotada `n` posiciones a la derecha (usa deque.rotate).",
+        "en": "Define `rotar(lista, n)` returning the list rotated `n` positions to the right (use deque.rotate)."
+      },
+      "starter_code": [
+        "from collections import deque",
+        "",
+        "def rotar(lista, n):",
+        "    pass"
+      ],
+      "solution": [
+        "from collections import deque",
+        "",
+        "def rotar(lista, n):",
+        "    d = deque(lista)",
+        "    d.rotate(n)",
+        "    return list(d)"
+      ],
+      "hints": {
+        "es": [
+          "Mete la lista en un deque, rótalo y vuelve a list()."
+        ],
+        "en": [
+          "Put the list in a deque, rotate it and convert back to list()."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "rotar",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                1
+              ],
+              "expected": [
+                4,
+                1,
+                2,
+                3
+              ]
+            },
+            {
+              "args": [
+                [
+                  1,
+                  2,
+                  3
+                ],
+                0
+              ],
+              "expected": [
+                1,
+                2,
+                3
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

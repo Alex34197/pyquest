@@ -1,0 +1,16 @@
+{
+  "id": "m21",
+  "order": 21,
+  "title": {
+    "es": "Context managers (with)",
+    "en": "Context managers (with)"
+  },
+  "summary": {
+    "es": "El bloque with, __enter__/__exit__ y @contextmanager.",
+    "en": "The with block, __enter__/__exit__ and @contextmanager."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

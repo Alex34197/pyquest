@@ -1,0 +1,175 @@
+{
+  "id": "m47l1",
+  "title": {
+    "es": "Niveles de logging",
+    "en": "Logging levels"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Registrar en vez de imprimir"
+      },
+      {
+        "type": "text",
+        "value": "El módulo `logging` registra mensajes con **niveles** de importancia: DEBUG (10), INFO (20), WARNING (30), ERROR (40), CRITICAL (50). Permite filtrar por nivel sin borrar los `print`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import logging",
+          "print(logging.getLevelName(20))",
+          "print(logging.getLevelName('ERROR'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "INFO",
+          "40"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Usa logging en programas reales en vez de print: puedes activar/desactivar niveles y enviar a ficheros."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Logging instead of printing"
+      },
+      {
+        "type": "text",
+        "value": "The `logging` module records messages with importance **levels**: DEBUG (10), INFO (20), WARNING (30), ERROR (40), CRITICAL (50). It lets you filter by level without deleting your `print`s."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import logging",
+          "print(logging.getLevelName(20))",
+          "print(logging.getLevelName('ERROR'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "INFO",
+          "40"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Use logging in real programs instead of print: you can toggle levels and send output to files."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m47l1e1",
+      "prompt": {
+        "es": "Define `nombre_nivel(n)` que devuelva el nombre del nivel de logging para el número n (usa getLevelName).",
+        "en": "Define `nombre_nivel(n)` returning the logging level name for number n (use getLevelName)."
+      },
+      "starter_code": [
+        "import logging",
+        "",
+        "def nombre_nivel(n):",
+        "    pass"
+      ],
+      "solution": [
+        "import logging",
+        "",
+        "def nombre_nivel(n):",
+        "    return logging.getLevelName(n)"
+      ],
+      "hints": {
+        "es": [
+          "logging.getLevelName(n) traduce número -> nombre."
+        ],
+        "en": [
+          "logging.getLevelName(n) maps number -> name."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "nombre_nivel",
+          "cases": [
+            {
+              "args": [
+                20
+              ],
+              "expected": "INFO"
+            },
+            {
+              "args": [
+                10
+              ],
+              "expected": "DEBUG"
+            },
+            {
+              "args": [
+                40
+              ],
+              "expected": "ERROR"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m47l1e2",
+      "prompt": {
+        "es": "Define `valor_nivel(nombre)` que devuelva el número del nivel para su nombre (p. ej. 'INFO' -> 20).",
+        "en": "Define `valor_nivel(nombre)` returning the level number for its name (e.g. 'INFO' -> 20)."
+      },
+      "starter_code": [
+        "import logging",
+        "",
+        "def valor_nivel(nombre):",
+        "    pass"
+      ],
+      "solution": [
+        "import logging",
+        "",
+        "def valor_nivel(nombre):",
+        "    return logging.getLevelName(nombre)"
+      ],
+      "hints": {
+        "es": [
+          "getLevelName también funciona al revés: nombre -> número."
+        ],
+        "en": [
+          "getLevelName also works in reverse: name -> number."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "valor_nivel",
+          "cases": [
+            {
+              "args": [
+                "INFO"
+              ],
+              "expected": 20
+            },
+            {
+              "args": [
+                "ERROR"
+              ],
+              "expected": 40
+            },
+            {
+              "args": [
+                "WARNING"
+              ],
+              "expected": 30
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "m62",
+  "order": 62,
+  "title": {
+    "es": "Formato de cadenas",
+    "en": "String formatting"
+  },
+  "summary": {
+    "es": "Mini-lenguaje de formato: decimales, miles, porcentajes, anchura y alineación.",
+    "en": "Format mini-language: decimals, thousands, percentages, width and alignment."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "m34",
+  "order": 34,
+  "title": {
+    "es": "Conjuntos a fondo",
+    "en": "Sets in depth"
+  },
+  "summary": {
+    "es": "Intersección, unión, diferencia, subconjunto y quitar duplicados.",
+    "en": "Intersection, union, difference, subset and deduplication."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

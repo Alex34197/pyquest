@@ -1,0 +1,16 @@
+{
+  "id": "m5",
+  "order": 5,
+  "title": {
+    "es": "Funciones avanzadas",
+    "en": "Advanced functions"
+  },
+  "summary": {
+    "es": "Valores por defecto, *args/**kwargs, retorno múltiple, lambdas y recursión.",
+    "en": "Default values, *args/**kwargs, multiple return, lambdas and recursion."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

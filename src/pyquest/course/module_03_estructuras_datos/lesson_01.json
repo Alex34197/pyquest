@@ -1,0 +1,411 @@
+{
+  "id": "m3l1",
+  "title": {
+    "es": "Listas",
+    "en": "Lists"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Guardar muchos valores"
+      },
+      {
+        "type": "text",
+        "value": "Una **lista** es una colección ordenada de valores, escrita entre corchetes y separada por comas. Puede contener números, textos o lo que quieras, y crecer o encoger."
+      },
+      {
+        "type": "code",
+        "value": [
+          "numeros = [10, 20, 30]",
+          "print(numeros)",
+          "print(len(numeros))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[10, 20, 30]",
+          "3"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Índices: acceder por posición"
+      },
+      {
+        "type": "text",
+        "value": "Cada elemento tiene un índice que empieza en **0**. El último es `len(lista) - 1`. Los índices negativos cuentan desde el final: `-1` es el último."
+      },
+      {
+        "type": "code",
+        "value": [
+          "a = ['rojo', 'verde', 'azul']",
+          "print(a[0])",
+          "print(a[-1])"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "rojo",
+          "azul"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Pedir un índice que no existe (p. ej. `a[5]`) provoca un `IndexError`. Recuerda que con 3 elementos los índices válidos son 0, 1 y 2."
+      },
+      {
+        "type": "heading",
+        "value": "Modificar listas"
+      },
+      {
+        "type": "text",
+        "value": "`append(x)` añade al final, `insert(i, x)` inserta en una posición, `pop()` saca el último (o el de un índice) y `remove(x)` borra la primera aparición de `x`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "a = [1, 2, 3]",
+          "a.append(4)",
+          "a.pop(0)",
+          "print(a)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[2, 3, 4]"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Recorrer y comprobar pertenencia"
+      },
+      {
+        "type": "text",
+        "value": "Recorre una lista con `for`, y comprueba si contiene algo con `in`. `sorted(lista)` devuelve una copia ordenada."
+      },
+      {
+        "type": "code",
+        "value": [
+          "for x in [3, 1, 2]:",
+          "    print(x)",
+          "print(2 in [1, 2, 3])"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "3",
+          "1",
+          "2",
+          "True"
+        ]
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Storing many values"
+      },
+      {
+        "type": "text",
+        "value": "A **list** is an ordered collection of values, written between square brackets and comma-separated. It can hold numbers, strings or anything, and grow or shrink."
+      },
+      {
+        "type": "code",
+        "value": [
+          "numbers = [10, 20, 30]",
+          "print(numbers)",
+          "print(len(numbers))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[10, 20, 30]",
+          "3"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Indices: access by position"
+      },
+      {
+        "type": "text",
+        "value": "Each element has an index starting at **0**. The last is `len(list) - 1`. Negative indices count from the end: `-1` is the last."
+      },
+      {
+        "type": "code",
+        "value": [
+          "a = ['red', 'green', 'blue']",
+          "print(a[0])",
+          "print(a[-1])"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "red",
+          "blue"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Asking for an index that doesn't exist (e.g. `a[5]`) raises an `IndexError`. With 3 elements, valid indices are 0, 1 and 2."
+      },
+      {
+        "type": "heading",
+        "value": "Modifying lists"
+      },
+      {
+        "type": "text",
+        "value": "`append(x)` adds at the end, `insert(i, x)` inserts at a position, `pop()` removes the last (or one by index) and `remove(x)` deletes the first occurrence of `x`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "a = [1, 2, 3]",
+          "a.append(4)",
+          "a.pop(0)",
+          "print(a)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[2, 3, 4]"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Iterating and membership"
+      },
+      {
+        "type": "text",
+        "value": "Loop a list with `for`, and check if it contains something with `in`. `sorted(list)` returns a sorted copy."
+      },
+      {
+        "type": "code",
+        "value": [
+          "for x in [3, 1, 2]:",
+          "    print(x)",
+          "print(2 in [1, 2, 3])"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "3",
+          "1",
+          "2",
+          "True"
+        ]
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m3l1e1",
+      "prompt": {
+        "es": "Define `suma_lista(numeros)` que devuelva la suma de todos los números de la lista (sin usar `sum`).",
+        "en": "Define `suma_lista(numeros)` returning the sum of all numbers in the list (without using `sum`)."
+      },
+      "starter_code": [
+        "def suma_lista(numeros):",
+        "    total = 0",
+        "    # recorre la lista",
+        "    return total"
+      ],
+      "solution": [
+        "def suma_lista(numeros):",
+        "    total = 0",
+        "    for n in numeros:",
+        "        total = total + n",
+        "    return total"
+      ],
+      "hints": {
+        "es": [
+          "Acumula en 'total' recorriendo con for.",
+          "for n in numeros: total = total + n"
+        ],
+        "en": [
+          "Accumulate in 'total' looping with for.",
+          "for n in numeros: total = total + n"
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "name": "suma_lista",
+          "function": "suma_lista",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  2,
+                  3
+                ]
+              ],
+              "expected": 6
+            },
+            {
+              "args": [
+                []
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                [
+                  10,
+                  -5
+                ]
+              ],
+              "expected": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m3l1e2",
+      "prompt": {
+        "es": "Define `maximo(numeros)` que devuelva el mayor de la lista (sin usar `max`). La lista nunca estará vacía.",
+        "en": "Define `maximo(numeros)` returning the largest in the list (without using `max`). The list is never empty."
+      },
+      "starter_code": [
+        "def maximo(numeros):",
+        "    pass"
+      ],
+      "solution": [
+        "def maximo(numeros):",
+        "    mayor = numeros[0]",
+        "    for n in numeros:",
+        "        if n > mayor:",
+        "            mayor = n",
+        "    return mayor"
+      ],
+      "hints": {
+        "es": [
+          "Empieza suponiendo que el mayor es el primer elemento.",
+          "Recorre y actualiza si encuentras uno más grande."
+        ],
+        "en": [
+          "Start assuming the largest is the first element.",
+          "Loop and update if you find a bigger one."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "name": "maximo",
+          "function": "maximo",
+          "cases": [
+            {
+              "args": [
+                [
+                  3,
+                  9,
+                  2
+                ]
+              ],
+              "expected": 9
+            },
+            {
+              "args": [
+                [
+                  -1,
+                  -7,
+                  -3
+                ]
+              ],
+              "expected": -1
+            },
+            {
+              "args": [
+                [
+                  5
+                ]
+              ],
+              "expected": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m3l1e3",
+      "prompt": {
+        "es": "Define `invertir(lista)` que devuelva una **nueva** lista con los elementos en orden inverso (no uses `reversed` ni `[::-1]`).",
+        "en": "Define `invertir(lista)` returning a **new** list with the elements in reverse order (don't use `reversed` or `[::-1]`)."
+      },
+      "starter_code": [
+        "def invertir(lista):",
+        "    resultado = []",
+        "    return resultado"
+      ],
+      "solution": [
+        "def invertir(lista):",
+        "    resultado = []",
+        "    for x in lista:",
+        "        resultado.insert(0, x)",
+        "    return resultado"
+      ],
+      "hints": {
+        "es": [
+          "insert(0, x) coloca x al principio.",
+          "Si recorres en orden e insertas al principio, queda invertida."
+        ],
+        "en": [
+          "insert(0, x) puts x at the front.",
+          "Iterating in order and inserting at the front reverses it."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "name": "invertir",
+          "function": "invertir",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  2,
+                  3
+                ]
+              ],
+              "expected": [
+                3,
+                2,
+                1
+              ]
+            },
+            {
+              "args": [
+                []
+              ],
+              "expected": []
+            },
+            {
+              "args": [
+                [
+                  "a",
+                  "b"
+                ]
+              ],
+              "expected": [
+                "b",
+                "a"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

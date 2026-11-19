@@ -1,0 +1,162 @@
+{
+  "id": "m56l1",
+  "title": {
+    "es": "Genéricos: TypeVar y Generic",
+    "en": "Generics: TypeVar and Generic"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Tipos que funcionan con cualquier tipo"
+      },
+      {
+        "type": "text",
+        "value": "Un `TypeVar` representa 'un tipo cualquiera, pero el mismo'. Permite anotar funciones y clases **genéricas**: lo que entra del tipo T, sale del tipo T."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from typing import TypeVar",
+          "T = TypeVar('T')",
+          "",
+          "def primero(items: list[T]) -> T:",
+          "    return items[0]",
+          "",
+          "print(primero([10, 20]))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "10"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Una clase genérica hereda de `Generic[T]`. Las anotaciones no cambian la ejecución, pero documentan y permiten que un comprobador (mypy) detecte errores."
+      },
+      {
+        "type": "note",
+        "value": "Genéricos = código reutilizable y con tipos precisos: una Caja[int] y una Caja[str] comparten código."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Types that work with any type"
+      },
+      {
+        "type": "text",
+        "value": "A `TypeVar` represents 'any type, but the same one'. It lets you annotate **generic** functions and classes: what goes in as type T comes out as type T."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from typing import TypeVar",
+          "T = TypeVar('T')",
+          "",
+          "def primero(items: list[T]) -> T:",
+          "    return items[0]",
+          "",
+          "print(primero([10, 20]))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "10"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "A generic class inherits from `Generic[T]`. Annotations don't change execution, but they document and let a checker (mypy) catch errors."
+      },
+      {
+        "type": "note",
+        "value": "Generics = reusable, precisely-typed code: a Caja[int] and a Caja[str] share the code."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m56l1e1",
+      "prompt": {
+        "es": "Define una clase genérica `Caja(Generic[T])` con `__init__(valor)` y `get()` que devuelve el valor.",
+        "en": "Define a generic class `Caja(Generic[T])` with `__init__(valor)` and `get()` returning the value."
+      },
+      "starter_code": [
+        "from typing import TypeVar, Generic",
+        "",
+        "T = TypeVar('T')",
+        "",
+        "class Caja(Generic[T]):",
+        "    pass"
+      ],
+      "solution": [
+        "from typing import TypeVar, Generic",
+        "",
+        "T = TypeVar('T')",
+        "",
+        "class Caja(Generic[T]):",
+        "    def __init__(self, valor):",
+        "        self.valor = valor",
+        "    def get(self):",
+        "        return self.valor"
+      ],
+      "hints": {
+        "es": [
+          "Hereda de Generic[T]; guarda valor y devuélvelo en get()."
+        ],
+        "en": [
+          "Inherit from Generic[T]; store valor and return it in get()."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Caja",
+          "harness": "assert Caja(5).get() == 5\nassert Caja('hola').get() == 'hola'"
+        }
+      ]
+    },
+    {
+      "id": "m56l1e2",
+      "prompt": {
+        "es": "Define `intercambiar(a, b)` (genérica con TypeVar) que devuelva la tupla (b, a).",
+        "en": "Define `intercambiar(a, b)` (generic with TypeVar) returning the tuple (b, a)."
+      },
+      "starter_code": [
+        "from typing import TypeVar",
+        "",
+        "T = TypeVar('T')",
+        "",
+        "def intercambiar(a, b):",
+        "    pass"
+      ],
+      "solution": [
+        "from typing import TypeVar",
+        "",
+        "T = TypeVar('T')",
+        "",
+        "def intercambiar(a: T, b: T) -> tuple:",
+        "    return (b, a)"
+      ],
+      "hints": {
+        "es": [
+          "Devuelve (b, a)."
+        ],
+        "en": [
+          "Return (b, a)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "intercambiar",
+          "harness": "assert intercambiar(1, 2) == (2, 1)\nassert intercambiar('x', 'y') == ('y', 'x')"
+        }
+      ]
+    }
+  ]
+}

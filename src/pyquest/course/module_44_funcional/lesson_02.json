@@ -1,0 +1,160 @@
+{
+  "id": "m44l2",
+  "title": {
+    "es": "Componer y reducir",
+    "en": "Composing and reducing"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Encadenar transformaciones"
+      },
+      {
+        "type": "text",
+        "value": "Aplicar varias funciones en cadena (la salida de una es la entrada de la siguiente) se llama **composición**. Y `reduce` combina toda una lista en un único valor."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from functools import reduce",
+          "print(reduce(lambda a, b: a if a > b else b, [3, 7, 2]))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "7"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "reduce(funcion, lista) va combinando: ((3,7)->7, (7,2)->7). Útil para máximos, productos, etc."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Chaining transformations"
+      },
+      {
+        "type": "text",
+        "value": "Applying several functions in a chain (the output of one is the input of the next) is called **composition**. And `reduce` combines a whole list into a single value."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from functools import reduce",
+          "print(reduce(lambda a, b: a if a > b else b, [3, 7, 2]))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "7"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "reduce(func, list) keeps combining: ((3,7)->7, (7,2)->7). Useful for maxima, products, etc."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m44l2e1",
+      "prompt": {
+        "es": "Define `aplicar_todo(funcs, x)` que aplique en orden cada función de la lista al valor x.",
+        "en": "Define `aplicar_todo(funcs, x)` applying each function of the list to x, in order."
+      },
+      "starter_code": [
+        "def aplicar_todo(funcs, x):",
+        "    pass"
+      ],
+      "solution": [
+        "def aplicar_todo(funcs, x):",
+        "    for f in funcs:",
+        "        x = f(x)",
+        "    return x"
+      ],
+      "hints": {
+        "es": [
+          "Recorre las funciones reasignando x = f(x)."
+        ],
+        "en": [
+          "Iterate the functions reassigning x = f(x)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "aplicar_todo",
+          "harness": "assert aplicar_todo([lambda v: v + 1, lambda v: v * 2], 3) == 8\nassert aplicar_todo([], 5) == 5"
+        }
+      ]
+    },
+    {
+      "id": "m44l2e2",
+      "prompt": {
+        "es": "Define `maximo(numeros)` usando `functools.reduce` (sin usar max()).",
+        "en": "Define `maximo(numeros)` using `functools.reduce` (without using max())."
+      },
+      "starter_code": [
+        "from functools import reduce",
+        "",
+        "def maximo(numeros):",
+        "    pass"
+      ],
+      "solution": [
+        "from functools import reduce",
+        "",
+        "def maximo(numeros):",
+        "    return reduce(lambda a, b: a if a > b else b, numeros)"
+      ],
+      "hints": {
+        "es": [
+          "reduce con lambda que devuelve el mayor de dos."
+        ],
+        "en": [
+          "reduce with a lambda returning the larger of two."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "maximo",
+          "cases": [
+            {
+              "args": [
+                [
+                  3,
+                  7,
+                  2
+                ]
+              ],
+              "expected": 7
+            },
+            {
+              "args": [
+                [
+                  5
+                ]
+              ],
+              "expected": 5
+            },
+            {
+              "args": [
+                [
+                  -1,
+                  -9,
+                  -3
+                ]
+              ],
+              "expected": -1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

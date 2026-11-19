@@ -1,0 +1,320 @@
+{
+  "id": "m2l2",
+  "title": {
+    "es": "El bucle while",
+    "en": "The while loop"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Repetir mientras se cumpla algo"
+      },
+      {
+        "type": "text",
+        "value": "El bucle `while` repite un bloque **mientras** su condición sea verdadera. Antes de cada vuelta comprueba la condición; cuando deja de cumplirse, sale."
+      },
+      {
+        "type": "code",
+        "value": [
+          "i = 1",
+          "while i <= 3:",
+          "    print(i)",
+          "    i = i + 1"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Si la condición nunca se vuelve falsa, tienes un **bucle infinito**. Asegúrate de que algo cambie dentro del bucle (aquí, `i` aumenta) para que termine."
+      },
+      {
+        "type": "heading",
+        "value": "Acumuladores"
+      },
+      {
+        "type": "text",
+        "value": "Un patrón muy común es acumular un resultado en una variable que actualizas en cada vuelta."
+      },
+      {
+        "type": "code",
+        "value": [
+          "total = 0",
+          "n = 1",
+          "while n <= 5:",
+          "    total = total + n",
+          "    n = n + 1",
+          "print(total)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "15"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "break y continue"
+      },
+      {
+        "type": "text",
+        "value": "`break` sale del bucle inmediatamente. `continue` salta el resto de la vuelta actual y pasa a la siguiente."
+      },
+      {
+        "type": "code",
+        "value": [
+          "n = 0",
+          "while True:",
+          "    n = n + 1",
+          "    if n == 3:",
+          "        continue",
+          "    if n > 5:",
+          "        break",
+          "    print(n)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "1",
+          "2",
+          "4",
+          "5"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`while True:` con un `break` dentro es una forma habitual de repetir hasta que ocurra una condición de salida."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Repeat while something holds"
+      },
+      {
+        "type": "text",
+        "value": "The `while` loop repeats a block **as long as** its condition is true. Before each pass it checks the condition; when it no longer holds, it exits."
+      },
+      {
+        "type": "code",
+        "value": [
+          "i = 1",
+          "while i <= 3:",
+          "    print(i)",
+          "    i = i + 1"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "If the condition never becomes false, you have an **infinite loop**. Make sure something changes inside the loop (here, `i` increases) so it ends."
+      },
+      {
+        "type": "heading",
+        "value": "Accumulators"
+      },
+      {
+        "type": "text",
+        "value": "A very common pattern is to accumulate a result in a variable you update each pass."
+      },
+      {
+        "type": "code",
+        "value": [
+          "total = 0",
+          "n = 1",
+          "while n <= 5:",
+          "    total = total + n",
+          "    n = n + 1",
+          "print(total)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "15"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "break and continue"
+      },
+      {
+        "type": "text",
+        "value": "`break` exits the loop immediately. `continue` skips the rest of the current pass and moves to the next."
+      },
+      {
+        "type": "code",
+        "value": [
+          "n = 0",
+          "while True:",
+          "    n = n + 1",
+          "    if n == 3:",
+          "        continue",
+          "    if n > 5:",
+          "        break",
+          "    print(n)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "1",
+          "2",
+          "4",
+          "5"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`while True:` with a `break` inside is a common way to repeat until an exit condition occurs."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m2l2e1",
+      "prompt": {
+        "es": "Define `suma_hasta(n)` que devuelva la suma `1 + 2 + ... + n` usando un bucle `while`. Si `n` es 0 o negativo, devuelve 0.",
+        "en": "Define `suma_hasta(n)` returning the sum `1 + 2 + ... + n` using a `while` loop. If `n` is 0 or negative, return 0."
+      },
+      "starter_code": [
+        "def suma_hasta(n):",
+        "    total = 0",
+        "    # completa el bucle while",
+        "    return total"
+      ],
+      "solution": [
+        "def suma_hasta(n):",
+        "    total = 0",
+        "    i = 1",
+        "    while i <= n:",
+        "        total = total + i",
+        "        i = i + 1",
+        "    return total"
+      ],
+      "hints": {
+        "es": [
+          "Usa un acumulador 'total' y una variable 'i' que avance.",
+          "El bucle corre mientras i <= n."
+        ],
+        "en": [
+          "Use an accumulator 'total' and a counter 'i'.",
+          "The loop runs while i <= n."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "name": "suma_hasta",
+          "function": "suma_hasta",
+          "cases": [
+            {
+              "args": [
+                5
+              ],
+              "expected": 15
+            },
+            {
+              "args": [
+                1
+              ],
+              "expected": 1
+            },
+            {
+              "args": [
+                0
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                100
+              ],
+              "expected": 5050
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m2l2e2",
+      "prompt": {
+        "es": "Define `cuenta_atras(n)` que devuelva una **lista** con los números desde `n` hasta `1` en orden descendente. Ejemplo: `cuenta_atras(3)` -> `[3, 2, 1]`.",
+        "en": "Define `cuenta_atras(n)` returning a **list** with the numbers from `n` down to `1` in descending order. Example: `cuenta_atras(3)` -> `[3, 2, 1]`."
+      },
+      "starter_code": [
+        "def cuenta_atras(n):",
+        "    resultado = []",
+        "    # usa un while",
+        "    return resultado"
+      ],
+      "solution": [
+        "def cuenta_atras(n):",
+        "    resultado = []",
+        "    while n >= 1:",
+        "        resultado.append(n)",
+        "        n = n - 1",
+        "    return resultado"
+      ],
+      "hints": {
+        "es": [
+          "Empieza con una lista vacía y usa .append(n).",
+          "Decrementa n en cada vuelta: n = n - 1."
+        ],
+        "en": [
+          "Start with an empty list and use .append(n).",
+          "Decrease n each pass: n = n - 1."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "name": "cuenta_atras",
+          "function": "cuenta_atras",
+          "cases": [
+            {
+              "args": [
+                3
+              ],
+              "expected": [
+                3,
+                2,
+                1
+              ]
+            },
+            {
+              "args": [
+                1
+              ],
+              "expected": [
+                1
+              ]
+            },
+            {
+              "args": [
+                0
+              ],
+              "expected": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "m37",
+  "order": 37,
+  "title": {
+    "es": "Excepciones personalizadas",
+    "en": "Custom exceptions"
+  },
+  "summary": {
+    "es": "Definir excepciones, raise, jerarquías y captura por clase padre.",
+    "en": "Define exceptions, raise, hierarchies and catching by parent class."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

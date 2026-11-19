@@ -1,0 +1,158 @@
+{
+  "id": "m47l2",
+  "title": {
+    "es": "Capturar mensajes",
+    "en": "Capturing messages"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Hacia dónde van los logs"
+      },
+      {
+        "type": "text",
+        "value": "Un **handler** decide a dónde van los mensajes y un **formatter** cómo se ven. Aquí enviamos los logs a un buffer de texto con el formato `NIVEL:mensaje`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import logging, io",
+          "buf = io.StringIO()",
+          "lg = logging.Logger('demo')",
+          "hh = logging.StreamHandler(buf)",
+          "hh.setFormatter(logging.Formatter('%(levelname)s:%(message)s'))",
+          "lg.addHandler(hh)",
+          "lg.warning('cuidado')",
+          "print(buf.getvalue().strip())"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "WARNING:cuidado"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "En un programa real, el handler suele ser la consola o un fichero rotatorio (RotatingFileHandler)."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Where logs go"
+      },
+      {
+        "type": "text",
+        "value": "A **handler** decides where messages go and a **formatter** how they look. Here we send logs to a text buffer with the format `LEVEL:message`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import logging, io",
+          "buf = io.StringIO()",
+          "lg = logging.Logger('demo')",
+          "hh = logging.StreamHandler(buf)",
+          "hh.setFormatter(logging.Formatter('%(levelname)s:%(message)s'))",
+          "lg.addHandler(hh)",
+          "lg.warning('cuidado')",
+          "print(buf.getvalue().strip())"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "WARNING:cuidado"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "In a real program the handler is usually the console or a rotating file (RotatingFileHandler)."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m47l2e1",
+      "prompt": {
+        "es": "Define `log_a_texto(mensaje)` que registre `mensaje` a nivel WARNING y devuelva el texto 'WARNING:mensaje'.",
+        "en": "Define `log_a_texto(mensaje)` logging `mensaje` at WARNING level and returning the text 'WARNING:message'."
+      },
+      "starter_code": [
+        "import logging, io",
+        "",
+        "def log_a_texto(mensaje):",
+        "    pass"
+      ],
+      "solution": [
+        "import logging, io",
+        "",
+        "def log_a_texto(mensaje):",
+        "    buf = io.StringIO()",
+        "    lg = logging.Logger('demo')",
+        "    hh = logging.StreamHandler(buf)",
+        "    hh.setFormatter(logging.Formatter('%(levelname)s:%(message)s'))",
+        "    lg.addHandler(hh)",
+        "    lg.warning(mensaje)",
+        "    return buf.getvalue().strip()"
+      ],
+      "hints": {
+        "es": [
+          "StreamHandler a un StringIO + Formatter '%(levelname)s:%(message)s'."
+        ],
+        "en": [
+          "StreamHandler to a StringIO + Formatter '%(levelname)s:%(message)s'."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "log_a_texto",
+          "harness": "assert log_a_texto('hola') == 'WARNING:hola'\nassert log_a_texto('vaya') == 'WARNING:vaya'"
+        }
+      ]
+    },
+    {
+      "id": "m47l2e2",
+      "prompt": {
+        "es": "Define `log_dos(m1, m2)` que registre m1 como WARNING y m2 como ERROR, y devuelva las dos líneas.",
+        "en": "Define `log_dos(m1, m2)` logging m1 as WARNING and m2 as ERROR, returning both lines."
+      },
+      "starter_code": [
+        "import logging, io",
+        "",
+        "def log_dos(m1, m2):",
+        "    pass"
+      ],
+      "solution": [
+        "import logging, io",
+        "",
+        "def log_dos(m1, m2):",
+        "    buf = io.StringIO()",
+        "    lg = logging.Logger('demo2')",
+        "    hh = logging.StreamHandler(buf)",
+        "    hh.setFormatter(logging.Formatter('%(levelname)s:%(message)s'))",
+        "    lg.addHandler(hh)",
+        "    lg.warning(m1)",
+        "    lg.error(m2)",
+        "    return buf.getvalue().strip()"
+      ],
+      "hints": {
+        "es": [
+          "Llama a lg.warning(m1) y lg.error(m2); strip al final."
+        ],
+        "en": [
+          "Call lg.warning(m1) and lg.error(m2); strip at the end."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "log_dos",
+          "harness": "assert log_dos('a', 'b') == 'WARNING:a\\nERROR:b'"
+        }
+      ]
+    }
+  ]
+}

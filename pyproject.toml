@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyquest"
+version = "1.1.0"
+description = "Aprende Python con teoría + práctica, estilo terminal retro / Learn Python with theory + practice, retro terminal style"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Alex García González" }]
+dependencies = [
+    "PySide6>=6.6",
+    "pyflakes>=3.0",
+]
+
+[project.scripts]
+pyquest = "pyquest.__main__:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+# El contenido viaja junto al paquete cuando se instala con pip.
+"pyquest" = ["course/*.json", "course/*/*.json"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+extend-exclude = ["build", "dist", "dist_portable", "build_portable"]
+
+[tool.ruff.lint]
+select = ["E9", "F", "W"]
+ignore = ["E501", "W605"]
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true
+exclude = ["build/", "dist", "tests/"]

@@ -1,0 +1,228 @@
+{
+  "id": "m6l1",
+  "title": {
+    "es": "Capturar errores: try / except",
+    "en": "Catching errors: try / except"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Cuando algo puede fallar"
+      },
+      {
+        "type": "text",
+        "value": "Algunas operaciones pueden lanzar errores en ejecución (dividir entre cero, convertir texto no numérico…). Con `try`/`except` los **capturas** en lugar de que el programa se detenga."
+      },
+      {
+        "type": "code",
+        "value": [
+          "try:",
+          "    n = int('hola')",
+          "except ValueError:",
+          "    print('no es un numero')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "no es un numero"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Puedes capturar un tipo concreto (`except ValueError:`) o varios. `else` se ejecuta si **no** hubo error, y `finally` se ejecuta **siempre**."
+      },
+      {
+        "type": "code",
+        "value": [
+          "try:",
+          "    x = 10 / 2",
+          "except ZeroDivisionError:",
+          "    print('div 0')",
+          "else:",
+          "    print('ok', x)",
+          "finally:",
+          "    print('fin')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "ok 5.0",
+          "fin"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Captura **solo** lo que esperas. Un `except:` que lo atrapa todo puede ocultar errores reales y dificultar la depuración."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "When something can fail"
+      },
+      {
+        "type": "text",
+        "value": "Some operations can raise runtime errors (dividing by zero, converting non-numeric text…). With `try`/`except` you **catch** them instead of letting the program stop."
+      },
+      {
+        "type": "code",
+        "value": [
+          "try:",
+          "    n = int('hola')",
+          "except ValueError:",
+          "    print('not a number')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "not a number"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "You can catch a specific type (`except ValueError:`) or several. `else` runs if there was **no** error, and `finally` runs **always**."
+      },
+      {
+        "type": "code",
+        "value": [
+          "try:",
+          "    x = 10 / 2",
+          "except ZeroDivisionError:",
+          "    print('div 0')",
+          "else:",
+          "    print('ok', x)",
+          "finally:",
+          "    print('fin')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "ok 5.0",
+          "fin"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Catch **only** what you expect. A bare `except:` can hide real bugs and make debugging harder."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m6l1e1",
+      "prompt": {
+        "es": "Define `division_segura(a, b)` que devuelva `a / b`, o `None` si `b` es 0 (captura `ZeroDivisionError`).",
+        "en": "Define `division_segura(a, b)` returning `a / b`, or `None` if `b` is 0 (catch `ZeroDivisionError`)."
+      },
+      "starter_code": [
+        "def division_segura(a, b):",
+        "    pass"
+      ],
+      "solution": [
+        "def division_segura(a, b):",
+        "    try:",
+        "        return a / b",
+        "    except ZeroDivisionError:",
+        "        return None"
+      ],
+      "hints": {
+        "es": [
+          "Pon a / b dentro de un try.",
+          "En el except devuelve None."
+        ],
+        "en": [
+          "Put a / b inside a try.",
+          "In the except, return None."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "division_segura",
+          "cases": [
+            {
+              "args": [
+                4,
+                2
+              ],
+              "expected": 2.0
+            },
+            {
+              "args": [
+                1,
+                0
+              ],
+              "expected": null
+            },
+            {
+              "args": [
+                9,
+                3
+              ],
+              "expected": 3.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m6l1e2",
+      "prompt": {
+        "es": "Define `a_entero(s)` que devuelva `int(s)`, o `-1` si `s` no representa un número (captura `ValueError`).",
+        "en": "Define `a_entero(s)` returning `int(s)`, or `-1` if `s` is not a number (catch `ValueError`)."
+      },
+      "starter_code": [
+        "def a_entero(s):",
+        "    pass"
+      ],
+      "solution": [
+        "def a_entero(s):",
+        "    try:",
+        "        return int(s)",
+        "    except ValueError:",
+        "        return -1"
+      ],
+      "hints": {
+        "es": [
+          "int('hola') lanza ValueError.",
+          "Captúralo y devuelve -1."
+        ],
+        "en": [
+          "int('hola') raises ValueError.",
+          "Catch it and return -1."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "a_entero",
+          "cases": [
+            {
+              "args": [
+                "42"
+              ],
+              "expected": 42
+            },
+            {
+              "args": [
+                "hola"
+              ],
+              "expected": -1
+            },
+            {
+              "args": [
+                "7"
+              ],
+              "expected": 7
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

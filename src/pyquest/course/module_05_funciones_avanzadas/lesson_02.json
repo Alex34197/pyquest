@@ -1,0 +1,281 @@
+{
+  "id": "m5l2",
+  "title": {
+    "es": "Lambdas y recursión",
+    "en": "Lambdas and recursion"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Funciones anónimas (lambda)"
+      },
+      {
+        "type": "text",
+        "value": "Una `lambda` es una función pequeña y sin nombre, útil para pasarla como argumento. `lambda x: x * 2` equivale a una función que devuelve el doble."
+      },
+      {
+        "type": "code",
+        "value": [
+          "doble = lambda x: x * 2",
+          "print(doble(5))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "10"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Ordenar con una clave"
+      },
+      {
+        "type": "text",
+        "value": "`sorted(lista, key=...)` ordena usando el resultado de `key` para cada elemento. Con `key=len` ordena por longitud."
+      },
+      {
+        "type": "code",
+        "value": [
+          "palabras = [\"casa\", \"a\", \"sol\"]",
+          "print(sorted(palabras, key=len))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "['a', 'sol', 'casa']"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Recursión"
+      },
+      {
+        "type": "text",
+        "value": "Una función **recursiva** se llama a sí misma con un problema más pequeño hasta llegar a un **caso base** que la detiene."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def cuenta_atras(n):",
+          "    if n == 0:",
+          "        return",
+          "    print(n)",
+          "    cuenta_atras(n - 1)",
+          "",
+          "cuenta_atras(3)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "3",
+          "2",
+          "1"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Sin caso base, la recursión no termina y provoca `RecursionError`."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Anonymous functions (lambda)"
+      },
+      {
+        "type": "text",
+        "value": "A `lambda` is a small, nameless function, handy to pass as an argument. `lambda x: x * 2` is a function returning the double."
+      },
+      {
+        "type": "code",
+        "value": [
+          "doble = lambda x: x * 2",
+          "print(doble(5))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "10"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Sorting with a key"
+      },
+      {
+        "type": "text",
+        "value": "`sorted(list, key=...)` sorts using the result of `key` for each item. With `key=len` it sorts by length."
+      },
+      {
+        "type": "code",
+        "value": [
+          "palabras = [\"casa\", \"a\", \"sol\"]",
+          "print(sorted(palabras, key=len))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "['a', 'sol', 'casa']"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Recursion"
+      },
+      {
+        "type": "text",
+        "value": "A **recursive** function calls itself with a smaller problem until it reaches a **base case** that stops it."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def cuenta_atras(n):",
+          "    if n == 0:",
+          "        return",
+          "    print(n)",
+          "    cuenta_atras(n - 1)",
+          "",
+          "cuenta_atras(3)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "3",
+          "2",
+          "1"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Without a base case, recursion never ends and raises `RecursionError`."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m5l2e1",
+      "prompt": {
+        "es": "Define `ordena_por_longitud(palabras)` que devuelva la lista ordenada de **menor a mayor** longitud (usa `sorted` con `key`).",
+        "en": "Define `ordena_por_longitud(palabras)` returning the list sorted from **shortest to longest** (use `sorted` with `key`)."
+      },
+      "starter_code": [
+        "def ordena_por_longitud(palabras):",
+        "    pass"
+      ],
+      "solution": [
+        "def ordena_por_longitud(palabras):",
+        "    return sorted(palabras, key=len)"
+      ],
+      "hints": {
+        "es": [
+          "key=len usa la longitud para ordenar."
+        ],
+        "en": [
+          "key=len uses length to sort."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "ordena_por_longitud",
+          "cases": [
+            {
+              "args": [
+                [
+                  "casa",
+                  "a",
+                  "sol"
+                ]
+              ],
+              "expected": [
+                "a",
+                "sol",
+                "casa"
+              ]
+            },
+            {
+              "args": [
+                []
+              ],
+              "expected": []
+            },
+            {
+              "args": [
+                [
+                  "bb",
+                  "a",
+                  "ccc"
+                ]
+              ],
+              "expected": [
+                "a",
+                "bb",
+                "ccc"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m5l2e2",
+      "prompt": {
+        "es": "Define `factorial_rec(n)` de forma **recursiva**: `factorial_rec(0)` es 1 y, si no, `n * factorial_rec(n-1)`.",
+        "en": "Define `factorial_rec(n)` **recursively**: `factorial_rec(0)` is 1, otherwise `n * factorial_rec(n-1)`."
+      },
+      "starter_code": [
+        "def factorial_rec(n):",
+        "    pass"
+      ],
+      "solution": [
+        "def factorial_rec(n):",
+        "    if n == 0:",
+        "        return 1",
+        "    return n * factorial_rec(n - 1)"
+      ],
+      "hints": {
+        "es": [
+          "Caso base: si n == 0, devuelve 1.",
+          "Caso recursivo: n * factorial_rec(n-1)."
+        ],
+        "en": [
+          "Base case: if n == 0, return 1.",
+          "Recursive case: n * factorial_rec(n-1)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "factorial_rec",
+          "cases": [
+            {
+              "args": [
+                5
+              ],
+              "expected": 120
+            },
+            {
+              "args": [
+                0
+              ],
+              "expected": 1
+            },
+            {
+              "args": [
+                4
+              ],
+              "expected": 24
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

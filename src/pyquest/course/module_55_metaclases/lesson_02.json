@@ -1,0 +1,142 @@
+{
+  "id": "m55l2",
+  "title": {
+    "es": "Metaclases",
+    "en": "Metaclasses"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "La clase de una clase"
+      },
+      {
+        "type": "text",
+        "value": "Una **metaclase** controla cómo se crean las clases (igual que una clase controla cómo se crean sus objetos). Se define heredando de `type` y se usa con `metaclass=...`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class ConVersion(type):",
+          "    def __new__(mcs, nombre, bases, ns):",
+          "        ns['version'] = 1",
+          "        return super().__new__(mcs, nombre, bases, ns)",
+          "",
+          "class App(metaclass=ConVersion):",
+          "    pass",
+          "",
+          "print(App.version)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "1"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Las metaclases son potentes pero rara vez necesarias: en el 99% de los casos basta con __init_subclass__ o decoradores."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "The class of a class"
+      },
+      {
+        "type": "text",
+        "value": "A **metaclass** controls how classes are created (just as a class controls how its objects are created). You define it by inheriting from `type` and use it with `metaclass=...`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class ConVersion(type):",
+          "    def __new__(mcs, nombre, bases, ns):",
+          "        ns['version'] = 1",
+          "        return super().__new__(mcs, nombre, bases, ns)",
+          "",
+          "class App(metaclass=ConVersion):",
+          "    pass",
+          "",
+          "print(App.version)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "1"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Metaclasses are powerful but rarely needed: 99% of the time __init_subclass__ or decorators suffice."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m55l2e1",
+      "prompt": {
+        "es": "Define una metaclase `ConVersion` que inserte `version = 1` en toda clase que la use.",
+        "en": "Define a metaclass `ConVersion` that injects `version = 1` into every class using it."
+      },
+      "starter_code": [
+        "class ConVersion(type):",
+        "    # completa __new__",
+        "    pass"
+      ],
+      "solution": [
+        "class ConVersion(type):",
+        "    def __new__(mcs, nombre, bases, ns):",
+        "        ns['version'] = 1",
+        "        return super().__new__(mcs, nombre, bases, ns)"
+      ],
+      "hints": {
+        "es": [
+          "En __new__, mete ns['version'] = 1 antes de super().__new__."
+        ],
+        "en": [
+          "In __new__, set ns['version'] = 1 before super().__new__."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "ConVersion",
+          "harness": "class App(metaclass=ConVersion):\n    pass\nassert App.version == 1\nclass Otra(metaclass=ConVersion):\n    pass\nassert Otra.version == 1"
+        }
+      ]
+    },
+    {
+      "id": "m55l2e2",
+      "prompt": {
+        "es": "Define `es_clase(obj)` que devuelva True si `obj` es una clase (instancia de type).",
+        "en": "Define `es_clase(obj)` returning True if `obj` is a class (an instance of type)."
+      },
+      "starter_code": [
+        "def es_clase(obj):",
+        "    pass"
+      ],
+      "solution": [
+        "def es_clase(obj):",
+        "    return isinstance(obj, type)"
+      ],
+      "hints": {
+        "es": [
+          "Las clases son instancias de type: isinstance(obj, type)."
+        ],
+        "en": [
+          "Classes are instances of type: isinstance(obj, type)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "es_clase",
+          "harness": "assert es_clase(int) is True\nassert es_clase(str) is True\nassert es_clase(5) is False\nclass X:\n    pass\nassert es_clase(X) is True"
+        }
+      ]
+    }
+  ]
+}

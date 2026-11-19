@@ -1,0 +1,177 @@
+{
+  "id": "m32l1",
+  "title": {
+    "es": "Bases: binario y hexadecimal",
+    "en": "Bases: binary and hexadecimal"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Otras formas de escribir números"
+      },
+      {
+        "type": "text",
+        "value": "El mismo número se puede escribir en distintas bases. `bin(n)` y `hex(n)` dan la representación con prefijo (`0b`, `0x`); `format(n, 'b')` y `format(n, 'x')` la dan sin prefijo."
+      },
+      {
+        "type": "code",
+        "value": [
+          "print(bin(5), hex(255))",
+          "print(format(5, 'b'), format(255, 'x'))",
+          "print(int('101', 2), int('ff', 16))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "0b101 0xff",
+          "101 ff",
+          "5 255"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`int(texto, base)` hace el camino inverso: interpreta un texto en esa base y da el entero."
+      },
+      {
+        "type": "note",
+        "value": "Binario y hexadecimal son el pan de cada día en redes y seguridad (máscaras, direcciones, volcados)."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Other ways to write numbers"
+      },
+      {
+        "type": "text",
+        "value": "The same number can be written in different bases. `bin(n)` and `hex(n)` give the prefixed form (`0b`, `0x`); `format(n, 'b')` and `format(n, 'x')` give it without prefix."
+      },
+      {
+        "type": "code",
+        "value": [
+          "print(bin(5), hex(255))",
+          "print(format(5, 'b'), format(255, 'x'))",
+          "print(int('101', 2), int('ff', 16))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "0b101 0xff",
+          "101 ff",
+          "5 255"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`int(text, base)` goes the other way: it parses text in that base into an integer."
+      },
+      {
+        "type": "note",
+        "value": "Binary and hex are everyday tools in networking and security (masks, addresses, dumps)."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m32l1e1",
+      "prompt": {
+        "es": "Define `a_binario(n)` que devuelva la representación binaria de n SIN prefijo (usa format).",
+        "en": "Define `a_binario(n)` returning n's binary representation WITHOUT prefix (use format)."
+      },
+      "starter_code": [
+        "def a_binario(n):",
+        "    pass"
+      ],
+      "solution": [
+        "def a_binario(n):",
+        "    return format(n, 'b')"
+      ],
+      "hints": {
+        "es": [
+          "format(n, 'b') no añade el 0b."
+        ],
+        "en": [
+          "format(n, 'b') doesn't add the 0b."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "a_binario",
+          "cases": [
+            {
+              "args": [
+                5
+              ],
+              "expected": "101"
+            },
+            {
+              "args": [
+                0
+              ],
+              "expected": "0"
+            },
+            {
+              "args": [
+                8
+              ],
+              "expected": "1000"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m32l1e2",
+      "prompt": {
+        "es": "Define `desde_hex(texto)` que convierta un texto hexadecimal en su número entero.",
+        "en": "Define `desde_hex(texto)` converting a hex text into its integer."
+      },
+      "starter_code": [
+        "def desde_hex(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "def desde_hex(texto):",
+        "    return int(texto, 16)"
+      ],
+      "hints": {
+        "es": [
+          "int(texto, 16)."
+        ],
+        "en": [
+          "int(texto, 16)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "desde_hex",
+          "cases": [
+            {
+              "args": [
+                "ff"
+              ],
+              "expected": 255
+            },
+            {
+              "args": [
+                "10"
+              ],
+              "expected": 16
+            },
+            {
+              "args": [
+                "a"
+              ],
+              "expected": 10
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

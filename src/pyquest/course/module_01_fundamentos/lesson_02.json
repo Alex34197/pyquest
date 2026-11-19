@@ -1,0 +1,309 @@
+{
+  "id": "m1l2",
+  "title": {
+    "es": "Variables y tipos de datos",
+    "en": "Variables and data types"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Variables: cajas con nombre"
+      },
+      {
+        "type": "text",
+        "value": "Una **variable** es un nombre que apunta a un valor. Se crea con `=` (asignación): a la izquierda el nombre, a la derecha el valor."
+      },
+      {
+        "type": "code",
+        "value": [
+          "nombre = 'Ana'",
+          "edad = 25",
+          "print(nombre, 'tiene', edad)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Ana tiene 25"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Puedes reasignar una variable en cualquier momento; pasa a apuntar al nuevo valor."
+      },
+      {
+        "type": "code",
+        "value": [
+          "x = 10",
+          "x = x + 5",
+          "print(x)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "15"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Reglas para los nombres"
+      },
+      {
+        "type": "text",
+        "value": "Un nombre puede tener letras, números y guion bajo `_`, pero no puede empezar por número ni contener espacios. Usa nombres descriptivos en `snake_case` (todo en minúscula con guiones bajos): `precio_total`, `numero_alumnos`."
+      },
+      {
+        "type": "heading",
+        "value": "Tipos básicos"
+      },
+      {
+        "type": "text",
+        "value": "Python deduce el tipo del valor automáticamente (tipado dinámico). Los tipos fundamentales son: `int` (enteros), `float` (decimales), `str` (texto) y `bool` (verdadero/falso)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "entero = 7",
+          "decimal = 3.14",
+          "texto = 'hola'",
+          "booleano = True"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "La función `type()` te dice el tipo de un valor, y `bool` solo puede valer `True` o `False`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "print(type(7))",
+          "print(type(3.14))",
+          "print(type('hola'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "<class 'int'>",
+          "<class 'float'>",
+          "<class 'str'>"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Conversión entre tipos"
+      },
+      {
+        "type": "text",
+        "value": "Puedes convertir de un tipo a otro con `int()`, `float()`, `str()` y `bool()`. Esto es muy importante porque, por ejemplo, lo que escribe el usuario siempre llega como texto."
+      },
+      {
+        "type": "code",
+        "value": [
+          "numero = int('42')",
+          "texto = str(42)",
+          "print(numero + 1)",
+          "print(texto + '!')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "43",
+          "42!"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`int('hola')` da error (`ValueError`): el texto debe representar realmente un número para poder convertirlo."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Variables: named boxes"
+      },
+      {
+        "type": "text",
+        "value": "A **variable** is a name that points to a value. You create it with `=` (assignment): the name on the left, the value on the right."
+      },
+      {
+        "type": "code",
+        "value": [
+          "name = 'Ana'",
+          "age = 25",
+          "print(name, 'is', age)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Ana is 25"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "You can reassign a variable at any time; it then points to the new value."
+      },
+      {
+        "type": "code",
+        "value": [
+          "x = 10",
+          "x = x + 5",
+          "print(x)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "15"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Naming rules"
+      },
+      {
+        "type": "text",
+        "value": "A name may contain letters, digits and underscore `_`, but cannot start with a digit or contain spaces. Use descriptive names in `snake_case` (lowercase with underscores): `total_price`, `student_count`."
+      },
+      {
+        "type": "heading",
+        "value": "Basic types"
+      },
+      {
+        "type": "text",
+        "value": "Python infers the type of a value automatically (dynamic typing). The fundamental types are: `int` (integers), `float` (decimals), `str` (text) and `bool` (true/false)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "integer = 7",
+          "decimal = 3.14",
+          "text = 'hello'",
+          "flag = True"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "The `type()` function tells you the type of a value, and a `bool` can only be `True` or `False`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "print(type(7))",
+          "print(type(3.14))",
+          "print(type('hello'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "<class 'int'>",
+          "<class 'float'>",
+          "<class 'str'>"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Converting between types"
+      },
+      {
+        "type": "text",
+        "value": "You can convert from one type to another with `int()`, `float()`, `str()` and `bool()`. This matters a lot because, for example, whatever the user types always arrives as text."
+      },
+      {
+        "type": "code",
+        "value": [
+          "number = int('42')",
+          "text = str(42)",
+          "print(number + 1)",
+          "print(text + '!')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "43",
+          "42!"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`int('hello')` raises an error (`ValueError`): the text must actually represent a number to be converted."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m1l2e1",
+      "prompt": {
+        "es": "Crea cuatro variables con estos nombres y tipos exactos: `entero` (un int), `decimal` (un float), `texto` (un str) y `booleano` (un bool). Los valores los eliges tú.",
+        "en": "Create four variables with these exact names and types: `entero` (an int), `decimal` (a float), `texto` (a str) and `booleano` (a bool). You choose the values."
+      },
+      "starter_code": [
+        "entero = ",
+        "decimal = ",
+        "texto = ",
+        "booleano = "
+      ],
+      "solution": [
+        "entero = 7",
+        "decimal = 3.14",
+        "texto = 'hola'",
+        "booleano = True"
+      ],
+      "hints": {
+        "es": [
+          "Un float lleva punto decimal: 3.14",
+          "Un str va entre comillas; un bool es True o False."
+        ],
+        "en": [
+          "A float has a decimal point: 3.14",
+          "A str is in quotes; a bool is True or False."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "tipos correctos",
+          "harness": "assert isinstance(entero, int), 'entero debe ser int'\nassert isinstance(decimal, float), 'decimal debe ser float'\nassert isinstance(texto, str), 'texto debe ser str'\nassert isinstance(booleano, bool), 'booleano debe ser bool'"
+        }
+      ]
+    },
+    {
+      "id": "m1l2e2",
+      "prompt": {
+        "es": "La variable `texto` vale `'42'` (es una cadena). Crea una variable `numero` con ese mismo valor pero convertido a entero.",
+        "en": "The variable `texto` holds `'42'` (a string). Create a variable `numero` with that same value converted to an integer."
+      },
+      "starter_code": [
+        "texto = '42'",
+        "# crea aquí la variable numero"
+      ],
+      "solution": [
+        "texto = '42'",
+        "numero = int(texto)"
+      ],
+      "hints": {
+        "es": [
+          "Usa la función int() para convertir.",
+          "numero = int(texto)"
+        ],
+        "en": [
+          "Use the int() function to convert.",
+          "numero = int(texto)"
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "conversión a int",
+          "harness": "assert numero == 42, 'numero debe valer 42'\nassert isinstance(numero, int), 'numero debe ser un entero (int)'"
+        }
+      ]
+    }
+  ]
+}

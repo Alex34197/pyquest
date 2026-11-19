@@ -1,0 +1,237 @@
+{
+  "id": "m24l1",
+  "title": {
+    "es": "itertools: combinar iterables",
+    "en": "itertools: combining iterables"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Herramientas para iterar"
+      },
+      {
+        "type": "text",
+        "value": "`itertools` ofrece utilidades eficientes para recorrer datos. `chain` une varios iterables en uno solo."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from itertools import chain",
+          "print(list(chain([1, 2], [3, 4])))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[1, 2, 3, 4]"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`chain.from_iterable(listas)` aplana una lista de listas. `combinations(items, n)` da todas las combinaciones de tamaño n (sin repetir orden)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from itertools import combinations",
+          "print(list(combinations(['a', 'b', 'c'], 2)))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[('a', 'b'), ('a', 'c'), ('b', 'c')]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Estas funciones devuelven iteradores perezosos; envuélvelas en list() para verlas."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Tools for iterating"
+      },
+      {
+        "type": "text",
+        "value": "`itertools` provides efficient utilities to traverse data. `chain` joins several iterables into one."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from itertools import chain",
+          "print(list(chain([1, 2], [3, 4])))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[1, 2, 3, 4]"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`chain.from_iterable(lists)` flattens a list of lists. `combinations(items, n)` gives all size-n combinations (order doesn't repeat)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from itertools import combinations",
+          "print(list(combinations(['a', 'b', 'c'], 2)))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[('a', 'b'), ('a', 'c'), ('b', 'c')]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "These return lazy iterators; wrap them in list() to see them."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m24l1e1",
+      "prompt": {
+        "es": "Define `aplanar(listas)` que reciba una lista de listas y devuelva una sola lista con todos los elementos (usa itertools.chain).",
+        "en": "Define `aplanar(listas)` taking a list of lists and returning a single list with all elements (use itertools.chain)."
+      },
+      "starter_code": [
+        "from itertools import chain",
+        "",
+        "def aplanar(listas):",
+        "    pass"
+      ],
+      "solution": [
+        "from itertools import chain",
+        "",
+        "def aplanar(listas):",
+        "    return list(chain.from_iterable(listas))"
+      ],
+      "hints": {
+        "es": [
+          "chain.from_iterable recorre cada sublista en orden."
+        ],
+        "en": [
+          "chain.from_iterable goes through each sublist in order."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "aplanar",
+          "cases": [
+            {
+              "args": [
+                [
+                  [
+                    1,
+                    2
+                  ],
+                  [
+                    3
+                  ]
+                ]
+              ],
+              "expected": [
+                1,
+                2,
+                3
+              ]
+            },
+            {
+              "args": [
+                [
+                  [],
+                  [
+                    5
+                  ]
+                ]
+              ],
+              "expected": [
+                5
+              ]
+            },
+            {
+              "args": [
+                []
+              ],
+              "expected": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m24l1e2",
+      "prompt": {
+        "es": "Define `parejas(items)` que devuelva todas las combinaciones de 2 elementos, cada una como lista (usa itertools.combinations).",
+        "en": "Define `parejas(items)` returning all 2-element combinations, each as a list (use itertools.combinations)."
+      },
+      "starter_code": [
+        "from itertools import combinations",
+        "",
+        "def parejas(items):",
+        "    pass"
+      ],
+      "solution": [
+        "from itertools import combinations",
+        "",
+        "def parejas(items):",
+        "    return [list(c) for c in combinations(items, 2)]"
+      ],
+      "hints": {
+        "es": [
+          "combinations da tuplas; conviértelas a list."
+        ],
+        "en": [
+          "combinations yields tuples; convert them to list."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "parejas",
+          "cases": [
+            {
+              "args": [
+                [
+                  "a",
+                  "b",
+                  "c"
+                ]
+              ],
+              "expected": [
+                [
+                  "a",
+                  "b"
+                ],
+                [
+                  "a",
+                  "c"
+                ],
+                [
+                  "b",
+                  "c"
+                ]
+              ]
+            },
+            {
+              "args": [
+                [
+                  "x"
+                ]
+              ],
+              "expected": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "id": "m17l2",
+  "title": {
+    "es": "Integridad y autenticidad con HMAC",
+    "en": "Integrity and authenticity with HMAC"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Firmar un mensaje con una clave"
+      },
+      {
+        "type": "text",
+        "value": "Un **HMAC** combina un mensaje con una **clave secreta** para producir una firma. Quien no conozca la clave no puede generar una firma válida, así detectas manipulaciones y verificas el origen."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import hmac, hashlib",
+          "firma = hmac.new(b'clave', b'mensaje', hashlib.sha256).hexdigest()",
+          "print(firma[:12], '...')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "8a1f4c9e2b7d ..."
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Para comparar firmas usa `hmac.compare_digest(a, b)`: compara en **tiempo constante** y evita filtrar información por el tiempo de respuesta."
+      },
+      {
+        "type": "note",
+        "value": "Nunca compares firmas con `==`: ese atajo puede revelar pistas a un atacante (timing attack)."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Signing a message with a key"
+      },
+      {
+        "type": "text",
+        "value": "An **HMAC** combines a message with a **secret key** to produce a signature. Without the key you can't produce a valid signature, so you detect tampering and verify origin."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import hmac, hashlib",
+          "firma = hmac.new(b'clave', b'mensaje', hashlib.sha256).hexdigest()",
+          "print(firma[:12], '...')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "8a1f4c9e2b7d ..."
+        ]
+      },
+      {
+        "type": "text",
+        "value": "To compare signatures use `hmac.compare_digest(a, b)`: it compares in **constant time** and avoids leaking info through response timing."
+      },
+      {
+        "type": "note",
+        "value": "Never compare signatures with `==`: that shortcut can give an attacker hints (timing attack)."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m17l2e1",
+      "prompt": {
+        "es": "Define `firmar(clave, mensaje)` que devuelva la firma HMAC-SHA256 (hex) de `mensaje` con `clave` (ambos str).",
+        "en": "Define `firmar(clave, mensaje)` returning the HMAC-SHA256 (hex) signature of `mensaje` with `clave` (both str)."
+      },
+      "starter_code": [
+        "import hmac, hashlib",
+        "",
+        "def firmar(clave, mensaje):",
+        "    pass"
+      ],
+      "solution": [
+        "import hmac, hashlib",
+        "",
+        "def firmar(clave, mensaje):",
+        "    return hmac.new(clave.encode(), mensaje.encode(), hashlib.sha256).hexdigest()"
+      ],
+      "hints": {
+        "es": [
+          "Codifica clave y mensaje a bytes con .encode()."
+        ],
+        "en": [
+          "Encode key and message to bytes with .encode()."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "firmar",
+          "harness": "import hmac, hashlib\nesperada = hmac.new(b'k', b'm', hashlib.sha256).hexdigest()\nassert firmar('k', 'm') == esperada"
+        }
+      ]
+    },
+    {
+      "id": "m17l2e2",
+      "prompt": {
+        "es": "Define `es_valido(clave, mensaje, firma)` que devuelva True si `firma` es la HMAC-SHA256 correcta (usa hmac.compare_digest).",
+        "en": "Define `es_valido(clave, mensaje, firma)` returning True if `firma` is the correct HMAC-SHA256 (use hmac.compare_digest)."
+      },
+      "starter_code": [
+        "import hmac, hashlib",
+        "",
+        "def es_valido(clave, mensaje, firma):",
+        "    pass"
+      ],
+      "solution": [
+        "import hmac, hashlib",
+        "",
+        "def es_valido(clave, mensaje, firma):",
+        "    esperada = hmac.new(clave.encode(), mensaje.encode(), hashlib.sha256).hexdigest()",
+        "    return hmac.compare_digest(esperada, firma)"
+      ],
+      "hints": {
+        "es": [
+          "Recalcula la firma esperada y usa compare_digest."
+        ],
+        "en": [
+          "Recompute the expected signature and use compare_digest."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "es_valido",
+          "harness": "import hmac, hashlib\nf = hmac.new(b'k', b'm', hashlib.sha256).hexdigest()\nassert es_valido('k', 'm', f) is True\nassert es_valido('k', 'm', 'falsa') is False"
+        }
+      ]
+    }
+  ]
+}

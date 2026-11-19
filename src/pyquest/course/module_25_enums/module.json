@@ -1,0 +1,16 @@
+{
+  "id": "m25",
+  "order": 25,
+  "title": {
+    "es": "Enumeraciones (Enum)",
+    "en": "Enumerations (Enum)"
+  },
+  "summary": {
+    "es": "Constantes con nombre: Enum, auto(), búsqueda por valor e iteración.",
+    "en": "Named constants: Enum, auto(), lookup by value and iteration."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "id": "m41l1",
+  "title": {
+    "es": "Propiedades (@property)",
+    "en": "Properties (@property)"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Atributos calculados"
+      },
+      {
+        "type": "text",
+        "value": "`@property` convierte un método en un atributo de solo lectura que se calcula al vuelo. Se accede sin paréntesis, como un atributo normal."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Temperatura:",
+          "    def __init__(self, celsius):",
+          "        self.celsius = celsius",
+          "    @property",
+          "    def fahrenheit(self):",
+          "        return self.celsius * 9 / 5 + 32",
+          "",
+          "print(Temperatura(100).fahrenheit)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "212.0"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Útil para valores derivados (área, totales, conversiones) que no quieres guardar duplicados."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Computed attributes"
+      },
+      {
+        "type": "text",
+        "value": "`@property` turns a method into a read-only attribute computed on the fly. You access it without parentheses, like a normal attribute."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Temperatura:",
+          "    def __init__(self, celsius):",
+          "        self.celsius = celsius",
+          "    @property",
+          "    def fahrenheit(self):",
+          "        return self.celsius * 9 / 5 + 32",
+          "",
+          "print(Temperatura(100).fahrenheit)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "212.0"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Handy for derived values (area, totals, conversions) you don't want to store twice."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m41l1e1",
+      "prompt": {
+        "es": "Define `Temperatura` con `__init__(celsius)` y una propiedad `fahrenheit` (= celsius*9/5+32).",
+        "en": "Define `Temperatura` with `__init__(celsius)` and a property `fahrenheit` (= celsius*9/5+32)."
+      },
+      "starter_code": [
+        "class Temperatura:",
+        "    def __init__(self, celsius):",
+        "        self.celsius = celsius",
+        "    # añade la propiedad fahrenheit"
+      ],
+      "solution": [
+        "class Temperatura:",
+        "    def __init__(self, celsius):",
+        "        self.celsius = celsius",
+        "    @property",
+        "    def fahrenheit(self):",
+        "        return self.celsius * 9 / 5 + 32"
+      ],
+      "hints": {
+        "es": [
+          "Pon @property encima del método fahrenheit (sin argumentos salvo self)."
+        ],
+        "en": [
+          "Put @property above the fahrenheit method (no args but self)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Temperatura",
+          "harness": "assert Temperatura(100).fahrenheit == 212.0\nassert Temperatura(0).fahrenheit == 32.0"
+        }
+      ]
+    },
+    {
+      "id": "m41l1e2",
+      "prompt": {
+        "es": "Define `Rectangulo(ancho, alto)` con propiedades `area` (ancho*alto) y `perimetro` (2*(ancho+alto)).",
+        "en": "Define `Rectangulo(ancho, alto)` with properties `area` (ancho*alto) and `perimetro` (2*(ancho+alto))."
+      },
+      "starter_code": [
+        "class Rectangulo:",
+        "    def __init__(self, ancho, alto):",
+        "        self.ancho = ancho",
+        "        self.alto = alto",
+        "    # añade area y perimetro"
+      ],
+      "solution": [
+        "class Rectangulo:",
+        "    def __init__(self, ancho, alto):",
+        "        self.ancho = ancho",
+        "        self.alto = alto",
+        "    @property",
+        "    def area(self):",
+        "        return self.ancho * self.alto",
+        "    @property",
+        "    def perimetro(self):",
+        "        return 2 * (self.ancho + self.alto)"
+      ],
+      "hints": {
+        "es": [
+          "Dos propiedades que usan self.ancho y self.alto."
+        ],
+        "en": [
+          "Two properties using self.ancho and self.alto."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Rectangulo",
+          "harness": "r = Rectangulo(2, 3)\nassert r.area == 6\nassert r.perimetro == 10"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "m35",
+  "order": 35,
+  "title": {
+    "es": "Diccionarios a fondo",
+    "en": "Dictionaries in depth"
+  },
+  "summary": {
+    "es": "get con defecto, contar, invertir, fusionar y comprensiones de dict.",
+    "en": "get with default, counting, inverting, merging and dict comprehensions."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "m42",
+  "order": 42,
+  "title": {
+    "es": "POO: métodos de clase",
+    "en": "OOP: class methods"
+  },
+  "summary": {
+    "es": "Variables de clase, @staticmethod y @classmethod (constructores alternativos).",
+    "en": "Class variables, @staticmethod and @classmethod (alternative constructors)."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "id": "m34l2",
+  "title": {
+    "es": "Subconjuntos y duplicados",
+    "en": "Subsets and duplicates"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Relaciones entre conjuntos"
+      },
+      {
+        "type": "text",
+        "value": "`a <= b` comprueba si `a` es **subconjunto** de `b`. Y convertir una lista a `set` y de vuelta a lista es la forma rápida de **quitar duplicados** (perdiendo el orden)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "print({1, 2} <= {1, 2, 3})",
+          "print(list(set([1, 1, 2, 3, 3])))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "True",
+          "[1, 2, 3]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Si necesitas quitar duplicados CONSERVANDO el orden, usa dict.fromkeys(lista)."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Relations between sets"
+      },
+      {
+        "type": "text",
+        "value": "`a <= b` checks whether `a` is a **subset** of `b`. And converting a list to `set` and back is the fast way to **remove duplicates** (losing order)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "print({1, 2} <= {1, 2, 3})",
+          "print(list(set([1, 1, 2, 3, 3])))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "True",
+          "[1, 2, 3]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "If you need to dedupe KEEPING order, use dict.fromkeys(list)."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m34l2e1",
+      "prompt": {
+        "es": "Define `es_subconjunto(a, b)` que devuelva True si todos los elementos de `a` están en `b`.",
+        "en": "Define `es_subconjunto(a, b)` returning True if every element of `a` is in `b`."
+      },
+      "starter_code": [
+        "def es_subconjunto(a, b):",
+        "    pass"
+      ],
+      "solution": [
+        "def es_subconjunto(a, b):",
+        "    return set(a) <= set(b)"
+      ],
+      "hints": {
+        "es": [
+          "set(a) <= set(b)."
+        ],
+        "en": [
+          "set(a) <= set(b)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "es_subconjunto",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  2
+                ],
+                [
+                  1,
+                  2,
+                  3
+                ]
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                [
+                  1,
+                  5
+                ],
+                [
+                  1,
+                  2,
+                  3
+                ]
+              ],
+              "expected": false
+            },
+            {
+              "args": [
+                [],
+                [
+                  1
+                ]
+              ],
+              "expected": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m34l2e2",
+      "prompt": {
+        "es": "Define `sin_duplicados(lista)` que quite los duplicados CONSERVANDO el orden de aparición.",
+        "en": "Define `sin_duplicados(lista)` removing duplicates KEEPING the order of appearance."
+      },
+      "starter_code": [
+        "def sin_duplicados(lista):",
+        "    pass"
+      ],
+      "solution": [
+        "def sin_duplicados(lista):",
+        "    return list(dict.fromkeys(lista))"
+      ],
+      "hints": {
+        "es": [
+          "dict.fromkeys conserva el orden y quita repetidos."
+        ],
+        "en": [
+          "dict.fromkeys keeps order and drops repeats."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "sin_duplicados",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  1,
+                  2,
+                  3,
+                  3,
+                  2
+                ]
+              ],
+              "expected": [
+                1,
+                2,
+                3
+              ]
+            },
+            {
+              "args": [
+                [
+                  "a",
+                  "b",
+                  "a"
+                ]
+              ],
+              "expected": [
+                "a",
+                "b"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

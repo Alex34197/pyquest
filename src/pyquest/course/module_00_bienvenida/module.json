@@ -1,0 +1,16 @@
+{
+  "id": "m00",
+  "order": 0,
+  "title": {
+    "es": "Bienvenida",
+    "en": "Welcome"
+  },
+  "summary": {
+    "es": "Primeros pasos: qué es programar, cómo usar la app y tu primer print.",
+    "en": "First steps: what programming is, how to use the app and your first print."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "m43",
+  "order": 43,
+  "title": {
+    "es": "POO: herencia y polimorfismo",
+    "en": "OOP: inheritance and polymorphism"
+  },
+  "summary": {
+    "es": "Heredar, sobreescribir, super(), isinstance y polimorfismo (duck typing).",
+    "en": "Inherit, override, super(), isinstance and polymorphism (duck typing)."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

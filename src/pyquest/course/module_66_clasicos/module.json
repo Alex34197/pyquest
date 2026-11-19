@@ -1,0 +1,16 @@
+{
+  "id": "m66",
+  "order": 66,
+  "title": {
+    "es": "Algoritmos clásicos",
+    "en": "Classic algorithms"
+  },
+  "summary": {
+    "es": "Primos, criba simple, palíndromos y anagramas.",
+    "en": "Primes, simple sieve, palindromes and anagrams."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "m31",
+  "order": 31,
+  "title": {
+    "es": "Algoritmos: búsqueda y orden",
+    "en": "Algorithms: search and sort"
+  },
+  "summary": {
+    "es": "Búsqueda lineal y binaria; ordenación burbuja e inserción (con nociones de O()).",
+    "en": "Linear and binary search; bubble and insertion sort (with Big-O notions)."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

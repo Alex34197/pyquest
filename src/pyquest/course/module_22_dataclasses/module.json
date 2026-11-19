@@ -1,0 +1,16 @@
+{
+  "id": "m22",
+  "order": 22,
+  "title": {
+    "es": "Dataclasses",
+    "en": "Dataclasses"
+  },
+  "summary": {
+    "es": "@dataclass: init/repr/eq automáticos, defaults, métodos y default_factory.",
+    "en": "@dataclass: automatic init/repr/eq, defaults, methods and default_factory."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

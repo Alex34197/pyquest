@@ -1,0 +1,16 @@
+{
+  "id": "m53",
+  "order": 53,
+  "title": {
+    "es": "Atributos y __slots__",
+    "en": "Attributes and __slots__"
+  },
+  "summary": {
+    "es": "getattr/setattr/hasattr y __slots__ para objetos ligeros y seguros.",
+    "en": "getattr/setattr/hasattr and __slots__ for lightweight, safe objects."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "m76",
+  "order": 76,
+  "title": {
+    "es": "Estructuras desde cero",
+    "en": "Structures from scratch"
+  },
+  "summary": {
+    "es": "Lista enlazada (nodos) y tabla hash con cubos (cómo funciona un dict).",
+    "en": "Linked list (nodes) and a bucket hash table (how a dict works)."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

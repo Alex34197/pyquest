@@ -1,0 +1,16 @@
+{
+  "id": "m67",
+  "order": 67,
+  "title": {
+    "es": "Regex avanzado",
+    "en": "Advanced regex"
+  },
+  "summary": {
+    "es": "Grupos con nombre, backreferences en sub, findall y límites de palabra.",
+    "en": "Named groups, sub backreferences, findall and word boundaries."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

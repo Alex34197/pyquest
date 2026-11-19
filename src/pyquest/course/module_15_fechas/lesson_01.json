@@ -1,0 +1,171 @@
+{
+  "id": "m15l1",
+  "title": {
+    "es": "Trabajar con fechas",
+    "en": "Working with dates"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "El módulo datetime"
+      },
+      {
+        "type": "text",
+        "value": "`datetime` maneja fechas y horas. `date(año, mes, día)` crea una fecha; `date.today()` devuelve la de hoy."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from datetime import date",
+          "d = date(2024, 1, 15)",
+          "print(d.year, d.month, d.day)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "2024 1 15"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Restar dos fechas da un `timedelta`, cuyo atributo `.days` es la diferencia en días."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from datetime import date",
+          "dif = date(2024, 1, 10) - date(2024, 1, 1)",
+          "print(dif.days)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "9"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`fecha.weekday()` da el día de la semana: 0 = lunes … 6 = domingo."
+      },
+      {
+        "type": "note",
+        "value": "Para fecha+hora usa `datetime`; para solo fecha, `date`. En apps reales, cuidado con las zonas horarias."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "The datetime module"
+      },
+      {
+        "type": "text",
+        "value": "`datetime` handles dates and times. `date(year, month, day)` creates a date; `date.today()` returns today's."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from datetime import date",
+          "d = date(2024, 1, 15)",
+          "print(d.year, d.month, d.day)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "2024 1 15"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Subtracting two dates gives a `timedelta`, whose `.days` attribute is the difference in days."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from datetime import date",
+          "dif = date(2024, 1, 10) - date(2024, 1, 1)",
+          "print(dif.days)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "9"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`date.weekday()` gives the weekday: 0 = Monday … 6 = Sunday."
+      },
+      {
+        "type": "note",
+        "value": "Use `datetime` for date+time; `date` for date only. In real apps, mind time zones."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m15l1e1",
+      "prompt": {
+        "es": "Define `dias_entre(a, b)` que reciba dos objetos `date` y devuelva el número de días de `b - a`.",
+        "en": "Define `dias_entre(a, b)` taking two `date` objects and returning the number of days of `b - a`."
+      },
+      "starter_code": [
+        "def dias_entre(a, b):",
+        "    pass"
+      ],
+      "solution": [
+        "def dias_entre(a, b):",
+        "    return (b - a).days"
+      ],
+      "hints": {
+        "es": [
+          "Resta las fechas y usa el atributo .days."
+        ],
+        "en": [
+          "Subtract the dates and use the .days attribute."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "dias_entre",
+          "harness": "from datetime import date\nassert dias_entre(date(2024,1,1), date(2024,1,10)) == 9\nassert dias_entre(date(2024,1,1), date(2024,1,1)) == 0"
+        }
+      ]
+    },
+    {
+      "id": "m15l1e2",
+      "prompt": {
+        "es": "Define `es_finde(d)` que reciba un `date` y devuelva True si cae en fin de semana (sábado o domingo). Pista: `d.weekday() >= 5`.",
+        "en": "Define `es_finde(d)` taking a `date` and returning True if it falls on a weekend (Saturday or Sunday). Hint: `d.weekday() >= 5`."
+      },
+      "starter_code": [
+        "def es_finde(d):",
+        "    pass"
+      ],
+      "solution": [
+        "def es_finde(d):",
+        "    return d.weekday() >= 5"
+      ],
+      "hints": {
+        "es": [
+          "weekday(): 5 = sábado, 6 = domingo."
+        ],
+        "en": [
+          "weekday(): 5 = Saturday, 6 = Sunday."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "es_finde",
+          "harness": "from datetime import date\nassert es_finde(date(2024,1,6)) == True\nassert es_finde(date(2024,1,8)) == False\nassert es_finde(date(2024,1,7)) == True"
+        }
+      ]
+    }
+  ]
+}

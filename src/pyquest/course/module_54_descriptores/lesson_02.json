@@ -1,0 +1,135 @@
+{
+  "id": "m54l2",
+  "title": {
+    "es": "Descriptores reutilizables",
+    "en": "Reusable descriptors"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Una regla, muchos atributos"
+      },
+      {
+        "type": "text",
+        "value": "Como el descriptor guarda su nombre con `__set_name__`, puedes usar el mismo tipo en varios atributos y cada uno mantiene su propio valor. Ideal para validaciones repetidas."
+      },
+      {
+        "type": "code",
+        "value": [
+          "# class Nota:",
+          "#     valor = Rango(0, 10)   # reutilizable en cualquier atributo"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Esto es exactamente lo que hacen librerías como las de validación de datos por debajo."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "One rule, many attributes"
+      },
+      {
+        "type": "text",
+        "value": "Because the descriptor stores its name with `__set_name__`, you can use the same type on several attributes and each keeps its own value. Ideal for repeated validations."
+      },
+      {
+        "type": "code",
+        "value": [
+          "# class Nota:",
+          "#     valor = Rango(0, 10)   # reusable on any attribute"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "This is exactly what data-validation libraries do under the hood."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m54l2e1",
+      "prompt": {
+        "es": "Define un descriptor `Mayusculas` que, al asignar, guarde SIEMPRE el texto en mayúsculas.",
+        "en": "Define a `Mayusculas` descriptor that, on assignment, always stores the text uppercased."
+      },
+      "starter_code": [
+        "class Mayusculas:",
+        "    def __set_name__(self, owner, name):",
+        "        self.attr = '_' + name",
+        "    # completa __get__ y __set__"
+      ],
+      "solution": [
+        "class Mayusculas:",
+        "    def __set_name__(self, owner, name):",
+        "        self.attr = '_' + name",
+        "    def __get__(self, obj, objtype=None):",
+        "        return getattr(obj, self.attr)",
+        "    def __set__(self, obj, value):",
+        "        setattr(obj, self.attr, value.upper())"
+      ],
+      "hints": {
+        "es": [
+          "__set__ hace setattr(obj, self.attr, value.upper())."
+        ],
+        "en": [
+          "__set__ does setattr(obj, self.attr, value.upper())."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Mayusculas",
+          "harness": "class P:\n    nombre = Mayusculas()\np = P()\np.nombre = 'ana'\nassert p.nombre == 'ANA'"
+        }
+      ]
+    },
+    {
+      "id": "m54l2e2",
+      "prompt": {
+        "es": "Define un descriptor `Rango(minimo, maximo)` que valide que el valor está en [minimo, maximo] (si no, ValueError).",
+        "en": "Define a `Rango(minimo, maximo)` descriptor validating the value is in [minimo, maximo] (else ValueError)."
+      },
+      "starter_code": [
+        "class Rango:",
+        "    def __init__(self, minimo, maximo):",
+        "        self.minimo = minimo",
+        "        self.maximo = maximo",
+        "    def __set_name__(self, owner, name):",
+        "        self.attr = '_' + name",
+        "    # completa __get__ y __set__"
+      ],
+      "solution": [
+        "class Rango:",
+        "    def __init__(self, minimo, maximo):",
+        "        self.minimo = minimo",
+        "        self.maximo = maximo",
+        "    def __set_name__(self, owner, name):",
+        "        self.attr = '_' + name",
+        "    def __get__(self, obj, objtype=None):",
+        "        return getattr(obj, self.attr)",
+        "    def __set__(self, obj, value):",
+        "        if not (self.minimo <= value <= self.maximo):",
+        "            raise ValueError('fuera de rango')",
+        "        setattr(obj, self.attr, value)"
+      ],
+      "hints": {
+        "es": [
+          "__set__ comprueba minimo <= value <= maximo."
+        ],
+        "en": [
+          "__set__ checks minimo <= value <= maximo."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Rango",
+          "harness": "class Nota:\n    valor = Rango(0, 10)\n    def __init__(self, valor):\n        self.valor = valor\nn = Nota(7)\nassert n.valor == 7\nerr = False\ntry:\n    Nota(20)\nexcept ValueError:\n    err = True\nassert err is True"
+        }
+      ]
+    }
+  ]
+}

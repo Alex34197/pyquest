@@ -1,0 +1,189 @@
+{
+  "id": "m38l2",
+  "title": {
+    "es": "iter() y next()",
+    "en": "iter() and next()"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Consumir iteradores a mano"
+      },
+      {
+        "type": "text",
+        "value": "`iter(coleccion)` obtiene un iterador y `next(it)` pide el siguiente valor. Útil para saltar elementos o leer 'bajo demanda'."
+      },
+      {
+        "type": "code",
+        "value": [
+          "it = iter([10, 20, 30])",
+          "print(next(it))",
+          "print(next(it))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "10",
+          "20"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`next(it, defecto)` devuelve `defecto` en vez de lanzar StopIteration cuando se agota."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Consuming iterators by hand"
+      },
+      {
+        "type": "text",
+        "value": "`iter(collection)` gets an iterator and `next(it)` asks for the next value. Useful to skip elements or read 'on demand'."
+      },
+      {
+        "type": "code",
+        "value": [
+          "it = iter([10, 20, 30])",
+          "print(next(it))",
+          "print(next(it))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "10",
+          "20"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`next(it, default)` returns `default` instead of raising StopIteration when exhausted."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m38l2e1",
+      "prompt": {
+        "es": "Define `tercero(iterable)` que devuelva el tercer elemento usando iter()/next().",
+        "en": "Define `tercero(iterable)` returning the third element using iter()/next()."
+      },
+      "starter_code": [
+        "def tercero(iterable):",
+        "    pass"
+      ],
+      "solution": [
+        "def tercero(iterable):",
+        "    it = iter(iterable)",
+        "    next(it)",
+        "    next(it)",
+        "    return next(it)"
+      ],
+      "hints": {
+        "es": [
+          "Crea el iterador y llama a next() tres veces."
+        ],
+        "en": [
+          "Create the iterator and call next() three times."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "tercero",
+          "cases": [
+            {
+              "args": [
+                [
+                  10,
+                  20,
+                  30,
+                  40
+                ]
+              ],
+              "expected": 30
+            },
+            {
+              "args": [
+                [
+                  "a",
+                  "b",
+                  "c"
+                ]
+              ],
+              "expected": "c"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m38l2e2",
+      "prompt": {
+        "es": "Define `primeros(iterable, n)` que devuelva una lista con los primeros `n` elementos usando iter()/next().",
+        "en": "Define `primeros(iterable, n)` returning a list with the first `n` elements using iter()/next()."
+      },
+      "starter_code": [
+        "def primeros(iterable, n):",
+        "    pass"
+      ],
+      "solution": [
+        "def primeros(iterable, n):",
+        "    it = iter(iterable)",
+        "    salida = []",
+        "    for _ in range(n):",
+        "        salida.append(next(it))",
+        "    return salida"
+      ],
+      "hints": {
+        "es": [
+          "Llama a next() n veces dentro de un bucle."
+        ],
+        "en": [
+          "Call next() n times inside a loop."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "primeros",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                3
+              ],
+              "expected": [
+                1,
+                2,
+                3
+              ]
+            },
+            {
+              "args": [
+                [
+                  "a",
+                  "b"
+                ],
+                2
+              ],
+              "expected": [
+                "a",
+                "b"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

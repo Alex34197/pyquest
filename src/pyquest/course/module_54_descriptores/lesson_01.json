@@ -1,0 +1,151 @@
+{
+  "id": "m54l1",
+  "title": {
+    "es": "Qué es un descriptor",
+    "en": "What a descriptor is"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Controlar el acceso a un atributo"
+      },
+      {
+        "type": "text",
+        "value": "Un **descriptor** es un objeto con métodos `__get__`/`__set__` que se pone como atributo de clase. Cada vez que lees o escribes ese atributo, se ejecutan esos métodos. Es lo que hay por debajo de `@property`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Positivo:",
+          "    def __set_name__(self, owner, name):",
+          "        self.attr = '_' + name",
+          "    def __get__(self, obj, objtype=None):",
+          "        return getattr(obj, self.attr)",
+          "    def __set__(self, obj, value):",
+          "        if value < 0:",
+          "            raise ValueError('negativo')",
+          "        setattr(obj, self.attr, value)"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`__set_name__` recibe el nombre con el que se declaró el descriptor, para guardar el valor real en un atributo aparte de cada instancia."
+      },
+      {
+        "type": "note",
+        "value": "Los descriptores permiten reutilizar la misma lógica (validar, registrar, cachear) en muchos atributos."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Controlling attribute access"
+      },
+      {
+        "type": "text",
+        "value": "A **descriptor** is an object with `__get__`/`__set__` methods placed as a class attribute. Each time you read or write that attribute, those methods run. It's what powers `@property`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Positivo:",
+          "    def __set_name__(self, owner, name):",
+          "        self.attr = '_' + name",
+          "    def __get__(self, obj, objtype=None):",
+          "        return getattr(obj, self.attr)",
+          "    def __set__(self, obj, value):",
+          "        if value < 0:",
+          "            raise ValueError('negativo')",
+          "        setattr(obj, self.attr, value)"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`__set_name__` receives the name the descriptor was declared with, to store the real value in a separate per-instance attribute."
+      },
+      {
+        "type": "note",
+        "value": "Descriptors let you reuse the same logic (validate, log, cache) across many attributes."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m54l1e1",
+      "prompt": {
+        "es": "Define el descriptor `Positivo` (valida value >= 0; si no, ValueError). Guarda el valor en '_' + nombre.",
+        "en": "Define the `Positivo` descriptor (validate value >= 0; else ValueError). Store the value in '_' + name."
+      },
+      "starter_code": [
+        "class Positivo:",
+        "    def __set_name__(self, owner, name):",
+        "        self.attr = '_' + name",
+        "    # completa __get__ y __set__"
+      ],
+      "solution": [
+        "class Positivo:",
+        "    def __set_name__(self, owner, name):",
+        "        self.attr = '_' + name",
+        "    def __get__(self, obj, objtype=None):",
+        "        return getattr(obj, self.attr)",
+        "    def __set__(self, obj, value):",
+        "        if value < 0:",
+        "            raise ValueError('negativo')",
+        "        setattr(obj, self.attr, value)"
+      ],
+      "hints": {
+        "es": [
+          "__set__ valida y usa setattr(obj, self.attr, value)."
+        ],
+        "en": [
+          "__set__ validates and uses setattr(obj, self.attr, value)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Positivo",
+          "harness": "class Producto:\n    precio = Positivo()\n    def __init__(self, precio):\n        self.precio = precio\np = Producto(10)\nassert p.precio == 10\nerr = False\ntry:\n    Producto(-5)\nexcept ValueError:\n    err = True\nassert err is True"
+        }
+      ]
+    },
+    {
+      "id": "m54l1e2",
+      "prompt": {
+        "es": "Define un descriptor `SoloLectura(valor)`: `__get__` devuelve el valor; `__set__` lanza AttributeError.",
+        "en": "Define a `SoloLectura(valor)` descriptor: `__get__` returns the value; `__set__` raises AttributeError."
+      },
+      "starter_code": [
+        "class SoloLectura:",
+        "    def __init__(self, valor):",
+        "        self.valor = valor",
+        "    # completa __get__ y __set__"
+      ],
+      "solution": [
+        "class SoloLectura:",
+        "    def __init__(self, valor):",
+        "        self.valor = valor",
+        "    def __get__(self, obj, objtype=None):",
+        "        return self.valor",
+        "    def __set__(self, obj, value):",
+        "        raise AttributeError('solo lectura')"
+      ],
+      "hints": {
+        "es": [
+          "__set__ siempre lanza AttributeError."
+        ],
+        "en": [
+          "__set__ always raises AttributeError."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "SoloLectura",
+          "harness": "class Config:\n    version = SoloLectura(3)\nc = Config()\nassert c.version == 3\nerr = False\ntry:\n    c.version = 9\nexcept AttributeError:\n    err = True\nassert err is True"
+        }
+      ]
+    }
+  ]
+}

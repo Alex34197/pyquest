@@ -1,0 +1,159 @@
+{
+  "id": "m41l2",
+  "title": {
+    "es": "Setters y validación",
+    "en": "Setters and validation"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Controlar la escritura"
+      },
+      {
+        "type": "text",
+        "value": "Con `@x.setter` defines qué pasa al **asignar** una propiedad: puedes validar el valor antes de guardarlo. Así proteges el estado del objeto."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Cuenta:",
+          "    def __init__(self):",
+          "        self._saldo = 0",
+          "    @property",
+          "    def saldo(self):",
+          "        return self._saldo",
+          "    @saldo.setter",
+          "    def saldo(self, valor):",
+          "        if valor < 0:",
+          "            raise ValueError('negativo')",
+          "        self._saldo = valor"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Por convención, el atributo interno lleva guion bajo (`_saldo`) y la propiedad expone el acceso controlado (`saldo`)."
+      },
+      {
+        "type": "note",
+        "value": "No es 'privado de verdad' (Python no lo impide), pero la convención _ avisa: no toques esto directamente."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Controlling writes"
+      },
+      {
+        "type": "text",
+        "value": "With `@x.setter` you define what happens when **assigning** a property: you can validate before storing. That protects the object's state."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Cuenta:",
+          "    def __init__(self):",
+          "        self._saldo = 0",
+          "    @property",
+          "    def saldo(self):",
+          "        return self._saldo",
+          "    @saldo.setter",
+          "    def saldo(self, valor):",
+          "        if valor < 0:",
+          "            raise ValueError('negativo')",
+          "        self._saldo = valor"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "By convention the internal attribute has an underscore (`_saldo`) and the property exposes controlled access (`saldo`)."
+      },
+      {
+        "type": "note",
+        "value": "It's not 'truly private' (Python doesn't enforce it), but the _ convention warns: don't touch this directly."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m41l2e1",
+      "prompt": {
+        "es": "Define `Cuenta` con propiedad `saldo`: el setter debe lanzar `ValueError` si el valor es negativo.",
+        "en": "Define `Cuenta` with a `saldo` property: the setter must raise `ValueError` if the value is negative."
+      },
+      "starter_code": [
+        "class Cuenta:",
+        "    def __init__(self):",
+        "        self._saldo = 0",
+        "    # añade la propiedad saldo con getter y setter"
+      ],
+      "solution": [
+        "class Cuenta:",
+        "    def __init__(self):",
+        "        self._saldo = 0",
+        "    @property",
+        "    def saldo(self):",
+        "        return self._saldo",
+        "    @saldo.setter",
+        "    def saldo(self, valor):",
+        "        if valor < 0:",
+        "            raise ValueError('negativo')",
+        "        self._saldo = valor"
+      ],
+      "hints": {
+        "es": [
+          "getter devuelve self._saldo; setter valida valor>=0."
+        ],
+        "en": [
+          "getter returns self._saldo; setter validates valor>=0."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Cuenta",
+          "harness": "c = Cuenta()\nc.saldo = 100\nassert c.saldo == 100\nerr = False\ntry:\n    c.saldo = -5\nexcept ValueError:\n    err = True\nassert err is True"
+        }
+      ]
+    },
+    {
+      "id": "m41l2e2",
+      "prompt": {
+        "es": "Define `Persona` con propiedad `nombre`: el setter guarda el nombre SIEMPRE en mayúsculas.",
+        "en": "Define `Persona` with a `nombre` property: the setter always stores the name in uppercase."
+      },
+      "starter_code": [
+        "class Persona:",
+        "    def __init__(self):",
+        "        self._nombre = ''",
+        "    # añade la propiedad nombre"
+      ],
+      "solution": [
+        "class Persona:",
+        "    def __init__(self):",
+        "        self._nombre = ''",
+        "    @property",
+        "    def nombre(self):",
+        "        return self._nombre",
+        "    @nombre.setter",
+        "    def nombre(self, valor):",
+        "        self._nombre = valor.upper()"
+      ],
+      "hints": {
+        "es": [
+          "El setter hace self._nombre = valor.upper()."
+        ],
+        "en": [
+          "The setter does self._nombre = valor.upper()."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Persona",
+          "harness": "p = Persona()\np.nombre = 'ana'\nassert p.nombre == 'ANA'"
+        }
+      ]
+    }
+  ]
+}

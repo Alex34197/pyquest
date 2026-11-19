@@ -1,0 +1,211 @@
+{
+  "id": "m66l1",
+  "title": {
+    "es": "Números primos",
+    "en": "Prime numbers"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Retos clásicos: primos"
+      },
+      {
+        "type": "text",
+        "value": "Un número es **primo** si solo es divisible por 1 y por sí mismo (y es ≥ 2). Para comprobarlo basta probar divisores hasta su raíz cuadrada."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def es_primo(n):",
+          "    if n < 2:",
+          "        return False",
+          "    i = 2",
+          "    while i * i <= n:",
+          "        if n % i == 0:",
+          "            return False",
+          "        i += 1",
+          "    return True",
+          "",
+          "print(es_primo(7), es_primo(8))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "True False"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Probar solo hasta la raíz cuadrada hace la comprobación mucho más rápida que hasta n."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Classic challenges: primes"
+      },
+      {
+        "type": "text",
+        "value": "A number is **prime** if it's only divisible by 1 and itself (and is ≥ 2). To check it, you only need to try divisors up to its square root."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def es_primo(n):",
+          "    if n < 2:",
+          "        return False",
+          "    i = 2",
+          "    while i * i <= n:",
+          "        if n % i == 0:",
+          "            return False",
+          "        i += 1",
+          "    return True",
+          "",
+          "print(es_primo(7), es_primo(8))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "True False"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Trying only up to the square root makes the check far faster than up to n."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m66l1e1",
+      "prompt": {
+        "es": "Define `es_primo(n)` que devuelva True si n es primo.",
+        "en": "Define `es_primo(n)` returning True if n is prime."
+      },
+      "starter_code": [
+        "def es_primo(n):",
+        "    pass"
+      ],
+      "solution": [
+        "def es_primo(n):",
+        "    if n < 2:",
+        "        return False",
+        "    i = 2",
+        "    while i * i <= n:",
+        "        if n % i == 0:",
+        "            return False",
+        "        i += 1",
+        "    return True"
+      ],
+      "hints": {
+        "es": [
+          "n < 2 no es primo; prueba divisores hasta la raíz cuadrada."
+        ],
+        "en": [
+          "n < 2 isn't prime; try divisors up to the square root."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "es_primo",
+          "cases": [
+            {
+              "args": [
+                7
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                1
+              ],
+              "expected": false
+            },
+            {
+              "args": [
+                2
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                9
+              ],
+              "expected": false
+            },
+            {
+              "args": [
+                97
+              ],
+              "expected": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m66l1e2",
+      "prompt": {
+        "es": "Define `primos_hasta(n)` que devuelva la lista de primos desde 2 hasta n (incluido).",
+        "en": "Define `primos_hasta(n)` returning the list of primes from 2 up to n (inclusive)."
+      },
+      "starter_code": [
+        "def primos_hasta(n):",
+        "    pass"
+      ],
+      "solution": [
+        "def primos_hasta(n):",
+        "    primos = []",
+        "    for x in range(2, n + 1):",
+        "        if all(x % d != 0 for d in range(2, int(x ** 0.5) + 1)):",
+        "            primos.append(x)",
+        "    return primos"
+      ],
+      "hints": {
+        "es": [
+          "Recorre de 2 a n y comprueba que ningún divisor lo divide."
+        ],
+        "en": [
+          "Iterate from 2 to n and check that no divisor divides it."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "primos_hasta",
+          "cases": [
+            {
+              "args": [
+                10
+              ],
+              "expected": [
+                2,
+                3,
+                5,
+                7
+              ]
+            },
+            {
+              "args": [
+                1
+              ],
+              "expected": []
+            },
+            {
+              "args": [
+                2
+              ],
+              "expected": [
+                2
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

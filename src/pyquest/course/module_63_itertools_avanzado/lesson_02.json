@@ -1,0 +1,205 @@
+{
+  "id": "m63l2",
+  "title": {
+    "es": "groupby y takewhile",
+    "en": "groupby and takewhile"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Agrupar y cortar"
+      },
+      {
+        "type": "text",
+        "value": "`groupby` agrupa elementos **consecutivos** iguales. `takewhile(condicion, iterable)` toma elementos del principio mientras se cumpla la condición, y para en cuanto falla."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from itertools import groupby",
+          "for k, g in groupby('aabba'):",
+          "    print(k, len(list(g)))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "a 2",
+          "b 2",
+          "a 1"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Ojo: groupby solo agrupa lo CONSECUTIVO; si quieres agrupar todo igual, ordena antes."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Grouping and cutting"
+      },
+      {
+        "type": "text",
+        "value": "`groupby` groups **consecutive** equal elements. `takewhile(condition, iterable)` takes elements from the start while the condition holds, and stops as soon as it fails."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from itertools import groupby",
+          "for k, g in groupby('aabba'):",
+          "    print(k, len(list(g)))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "a 2",
+          "b 2",
+          "a 1"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Note: groupby only groups CONSECUTIVE items; to group all equal ones, sort first."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m63l2e1",
+      "prompt": {
+        "es": "Define `agrupar(lista)` que devuelva una lista de [valor, cuántas veces seguidas] (usa groupby).",
+        "en": "Define `agrupar(lista)` returning a list of [value, consecutive count] (use groupby)."
+      },
+      "starter_code": [
+        "from itertools import groupby",
+        "",
+        "def agrupar(lista):",
+        "    pass"
+      ],
+      "solution": [
+        "from itertools import groupby",
+        "",
+        "def agrupar(lista):",
+        "    return [[k, len(list(g))] for k, g in groupby(lista)]"
+      ],
+      "hints": {
+        "es": [
+          "[[k, len(list(g))] for k, g in groupby(lista)]."
+        ],
+        "en": [
+          "[[k, len(list(g))] for k, g in groupby(lista)]."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "agrupar",
+          "cases": [
+            {
+              "args": [
+                [
+                  "a",
+                  "a",
+                  "b",
+                  "a"
+                ]
+              ],
+              "expected": [
+                [
+                  "a",
+                  2
+                ],
+                [
+                  "b",
+                  1
+                ],
+                [
+                  "a",
+                  1
+                ]
+              ]
+            },
+            {
+              "args": [
+                [
+                  1,
+                  1,
+                  1
+                ]
+              ],
+              "expected": [
+                [
+                  1,
+                  3
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m63l2e2",
+      "prompt": {
+        "es": "Define `mientras_menor(nums, limite)` que devuelva los elementos del principio mientras sean < limite (usa takewhile).",
+        "en": "Define `mientras_menor(nums, limite)` returning the leading elements while they are < limite (use takewhile)."
+      },
+      "starter_code": [
+        "from itertools import takewhile",
+        "",
+        "def mientras_menor(nums, limite):",
+        "    pass"
+      ],
+      "solution": [
+        "from itertools import takewhile",
+        "",
+        "def mientras_menor(nums, limite):",
+        "    return list(takewhile(lambda x: x < limite, nums))"
+      ],
+      "hints": {
+        "es": [
+          "takewhile(lambda x: x < limite, nums)."
+        ],
+        "en": [
+          "takewhile(lambda x: x < limite, nums)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "mientras_menor",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  2,
+                  5,
+                  1
+                ],
+                3
+              ],
+              "expected": [
+                1,
+                2
+              ]
+            },
+            {
+              "args": [
+                [
+                  9,
+                  1
+                ],
+                3
+              ],
+              "expected": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

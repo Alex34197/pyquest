@@ -1,0 +1,212 @@
+{
+  "id": "m13l2",
+  "title": {
+    "es": "Expresiones generadoras",
+    "en": "Generator expressions"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Como una comprensión, pero perezosa"
+      },
+      {
+        "type": "text",
+        "value": "Igual que una comprensión de lista pero con paréntesis: `(x*x for x in range(5))` crea un **generador**, no una lista. Útil para no construir listas intermedias en memoria."
+      },
+      {
+        "type": "code",
+        "value": [
+          "cuadrados = (x * x for x in range(4))",
+          "print(sum(cuadrados))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "14"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`next(gen)` obtiene el siguiente valor; cuando se agota, lanza `StopIteration`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "g = (x for x in [10, 20])",
+          "print(next(g))",
+          "print(next(g))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "10",
+          "20"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`sum(x for x in ...)` es muy común: suma sin crear la lista entera."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Like a comprehension, but lazy"
+      },
+      {
+        "type": "text",
+        "value": "Like a list comprehension but with parentheses: `(x*x for x in range(5))` creates a **generator**, not a list. Useful to avoid building intermediate lists in memory."
+      },
+      {
+        "type": "code",
+        "value": [
+          "cuadrados = (x * x for x in range(4))",
+          "print(sum(cuadrados))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "14"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`next(gen)` gets the next value; when exhausted it raises `StopIteration`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "g = (x for x in [10, 20])",
+          "print(next(g))",
+          "print(next(g))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "10",
+          "20"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`sum(x for x in ...)` is very common: it sums without building the whole list."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m13l2e1",
+      "prompt": {
+        "es": "Define `suma_cuadrados(n)` que devuelva la suma de los cuadrados de 1 a n usando una expresión generadora dentro de `sum()`.",
+        "en": "Define `suma_cuadrados(n)` returning the sum of squares from 1 to n using a generator expression inside `sum()`."
+      },
+      "starter_code": [
+        "def suma_cuadrados(n):",
+        "    pass"
+      ],
+      "solution": [
+        "def suma_cuadrados(n):",
+        "    return sum(i * i for i in range(1, n + 1))"
+      ],
+      "hints": {
+        "es": [
+          "sum(i*i for i in range(1, n+1))."
+        ],
+        "en": [
+          "sum(i*i for i in range(1, n+1))."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "suma_cuadrados",
+          "cases": [
+            {
+              "args": [
+                3
+              ],
+              "expected": 14
+            },
+            {
+              "args": [
+                1
+              ],
+              "expected": 1
+            },
+            {
+              "args": [
+                0
+              ],
+              "expected": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m13l2e2",
+      "prompt": {
+        "es": "Define `cuantos_grandes(numeros)` que cuente cuántos números de la lista son mayores que 10 (usa `sum` con una generadora).",
+        "en": "Define `cuantos_grandes(numeros)` counting how many numbers in the list are greater than 10 (use `sum` with a generator)."
+      },
+      "starter_code": [
+        "def cuantos_grandes(numeros):",
+        "    pass"
+      ],
+      "solution": [
+        "def cuantos_grandes(numeros):",
+        "    return sum(1 for x in numeros if x > 10)"
+      ],
+      "hints": {
+        "es": [
+          "sum(1 for x in numeros if x > 10)."
+        ],
+        "en": [
+          "sum(1 for x in numeros if x > 10)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "cuantos_grandes",
+          "cases": [
+            {
+              "args": [
+                [
+                  5,
+                  15,
+                  20,
+                  3
+                ]
+              ],
+              "expected": 2
+            },
+            {
+              "args": [
+                [
+                  1,
+                  2
+                ]
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                [
+                  11,
+                  12
+                ]
+              ],
+              "expected": 2
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

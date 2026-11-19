@@ -1,0 +1,16 @@
+{
+  "id": "m45",
+  "order": 45,
+  "title": {
+    "es": "Grafos",
+    "en": "Graphs"
+  },
+  "summary": {
+    "es": "Grafo como diccionario; DFS, BFS y existencia de camino.",
+    "en": "Graph as a dictionary; DFS, BFS and path existence."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

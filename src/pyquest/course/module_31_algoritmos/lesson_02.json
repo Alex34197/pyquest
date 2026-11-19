@@ -1,0 +1,232 @@
+{
+  "id": "m31l2",
+  "title": {
+    "es": "Ordenación",
+    "en": "Sorting"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Poner en orden"
+      },
+      {
+        "type": "text",
+        "value": "Aunque en la práctica usarás `sorted()`, implementar una ordenación enseña mucho. La **ordenación burbuja** compara pares vecinos e intercambia hasta que todo queda en orden."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def burbuja(lista):",
+          "    a = list(lista)",
+          "    for i in range(len(a)):",
+          "        for j in range(len(a) - 1 - i):",
+          "            if a[j] > a[j + 1]:",
+          "                a[j], a[j + 1] = a[j + 1], a[j]",
+          "    return a",
+          "",
+          "print(burbuja([3, 1, 2]))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[1, 2, 3]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Burbuja es O(n²): vale para aprender, pero para datos reales usa sorted() (mucho más rápido)."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Putting in order"
+      },
+      {
+        "type": "text",
+        "value": "Although in practice you'll use `sorted()`, implementing a sort teaches a lot. **Bubble sort** compares neighbouring pairs and swaps until everything is ordered."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def burbuja(lista):",
+          "    a = list(lista)",
+          "    for i in range(len(a)):",
+          "        for j in range(len(a) - 1 - i):",
+          "            if a[j] > a[j + 1]:",
+          "                a[j], a[j + 1] = a[j + 1], a[j]",
+          "    return a",
+          "",
+          "print(burbuja([3, 1, 2]))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[1, 2, 3]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Bubble sort is O(n²): good for learning, but use sorted() for real data (far faster)."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m31l2e1",
+      "prompt": {
+        "es": "Define `burbuja(lista)` que devuelva una NUEVA lista ordenada (no modifiques la original).",
+        "en": "Define `burbuja(lista)` returning a NEW sorted list (don't modify the original)."
+      },
+      "starter_code": [
+        "def burbuja(lista):",
+        "    pass"
+      ],
+      "solution": [
+        "def burbuja(lista):",
+        "    a = list(lista)",
+        "    for i in range(len(a)):",
+        "        for j in range(len(a) - 1 - i):",
+        "            if a[j] > a[j + 1]:",
+        "                a[j], a[j + 1] = a[j + 1], a[j]",
+        "    return a"
+      ],
+      "hints": {
+        "es": [
+          "Copia con list(lista) y haz el doble bucle de burbuja."
+        ],
+        "en": [
+          "Copy with list(lista) and do the bubble double loop."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "burbuja",
+          "cases": [
+            {
+              "args": [
+                [
+                  3,
+                  1,
+                  2
+                ]
+              ],
+              "expected": [
+                1,
+                2,
+                3
+              ]
+            },
+            {
+              "args": [
+                [
+                  5,
+                  4,
+                  3,
+                  2,
+                  1
+                ]
+              ],
+              "expected": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ]
+            },
+            {
+              "args": [
+                []
+              ],
+              "expected": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m31l2e2",
+      "prompt": {
+        "es": "Define `insercion(lista)` (ordenación por inserción) que devuelva una nueva lista ordenada.",
+        "en": "Define `insercion(lista)` (insertion sort) returning a new sorted list."
+      },
+      "starter_code": [
+        "def insercion(lista):",
+        "    pass"
+      ],
+      "solution": [
+        "def insercion(lista):",
+        "    a = list(lista)",
+        "    for i in range(1, len(a)):",
+        "        clave = a[i]",
+        "        j = i - 1",
+        "        while j >= 0 and a[j] > clave:",
+        "            a[j + 1] = a[j]",
+        "            j -= 1",
+        "        a[j + 1] = clave",
+        "    return a"
+      ],
+      "hints": {
+        "es": [
+          "Inserta cada elemento en su sitio dentro de la parte ya ordenada."
+        ],
+        "en": [
+          "Insert each element into its place within the sorted part."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "insercion",
+          "cases": [
+            {
+              "args": [
+                [
+                  5,
+                  2,
+                  4,
+                  1
+                ]
+              ],
+              "expected": [
+                1,
+                2,
+                4,
+                5
+              ]
+            },
+            {
+              "args": [
+                [
+                  1
+                ]
+              ],
+              "expected": [
+                1
+              ]
+            },
+            {
+              "args": [
+                [
+                  3,
+                  3,
+                  1
+                ]
+              ],
+              "expected": [
+                1,
+                3,
+                3
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

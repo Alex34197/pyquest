@@ -1,0 +1,206 @@
+{
+  "id": "m23l1",
+  "title": {
+    "es": "Counter y defaultdict",
+    "en": "Counter and defaultdict"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Diccionarios con superpoderes"
+      },
+      {
+        "type": "text",
+        "value": "`Counter` cuenta elementos automáticamente y te da los más frecuentes."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from collections import Counter",
+          "cuenta = Counter('aabbbc')",
+          "print(cuenta)",
+          "print(cuenta.most_common(1))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Counter({'b': 3, 'a': 2, 'c': 1})",
+          "[('b', 3)]"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`defaultdict` crea un valor por defecto cuando accedes a una clave que no existe, evitando comprobaciones constantes."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from collections import defaultdict",
+          "g = defaultdict(list)",
+          "g['a'].append(1)",
+          "print(dict(g))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "{'a': [1]}"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Counter es perfecto para frecuencias (palabras, caracteres, eventos en un log)."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Dictionaries with superpowers"
+      },
+      {
+        "type": "text",
+        "value": "`Counter` counts elements automatically and gives you the most frequent ones."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from collections import Counter",
+          "cuenta = Counter('aabbbc')",
+          "print(cuenta)",
+          "print(cuenta.most_common(1))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Counter({'b': 3, 'a': 2, 'c': 1})",
+          "[('b', 3)]"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`defaultdict` creates a default value when you access a missing key, avoiding constant checks."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from collections import defaultdict",
+          "g = defaultdict(list)",
+          "g['a'].append(1)",
+          "print(dict(g))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "{'a': [1]}"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Counter is perfect for frequencies (words, characters, events in a log)."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m23l1e1",
+      "prompt": {
+        "es": "Define `contar(texto)` que devuelva un dict con cuántas veces aparece cada carácter (usa Counter).",
+        "en": "Define `contar(texto)` returning a dict with how many times each character appears (use Counter)."
+      },
+      "starter_code": [
+        "from collections import Counter",
+        "",
+        "def contar(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "from collections import Counter",
+        "",
+        "def contar(texto):",
+        "    return dict(Counter(texto))"
+      ],
+      "hints": {
+        "es": [
+          "Counter(texto) cuenta; conviértelo a dict."
+        ],
+        "en": [
+          "Counter(texto) counts; convert it to dict."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "contar",
+          "cases": [
+            {
+              "args": [
+                "aab"
+              ],
+              "expected": {
+                "a": 2,
+                "b": 1
+              }
+            },
+            {
+              "args": [
+                ""
+              ],
+              "expected": {}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m23l1e2",
+      "prompt": {
+        "es": "Define `mas_comun(texto)` que devuelva el carácter que más se repite (usa Counter.most_common).",
+        "en": "Define `mas_comun(texto)` returning the most repeated character (use Counter.most_common)."
+      },
+      "starter_code": [
+        "from collections import Counter",
+        "",
+        "def mas_comun(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "from collections import Counter",
+        "",
+        "def mas_comun(texto):",
+        "    return Counter(texto).most_common(1)[0][0]"
+      ],
+      "hints": {
+        "es": [
+          "most_common(1) devuelve [(elemento, conteo)]."
+        ],
+        "en": [
+          "most_common(1) returns [(element, count)]."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "mas_comun",
+          "cases": [
+            {
+              "args": [
+                "aab"
+              ],
+              "expected": "a"
+            },
+            {
+              "args": [
+                "bbba"
+              ],
+              "expected": "b"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

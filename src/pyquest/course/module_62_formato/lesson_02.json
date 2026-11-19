@@ -1,0 +1,165 @@
+{
+  "id": "m62l2",
+  "title": {
+    "es": "Alinear y rellenar",
+    "en": "Aligning and padding"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Anchura, alineación y relleno"
+      },
+      {
+        "type": "text",
+        "value": "Puedes fijar la **anchura** y la **alineación**: `:>10` alinea a la derecha en 10 caracteres, `:<10` a la izquierda, `:^10` al centro. Un `0` antes rellena con ceros: `:03`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "print(f'{42:>5}')",
+          "print(f'{7:03}')",
+          "print(f'{\"hola\":^10}')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "   42",
+          "007",
+          "   hola   "
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Alinear columnas hace que las tablas en consola se lean mucho mejor."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Width, alignment and padding"
+      },
+      {
+        "type": "text",
+        "value": "You can set **width** and **alignment**: `:>10` right-aligns in 10 characters, `:<10` left, `:^10` centers. A leading `0` pads with zeros: `:03`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "print(f'{42:>5}')",
+          "print(f'{7:03}')",
+          "print(f'{\"hola\":^10}')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "   42",
+          "007",
+          "   hola   "
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Aligning columns makes console tables far more readable."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m62l1e1b",
+      "prompt": {
+        "es": "Define `derecha(texto, ancho)` que devuelva el texto alineado a la derecha rellenando con espacios hasta `ancho`.",
+        "en": "Define `derecha(texto, ancho)` returning the text right-aligned, padded with spaces up to `ancho`."
+      },
+      "starter_code": [
+        "def derecha(texto, ancho):",
+        "    pass"
+      ],
+      "solution": [
+        "def derecha(texto, ancho):",
+        "    return f'{texto:>{ancho}}'"
+      ],
+      "hints": {
+        "es": [
+          "f'{texto:>{ancho}}' usa el ancho como variable."
+        ],
+        "en": [
+          "f'{texto:>{ancho}}' uses the width as a variable."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "derecha",
+          "cases": [
+            {
+              "args": [
+                "ab",
+                5
+              ],
+              "expected": "   ab"
+            },
+            {
+              "args": [
+                "hola",
+                4
+              ],
+              "expected": "hola"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m62l2e2",
+      "prompt": {
+        "es": "Define `porcentaje(frac)` que muestre una fracción como porcentaje entero (0.25 -> '25%').",
+        "en": "Define `porcentaje(frac)` showing a fraction as a whole percentage (0.25 -> '25%')."
+      },
+      "starter_code": [
+        "def porcentaje(frac):",
+        "    pass"
+      ],
+      "solution": [
+        "def porcentaje(frac):",
+        "    return f'{frac:.0%}'"
+      ],
+      "hints": {
+        "es": [
+          "f'{frac:.0%}'."
+        ],
+        "en": [
+          "f'{frac:.0%}'."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "porcentaje",
+          "cases": [
+            {
+              "args": [
+                0.25
+              ],
+              "expected": "25%"
+            },
+            {
+              "args": [
+                0.5
+              ],
+              "expected": "50%"
+            },
+            {
+              "args": [
+                1
+              ],
+              "expected": "100%"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

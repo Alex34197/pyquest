@@ -1,0 +1,144 @@
+{
+  "id": "m72l1",
+  "title": {
+    "es": "suppress y redirect_stdout",
+    "en": "suppress and redirect_stdout"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Context managers de la librería"
+      },
+      {
+        "type": "text",
+        "value": "`contextlib` trae context managers listos. `suppress(TipoError)` ignora silenciosamente esa excepción dentro del bloque. `redirect_stdout(buffer)` desvía todo lo que se imprime a un buffer."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from contextlib import suppress",
+          "with suppress(ZeroDivisionError):",
+          "    1 / 0   # no rompe",
+          "print('seguimos')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "seguimos"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`suppress` es más limpio que un try/except vacío cuando solo quieres ignorar un error concreto."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Library context managers"
+      },
+      {
+        "type": "text",
+        "value": "`contextlib` brings ready-made context managers. `suppress(ErrorType)` silently ignores that exception inside the block. `redirect_stdout(buffer)` redirects everything printed to a buffer."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from contextlib import suppress",
+          "with suppress(ZeroDivisionError):",
+          "    1 / 0   # doesn't break",
+          "print('seguimos')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "seguimos"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`suppress` is cleaner than an empty try/except when you just want to ignore one specific error."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m72l1e1",
+      "prompt": {
+        "es": "Define `seguro(func)` que ejecute func() ignorando cualquier excepción (usa suppress) y devuelva su resultado, o None si falla.",
+        "en": "Define `seguro(func)` that runs func() ignoring any exception (use suppress) and returns its result, or None on failure."
+      },
+      "starter_code": [
+        "from contextlib import suppress",
+        "",
+        "def seguro(func):",
+        "    pass"
+      ],
+      "solution": [
+        "from contextlib import suppress",
+        "",
+        "def seguro(func):",
+        "    with suppress(Exception):",
+        "        return func()",
+        "    return None"
+      ],
+      "hints": {
+        "es": [
+          "with suppress(Exception): return func(); fuera, return None."
+        ],
+        "en": [
+          "with suppress(Exception): return func(); outside, return None."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "seguro",
+          "harness": "assert seguro(lambda: 1 / 0) is None\nassert seguro(lambda: 5) == 5"
+        }
+      ]
+    },
+    {
+      "id": "m72l1e2",
+      "prompt": {
+        "es": "Define `capturar_salida(func)` que ejecute func() y devuelva todo lo que imprima (usa redirect_stdout).",
+        "en": "Define `capturar_salida(func)` that runs func() and returns everything it prints (use redirect_stdout)."
+      },
+      "starter_code": [
+        "import io",
+        "from contextlib import redirect_stdout",
+        "",
+        "def capturar_salida(func):",
+        "    pass"
+      ],
+      "solution": [
+        "import io",
+        "from contextlib import redirect_stdout",
+        "",
+        "def capturar_salida(func):",
+        "    buf = io.StringIO()",
+        "    with redirect_stdout(buf):",
+        "        func()",
+        "    return buf.getvalue()"
+      ],
+      "hints": {
+        "es": [
+          "Crea un io.StringIO y redirige la salida con redirect_stdout."
+        ],
+        "en": [
+          "Create an io.StringIO and redirect output with redirect_stdout."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "capturar_salida",
+          "harness": "assert capturar_salida(lambda: print('hola')) == 'hola\\n'\nassert capturar_salida(lambda: print('a', 'b')) == 'a b\\n'"
+        }
+      ]
+    }
+  ]
+}

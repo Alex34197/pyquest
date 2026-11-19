@@ -1,0 +1,16 @@
+{
+  "id": "m7",
+  "order": 7,
+  "title": {
+    "es": "Programación orientada a objetos",
+    "en": "Object-oriented programming"
+  },
+  "summary": {
+    "es": "Clases, objetos, atributos y métodos, herencia y métodos especiales.",
+    "en": "Classes, objects, attributes and methods, inheritance and special methods."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

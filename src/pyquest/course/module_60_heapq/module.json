@@ -1,0 +1,16 @@
+{
+  "id": "m60",
+  "order": 60,
+  "title": {
+    "es": "Montículos (heapq)",
+    "en": "Heaps (heapq)"
+  },
+  "summary": {
+    "es": "heappush/heappop, nsmallest/nlargest y colas de prioridad.",
+    "en": "heappush/heappop, nsmallest/nlargest and priority queues."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

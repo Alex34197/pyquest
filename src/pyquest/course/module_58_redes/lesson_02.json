@@ -1,0 +1,171 @@
+{
+  "id": "m58l2",
+  "title": {
+    "es": "Redes y conversiones",
+    "en": "Networks and conversions"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Subredes y enteros"
+      },
+      {
+        "type": "text",
+        "value": "`ip_network('192.168.1.0/24')` representa una subred; `.num_addresses` da cuántas direcciones contiene. Y una IPv4 equivale a un entero de 32 bits: `int(ip_address(...))`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import ipaddress",
+          "red = ipaddress.ip_network('192.168.1.0/30')",
+          "print(red.num_addresses)",
+          "print(int(ipaddress.ip_address('0.0.1.0')))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "4",
+          "256"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Pensar las IPs como enteros (o bits) ayuda a entender máscaras, rangos y CIDR."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Subnets and integers"
+      },
+      {
+        "type": "text",
+        "value": "`ip_network('192.168.1.0/24')` represents a subnet; `.num_addresses` gives how many addresses it contains. And an IPv4 equals a 32-bit integer: `int(ip_address(...))`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import ipaddress",
+          "red = ipaddress.ip_network('192.168.1.0/30')",
+          "print(red.num_addresses)",
+          "print(int(ipaddress.ip_address('0.0.1.0')))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "4",
+          "256"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Thinking of IPs as integers (or bits) helps you understand masks, ranges and CIDR."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m58l2e1",
+      "prompt": {
+        "es": "Define `tam_red(cidr)` que devuelva cuántas direcciones tiene la red en notación CIDR (usa num_addresses).",
+        "en": "Define `tam_red(cidr)` returning how many addresses the CIDR network has (use num_addresses)."
+      },
+      "starter_code": [
+        "import ipaddress",
+        "",
+        "def tam_red(cidr):",
+        "    pass"
+      ],
+      "solution": [
+        "import ipaddress",
+        "",
+        "def tam_red(cidr):",
+        "    return ipaddress.ip_network(cidr).num_addresses"
+      ],
+      "hints": {
+        "es": [
+          "ipaddress.ip_network(cidr).num_addresses."
+        ],
+        "en": [
+          "ipaddress.ip_network(cidr).num_addresses."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "tam_red",
+          "cases": [
+            {
+              "args": [
+                "192.168.1.0/30"
+              ],
+              "expected": 4
+            },
+            {
+              "args": [
+                "10.0.0.0/24"
+              ],
+              "expected": 256
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m58l2e2",
+      "prompt": {
+        "es": "Define `ip_a_entero(ip)` que convierta una IPv4 (texto) en su número entero de 32 bits.",
+        "en": "Define `ip_a_entero(ip)` converting an IPv4 (text) into its 32-bit integer."
+      },
+      "starter_code": [
+        "import ipaddress",
+        "",
+        "def ip_a_entero(ip):",
+        "    pass"
+      ],
+      "solution": [
+        "import ipaddress",
+        "",
+        "def ip_a_entero(ip):",
+        "    return int(ipaddress.ip_address(ip))"
+      ],
+      "hints": {
+        "es": [
+          "int(ipaddress.ip_address(ip))."
+        ],
+        "en": [
+          "int(ipaddress.ip_address(ip))."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "ip_a_entero",
+          "cases": [
+            {
+              "args": [
+                "0.0.0.1"
+              ],
+              "expected": 1
+            },
+            {
+              "args": [
+                "0.0.1.0"
+              ],
+              "expected": 256
+            },
+            {
+              "args": [
+                "255.255.255.255"
+              ],
+              "expected": 4294967295
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

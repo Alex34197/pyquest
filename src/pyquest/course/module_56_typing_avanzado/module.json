@@ -1,0 +1,16 @@
+{
+  "id": "m56",
+  "order": 56,
+  "title": {
+    "es": "Tipado avanzado",
+    "en": "Advanced typing"
+  },
+  "summary": {
+    "es": "TypeVar, Generic, Protocol (runtime_checkable) y uniones X | None.",
+    "en": "TypeVar, Generic, Protocol (runtime_checkable) and X | None unions."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

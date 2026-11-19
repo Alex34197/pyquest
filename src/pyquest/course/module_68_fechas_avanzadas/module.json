@@ -1,0 +1,16 @@
+{
+  "id": "m68",
+  "order": 68,
+  "title": {
+    "es": "Fechas avanzadas",
+    "en": "Advanced dates"
+  },
+  "summary": {
+    "es": "timedelta (sumar/medir) y zonas horarias con desfase fijo (timezone, astimezone).",
+    "en": "timedelta (add/measure) and fixed-offset time zones (timezone, astimezone)."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

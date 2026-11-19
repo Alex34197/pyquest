@@ -1,0 +1,16 @@
+{
+  "id": "m27",
+  "order": 27,
+  "title": {
+    "es": "Bases de datos (sqlite3)",
+    "en": "Databases (sqlite3)"
+  },
+  "summary": {
+    "es": "SQL en memoria: CREATE/INSERT/SELECT, WHERE, ORDER BY y parámetros ?.",
+    "en": "In-memory SQL: CREATE/INSERT/SELECT, WHERE, ORDER BY and ? parameters."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

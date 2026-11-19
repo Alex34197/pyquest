@@ -1,0 +1,16 @@
+{
+  "id": "m77",
+  "order": 77,
+  "title": {
+    "es": "Proyecto: análisis de texto",
+    "en": "Project: text analysis"
+  },
+  "summary": {
+    "es": "Mini-proyecto que junta dividir, contar, ordenar y medias.",
+    "en": "Mini-project combining split, count, sort and averages."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

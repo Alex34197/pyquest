@@ -1,0 +1,203 @@
+{
+  "id": "m60l2",
+  "title": {
+    "es": "Cola de prioridad",
+    "en": "Priority queue"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Atender por prioridad"
+      },
+      {
+        "type": "text",
+        "value": "Si guardas tuplas `(prioridad, dato)` en un heap, `heappop` te devuelve siempre la de menor prioridad (número más bajo). Es una **cola de prioridad** lista para usar."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import heapq",
+          "h = [(2, 'b'), (1, 'a'), (3, 'c')]",
+          "heapq.heapify(h)",
+          "print(heapq.heappop(h))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "(1, 'a')"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`heapify` convierte una lista en heap en O(n), más rápido que insertar uno a uno."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Serving by priority"
+      },
+      {
+        "type": "text",
+        "value": "If you store `(priority, item)` tuples in a heap, `heappop` always returns the one with the lowest priority (smallest number). It's a ready-made **priority queue**."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import heapq",
+          "h = [(2, 'b'), (1, 'a'), (3, 'c')]",
+          "heapq.heapify(h)",
+          "print(heapq.heappop(h))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "(1, 'a')"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`heapify` turns a list into a heap in O(n), faster than inserting one by one."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m60l2e1",
+      "prompt": {
+        "es": "Define `n_mayores(nums, n)` que devuelva los n valores más grandes (usa heapq.nlargest).",
+        "en": "Define `n_mayores(nums, n)` returning the n largest values (use heapq.nlargest)."
+      },
+      "starter_code": [
+        "import heapq",
+        "",
+        "def n_mayores(nums, n):",
+        "    pass"
+      ],
+      "solution": [
+        "import heapq",
+        "",
+        "def n_mayores(nums, n):",
+        "    return heapq.nlargest(n, nums)"
+      ],
+      "hints": {
+        "es": [
+          "heapq.nlargest(n, nums)."
+        ],
+        "en": [
+          "heapq.nlargest(n, nums)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "n_mayores",
+          "cases": [
+            {
+              "args": [
+                [
+                  5,
+                  1,
+                  8,
+                  3
+                ],
+                2
+              ],
+              "expected": [
+                8,
+                5
+              ]
+            },
+            {
+              "args": [
+                [
+                  7
+                ],
+                1
+              ],
+              "expected": [
+                7
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m60l2e2",
+      "prompt": {
+        "es": "Define `orden_prioridad(tareas)`: tareas es una lista de [prioridad, nombre]; devuelve los nombres por prioridad ascendente (heap).",
+        "en": "Define `orden_prioridad(tareas)`: tareas is a list of [priority, name]; return names by ascending priority (heap)."
+      },
+      "starter_code": [
+        "import heapq",
+        "",
+        "def orden_prioridad(tareas):",
+        "    pass"
+      ],
+      "solution": [
+        "import heapq",
+        "",
+        "def orden_prioridad(tareas):",
+        "    h = [tuple(x) for x in tareas]",
+        "    heapq.heapify(h)",
+        "    return [heapq.heappop(h)[1] for _ in range(len(h))]"
+      ],
+      "hints": {
+        "es": [
+          "Convierte a tuplas, heapify y saca el nombre (índice 1) en orden."
+        ],
+        "en": [
+          "Convert to tuples, heapify and pop the name (index 1) in order."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "orden_prioridad",
+          "cases": [
+            {
+              "args": [
+                [
+                  [
+                    2,
+                    "b"
+                  ],
+                  [
+                    1,
+                    "a"
+                  ],
+                  [
+                    3,
+                    "c"
+                  ]
+                ]
+              ],
+              "expected": [
+                "a",
+                "b",
+                "c"
+              ]
+            },
+            {
+              "args": [
+                [
+                  [
+                    5,
+                    "x"
+                  ]
+                ]
+              ],
+              "expected": [
+                "x"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

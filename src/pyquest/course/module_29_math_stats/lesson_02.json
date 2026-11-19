@@ -1,0 +1,179 @@
+{
+  "id": "m29l2",
+  "title": {
+    "es": "Estadística con statistics",
+    "en": "Statistics with the statistics module"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Media, mediana y más"
+      },
+      {
+        "type": "text",
+        "value": "El módulo `statistics` calcula medidas habituales: `mean` (media), `median` (mediana), `mode` (moda)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import statistics",
+          "print(statistics.mean([1, 2, 3]))",
+          "print(statistics.median([1, 2, 3, 4]))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "2",
+          "2.5"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "La mediana de un número par de datos es la media de los dos centrales."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Mean, median and more"
+      },
+      {
+        "type": "text",
+        "value": "The `statistics` module computes common measures: `mean`, `median`, `mode`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import statistics",
+          "print(statistics.mean([1, 2, 3]))",
+          "print(statistics.median([1, 2, 3, 4]))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "2",
+          "2.5"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "The median of an even number of values is the average of the two middle ones."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m29l2e1",
+      "prompt": {
+        "es": "Define `media(numeros)` que devuelva la media aritmética (usa statistics.mean).",
+        "en": "Define `media(numeros)` returning the arithmetic mean (use statistics.mean)."
+      },
+      "starter_code": [
+        "import statistics",
+        "",
+        "def media(numeros):",
+        "    pass"
+      ],
+      "solution": [
+        "import statistics",
+        "",
+        "def media(numeros):",
+        "    return statistics.mean(numeros)"
+      ],
+      "hints": {
+        "es": [
+          "statistics.mean(numeros)."
+        ],
+        "en": [
+          "statistics.mean(numeros)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "media",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  2,
+                  3
+                ]
+              ],
+              "expected": 2
+            },
+            {
+              "args": [
+                [
+                  1,
+                  2
+                ]
+              ],
+              "expected": 1.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m29l2e2",
+      "prompt": {
+        "es": "Define `mediana(numeros)` que devuelva la mediana (usa statistics.median).",
+        "en": "Define `mediana(numeros)` returning the median (use statistics.median)."
+      },
+      "starter_code": [
+        "import statistics",
+        "",
+        "def mediana(numeros):",
+        "    pass"
+      ],
+      "solution": [
+        "import statistics",
+        "",
+        "def mediana(numeros):",
+        "    return statistics.median(numeros)"
+      ],
+      "hints": {
+        "es": [
+          "statistics.median(numeros)."
+        ],
+        "en": [
+          "statistics.median(numeros)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "mediana",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  3,
+                  2
+                ]
+              ],
+              "expected": 2
+            },
+            {
+              "args": [
+                [
+                  1,
+                  2,
+                  3,
+                  4
+                ]
+              ],
+              "expected": 2.5
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

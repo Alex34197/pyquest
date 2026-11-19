@@ -1,0 +1,168 @@
+{
+  "id": "m45l1",
+  "title": {
+    "es": "Representar un grafo y DFS",
+    "en": "Representing a graph and DFS"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Nodos y conexiones"
+      },
+      {
+        "type": "text",
+        "value": "Un **grafo** son nodos unidos por aristas. Se representa muy bien con un diccionario: cada nodo apunta a la lista de sus vecinos."
+      },
+      {
+        "type": "code",
+        "value": [
+          "grafo = {'a': ['b', 'c'], 'b': ['d'], 'c': [], 'd': []}",
+          "print(grafo['a'])"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "['b', 'c']"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "La **búsqueda en profundidad (DFS)** explora un camino hasta el fondo antes de retroceder; se implementa fácil con recursión y un conjunto de visitados."
+      },
+      {
+        "type": "note",
+        "value": "Grafos modelan redes, mapas, dependencias, relaciones… son fundamentales en informática."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Nodes and connections"
+      },
+      {
+        "type": "text",
+        "value": "A **graph** is nodes joined by edges. A dictionary represents it nicely: each node points to the list of its neighbours."
+      },
+      {
+        "type": "code",
+        "value": [
+          "grafo = {'a': ['b', 'c'], 'b': ['d'], 'c': [], 'd': []}",
+          "print(grafo['a'])"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "['b', 'c']"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "**Depth-first search (DFS)** explores a path to the end before backtracking; easy to implement with recursion and a visited set."
+      },
+      {
+        "type": "note",
+        "value": "Graphs model networks, maps, dependencies, relationships… fundamental in computer science."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m45l1e1",
+      "prompt": {
+        "es": "Define `vecinos(grafo, nodo)` que devuelva la lista de vecinos del nodo (o [] si no está).",
+        "en": "Define `vecinos(grafo, nodo)` returning the node's neighbour list (or [] if absent)."
+      },
+      "starter_code": [
+        "def vecinos(grafo, nodo):",
+        "    pass"
+      ],
+      "solution": [
+        "def vecinos(grafo, nodo):",
+        "    return grafo.get(nodo, [])"
+      ],
+      "hints": {
+        "es": [
+          "grafo.get(nodo, []) evita KeyError."
+        ],
+        "en": [
+          "grafo.get(nodo, []) avoids KeyError."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "vecinos",
+          "cases": [
+            {
+              "args": [
+                {
+                  "a": [
+                    "b",
+                    "c"
+                  ]
+                },
+                "a"
+              ],
+              "expected": [
+                "b",
+                "c"
+              ]
+            },
+            {
+              "args": [
+                {
+                  "a": [
+                    "b"
+                  ]
+                },
+                "z"
+              ],
+              "expected": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m45l1e2",
+      "prompt": {
+        "es": "Define `dfs(grafo, inicio)` que devuelva la lista de nodos visitados en profundidad (vecinos en orden).",
+        "en": "Define `dfs(grafo, inicio)` returning the list of nodes visited depth-first (neighbours in order)."
+      },
+      "starter_code": [
+        "def dfs(grafo, inicio):",
+        "    pass"
+      ],
+      "solution": [
+        "def dfs(grafo, inicio):",
+        "    visitados = []",
+        "    def rec(n):",
+        "        if n in visitados:",
+        "            return",
+        "        visitados.append(n)",
+        "        for v in grafo.get(n, []):",
+        "            rec(v)",
+        "    rec(inicio)",
+        "    return visitados"
+      ],
+      "hints": {
+        "es": [
+          "Recursión + lista de visitados; recorre los vecinos en orden."
+        ],
+        "en": [
+          "Recursion + visited list; iterate neighbours in order."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "dfs",
+          "harness": "G = {'a': ['b', 'c'], 'b': ['d'], 'c': [], 'd': []}\nassert dfs(G, 'a') == ['a', 'b', 'd', 'c']"
+        }
+      ]
+    }
+  ]
+}

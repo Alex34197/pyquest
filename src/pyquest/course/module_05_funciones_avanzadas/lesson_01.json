@@ -1,0 +1,266 @@
+{
+  "id": "m5l1",
+  "title": {
+    "es": "Argumentos flexibles",
+    "en": "Flexible arguments"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Valores por defecto"
+      },
+      {
+        "type": "text",
+        "value": "Un parámetro puede tener un **valor por defecto** que se usa si no se pasa ese argumento. Los parámetros con defecto van **después** de los obligatorios."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def saluda(nombre, saludo=\"Hola\"):",
+          "    return f\"{saludo}, {nombre}\"",
+          "",
+          "print(saluda(\"Ana\"))",
+          "print(saluda(\"Ana\", \"Buenas\"))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Hola, Ana",
+          "Buenas, Ana"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "*args y **kwargs"
+      },
+      {
+        "type": "text",
+        "value": "`*args` recoge un número variable de argumentos posicionales en una **tupla**; `**kwargs` recoge los argumentos con nombre en un **diccionario**."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def suma(*numeros):",
+          "    total = 0",
+          "    for n in numeros:",
+          "        total += n",
+          "    return total",
+          "",
+          "print(suma(1, 2, 3, 4))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "10"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Una función también puede **devolver varios valores** a la vez (como tupla) y desempaquetarlos."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def divide(a, b):",
+          "    return a // b, a % b",
+          "",
+          "cociente, resto = divide(17, 5)",
+          "print(cociente, resto)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "3 2"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Evita listas/diccionarios como valor por defecto (`def f(x=[])`): se **comparten** entre llamadas y causan errores sutiles."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Default values"
+      },
+      {
+        "type": "text",
+        "value": "A parameter can have a **default value** used when that argument isn't passed. Parameters with defaults go **after** the required ones."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def saluda(nombre, saludo=\"Hola\"):",
+          "    return f\"{saludo}, {nombre}\"",
+          "",
+          "print(saluda(\"Ana\"))",
+          "print(saluda(\"Ana\", \"Buenas\"))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Hola, Ana",
+          "Buenas, Ana"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "*args and **kwargs"
+      },
+      {
+        "type": "text",
+        "value": "`*args` collects a variable number of positional arguments into a **tuple**; `**kwargs` collects named arguments into a **dict**."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def suma(*numeros):",
+          "    total = 0",
+          "    for n in numeros:",
+          "        total += n",
+          "    return total",
+          "",
+          "print(suma(1, 2, 3, 4))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "10"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "A function can also **return several values** at once (as a tuple) and unpack them."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def divide(a, b):",
+          "    return a // b, a % b",
+          "",
+          "cociente, resto = divide(17, 5)",
+          "print(cociente, resto)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "3 2"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Avoid lists/dicts as default values (`def f(x=[])`): they are **shared** across calls and cause subtle bugs."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m5l1e1",
+      "prompt": {
+        "es": "Define `suma_todos(*numeros)` que devuelva la suma de **todos** los argumentos que reciba (0 si no recibe ninguno).",
+        "en": "Define `suma_todos(*numeros)` returning the sum of **all** arguments it receives (0 if none)."
+      },
+      "starter_code": [
+        "def suma_todos(*numeros):",
+        "    pass"
+      ],
+      "solution": [
+        "def suma_todos(*numeros):",
+        "    return sum(numeros)"
+      ],
+      "hints": {
+        "es": [
+          "*numeros es una tupla con todos los argumentos.",
+          "sum(numeros) los suma."
+        ],
+        "en": [
+          "*numeros is a tuple with all arguments.",
+          "sum(numeros) adds them."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "suma_todos",
+          "cases": [
+            {
+              "args": [
+                1,
+                2,
+                3
+              ],
+              "expected": 6
+            },
+            {
+              "args": [
+                10
+              ],
+              "expected": 10
+            },
+            {
+              "args": [],
+              "expected": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m5l1e2",
+      "prompt": {
+        "es": "Define `repite(texto, veces=2)` que devuelva el texto repetido `veces` veces (por defecto 2).",
+        "en": "Define `repite(texto, veces=2)` returning the text repeated `veces` times (default 2)."
+      },
+      "starter_code": [
+        "def repite(texto, veces=2):",
+        "    pass"
+      ],
+      "solution": [
+        "def repite(texto, veces=2):",
+        "    return texto * veces"
+      ],
+      "hints": {
+        "es": [
+          "Una cadena por un número se repite: 'ab'*3 == 'ababab'."
+        ],
+        "en": [
+          "A string times a number repeats it: 'ab'*3 == 'ababab'."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "repite",
+          "cases": [
+            {
+              "args": [
+                "ab"
+              ],
+              "expected": "abab"
+            },
+            {
+              "args": [
+                "ab",
+                3
+              ],
+              "expected": "ababab"
+            },
+            {
+              "args": [
+                "hi"
+              ],
+              "expected": "hihi"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

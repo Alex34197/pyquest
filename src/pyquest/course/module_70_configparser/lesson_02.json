@@ -1,0 +1,181 @@
+{
+  "id": "m70l2",
+  "title": {
+    "es": "Conversión y valores por defecto",
+    "en": "Conversion and defaults"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Tipos y ausencias"
+      },
+      {
+        "type": "text",
+        "value": "`getint`, `getfloat` y `getboolean` convierten el valor al tipo adecuado. Y `get(seccion, clave, fallback=...)` devuelve un valor por defecto si la clave no existe."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import configparser",
+          "cp = configparser.ConfigParser()",
+          "cp.read_string('[s]\\nn = 42')",
+          "print(cp.getint('s', 'n'))",
+          "print(cp.get('s', 'falta', fallback='NA'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "42",
+          "NA"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Tratar siempre la ausencia con un fallback evita que tu programa reviente por una clave que falta."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Types and absences"
+      },
+      {
+        "type": "text",
+        "value": "`getint`, `getfloat` and `getboolean` convert the value to the right type. And `get(section, key, fallback=...)` returns a default if the key is missing."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import configparser",
+          "cp = configparser.ConfigParser()",
+          "cp.read_string('[s]\\nn = 42')",
+          "print(cp.getint('s', 'n'))",
+          "print(cp.get('s', 'falta', fallback='NA'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "42",
+          "NA"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Always handling absence with a fallback keeps your program from crashing over a missing key."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m70l2e1",
+      "prompt": {
+        "es": "Define `entero(texto, seccion, clave)` que devuelva el valor como entero (usa getint).",
+        "en": "Define `entero(texto, seccion, clave)` returning the value as an integer (use getint)."
+      },
+      "starter_code": [
+        "import configparser",
+        "",
+        "def entero(texto, seccion, clave):",
+        "    pass"
+      ],
+      "solution": [
+        "import configparser",
+        "",
+        "def entero(texto, seccion, clave):",
+        "    cp = configparser.ConfigParser()",
+        "    cp.read_string(texto)",
+        "    return cp.getint(seccion, clave)"
+      ],
+      "hints": {
+        "es": [
+          "cp.getint(seccion, clave)."
+        ],
+        "en": [
+          "cp.getint(seccion, clave)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "entero",
+          "cases": [
+            {
+              "args": [
+                "[s]\nn = 42",
+                "s",
+                "n"
+              ],
+              "expected": 42
+            },
+            {
+              "args": [
+                "[red]\npuerto = 8080",
+                "red",
+                "puerto"
+              ],
+              "expected": 8080
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m70l2e2",
+      "prompt": {
+        "es": "Define `con_defecto(texto, seccion, clave, defecto)` que devuelva el valor o `defecto` si la clave no existe.",
+        "en": "Define `con_defecto(texto, seccion, clave, defecto)` returning the value or `defecto` if the key is missing."
+      },
+      "starter_code": [
+        "import configparser",
+        "",
+        "def con_defecto(texto, seccion, clave, defecto):",
+        "    pass"
+      ],
+      "solution": [
+        "import configparser",
+        "",
+        "def con_defecto(texto, seccion, clave, defecto):",
+        "    cp = configparser.ConfigParser()",
+        "    cp.read_string(texto)",
+        "    return cp.get(seccion, clave, fallback=defecto)"
+      ],
+      "hints": {
+        "es": [
+          "cp.get(seccion, clave, fallback=defecto)."
+        ],
+        "en": [
+          "cp.get(seccion, clave, fallback=defecto)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "con_defecto",
+          "cases": [
+            {
+              "args": [
+                "[s]\nx = 1",
+                "s",
+                "y",
+                "NA"
+              ],
+              "expected": "NA"
+            },
+            {
+              "args": [
+                "[s]\nx = 1",
+                "s",
+                "x",
+                "NA"
+              ],
+              "expected": "1"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

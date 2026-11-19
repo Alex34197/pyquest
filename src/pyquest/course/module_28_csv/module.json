@@ -1,0 +1,16 @@
+{
+  "id": "m28",
+  "order": 28,
+  "title": {
+    "es": "Ficheros CSV",
+    "en": "CSV files"
+  },
+  "summary": {
+    "es": "Leer y escribir CSV con el módulo csv e io.StringIO; extraer columnas.",
+    "en": "Read and write CSV with the csv module and io.StringIO; extract columns."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

@@ -1,0 +1,8 @@
+# Dependencias para desarrollo y empaquetado
+# Development and packaging dependencies
+-r requirements.txt
+pyinstaller>=6.3
+pytest>=7.0
+ruff>=0.4
+mypy>=1.5
+pytest-cov>=4.0

@@ -1,0 +1,16 @@
+{
+  "id": "m23",
+  "order": 23,
+  "title": {
+    "es": "collections",
+    "en": "collections"
+  },
+  "summary": {
+    "es": "Counter, defaultdict, deque y namedtuple.",
+    "en": "Counter, defaultdict, deque and namedtuple."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

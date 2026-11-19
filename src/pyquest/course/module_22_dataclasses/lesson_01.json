@@ -1,0 +1,179 @@
+{
+  "id": "m22l1",
+  "title": {
+    "es": "@dataclass: clases de datos",
+    "en": "@dataclass: data classes"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Menos código repetitivo"
+      },
+      {
+        "type": "text",
+        "value": "Una **dataclass** genera por ti `__init__`, `__repr__` y `__eq__` a partir de los campos que declares con su tipo. Ideal para objetos que son, sobre todo, datos."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from dataclasses import dataclass",
+          "",
+          "@dataclass",
+          "class Punto:",
+          "    x: int",
+          "    y: int",
+          "",
+          "p = Punto(1, 2)",
+          "print(p)",
+          "print(Punto(1, 2) == Punto(1, 2))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Punto(x=1, y=2)",
+          "True"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Puedes dar **valores por defecto** a los campos, igual que en una función."
+      },
+      {
+        "type": "code",
+        "value": [
+          "@dataclass",
+          "class Usuario:",
+          "    nombre: str",
+          "    activo: bool = True"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Sin dataclass tendrías que escribir el __init__ y el __eq__ a mano; aquí salen gratis."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Less boilerplate"
+      },
+      {
+        "type": "text",
+        "value": "A **dataclass** generates `__init__`, `__repr__` and `__eq__` for you from the fields you declare with their type. Ideal for objects that are mostly data."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from dataclasses import dataclass",
+          "",
+          "@dataclass",
+          "class Punto:",
+          "    x: int",
+          "    y: int",
+          "",
+          "p = Punto(1, 2)",
+          "print(p)",
+          "print(Punto(1, 2) == Punto(1, 2))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Punto(x=1, y=2)",
+          "True"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "You can give fields **default values**, just like in a function."
+      },
+      {
+        "type": "code",
+        "value": [
+          "@dataclass",
+          "class Usuario:",
+          "    nombre: str",
+          "    activo: bool = True"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Without dataclass you'd write __init__ and __eq__ by hand; here you get them for free."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m22l1e1",
+      "prompt": {
+        "es": "Define una dataclass `Punto` con campos `x: int` e `y: int`.",
+        "en": "Define a dataclass `Punto` with fields `x: int` and `y: int`."
+      },
+      "starter_code": [
+        "from dataclasses import dataclass",
+        "",
+        "# completa la dataclass"
+      ],
+      "solution": [
+        "from dataclasses import dataclass",
+        "",
+        "@dataclass",
+        "class Punto:",
+        "    x: int",
+        "    y: int"
+      ],
+      "hints": {
+        "es": [
+          "Pon @dataclass encima y declara x: int / y: int."
+        ],
+        "en": [
+          "Put @dataclass on top and declare x: int / y: int."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Punto",
+          "harness": "p = Punto(1, 2)\nassert p.x == 1 and p.y == 2\nassert Punto(1, 2) == Punto(1, 2)\nassert Punto(1, 2) != Punto(3, 4)"
+        }
+      ]
+    },
+    {
+      "id": "m22l1e2",
+      "prompt": {
+        "es": "Define una dataclass `Usuario` con `nombre: str` y `activo: bool` con valor por defecto True.",
+        "en": "Define a dataclass `Usuario` with `nombre: str` and `activo: bool` defaulting to True."
+      },
+      "starter_code": [
+        "from dataclasses import dataclass",
+        "",
+        "# completa la dataclass"
+      ],
+      "solution": [
+        "from dataclasses import dataclass",
+        "",
+        "@dataclass",
+        "class Usuario:",
+        "    nombre: str",
+        "    activo: bool = True"
+      ],
+      "hints": {
+        "es": [
+          "El campo con valor por defecto va después de los que no lo tienen."
+        ],
+        "en": [
+          "The field with a default goes after those without one."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Usuario",
+          "harness": "u = Usuario('ana')\nassert u.nombre == 'ana' and u.activo is True\nassert Usuario('bob', False).activo is False"
+        }
+      ]
+    }
+  ]
+}

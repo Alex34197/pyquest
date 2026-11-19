@@ -1,0 +1,196 @@
+{
+  "id": "m34l1",
+  "title": {
+    "es": "Operaciones de conjuntos",
+    "en": "Set operations"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Matemática de conjuntos"
+      },
+      {
+        "type": "text",
+        "value": "Los conjuntos (`set`) no tienen orden ni duplicados y permiten operaciones rápidas: `&` (intersección), `|` (unión), `-` (diferencia), `^` (diferencia simétrica)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "a = {1, 2, 3}",
+          "b = {2, 3, 4}",
+          "print(a & b)",
+          "print(a | b)",
+          "print(a - b)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "{2, 3}",
+          "{1, 2, 3, 4}",
+          "{1}"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Comprobar pertenencia (`x in conjunto`) es muy rápido: ideal para quitar duplicados o filtrar."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Set mathematics"
+      },
+      {
+        "type": "text",
+        "value": "Sets (`set`) have no order or duplicates and allow fast operations: `&` (intersection), `|` (union), `-` (difference), `^` (symmetric difference)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "a = {1, 2, 3}",
+          "b = {2, 3, 4}",
+          "print(a & b)",
+          "print(a | b)",
+          "print(a - b)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "{2, 3}",
+          "{1, 2, 3, 4}",
+          "{1}"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Membership tests (`x in set`) are very fast: ideal to deduplicate or filter."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m34l1e1",
+      "prompt": {
+        "es": "Define `comunes(a, b)` que devuelva la lista ordenada de elementos en AMBAS listas (intersección).",
+        "en": "Define `comunes(a, b)` returning the sorted list of elements in BOTH lists (intersection)."
+      },
+      "starter_code": [
+        "def comunes(a, b):",
+        "    pass"
+      ],
+      "solution": [
+        "def comunes(a, b):",
+        "    return sorted(set(a) & set(b))"
+      ],
+      "hints": {
+        "es": [
+          "Convierte a set, usa & y ordena."
+        ],
+        "en": [
+          "Convert to set, use & and sort."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "comunes",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  2,
+                  3
+                ],
+                [
+                  2,
+                  3,
+                  4
+                ]
+              ],
+              "expected": [
+                2,
+                3
+              ]
+            },
+            {
+              "args": [
+                [
+                  1
+                ],
+                [
+                  2
+                ]
+              ],
+              "expected": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m34l1e2",
+      "prompt": {
+        "es": "Define `solo_en_a(a, b)` que devuelva la lista ordenada de elementos que están en `a` pero no en `b`.",
+        "en": "Define `solo_en_a(a, b)` returning the sorted list of elements in `a` but not in `b`."
+      },
+      "starter_code": [
+        "def solo_en_a(a, b):",
+        "    pass"
+      ],
+      "solution": [
+        "def solo_en_a(a, b):",
+        "    return sorted(set(a) - set(b))"
+      ],
+      "hints": {
+        "es": [
+          "Diferencia de conjuntos: set(a) - set(b)."
+        ],
+        "en": [
+          "Set difference: set(a) - set(b)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "solo_en_a",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  2,
+                  3
+                ],
+                [
+                  2,
+                  3,
+                  4
+                ]
+              ],
+              "expected": [
+                1
+              ]
+            },
+            {
+              "args": [
+                [
+                  1,
+                  2
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              "expected": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

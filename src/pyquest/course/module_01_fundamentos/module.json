@@ -1,0 +1,18 @@
+{
+  "id": "m1",
+  "order": 1,
+  "title": {
+    "es": "Fundamentos de Python",
+    "en": "Python Fundamentals"
+  },
+  "summary": {
+    "es": "Primeros pasos: mostrar texto, variables, tipos, operadores, entrada y funciones.",
+    "en": "First steps: printing, variables, types, operators, input and functions."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json",
+    "lesson_03.json",
+    "lesson_04.json"
+  ]
+}

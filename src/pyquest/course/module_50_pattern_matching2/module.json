@@ -1,0 +1,16 @@
+{
+  "id": "m50",
+  "order": 50,
+  "title": {
+    "es": "Pattern matching avanzado",
+    "en": "Advanced pattern matching"
+  },
+  "summary": {
+    "es": "Desestructurar listas, diccionarios y clases (dataclasses) con match/case.",
+    "en": "Destructuring lists, dicts and classes (dataclasses) with match/case."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

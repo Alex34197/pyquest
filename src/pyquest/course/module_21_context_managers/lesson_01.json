@@ -1,0 +1,180 @@
+{
+  "id": "m21l1",
+  "title": {
+    "es": "El bloque with y __enter__/__exit__",
+    "en": "The with block and __enter__/__exit__"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Abrir y cerrar sin olvidos"
+      },
+      {
+        "type": "text",
+        "value": "El bloque `with` gestiona recursos: ejecuta una preparación al entrar y una limpieza al salir, **aunque haya un error**. Lo típico es abrir ficheros:"
+      },
+      {
+        "type": "code",
+        "value": [
+          "with open('datos.txt', 'w', encoding='utf-8') as f:",
+          "    f.write('hola')",
+          "# aquí el fichero ya está cerrado automáticamente"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Cualquier objeto con los métodos `__enter__` (al entrar) y `__exit__` (al salir) es un **context manager**. `__enter__` devuelve lo que se asigna tras `as`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Recurso:",
+          "    def __enter__(self):",
+          "        print('abre')",
+          "        return self",
+          "    def __exit__(self, *args):",
+          "        print('cierra')",
+          "",
+          "with Recurso():",
+          "    print('uso')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "abre",
+          "uso",
+          "cierra"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`__exit__` se ejecuta siempre, por eso `with` es la forma correcta de no dejar ficheros o conexiones abiertos."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Open and close without forgetting"
+      },
+      {
+        "type": "text",
+        "value": "The `with` block manages resources: it runs setup on entry and cleanup on exit, **even if an error occurs**. The classic case is opening files:"
+      },
+      {
+        "type": "code",
+        "value": [
+          "with open('datos.txt', 'w', encoding='utf-8') as f:",
+          "    f.write('hola')",
+          "# here the file is already closed automatically"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Any object with `__enter__` (on entry) and `__exit__` (on exit) is a **context manager**. `__enter__` returns what gets assigned after `as`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Recurso:",
+          "    def __enter__(self):",
+          "        print('abre')",
+          "        return self",
+          "    def __exit__(self, *args):",
+          "        print('cierra')",
+          "",
+          "with Recurso():",
+          "    print('uso')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "abre",
+          "uso",
+          "cierra"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`__exit__` always runs, which is why `with` is the right way to never leave files or connections open."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m21l1e1",
+      "prompt": {
+        "es": "Define una clase `Recurso` (context manager) con un atributo `abierto`: `__enter__` lo pone a True y devuelve self; `__exit__` lo pone a False.",
+        "en": "Define a class `Recurso` (context manager) with an `abierto` attribute: `__enter__` sets it True and returns self; `__exit__` sets it False."
+      },
+      "starter_code": [
+        "class Recurso:",
+        "    def __init__(self):",
+        "        self.abierto = False",
+        "    # completa __enter__ y __exit__"
+      ],
+      "solution": [
+        "class Recurso:",
+        "    def __init__(self):",
+        "        self.abierto = False",
+        "    def __enter__(self):",
+        "        self.abierto = True",
+        "        return self",
+        "    def __exit__(self, *args):",
+        "        self.abierto = False"
+      ],
+      "hints": {
+        "es": [
+          "__enter__ debe devolver self para poder usar 'as'.",
+          "__exit__ recibe (self, exc_type, exc, tb); usa *args si no los necesitas."
+        ],
+        "en": [
+          "__enter__ must return self to use 'as'.",
+          "__exit__ receives (self, exc_type, exc, tb); use *args if unused."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Recurso",
+          "harness": "r = Recurso()\nassert r.abierto is False\nwith r as x:\n    assert x is r\n    assert r.abierto is True\nassert r.abierto is False"
+        }
+      ]
+    },
+    {
+      "id": "m21l1e2",
+      "prompt": {
+        "es": "Define una clase `Silenciador` cuyo `__exit__` devuelva True para **suprimir** cualquier excepción ocurrida dentro del with.",
+        "en": "Define a class `Silenciador` whose `__exit__` returns True to **suppress** any exception raised inside the with."
+      },
+      "starter_code": [
+        "class Silenciador:",
+        "    pass"
+      ],
+      "solution": [
+        "class Silenciador:",
+        "    def __enter__(self):",
+        "        return self",
+        "    def __exit__(self, exc_type, exc, tb):",
+        "        return True"
+      ],
+      "hints": {
+        "es": [
+          "Si __exit__ devuelve True, la excepción no se propaga."
+        ],
+        "en": [
+          "If __exit__ returns True, the exception doesn't propagate."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "Silenciador",
+          "harness": "llego = False\nwith Silenciador():\n    raise ValueError('boom')\nllego = True\nassert llego is True"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "id": "m30l2",
+  "title": {
+    "es": "Más recursión",
+    "en": "More recursion"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Potencias y listas"
+      },
+      {
+        "type": "text",
+        "value": "La recursión sirve para muchos problemas: potencias, recorrer estructuras anidadas, dividir y vencer… La clave es siempre encontrar el caso base."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def potencia(base, exp):",
+          "    if exp == 0:",
+          "        return 1",
+          "    return base * potencia(base, exp - 1)",
+          "",
+          "print(potencia(2, 5))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "32"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Cuidado con recursiones muy profundas: Python limita la pila (~1000 llamadas)."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Powers and lists"
+      },
+      {
+        "type": "text",
+        "value": "Recursion solves many problems: powers, traversing nested structures, divide and conquer… The key is always finding the base case."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def potencia(base, exp):",
+          "    if exp == 0:",
+          "        return 1",
+          "    return base * potencia(base, exp - 1)",
+          "",
+          "print(potencia(2, 5))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "32"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Beware very deep recursion: Python limits the stack (~1000 calls)."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m30l2e1",
+      "prompt": {
+        "es": "Define `potencia(base, exp)` de forma recursiva (exp >= 0), sin usar **.",
+        "en": "Define `potencia(base, exp)` recursively (exp >= 0), without using **."
+      },
+      "starter_code": [
+        "def potencia(base, exp):",
+        "    pass"
+      ],
+      "solution": [
+        "def potencia(base, exp):",
+        "    if exp == 0:",
+        "        return 1",
+        "    return base * potencia(base, exp - 1)"
+      ],
+      "hints": {
+        "es": [
+          "Caso base exp==0 -> 1; si no, base * potencia(base, exp-1)."
+        ],
+        "en": [
+          "Base case exp==0 -> 1; else base * potencia(base, exp-1)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "potencia",
+          "cases": [
+            {
+              "args": [
+                2,
+                5
+              ],
+              "expected": 32
+            },
+            {
+              "args": [
+                5,
+                0
+              ],
+              "expected": 1
+            },
+            {
+              "args": [
+                3,
+                3
+              ],
+              "expected": 27
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m30l2e2",
+      "prompt": {
+        "es": "Define `cuenta_atras(n)` que devuelva la lista [n, n-1, ..., 1] de forma recursiva.",
+        "en": "Define `cuenta_atras(n)` returning the list [n, n-1, ..., 1] recursively."
+      },
+      "starter_code": [
+        "def cuenta_atras(n):",
+        "    pass"
+      ],
+      "solution": [
+        "def cuenta_atras(n):",
+        "    if n <= 0:",
+        "        return []",
+        "    return [n] + cuenta_atras(n - 1)"
+      ],
+      "hints": {
+        "es": [
+          "Caso base n<=0 -> []; si no, [n] + cuenta_atras(n-1)."
+        ],
+        "en": [
+          "Base case n<=0 -> []; else [n] + cuenta_atras(n-1)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "cuenta_atras",
+          "cases": [
+            {
+              "args": [
+                3
+              ],
+              "expected": [
+                3,
+                2,
+                1
+              ]
+            },
+            {
+              "args": [
+                0
+              ],
+              "expected": []
+            },
+            {
+              "args": [
+                1
+              ],
+              "expected": [
+                1
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

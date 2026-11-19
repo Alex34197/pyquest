@@ -1,0 +1,145 @@
+name: build
+
+# - En cada push a main y en cada pull request: lint + tests en Windows, macOS y
+#   Linux con la versión mínima (3.10) y la más reciente (3.13) de Python.
+# - Al subir una etiqueta v* (o a mano): además compila y EMPAQUETA PyQuest en los 3 SO
+#     - portable (un solo archivo, one-file)
+#     - instalador nativo (.deb / .exe Inno Setup / .dmg)
+#   y publica una Release con todo listo para descargar.
+#
+# Lanzar una release: git tag v1.1.0 && git push --tags   (o Actions -> build -> Run workflow)
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+      - name: Lint (ruff)
+        run: ruff check .
+      - name: Tipos (mypy, informativo)
+        continue-on-error: true
+        run: mypy src
+
+  test:
+    # El sandbox y el motor dependen del SO (p. ej. asyncio en Windows), así que
+    # se prueban los tres.
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ["3.10", "3.13"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+      - name: Librerías Qt (test de GUI headless)
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y libegl1 libgl1 libxkbcommon0
+      - name: Tests (motor + contenido + GUI offscreen)
+        env:
+          QT_QPA_PLATFORM: offscreen
+        run: pytest -q --cov=pyquest --cov-report=term-missing
+
+  build:
+    needs: [lint, test]
+    if: startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch'
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            artifact: PyQuest-linux
+          - os: windows-latest
+            artifact: PyQuest-windows
+          - os: macos-latest
+            artifact: PyQuest-macos
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+
+      - name: Construir app en carpeta (one-dir)
+        run: pyinstaller --noconfirm PyQuest.spec
+
+      - name: Construir app portable (one-file)
+        run: pyinstaller --noconfirm --workpath build_portable --distpath dist_portable PyQuest-onefile.spec
+
+      - name: Instalador .deb (Linux)
+        if: runner.os == 'Linux'
+        run: bash build/make_deb.sh
+
+      - name: Instalar Inno Setup (Windows)
+        if: runner.os == 'Windows'
+        run: choco install innosetup --no-progress -y
+
+      - name: Instalador .exe (Windows)
+        if: runner.os == 'Windows'
+        shell: cmd
+        # el .bat busca ISCC.exe en el PATH y en las rutas de Inno Setup 6 y 7
+        run: call build\make_installer_windows.bat
+
+      - name: Firmar (ad-hoc) e instalador .dmg (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          codesign --deep --force --options runtime -s - dist/PyQuest.app || true
+          bash build/make_dmg.sh
+
+      - name: Reunir entregables
+        shell: bash
+        run: |
+          mkdir -p out
+          cp -r dist_portable/* out/ 2>/dev/null || true
+          cp dist/*.deb out/ 2>/dev/null || true
+          cp dist/*Setup*.exe out/ 2>/dev/null || true
+          cp dist/*.dmg out/ 2>/dev/null || true
+          ls -la out
+
+      - name: Subir artefactos
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: out/
+          if-no-files-found: error
+
+  release:
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Descargar todos los artefactos
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Publicar Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: artifacts/**/*
+          generate_release_notes: true

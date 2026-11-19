@@ -1,0 +1,149 @@
+{
+  "id": "m51l2",
+  "title": {
+    "es": "await y resultados",
+    "en": "await and results"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Esperar a otras corutinas"
+      },
+      {
+        "type": "text",
+        "value": "`await otra_corutina()` ejecuta esa corutina y te da su valor. `asyncio.sleep(segundos)` simula una espera sin bloquear el programa."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import asyncio",
+          "",
+          "async def tarea():",
+          "    await asyncio.sleep(0)   # cede el control",
+          "    return 42",
+          "",
+          "print(asyncio.run(tarea()))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "42"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`await` solo puede usarse dentro de funciones async; fuera, usa asyncio.run()."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Waiting for other coroutines"
+      },
+      {
+        "type": "text",
+        "value": "`await other_coroutine()` runs that coroutine and gives you its value. `asyncio.sleep(seconds)` simulates a wait without blocking the program."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import asyncio",
+          "",
+          "async def tarea():",
+          "    await asyncio.sleep(0)   # yields control",
+          "    return 42",
+          "",
+          "print(asyncio.run(tarea()))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "42"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`await` can only be used inside async functions; outside, use asyncio.run()."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m51l2e1",
+      "prompt": {
+        "es": "Define `async def total(nums)` que haga `await asyncio.sleep(0)` y devuelva la suma de la lista.",
+        "en": "Define `async def total(nums)` that does `await asyncio.sleep(0)` and returns the list sum."
+      },
+      "starter_code": [
+        "import asyncio",
+        "",
+        "async def total(nums):",
+        "    pass"
+      ],
+      "solution": [
+        "import asyncio",
+        "",
+        "async def total(nums):",
+        "    await asyncio.sleep(0)",
+        "    return sum(nums)"
+      ],
+      "hints": {
+        "es": [
+          "await asyncio.sleep(0) y luego return sum(nums)."
+        ],
+        "en": [
+          "await asyncio.sleep(0) then return sum(nums)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "total",
+          "harness": "import asyncio\nassert asyncio.run(total([1, 2, 3])) == 6\nassert asyncio.run(total([])) == 0"
+        }
+      ]
+    },
+    {
+      "id": "m51l2e2",
+      "prompt": {
+        "es": "Define `async def doble(x)` y `async def dobles(nums)` que devuelva la lista de dobles esperando cada uno con await.",
+        "en": "Define `async def doble(x)` and `async def dobles(nums)` returning the list of doubles, awaiting each one."
+      },
+      "starter_code": [
+        "async def doble(x):",
+        "    return x * 2",
+        "",
+        "async def dobles(nums):",
+        "    pass"
+      ],
+      "solution": [
+        "async def doble(x):",
+        "    return x * 2",
+        "",
+        "async def dobles(nums):",
+        "    salida = []",
+        "    for n in nums:",
+        "        salida.append(await doble(n))",
+        "    return salida"
+      ],
+      "hints": {
+        "es": [
+          "Recorre nums y haz await doble(n) en cada uno."
+        ],
+        "en": [
+          "Iterate nums and await doble(n) for each."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "dobles",
+          "harness": "import asyncio\nassert asyncio.run(dobles([1, 2, 3])) == [2, 4, 6]"
+        }
+      ]
+    }
+  ]
+}

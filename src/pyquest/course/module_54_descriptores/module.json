@@ -1,0 +1,16 @@
+{
+  "id": "m54",
+  "order": 54,
+  "title": {
+    "es": "Descriptores",
+    "en": "Descriptors"
+  },
+  "summary": {
+    "es": "__get__/__set__/__set_name__: la maquinaria detrás de @property.",
+    "en": "__get__/__set__/__set_name__: the machinery behind @property."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

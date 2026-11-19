@@ -1,0 +1,141 @@
+{
+  "id": "m51l1",
+  "title": {
+    "es": "Corutinas: async y await",
+    "en": "Coroutines: async and await"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Funciones que se pueden pausar"
+      },
+      {
+        "type": "text",
+        "value": "Una función `async def` es una **corutina**: no se ejecuta al llamarla, devuelve un objeto que hay que 'esperar'. `asyncio.run(corutina())` la ejecuta de principio a fin."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import asyncio",
+          "",
+          "async def doble(x):",
+          "    return x * 2",
+          "",
+          "print(asyncio.run(doble(5)))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "10"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Dentro de una corutina, `await` espera a que termine otra corutina y obtiene su resultado, cediendo el control mientras tanto."
+      },
+      {
+        "type": "note",
+        "value": "async sirve sobre todo para tareas de espera (red, disco): mientras una espera, otras avanzan."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Functions that can pause"
+      },
+      {
+        "type": "text",
+        "value": "An `async def` function is a **coroutine**: it doesn't run when called, it returns an object you must 'await'. `asyncio.run(coroutine())` runs it from start to finish."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import asyncio",
+          "",
+          "async def doble(x):",
+          "    return x * 2",
+          "",
+          "print(asyncio.run(doble(5)))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "10"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Inside a coroutine, `await` waits for another coroutine to finish and gets its result, yielding control meanwhile."
+      },
+      {
+        "type": "note",
+        "value": "async is mainly for waiting tasks (network, disk): while one waits, others make progress."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m51l1e1",
+      "prompt": {
+        "es": "Define una corutina `async def doble(x)` que devuelva x*2.",
+        "en": "Define a coroutine `async def doble(x)` returning x*2."
+      },
+      "starter_code": [
+        "async def doble(x):",
+        "    pass"
+      ],
+      "solution": [
+        "async def doble(x):",
+        "    return x * 2"
+      ],
+      "hints": {
+        "es": [
+          "Solo añade async delante de def y devuelve x*2."
+        ],
+        "en": [
+          "Just add async before def and return x*2."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "doble",
+          "harness": "import asyncio\nassert asyncio.run(doble(5)) == 10\nassert asyncio.run(doble(0)) == 0"
+        }
+      ]
+    },
+    {
+      "id": "m51l1e2",
+      "prompt": {
+        "es": "Define una corutina `async def saludar(nombre)` que devuelva 'Hola, ' + nombre.",
+        "en": "Define a coroutine `async def saludar(nombre)` returning 'Hola, ' + nombre."
+      },
+      "starter_code": [
+        "async def saludar(nombre):",
+        "    pass"
+      ],
+      "solution": [
+        "async def saludar(nombre):",
+        "    return 'Hola, ' + nombre"
+      ],
+      "hints": {
+        "es": [
+          "async def y return 'Hola, ' + nombre."
+        ],
+        "en": [
+          "async def and return 'Hola, ' + nombre."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "saludar",
+          "harness": "import asyncio\nassert asyncio.run(saludar('Ana')) == 'Hola, Ana'"
+        }
+      ]
+    }
+  ]
+}

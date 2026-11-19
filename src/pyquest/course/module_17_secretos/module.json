@@ -1,0 +1,16 @@
+{
+  "id": "m17",
+  "order": 17,
+  "title": {
+    "es": "Secretos y HMAC",
+    "en": "Secrets and HMAC"
+  },
+  "summary": {
+    "es": "Aleatoriedad segura (secrets) y firmas con HMAC en tiempo constante.",
+    "en": "Secure randomness (secrets) and HMAC signatures in constant time."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

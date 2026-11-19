@@ -1,0 +1,151 @@
+{
+  "id": "m16l1",
+  "title": {
+    "es": "Resúmenes (hash) con hashlib",
+    "en": "Digests (hash) with hashlib"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "¿Qué es un hash?"
+      },
+      {
+        "type": "text",
+        "value": "Un **hash** convierte cualquier dato en una huella de tamaño fijo. La misma entrada da siempre la misma huella, pero a partir de la huella **no** se puede recuperar el original. Sirve para comprobar integridad y guardar contraseñas (nunca en claro)."
+      },
+      {
+        "type": "text",
+        "value": "`hashlib` necesita **bytes**, así que el texto se codifica con `.encode()`. `.hexdigest()` da la huella en hexadecimal."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import hashlib",
+          "h = hashlib.sha256('hola'.encode())",
+          "print(h.hexdigest()[:16], '...')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "b221d9dbb083a7f3 ..."
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Usa **SHA-256** (o superior). Evita **MD5** y **SHA-1**: están rotos para usos de seguridad."
+      },
+      {
+        "type": "note",
+        "value": "Un hash NO es cifrado: no se 'descifra'. Solo se vuelve a calcular y se compara."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "What is a hash?"
+      },
+      {
+        "type": "text",
+        "value": "A **hash** turns any data into a fixed-size fingerprint. The same input always gives the same fingerprint, but you **cannot** recover the original from it. Used to check integrity and store passwords (never in plaintext)."
+      },
+      {
+        "type": "text",
+        "value": "`hashlib` needs **bytes**, so encode text with `.encode()`. `.hexdigest()` gives the fingerprint in hexadecimal."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import hashlib",
+          "h = hashlib.sha256('hola'.encode())",
+          "print(h.hexdigest()[:16], '...')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "b221d9dbb083a7f3 ..."
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Use **SHA-256** (or stronger). Avoid **MD5** and **SHA-1**: they're broken for security."
+      },
+      {
+        "type": "note",
+        "value": "A hash is NOT encryption: it isn't 'decrypted'. You just recompute and compare."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m16l1e1",
+      "prompt": {
+        "es": "Define `sha256_hex(texto)` que devuelva el hash SHA-256 del texto en hexadecimal.",
+        "en": "Define `sha256_hex(texto)` returning the SHA-256 hash of the text in hexadecimal."
+      },
+      "starter_code": [
+        "import hashlib",
+        "",
+        "def sha256_hex(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "import hashlib",
+        "",
+        "def sha256_hex(texto):",
+        "    return hashlib.sha256(texto.encode()).hexdigest()"
+      ],
+      "hints": {
+        "es": [
+          "Codifica con .encode() y usa .hexdigest()."
+        ],
+        "en": [
+          "Encode with .encode() and use .hexdigest()."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "sha256_hex",
+          "harness": "import hashlib\nassert sha256_hex('hola') == hashlib.sha256(b'hola').hexdigest()\nassert sha256_hex('') == hashlib.sha256(b'').hexdigest()\nassert len(sha256_hex('x')) == 64"
+        }
+      ]
+    },
+    {
+      "id": "m16l1e2",
+      "prompt": {
+        "es": "Define `coincide(texto, hash_hex)` que devuelva True si el SHA-256 del texto es igual a `hash_hex`.",
+        "en": "Define `coincide(texto, hash_hex)` returning True if the SHA-256 of the text equals `hash_hex`."
+      },
+      "starter_code": [
+        "import hashlib",
+        "",
+        "def coincide(texto, hash_hex):",
+        "    pass"
+      ],
+      "solution": [
+        "import hashlib",
+        "",
+        "def coincide(texto, hash_hex):",
+        "    return hashlib.sha256(texto.encode()).hexdigest() == hash_hex"
+      ],
+      "hints": {
+        "es": [
+          "Calcula el hash del texto y compáralo con hash_hex."
+        ],
+        "en": [
+          "Compute the text's hash and compare it to hash_hex."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "coincide",
+          "harness": "import hashlib\nh = hashlib.sha256(b'abc').hexdigest()\nassert coincide('abc', h) is True\nassert coincide('abc', 'incorrecto') is False"
+        }
+      ]
+    }
+  ]
+}

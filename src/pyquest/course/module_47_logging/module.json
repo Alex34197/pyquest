@@ -1,0 +1,16 @@
+{
+  "id": "m47",
+  "order": 47,
+  "title": {
+    "es": "Registro (logging)",
+    "en": "Logging"
+  },
+  "summary": {
+    "es": "Niveles (DEBUG..CRITICAL), getLevelName, handlers y formatters.",
+    "en": "Levels (DEBUG..CRITICAL), getLevelName, handlers and formatters."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

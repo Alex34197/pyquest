@@ -1,0 +1,16 @@
+{
+  "id": "m20",
+  "order": 20,
+  "title": {
+    "es": "Peligros: eval, exec y pickle",
+    "en": "Dangers: eval, exec and pickle"
+  },
+  "summary": {
+    "es": "Inyección de código, ast.literal_eval y serialización segura (JSON vs pickle).",
+    "en": "Code injection, ast.literal_eval and safe serialization (JSON vs pickle)."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

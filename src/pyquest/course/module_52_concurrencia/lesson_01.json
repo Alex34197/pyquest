@@ -1,0 +1,167 @@
+{
+  "id": "m52l1",
+  "title": {
+    "es": "Hacer varias cosas a la vez: gather",
+    "en": "Doing several things at once: gather"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Concurrencia con asyncio.gather"
+      },
+      {
+        "type": "text",
+        "value": "`asyncio.gather(c1, c2, ...)` lanza varias corutinas **a la vez** y espera a que todas terminen, devolviendo sus resultados **en orden**."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import asyncio",
+          "",
+          "async def cuad(x):",
+          "    return x * x",
+          "",
+          "async def main():",
+          "    return await asyncio.gather(cuad(2), cuad(3), cuad(4))",
+          "",
+          "print(asyncio.run(main()))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[4, 9, 16]"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Con `*(corutina(n) for n in datos)` lanzas una corutina por cada dato de golpe."
+      },
+      {
+        "type": "note",
+        "value": "gather no acelera cálculo puro (eso es la CPU), pero sí tareas de espera: descargas, consultas, E/S."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Concurrency with asyncio.gather"
+      },
+      {
+        "type": "text",
+        "value": "`asyncio.gather(c1, c2, ...)` launches several coroutines **at once** and waits for all to finish, returning their results **in order**."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import asyncio",
+          "",
+          "async def cuad(x):",
+          "    return x * x",
+          "",
+          "async def main():",
+          "    return await asyncio.gather(cuad(2), cuad(3), cuad(4))",
+          "",
+          "print(asyncio.run(main()))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[4, 9, 16]"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "With `*(coroutine(n) for n in data)` you launch one coroutine per item at once."
+      },
+      {
+        "type": "note",
+        "value": "gather doesn't speed up pure computation (that's the CPU), but it does speed up waiting tasks: downloads, queries, I/O."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m52l1e1",
+      "prompt": {
+        "es": "Define `async def cuad(x)` (x*x) y `async def cuadrados(nums)` que devuelva la lista de cuadrados usando asyncio.gather.",
+        "en": "Define `async def cuad(x)` (x*x) and `async def cuadrados(nums)` returning the squares list using asyncio.gather."
+      },
+      "starter_code": [
+        "import asyncio",
+        "",
+        "async def cuad(x):",
+        "    return x * x",
+        "",
+        "async def cuadrados(nums):",
+        "    pass"
+      ],
+      "solution": [
+        "import asyncio",
+        "",
+        "async def cuad(x):",
+        "    return x * x",
+        "",
+        "async def cuadrados(nums):",
+        "    return list(await asyncio.gather(*(cuad(n) for n in nums)))"
+      ],
+      "hints": {
+        "es": [
+          "await asyncio.gather(*(cuad(n) for n in nums))."
+        ],
+        "en": [
+          "await asyncio.gather(*(cuad(n) for n in nums))."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "cuadrados",
+          "harness": "import asyncio\nassert asyncio.run(cuadrados([1, 2, 3, 4])) == [1, 4, 9, 16]\nassert asyncio.run(cuadrados([])) == []"
+        }
+      ]
+    },
+    {
+      "id": "m52l1e2",
+      "prompt": {
+        "es": "Define `async def suma(xs)` y `async def sumas(listas)` que devuelva la suma de cada sublista (en orden) con gather.",
+        "en": "Define `async def suma(xs)` and `async def sumas(listas)` returning each sublist's sum (in order) with gather."
+      },
+      "starter_code": [
+        "import asyncio",
+        "",
+        "async def suma(xs):",
+        "    return sum(xs)",
+        "",
+        "async def sumas(listas):",
+        "    pass"
+      ],
+      "solution": [
+        "import asyncio",
+        "",
+        "async def suma(xs):",
+        "    return sum(xs)",
+        "",
+        "async def sumas(listas):",
+        "    return list(await asyncio.gather(*(suma(x) for x in listas)))"
+      ],
+      "hints": {
+        "es": [
+          "gather sobre suma(x) para cada sublista."
+        ],
+        "en": [
+          "gather over suma(x) for each sublist."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "sumas",
+          "harness": "import asyncio\nassert asyncio.run(sumas([[1, 2], [3, 4], [5]])) == [3, 7, 5]"
+        }
+      ]
+    }
+  ]
+}

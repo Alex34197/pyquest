@@ -1,0 +1,209 @@
+{
+  "id": "m61l1",
+  "title": {
+    "es": "Búsqueda en listas ordenadas",
+    "en": "Searching in sorted lists"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Aprovechar que ya está ordenado"
+      },
+      {
+        "type": "text",
+        "value": "El módulo `bisect` hace búsqueda binaria sobre listas **ordenadas**. `bisect_left(lista, x)` da la posición donde iría `x` (y, de paso, cuántos elementos son menores que `x`)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import bisect",
+          "datos = [1, 3, 5, 7]",
+          "print(bisect.bisect_left(datos, 5))",
+          "print(bisect.bisect_left(datos, 4))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "2",
+          "2"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Sobre datos ordenados, bisect es O(log n): muchísimo más rápido que recorrer la lista."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Taking advantage of being sorted"
+      },
+      {
+        "type": "text",
+        "value": "The `bisect` module does binary search on **sorted** lists. `bisect_left(list, x)` gives the position where `x` would go (and, incidentally, how many elements are smaller than `x`)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import bisect",
+          "datos = [1, 3, 5, 7]",
+          "print(bisect.bisect_left(datos, 5))",
+          "print(bisect.bisect_left(datos, 4))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "2",
+          "2"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "On sorted data, bisect is O(log n): far faster than scanning the list."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m61l1e1",
+      "prompt": {
+        "es": "Define `posicion(ordenada, x)` que devuelva el índice donde iría `x` (usa bisect_left).",
+        "en": "Define `posicion(ordenada, x)` returning the index where `x` would go (use bisect_left)."
+      },
+      "starter_code": [
+        "import bisect",
+        "",
+        "def posicion(ordenada, x):",
+        "    pass"
+      ],
+      "solution": [
+        "import bisect",
+        "",
+        "def posicion(ordenada, x):",
+        "    return bisect.bisect_left(ordenada, x)"
+      ],
+      "hints": {
+        "es": [
+          "bisect.bisect_left(ordenada, x)."
+        ],
+        "en": [
+          "bisect.bisect_left(ordenada, x)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "posicion",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  3,
+                  5,
+                  7
+                ],
+                5
+              ],
+              "expected": 2
+            },
+            {
+              "args": [
+                [
+                  1,
+                  3,
+                  5,
+                  7
+                ],
+                4
+              ],
+              "expected": 2
+            },
+            {
+              "args": [
+                [
+                  1,
+                  2,
+                  3
+                ],
+                0
+              ],
+              "expected": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m61l1e2",
+      "prompt": {
+        "es": "Define `cuantos_menores(ordenada, x)` que devuelva cuántos elementos son estrictamente menores que `x`.",
+        "en": "Define `cuantos_menores(ordenada, x)` returning how many elements are strictly smaller than `x`."
+      },
+      "starter_code": [
+        "import bisect",
+        "",
+        "def cuantos_menores(ordenada, x):",
+        "    pass"
+      ],
+      "solution": [
+        "import bisect",
+        "",
+        "def cuantos_menores(ordenada, x):",
+        "    return bisect.bisect_left(ordenada, x)"
+      ],
+      "hints": {
+        "es": [
+          "bisect_left ya cuenta los menores que x."
+        ],
+        "en": [
+          "bisect_left already counts those smaller than x."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "cuantos_menores",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  2,
+                  2,
+                  3
+                ],
+                2
+              ],
+              "expected": 1
+            },
+            {
+              "args": [
+                [
+                  1,
+                  2,
+                  3
+                ],
+                5
+              ],
+              "expected": 3
+            },
+            {
+              "args": [
+                [
+                  5,
+                  6
+                ],
+                1
+              ],
+              "expected": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

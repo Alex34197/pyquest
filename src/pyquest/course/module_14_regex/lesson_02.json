@@ -1,0 +1,205 @@
+{
+  "id": "m14l2",
+  "title": {
+    "es": "Sustituir y validar",
+    "en": "Replacing and validating"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Reemplazar y comprobar formatos"
+      },
+      {
+        "type": "text",
+        "value": "`re.sub(patron, reemplazo, texto)` sustituye todas las coincidencias por otro texto."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import re",
+          "print(re.sub(r'\\d', '*', 'PIN 1234'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "PIN ****"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Para **validar** un formato completo se usa `re.fullmatch(patron, texto)`, que exige que TODO el texto cumpla el patrón."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import re",
+          "print(bool(re.fullmatch(r'\\d{3}-\\d{3}', '123-456')))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "True"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`\\d{3}` significa exactamente 3 dígitos; `{2,4}` entre 2 y 4. Cuantificadores muy útiles para validar."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Replacing and checking formats"
+      },
+      {
+        "type": "text",
+        "value": "`re.sub(pattern, replacement, text)` replaces all matches with other text."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import re",
+          "print(re.sub(r'\\d', '*', 'PIN 1234'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "PIN ****"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "To **validate** a whole format use `re.fullmatch(pattern, text)`, which requires the ENTIRE text to match the pattern."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import re",
+          "print(bool(re.fullmatch(r'\\d{3}-\\d{3}', '123-456')))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "True"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`\\d{3}` means exactly 3 digits; `{2,4}` between 2 and 4. Very useful quantifiers for validation."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m14l2e1",
+      "prompt": {
+        "es": "Define `ocultar_digitos(texto)` que reemplace cada dígito por `*` (usa `re.sub`).",
+        "en": "Define `ocultar_digitos(texto)` replacing each digit with `*` (use `re.sub`)."
+      },
+      "starter_code": [
+        "import re",
+        "",
+        "def ocultar_digitos(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "import re",
+        "",
+        "def ocultar_digitos(texto):",
+        "    return re.sub(r'\\d', '*', texto)"
+      ],
+      "hints": {
+        "es": [
+          "re.sub(r'\\d', '*', texto)."
+        ],
+        "en": [
+          "re.sub(r'\\d', '*', texto)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "ocultar_digitos",
+          "cases": [
+            {
+              "args": [
+                "PIN 1234"
+              ],
+              "expected": "PIN ****"
+            },
+            {
+              "args": [
+                "abc"
+              ],
+              "expected": "abc"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m14l2e2",
+      "prompt": {
+        "es": "Define `es_codigo_postal(texto)` que devuelva True si el texto son exactamente 5 dígitos (usa `re.fullmatch(r'\\d{5}', ...)`).",
+        "en": "Define `es_codigo_postal(texto)` returning True if the text is exactly 5 digits (use `re.fullmatch(r'\\d{5}', ...)`)."
+      },
+      "starter_code": [
+        "import re",
+        "",
+        "def es_codigo_postal(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "import re",
+        "",
+        "def es_codigo_postal(texto):",
+        "    return bool(re.fullmatch(r'\\d{5}', texto))"
+      ],
+      "hints": {
+        "es": [
+          "fullmatch exige que TODO el texto cumpla el patrón."
+        ],
+        "en": [
+          "fullmatch requires the WHOLE text to match."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "es_codigo_postal",
+          "cases": [
+            {
+              "args": [
+                "28013"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "123"
+              ],
+              "expected": false
+            },
+            {
+              "args": [
+                "abcde"
+              ],
+              "expected": false
+            },
+            {
+              "args": [
+                "280134"
+              ],
+              "expected": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

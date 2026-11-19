@@ -1,0 +1,157 @@
+{
+  "id": "m00l2",
+  "title": {
+    "es": "Mostrar varias cosas",
+    "en": "Showing several things"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "print por dentro"
+      },
+      {
+        "type": "text",
+        "value": "`print` puede mostrar varias cosas separadas por **comas** (las une con un espacio), y también números, que van **sin comillas**:"
+      },
+      {
+        "type": "code",
+        "value": [
+          "print('Tengo', 3, 'gatos')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Tengo 3 gatos"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Cada `print` empieza en una **línea nueva**. Así, con varios `print`, muestras un mensaje en varias líneas."
+      },
+      {
+        "type": "code",
+        "value": [
+          "print('Hola')",
+          "print('Adiós')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Hola",
+          "Adiós"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Las comillas marcan el texto; los números van sin comillas."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Inside print"
+      },
+      {
+        "type": "text",
+        "value": "`print` can show several things separated by **commas** (joined with a space), and also numbers, which go **without quotes**:"
+      },
+      {
+        "type": "code",
+        "value": [
+          "print('Tengo', 3, 'gatos')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Tengo 3 gatos"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Each `print` starts on a **new line**. So with several `print`s you show a message across multiple lines."
+      },
+      {
+        "type": "code",
+        "value": [
+          "print('Hola')",
+          "print('Adiós')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Hola",
+          "Adiós"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Quotes mark text; numbers go without quotes."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m00l2e1",
+      "prompt": {
+        "es": "Muestra exactamente: Tengo 3 gatos",
+        "en": "Print exactly: Tengo 3 gatos"
+      },
+      "starter_code": [
+        "# escribe aquí tu código"
+      ],
+      "solution": [
+        "print('Tengo', 3, 'gatos')"
+      ],
+      "hints": {
+        "es": [
+          "Puedes usar print('Tengo', 3, 'gatos') con comas."
+        ],
+        "en": [
+          "You can use print('Tengo', 3, 'gatos') with commas."
+        ]
+      },
+      "tests": [
+        {
+          "type": "stdout",
+          "expected": "Tengo 3 gatos"
+        }
+      ]
+    },
+    {
+      "id": "m00l2e2",
+      "prompt": {
+        "es": "Muestra dos líneas: primero Hola y luego Adiós",
+        "en": "Print two lines: first Hola then Adiós"
+      },
+      "starter_code": [
+        "# escribe aquí tu código"
+      ],
+      "solution": [
+        "print('Hola')",
+        "print('Adiós')"
+      ],
+      "hints": {
+        "es": [
+          "Usa dos print, uno por línea."
+        ],
+        "en": [
+          "Use two print statements, one per line."
+        ]
+      },
+      "tests": [
+        {
+          "type": "stdout",
+          "expected": [
+            "Hola",
+            "Adiós"
+          ]
+        }
+      ]
+    }
+  ]
+}

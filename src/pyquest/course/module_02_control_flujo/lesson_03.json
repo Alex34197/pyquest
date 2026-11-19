@@ -1,0 +1,336 @@
+{
+  "id": "m2l3",
+  "title": {
+    "es": "El bucle for y range",
+    "en": "The for loop and range"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Recorrer elementos"
+      },
+      {
+        "type": "text",
+        "value": "El bucle `for` recorre los elementos de una secuencia (una lista, un texto, un rango...) uno a uno, sin que tengas que llevar tú el contador."
+      },
+      {
+        "type": "code",
+        "value": [
+          "for letra in 'abc':",
+          "    print(letra)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "range: secuencias de números"
+      },
+      {
+        "type": "text",
+        "value": "`range(fin)` genera números desde 0 hasta `fin - 1`. `range(inicio, fin)` empieza en `inicio`. `range(inicio, fin, paso)` salta de `paso` en `paso`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "for i in range(3):",
+          "    print(i)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "0",
+          "1",
+          "2"
+        ]
+      },
+      {
+        "type": "code",
+        "value": [
+          "for i in range(2, 9, 2):",
+          "    print(i)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "2",
+          "4",
+          "6",
+          "8"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "for frente a while"
+      },
+      {
+        "type": "text",
+        "value": "Usa `for` cuando sabes sobre qué vas a iterar (un rango, una lista). Usa `while` cuando repites hasta que ocurra algo y no sabes cuántas veces será."
+      },
+      {
+        "type": "heading",
+        "value": "Acumular con for"
+      },
+      {
+        "type": "text",
+        "value": "El patrón acumulador también funciona con `for`, y suele quedar más limpio."
+      },
+      {
+        "type": "code",
+        "value": [
+          "total = 0",
+          "for n in range(1, 6):",
+          "    total = total + n",
+          "print(total)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "15"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`len(texto)` te da su longitud, y `for c in texto` recorre sus caracteres. Combinándolos resuelves muchísimos ejercicios de cadenas."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Going through elements"
+      },
+      {
+        "type": "text",
+        "value": "The `for` loop goes through the elements of a sequence (a list, a string, a range...) one by one, without you having to keep a counter."
+      },
+      {
+        "type": "code",
+        "value": [
+          "for letter in 'abc':",
+          "    print(letter)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "range: number sequences"
+      },
+      {
+        "type": "text",
+        "value": "`range(stop)` generates numbers from 0 to `stop - 1`. `range(start, stop)` begins at `start`. `range(start, stop, step)` jumps by `step`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "for i in range(3):",
+          "    print(i)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "0",
+          "1",
+          "2"
+        ]
+      },
+      {
+        "type": "code",
+        "value": [
+          "for i in range(2, 9, 2):",
+          "    print(i)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "2",
+          "4",
+          "6",
+          "8"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "for versus while"
+      },
+      {
+        "type": "text",
+        "value": "Use `for` when you know what you will iterate over (a range, a list). Use `while` when you repeat until something happens and don't know how many times."
+      },
+      {
+        "type": "heading",
+        "value": "Accumulating with for"
+      },
+      {
+        "type": "text",
+        "value": "The accumulator pattern also works with `for`, and usually reads cleaner."
+      },
+      {
+        "type": "code",
+        "value": [
+          "total = 0",
+          "for n in range(1, 6):",
+          "    total = total + n",
+          "print(total)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "15"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "`len(text)` gives its length, and `for c in text` walks its characters. Combining them solves many string exercises."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m2l3e1",
+      "prompt": {
+        "es": "Define `factorial(n)` que devuelva `n!` = `1 * 2 * ... * n` usando un `for`. Por definición, `factorial(0)` es 1.",
+        "en": "Define `factorial(n)` returning `n!` = `1 * 2 * ... * n` using a `for`. By definition `factorial(0)` is 1."
+      },
+      "starter_code": [
+        "def factorial(n):",
+        "    resultado = 1",
+        "    # usa for y range",
+        "    return resultado"
+      ],
+      "solution": [
+        "def factorial(n):",
+        "    resultado = 1",
+        "    for i in range(2, n + 1):",
+        "        resultado = resultado * i",
+        "    return resultado"
+      ],
+      "hints": {
+        "es": [
+          "Empieza el acumulador en 1 (no en 0, porque multiplicas).",
+          "Recorre range(2, n+1) multiplicando."
+        ],
+        "en": [
+          "Start the accumulator at 1 (not 0, since you multiply).",
+          "Loop range(2, n+1) multiplying."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "name": "factorial",
+          "function": "factorial",
+          "cases": [
+            {
+              "args": [
+                5
+              ],
+              "expected": 120
+            },
+            {
+              "args": [
+                0
+              ],
+              "expected": 1
+            },
+            {
+              "args": [
+                1
+              ],
+              "expected": 1
+            },
+            {
+              "args": [
+                6
+              ],
+              "expected": 720
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m2l3e2",
+      "prompt": {
+        "es": "Define `cuenta_vocales(texto)` que devuelva cuántas vocales (a, e, i, o, u) hay en `texto`, sin distinguir mayúsculas de minúsculas.",
+        "en": "Define `cuenta_vocales(texto)` returning how many vowels (a, e, i, o, u) are in `texto`, ignoring case."
+      },
+      "starter_code": [
+        "def cuenta_vocales(texto):",
+        "    contador = 0",
+        "    # recorre el texto",
+        "    return contador"
+      ],
+      "solution": [
+        "def cuenta_vocales(texto):",
+        "    contador = 0",
+        "    for c in texto.lower():",
+        "        if c in 'aeiou':",
+        "            contador = contador + 1",
+        "    return contador"
+      ],
+      "hints": {
+        "es": [
+          "texto.lower() pasa todo a minúsculas.",
+          "if c in 'aeiou' comprueba si la letra es vocal."
+        ],
+        "en": [
+          "texto.lower() lowercases everything.",
+          "if c in 'aeiou' checks whether the letter is a vowel."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "name": "cuenta_vocales",
+          "function": "cuenta_vocales",
+          "cases": [
+            {
+              "args": [
+                "hola"
+              ],
+              "expected": 2
+            },
+            {
+              "args": [
+                "MURCIA"
+              ],
+              "expected": 3
+            },
+            {
+              "args": [
+                "xyz"
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                ""
+              ],
+              "expected": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

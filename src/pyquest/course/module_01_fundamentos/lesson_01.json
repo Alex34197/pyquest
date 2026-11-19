@@ -1,0 +1,255 @@
+{
+  "id": "m1l1",
+  "title": {
+    "es": "Hola, mundo y la consola",
+    "en": "Hello, world and the console"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Tu primer programa"
+      },
+      {
+        "type": "text",
+        "value": "Python es un lenguaje **interpretado**: escribes instrucciones en texto y el intérprete las ejecuta una a una, de arriba abajo. No hay que compilar nada para empezar a probar."
+      },
+      {
+        "type": "text",
+        "value": "La función `print()` muestra texto en la consola. Es la forma más rápida de ver qué está haciendo tu programa."
+      },
+      {
+        "type": "code",
+        "value": [
+          "print('Hola, mundo')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Hola, mundo"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Cada `print()` añade un salto de línea al final, así que dos llamadas seguidas escriben en líneas distintas."
+      },
+      {
+        "type": "code",
+        "value": [
+          "print('línea 1')",
+          "print('línea 2')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "línea 1",
+          "línea 2"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Puedes pasar varios valores separados por comas y `print` los une con un espacio."
+      },
+      {
+        "type": "code",
+        "value": [
+          "print('Tengo', 25, 'años')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Tengo 25 años"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Comentarios"
+      },
+      {
+        "type": "text",
+        "value": "Todo lo que vaya después de `#` en una línea es un comentario: Python lo ignora. Sirven para explicar el código a las personas (incluido tu yo del futuro)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "# esto es un comentario",
+          "print('visible')  # esto tambien se ignora"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Consejo: comenta el *por qué*, no el *qué*. El código ya dice qué hace; un buen comentario aporta el contexto que el código no puede expresar."
+      },
+      {
+        "type": "heading",
+        "value": "Comillas simples o dobles"
+      },
+      {
+        "type": "text",
+        "value": "Una cadena de texto (string) se escribe entre comillas simples `'...'` o dobles `\"...\"`. Da igual cuáles uses, pero sé coherente. Si el texto contiene una comilla, usa las otras para envolverlo."
+      },
+      {
+        "type": "code",
+        "value": [
+          "print(\"Una 'cita' dentro de comillas dobles\")"
+        ]
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Your first program"
+      },
+      {
+        "type": "text",
+        "value": "Python is an **interpreted** language: you write instructions as text and the interpreter runs them one by one, top to bottom. Nothing to compile to start experimenting."
+      },
+      {
+        "type": "text",
+        "value": "The `print()` function shows text in the console. It is the fastest way to see what your program is doing."
+      },
+      {
+        "type": "code",
+        "value": [
+          "print('Hello, world')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Hello, world"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Each `print()` adds a line break at the end, so two consecutive calls write on different lines."
+      },
+      {
+        "type": "code",
+        "value": [
+          "print('line 1')",
+          "print('line 2')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "line 1",
+          "line 2"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "You can pass several values separated by commas and `print` joins them with a space."
+      },
+      {
+        "type": "code",
+        "value": [
+          "print('I am', 25, 'years old')"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "I am 25 years old"
+        ]
+      },
+      {
+        "type": "heading",
+        "value": "Comments"
+      },
+      {
+        "type": "text",
+        "value": "Anything after `#` on a line is a comment: Python ignores it. Comments explain the code to humans (including your future self)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "# this is a comment",
+          "print('visible')  # this is ignored too"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Tip: comment the *why*, not the *what*. The code already says what it does; a good comment adds the context the code cannot express."
+      },
+      {
+        "type": "heading",
+        "value": "Single or double quotes"
+      },
+      {
+        "type": "text",
+        "value": "A text string is written between single quotes `'...'` or double quotes `\"...\"`. It does not matter which you use, but be consistent. If the text contains a quote, wrap it with the other kind."
+      },
+      {
+        "type": "code",
+        "value": [
+          "print(\"A 'quote' inside double quotes\")"
+        ]
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m1l1e1",
+      "prompt": {
+        "es": "Usa `print()` para mostrar exactamente este texto: **Hola, mundo**",
+        "en": "Use `print()` to show exactly this text: **Hola, mundo**"
+      },
+      "starter_code": [
+        "# escribe aquí tu código"
+      ],
+      "solution": [
+        "print('Hola, mundo')"
+      ],
+      "hints": {
+        "es": [
+          "El texto va entre comillas dentro de print().",
+          "Cuidado con la coma y el espacio: 'Hola, mundo'."
+        ],
+        "en": [
+          "The text goes between quotes inside print().",
+          "Mind the comma and space: 'Hola, mundo'."
+        ]
+      },
+      "tests": [
+        {
+          "type": "stdout",
+          "name": "salida exacta",
+          "expected": "Hola, mundo"
+        }
+      ]
+    },
+    {
+      "id": "m1l1e2",
+      "prompt": {
+        "es": "Muestra en una sola línea: **Hola Python** (pásalos como dos valores separados por una coma a `print`, no como un único texto).",
+        "en": "Show on a single line: **Hola Python** (pass them as two comma-separated values to `print`, not as one string)."
+      },
+      "starter_code": [
+        "# usa print con dos valores separados por coma"
+      ],
+      "solution": [
+        "print('Hola', 'Python')"
+      ],
+      "hints": {
+        "es": [
+          "print('Hola', 'Python') une las palabras con un espacio."
+        ],
+        "en": [
+          "print('Hola', 'Python') joins the words with a space."
+        ]
+      },
+      "tests": [
+        {
+          "type": "stdout",
+          "name": "salida",
+          "expected": "Hola Python"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "m12",
+  "order": 12,
+  "title": {
+    "es": "Decoradores",
+    "en": "Decorators"
+  },
+  "summary": {
+    "es": "Funciones de primera clase, closures y el decorador @.",
+    "en": "First-class functions, closures and the @ decorator."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

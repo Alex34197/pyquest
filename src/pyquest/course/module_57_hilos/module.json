@@ -1,0 +1,16 @@
+{
+  "id": "m57",
+  "order": 57,
+  "title": {
+    "es": "Hilos y concurrencia",
+    "en": "Threads and concurrency"
+  },
+  "summary": {
+    "es": "threading.Thread, Lock y ThreadPoolExecutor (map/submit).",
+    "en": "threading.Thread, Lock and ThreadPoolExecutor (map/submit)."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

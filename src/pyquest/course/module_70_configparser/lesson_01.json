@@ -1,0 +1,176 @@
+{
+  "id": "m70l1",
+  "title": {
+    "es": "Leer ficheros de configuración",
+    "en": "Reading configuration files"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "El formato INI"
+      },
+      {
+        "type": "text",
+        "value": "Muchos programas se configuran con ficheros `.ini`: secciones entre corchetes y pares `clave = valor`. El módulo `configparser` los lee. Para practicar usamos `read_string`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import configparser",
+          "cp = configparser.ConfigParser()",
+          "cp.read_string('[db]\\nhost = localhost\\nport = 5432')",
+          "print(cp['db']['host'])"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "localhost"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "configparser devuelve los valores como texto; usa getint/getfloat/getboolean para convertirlos."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "The INI format"
+      },
+      {
+        "type": "text",
+        "value": "Many programs are configured with `.ini` files: sections in brackets and `key = value` pairs. The `configparser` module reads them. To practice we use `read_string`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import configparser",
+          "cp = configparser.ConfigParser()",
+          "cp.read_string('[db]\\nhost = localhost\\nport = 5432')",
+          "print(cp['db']['host'])"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "localhost"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "configparser returns values as text; use getint/getfloat/getboolean to convert them."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m70l1e1",
+      "prompt": {
+        "es": "Define `leer(texto, seccion, clave)` que devuelva el valor de esa clave en esa sección del INI.",
+        "en": "Define `leer(texto, seccion, clave)` returning the value of that key in that INI section."
+      },
+      "starter_code": [
+        "import configparser",
+        "",
+        "def leer(texto, seccion, clave):",
+        "    pass"
+      ],
+      "solution": [
+        "import configparser",
+        "",
+        "def leer(texto, seccion, clave):",
+        "    cp = configparser.ConfigParser()",
+        "    cp.read_string(texto)",
+        "    return cp[seccion][clave]"
+      ],
+      "hints": {
+        "es": [
+          "read_string(texto) y luego cp[seccion][clave]."
+        ],
+        "en": [
+          "read_string(texto) then cp[seccion][clave]."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "leer",
+          "cases": [
+            {
+              "args": [
+                "[db]\nhost = localhost\nport = 5432",
+                "db",
+                "host"
+              ],
+              "expected": "localhost"
+            },
+            {
+              "args": [
+                "[app]\nnombre = PyQuest",
+                "app",
+                "nombre"
+              ],
+              "expected": "PyQuest"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m70l1e2",
+      "prompt": {
+        "es": "Define `secciones(texto)` que devuelva la lista de nombres de sección del INI.",
+        "en": "Define `secciones(texto)` returning the list of section names in the INI."
+      },
+      "starter_code": [
+        "import configparser",
+        "",
+        "def secciones(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "import configparser",
+        "",
+        "def secciones(texto):",
+        "    cp = configparser.ConfigParser()",
+        "    cp.read_string(texto)",
+        "    return cp.sections()"
+      ],
+      "hints": {
+        "es": [
+          "cp.sections() devuelve la lista de secciones."
+        ],
+        "en": [
+          "cp.sections() returns the list of sections."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "secciones",
+          "cases": [
+            {
+              "args": [
+                "[a]\nx = 1\n[b]\ny = 2"
+              ],
+              "expected": [
+                "a",
+                "b"
+              ]
+            },
+            {
+              "args": [
+                "[solo]\nk = v"
+              ],
+              "expected": [
+                "solo"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

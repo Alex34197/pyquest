@@ -1,0 +1,16 @@
+{
+  "id": "m32",
+  "order": 32,
+  "title": {
+    "es": "Bases numéricas y bits",
+    "en": "Number bases and bits"
+  },
+  "summary": {
+    "es": "Binario/hexadecimal, int(texto, base) y operadores de bits (&, |, ^, <<, >>).",
+    "en": "Binary/hex, int(text, base) and bitwise operators (&, |, ^, <<, >>)."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

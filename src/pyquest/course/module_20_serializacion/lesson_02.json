@@ -1,0 +1,186 @@
+{
+  "id": "m20l2",
+  "title": {
+    "es": "Serialización: JSON sí, pickle con cuidado",
+    "en": "Serialization: JSON yes, pickle with care"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "No cargues pickle de fuentes no fiables"
+      },
+      {
+        "type": "text",
+        "value": "`pickle` guarda objetos de Python, pero al **cargar** puede ejecutar código incrustado. Abrir un pickle de origen desconocido es tan peligroso como ejecutar un programa desconocido."
+      },
+      {
+        "type": "text",
+        "value": "Para datos que vienen de fuera (API, fichero de usuario, red) usa **JSON**: solo guarda datos (números, textos, listas, dicts), nunca ejecuta nada."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import json",
+          "texto = json.dumps({'usuario': 'ana', 'nivel': 3})",
+          "print(texto)",
+          "print(json.loads(texto)['nivel'])"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "{\"usuario\": \"ana\", \"nivel\": 3}",
+          "3"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Resumen: JSON para intercambiar datos con el mundo; pickle solo para datos tuyos y de confianza."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Don't load pickle from untrusted sources"
+      },
+      {
+        "type": "text",
+        "value": "`pickle` stores Python objects, but **loading** one can execute embedded code. Opening a pickle from an unknown source is as dangerous as running an unknown program."
+      },
+      {
+        "type": "text",
+        "value": "For data coming from outside (API, user file, network) use **JSON**: it only stores data (numbers, strings, lists, dicts), never executes anything."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import json",
+          "texto = json.dumps({'usuario': 'ana', 'nivel': 3})",
+          "print(texto)",
+          "print(json.loads(texto)['nivel'])"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "{\"usuario\": \"ana\", \"nivel\": 3}",
+          "3"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Summary: JSON to exchange data with the world; pickle only for your own, trusted data."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m20l2e1",
+      "prompt": {
+        "es": "Define `a_json(dato)` que devuelva el dato como texto JSON con las claves ordenadas (usa json.dumps con sort_keys=True).",
+        "en": "Define `a_json(dato)` returning the data as JSON text with sorted keys (use json.dumps with sort_keys=True)."
+      },
+      "starter_code": [
+        "import json",
+        "",
+        "def a_json(dato):",
+        "    pass"
+      ],
+      "solution": [
+        "import json",
+        "",
+        "def a_json(dato):",
+        "    return json.dumps(dato, sort_keys=True)"
+      ],
+      "hints": {
+        "es": [
+          "json.dumps(dato, sort_keys=True)."
+        ],
+        "en": [
+          "json.dumps(dato, sort_keys=True)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "a_json",
+          "cases": [
+            {
+              "args": [
+                {
+                  "b": 1,
+                  "a": 2
+                }
+              ],
+              "expected": "{\"a\": 2, \"b\": 1}"
+            },
+            {
+              "args": [
+                [
+                  1,
+                  2
+                ]
+              ],
+              "expected": "[1, 2]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m20l2e2",
+      "prompt": {
+        "es": "Define `desde_json(texto)` que convierta texto JSON en el dato Python correspondiente (usa json.loads).",
+        "en": "Define `desde_json(texto)` converting JSON text into the corresponding Python value (use json.loads)."
+      },
+      "starter_code": [
+        "import json",
+        "",
+        "def desde_json(texto):",
+        "    pass"
+      ],
+      "solution": [
+        "import json",
+        "",
+        "def desde_json(texto):",
+        "    return json.loads(texto)"
+      ],
+      "hints": {
+        "es": [
+          "json.loads hace lo contrario de json.dumps."
+        ],
+        "en": [
+          "json.loads is the inverse of json.dumps."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "desde_json",
+          "cases": [
+            {
+              "args": [
+                "{\"a\": 1, \"b\": 2}"
+              ],
+              "expected": {
+                "a": 1,
+                "b": 2
+              }
+            },
+            {
+              "args": [
+                "[1, 2, 3]"
+              ],
+              "expected": [
+                1,
+                2,
+                3
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

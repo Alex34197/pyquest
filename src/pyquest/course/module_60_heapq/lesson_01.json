@@ -1,0 +1,217 @@
+{
+  "id": "m60l1",
+  "title": {
+    "es": "Montículos con heapq",
+    "en": "Heaps with heapq"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Siempre el menor a mano"
+      },
+      {
+        "type": "text",
+        "value": "Un **montículo** (heap) es una estructura que da acceso rápido al elemento más pequeño. `heapq` trabaja sobre listas normales: `heappush` añade, `heappop` saca SIEMPRE el menor."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import heapq",
+          "h = []",
+          "heapq.heappush(h, 3)",
+          "heapq.heappush(h, 1)",
+          "heapq.heappush(h, 2)",
+          "print(heapq.heappop(h))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "1"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`heapq.nsmallest(n, datos)` y `nlargest(n, datos)` dan los n menores/mayores sin ordenar todo."
+      },
+      {
+        "type": "note",
+        "value": "Un heap es la base de una cola de prioridad: atender siempre lo más urgente primero."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Always the smallest at hand"
+      },
+      {
+        "type": "text",
+        "value": "A **heap** is a structure giving fast access to the smallest element. `heapq` works on plain lists: `heappush` adds, `heappop` ALWAYS removes the smallest."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import heapq",
+          "h = []",
+          "heapq.heappush(h, 3)",
+          "heapq.heappush(h, 1)",
+          "heapq.heappush(h, 2)",
+          "print(heapq.heappop(h))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "1"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`heapq.nsmallest(n, data)` and `nlargest(n, data)` give the n smallest/largest without sorting everything."
+      },
+      {
+        "type": "note",
+        "value": "A heap underlies a priority queue: always handle the most urgent thing first."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m60l1e1",
+      "prompt": {
+        "es": "Define `ordenar_heap(nums)` que ordene metiendo todo en un heap y sacándolo (heappush/heappop).",
+        "en": "Define `ordenar_heap(nums)` sorting by pushing everything into a heap and popping it out."
+      },
+      "starter_code": [
+        "import heapq",
+        "",
+        "def ordenar_heap(nums):",
+        "    pass"
+      ],
+      "solution": [
+        "import heapq",
+        "",
+        "def ordenar_heap(nums):",
+        "    h = []",
+        "    for n in nums:",
+        "        heapq.heappush(h, n)",
+        "    return [heapq.heappop(h) for _ in range(len(h))]"
+      ],
+      "hints": {
+        "es": [
+          "Empuja todos y luego saca tantos como haya."
+        ],
+        "en": [
+          "Push all then pop as many as there are."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "ordenar_heap",
+          "cases": [
+            {
+              "args": [
+                [
+                  3,
+                  1,
+                  2
+                ]
+              ],
+              "expected": [
+                1,
+                2,
+                3
+              ]
+            },
+            {
+              "args": [
+                [
+                  5,
+                  5,
+                  1
+                ]
+              ],
+              "expected": [
+                1,
+                5,
+                5
+              ]
+            },
+            {
+              "args": [
+                []
+              ],
+              "expected": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m60l1e2",
+      "prompt": {
+        "es": "Define `n_menores(nums, n)` que devuelva los n valores más pequeños (usa heapq.nsmallest).",
+        "en": "Define `n_menores(nums, n)` returning the n smallest values (use heapq.nsmallest)."
+      },
+      "starter_code": [
+        "import heapq",
+        "",
+        "def n_menores(nums, n):",
+        "    pass"
+      ],
+      "solution": [
+        "import heapq",
+        "",
+        "def n_menores(nums, n):",
+        "    return heapq.nsmallest(n, nums)"
+      ],
+      "hints": {
+        "es": [
+          "heapq.nsmallest(n, nums)."
+        ],
+        "en": [
+          "heapq.nsmallest(n, nums)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "n_menores",
+          "cases": [
+            {
+              "args": [
+                [
+                  5,
+                  1,
+                  8,
+                  3
+                ],
+                2
+              ],
+              "expected": [
+                1,
+                3
+              ]
+            },
+            {
+              "args": [
+                [
+                  4,
+                  4,
+                  4
+                ],
+                2
+              ],
+              "expected": [
+                4,
+                4
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "id": "m11l2",
+  "title": {
+    "es": "Colecciones y valores opcionales",
+    "en": "Collections and optional values"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Anotar listas, diccionarios y 'puede ser None'"
+      },
+      {
+        "type": "text",
+        "value": "Para colecciones se indica qué contienen: `list[int]`, `dict[str, int]`, `tuple[int, int]`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "numeros: list[int] = [1, 2, 3]",
+          "edades: dict[str, int] = {'Ana': 25}"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Si un valor puede ser de un tipo **o** None, se escribe `X | None` (antes `Optional[X]`)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def buscar(d: dict, clave: str) -> int | None:",
+          "    return d.get(clave)"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Estas anotaciones son la base de un código grande y mantenible; al leer código ajeno (ASIR/ciber) lo agradeces."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Annotating lists, dicts and 'maybe None'"
+      },
+      {
+        "type": "text",
+        "value": "For collections you say what they hold: `list[int]`, `dict[str, int]`, `tuple[int, int]`."
+      },
+      {
+        "type": "code",
+        "value": [
+          "numeros: list[int] = [1, 2, 3]",
+          "edades: dict[str, int] = {'Ana': 25}"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "If a value can be a type **or** None, write `X | None` (formerly `Optional[X]`)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def buscar(d: dict, clave: str) -> int | None:",
+          "    return d.get(clave)"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "These annotations underpin large, maintainable codebases; you'll appreciate them reading others' code."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m11l2e1",
+      "prompt": {
+        "es": "Define `suma_lista(numeros: list[int]) -> int` que sume la lista (anota los tipos).",
+        "en": "Define `suma_lista(numeros: list[int]) -> int` summing the list (annotate the types)."
+      },
+      "starter_code": [
+        "def suma_lista(numeros):",
+        "    pass"
+      ],
+      "solution": [
+        "def suma_lista(numeros: list[int]) -> int:",
+        "    return sum(numeros)"
+      ],
+      "hints": {
+        "es": [
+          "Anota `numeros: list[int]` y `-> int`."
+        ],
+        "en": [
+          "Annotate `numeros: list[int]` and `-> int`."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "suma_lista",
+          "harness": "assert suma_lista([1, 2, 3]) == 6\nassert suma_lista([]) == 0\nassert 'numeros' in suma_lista.__annotations__ and 'return' in suma_lista.__annotations__"
+        }
+      ]
+    },
+    {
+      "id": "m11l2e2",
+      "prompt": {
+        "es": "Define `primero(lista)` que devuelva el primer elemento, o `None` si la lista está vacía.",
+        "en": "Define `primero(lista)` returning the first element, or `None` if the list is empty."
+      },
+      "starter_code": [
+        "def primero(lista):",
+        "    pass"
+      ],
+      "solution": [
+        "def primero(lista):",
+        "    return lista[0] if lista else None"
+      ],
+      "hints": {
+        "es": [
+          "Comprueba si la lista está vacía antes de acceder a [0]."
+        ],
+        "en": [
+          "Check if the list is empty before accessing [0]."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "primero",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  2,
+                  3
+                ]
+              ],
+              "expected": 1
+            },
+            {
+              "args": [
+                []
+              ],
+              "expected": null
+            },
+            {
+              "args": [
+                [
+                  9
+                ]
+              ],
+              "expected": 9
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

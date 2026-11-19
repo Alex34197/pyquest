@@ -1,0 +1,204 @@
+{
+  "id": "m57l1",
+  "title": {
+    "es": "Hilos con threading",
+    "en": "Threads with threading"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Varias tareas a la vez"
+      },
+      {
+        "type": "text",
+        "value": "`threading.Thread(target=funcion)` crea un hilo; `.start()` lo lanza y `.join()` espera a que termine. Si varios hilos tocan el mismo dato, usa un `Lock` para evitar **condiciones de carrera**."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import threading",
+          "cont = 0",
+          "lock = threading.Lock()",
+          "def inc():",
+          "    global cont",
+          "    with lock:",
+          "        cont += 1",
+          "hilos = [threading.Thread(target=inc) for _ in range(3)]",
+          "for h in hilos: h.start()",
+          "for h in hilos: h.join()",
+          "print(cont)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "3"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "En CPython, los hilos van bien para esperas (E/S); para cálculo puro mira multiprocessing (otro proceso por núcleo)."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Several tasks at once"
+      },
+      {
+        "type": "text",
+        "value": "`threading.Thread(target=function)` creates a thread; `.start()` launches it and `.join()` waits for it. If several threads touch the same data, use a `Lock` to avoid **race conditions**."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import threading",
+          "cont = 0",
+          "lock = threading.Lock()",
+          "def inc():",
+          "    global cont",
+          "    with lock:",
+          "        cont += 1",
+          "hilos = [threading.Thread(target=inc) for _ in range(3)]",
+          "for h in hilos: h.start()",
+          "for h in hilos: h.join()",
+          "print(cont)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "3"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "In CPython, threads are good for waiting (I/O); for pure computation look at multiprocessing (one process per core)."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m57l1e1",
+      "prompt": {
+        "es": "Define `contar_con_hilos(n)` que lance n hilos que incrementan un contador con un Lock y devuelva el total.",
+        "en": "Define `contar_con_hilos(n)` launching n threads that increment a counter with a Lock and return the total."
+      },
+      "starter_code": [
+        "import threading",
+        "",
+        "def contar_con_hilos(n):",
+        "    pass"
+      ],
+      "solution": [
+        "import threading",
+        "",
+        "def contar_con_hilos(n):",
+        "    cont = 0",
+        "    lock = threading.Lock()",
+        "    def inc():",
+        "        nonlocal cont",
+        "        with lock:",
+        "            cont += 1",
+        "    hilos = [threading.Thread(target=inc) for _ in range(n)]",
+        "    for h in hilos:",
+        "        h.start()",
+        "    for h in hilos:",
+        "        h.join()",
+        "    return cont"
+      ],
+      "hints": {
+        "es": [
+          "Crea los hilos, start() a todos, join() a todos; protege el contador con el lock."
+        ],
+        "en": [
+          "Create the threads, start() all, join() all; protect the counter with the lock."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "contar_con_hilos",
+          "cases": [
+            {
+              "args": [
+                25
+              ],
+              "expected": 25
+            },
+            {
+              "args": [
+                0
+              ],
+              "expected": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m57l1e2",
+      "prompt": {
+        "es": "Define `paralelo(valores)` que calcule el cuadrado de cada valor en su propio hilo y devuelva la lista en orden.",
+        "en": "Define `paralelo(valores)` computing each value's square in its own thread and returning the list in order."
+      },
+      "starter_code": [
+        "import threading",
+        "",
+        "def paralelo(valores):",
+        "    pass"
+      ],
+      "solution": [
+        "import threading",
+        "",
+        "def paralelo(valores):",
+        "    res = [None] * len(valores)",
+        "    def trabajo(i, v):",
+        "        res[i] = v * v",
+        "    hilos = [threading.Thread(target=trabajo, args=(i, v)) for i, v in enumerate(valores)]",
+        "    for h in hilos:",
+        "        h.start()",
+        "    for h in hilos:",
+        "        h.join()",
+        "    return res"
+      ],
+      "hints": {
+        "es": [
+          "Cada hilo escribe en su propio índice de la lista de resultados."
+        ],
+        "en": [
+          "Each thread writes to its own index in the results list."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "paralelo",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  2,
+                  3
+                ]
+              ],
+              "expected": [
+                1,
+                4,
+                9
+              ]
+            },
+            {
+              "args": [
+                []
+              ],
+              "expected": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,167 @@
+{
+  "id": "m39l1",
+  "title": {
+    "es": "Decimal: aritmética exacta",
+    "en": "Decimal: exact arithmetic"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Cuando los float no bastan"
+      },
+      {
+        "type": "text",
+        "value": "Los `float` tienen errores de redondeo: `0.1 + 0.2` no da exactamente `0.3`. Para dinero y cálculos exactos usa `decimal.Decimal`, creándolo desde **cadenas**."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from decimal import Decimal",
+          "print(0.1 + 0.2)",
+          "print(Decimal('0.1') + Decimal('0.2'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "0.30000000000000004",
+          "0.3"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Crea Decimal desde str ('0.1'), no desde float (0.1): el float ya viene con el error de origen."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "When floats aren't enough"
+      },
+      {
+        "type": "text",
+        "value": "`float`s have rounding errors: `0.1 + 0.2` isn't exactly `0.3`. For money and exact calculations use `decimal.Decimal`, building it from **strings**."
+      },
+      {
+        "type": "code",
+        "value": [
+          "from decimal import Decimal",
+          "print(0.1 + 0.2)",
+          "print(Decimal('0.1') + Decimal('0.2'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "0.30000000000000004",
+          "0.3"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Build Decimal from str ('0.1'), not from float (0.1): the float already carries the error."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m39l1e1",
+      "prompt": {
+        "es": "Define `suma_exacta(a, b)` que reciba dos números como CADENA, los sume con Decimal y devuelva el resultado como cadena.",
+        "en": "Define `suma_exacta(a, b)` taking two numbers as STRINGS, adding them with Decimal and returning the result as a string."
+      },
+      "starter_code": [
+        "from decimal import Decimal",
+        "",
+        "def suma_exacta(a, b):",
+        "    pass"
+      ],
+      "solution": [
+        "from decimal import Decimal",
+        "",
+        "def suma_exacta(a, b):",
+        "    return str(Decimal(a) + Decimal(b))"
+      ],
+      "hints": {
+        "es": [
+          "Decimal(a) + Decimal(b), y conviértelo a str."
+        ],
+        "en": [
+          "Decimal(a) + Decimal(b), then convert to str."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "suma_exacta",
+          "cases": [
+            {
+              "args": [
+                "0.1",
+                "0.2"
+              ],
+              "expected": "0.3"
+            },
+            {
+              "args": [
+                "1.5",
+                "2.5"
+              ],
+              "expected": "4.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m39l1e2",
+      "prompt": {
+        "es": "Define `iguales(a, b)` que diga si dos cadenas numéricas representan el mismo valor decimal.",
+        "en": "Define `iguales(a, b)` telling whether two numeric strings represent the same decimal value."
+      },
+      "starter_code": [
+        "from decimal import Decimal",
+        "",
+        "def iguales(a, b):",
+        "    pass"
+      ],
+      "solution": [
+        "from decimal import Decimal",
+        "",
+        "def iguales(a, b):",
+        "    return Decimal(a) == Decimal(b)"
+      ],
+      "hints": {
+        "es": [
+          "Compara Decimal(a) == Decimal(b)."
+        ],
+        "en": [
+          "Compare Decimal(a) == Decimal(b)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "iguales",
+          "cases": [
+            {
+              "args": [
+                "0.1",
+                "0.10"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "0.1",
+                "0.2"
+              ],
+              "expected": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

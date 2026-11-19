@@ -1,0 +1,223 @@
+{
+  "id": "m31l1",
+  "title": {
+    "es": "Búsqueda",
+    "en": "Searching"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Encontrar un elemento"
+      },
+      {
+        "type": "text",
+        "value": "La **búsqueda lineal** recorre la lista de principio a fin comparando. Es simple y funciona siempre, pero lenta en listas enormes."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def buscar(lista, x):",
+          "    for i, v in enumerate(lista):",
+          "        if v == x:",
+          "            return i",
+          "    return -1",
+          "",
+          "print(buscar([10, 20, 30], 20))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "1"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "La **búsqueda binaria** es mucho más rápida, pero requiere que la lista esté **ordenada**: descarta la mitad en cada paso."
+      },
+      {
+        "type": "note",
+        "value": "Binaria: O(log n) frente a O(n) de la lineal. La diferencia es enorme con millones de datos."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Finding an element"
+      },
+      {
+        "type": "text",
+        "value": "**Linear search** scans the list from start to end comparing. Simple and always works, but slow on huge lists."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def buscar(lista, x):",
+          "    for i, v in enumerate(lista):",
+          "        if v == x:",
+          "            return i",
+          "    return -1",
+          "",
+          "print(buscar([10, 20, 30], 20))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "1"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "**Binary search** is much faster, but requires the list to be **sorted**: it discards half at each step."
+      },
+      {
+        "type": "note",
+        "value": "Binary: O(log n) vs O(n) for linear. The difference is huge with millions of items."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m31l1e1",
+      "prompt": {
+        "es": "Define `busqueda_lineal(lista, x)` que devuelva el índice de `x` o -1 si no está.",
+        "en": "Define `busqueda_lineal(lista, x)` returning the index of `x` or -1 if absent."
+      },
+      "starter_code": [
+        "def busqueda_lineal(lista, x):",
+        "    pass"
+      ],
+      "solution": [
+        "def busqueda_lineal(lista, x):",
+        "    for i, v in enumerate(lista):",
+        "        if v == x:",
+        "            return i",
+        "    return -1"
+      ],
+      "hints": {
+        "es": [
+          "Recorre con enumerate y devuelve i al encontrarlo."
+        ],
+        "en": [
+          "Iterate with enumerate and return i on match."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "busqueda_lineal",
+          "cases": [
+            {
+              "args": [
+                [
+                  10,
+                  20,
+                  30
+                ],
+                20
+              ],
+              "expected": 1
+            },
+            {
+              "args": [
+                [
+                  1,
+                  2
+                ],
+                9
+              ],
+              "expected": -1
+            },
+            {
+              "args": [
+                [
+                  5
+                ],
+                5
+              ],
+              "expected": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m31l1e2",
+      "prompt": {
+        "es": "Define `busqueda_binaria(lista, x)` sobre una lista ORDENADA; devuelve el índice o -1.",
+        "en": "Define `busqueda_binaria(lista, x)` over a SORTED list; return the index or -1."
+      },
+      "starter_code": [
+        "def busqueda_binaria(lista, x):",
+        "    pass"
+      ],
+      "solution": [
+        "def busqueda_binaria(lista, x):",
+        "    lo, hi = 0, len(lista) - 1",
+        "    while lo <= hi:",
+        "        med = (lo + hi) // 2",
+        "        if lista[med] == x:",
+        "            return med",
+        "        if lista[med] < x:",
+        "            lo = med + 1",
+        "        else:",
+        "            hi = med - 1",
+        "    return -1"
+      ],
+      "hints": {
+        "es": [
+          "Mantén lo y hi; compara con el central y descarta una mitad."
+        ],
+        "en": [
+          "Keep lo and hi; compare with the middle and discard a half."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "busqueda_binaria",
+          "cases": [
+            {
+              "args": [
+                [
+                  1,
+                  3,
+                  5,
+                  7,
+                  9
+                ],
+                7
+              ],
+              "expected": 3
+            },
+            {
+              "args": [
+                [
+                  1,
+                  2,
+                  3
+                ],
+                4
+              ],
+              "expected": -1
+            },
+            {
+              "args": [
+                [
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                1
+              ],
+              "expected": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

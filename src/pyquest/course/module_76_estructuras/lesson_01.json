@@ -1,0 +1,165 @@
+{
+  "id": "m76l1",
+  "title": {
+    "es": "Lista enlazada",
+    "en": "Linked list"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Nodos que apuntan al siguiente"
+      },
+      {
+        "type": "text",
+        "value": "Una **lista enlazada** encadena nodos: cada uno guarda un valor y una referencia al siguiente (o `None` al final). Recorrerla es seguir esa cadena hasta llegar a None."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Nodo:",
+          "    def __init__(self, valor, siguiente=None):",
+          "        self.valor = valor",
+          "        self.siguiente = siguiente",
+          "",
+          "cabeza = Nodo(1, Nodo(2, Nodo(3)))",
+          "print(cabeza.siguiente.valor)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "2"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Implementarla a mano ayuda a entender qué hacen por dentro list, deque y otras estructuras."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Nodes pointing to the next"
+      },
+      {
+        "type": "text",
+        "value": "A **linked list** chains nodes: each stores a value and a reference to the next (or `None` at the end). Traversing it means following that chain until reaching None."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Nodo:",
+          "    def __init__(self, valor, siguiente=None):",
+          "        self.valor = valor",
+          "        self.siguiente = siguiente",
+          "",
+          "cabeza = Nodo(1, Nodo(2, Nodo(3)))",
+          "print(cabeza.siguiente.valor)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "2"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Building it by hand helps you understand what list, deque and other structures do inside."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m76l1e1",
+      "prompt": {
+        "es": "Define la clase `Nodo(valor, siguiente=None)` y `a_lista(cabeza)` que recorra la lista enlazada y devuelva una lista de Python.",
+        "en": "Define the class `Nodo(valor, siguiente=None)` and `a_lista(cabeza)` that traverses the linked list and returns a Python list."
+      },
+      "starter_code": [
+        "class Nodo:",
+        "    def __init__(self, valor, siguiente=None):",
+        "        self.valor = valor",
+        "        self.siguiente = siguiente",
+        "",
+        "def a_lista(cabeza):",
+        "    pass"
+      ],
+      "solution": [
+        "class Nodo:",
+        "    def __init__(self, valor, siguiente=None):",
+        "        self.valor = valor",
+        "        self.siguiente = siguiente",
+        "",
+        "def a_lista(cabeza):",
+        "    salida = []",
+        "    actual = cabeza",
+        "    while actual is not None:",
+        "        salida.append(actual.valor)",
+        "        actual = actual.siguiente",
+        "    return salida"
+      ],
+      "hints": {
+        "es": [
+          "Recorre con un while siguiendo actual.siguiente hasta None."
+        ],
+        "en": [
+          "Traverse with a while following actual.siguiente until None."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "a_lista",
+          "harness": "c = Nodo(1, Nodo(2, Nodo(3)))\nassert a_lista(c) == [1, 2, 3]\nassert a_lista(None) == []"
+        }
+      ]
+    },
+    {
+      "id": "m76l1e2",
+      "prompt": {
+        "es": "Define `longitud(cabeza)` que cuente cuántos nodos tiene la lista enlazada.",
+        "en": "Define `longitud(cabeza)` that counts how many nodes the linked list has."
+      },
+      "starter_code": [
+        "class Nodo:",
+        "    def __init__(self, valor, siguiente=None):",
+        "        self.valor = valor",
+        "        self.siguiente = siguiente",
+        "",
+        "def longitud(cabeza):",
+        "    pass"
+      ],
+      "solution": [
+        "class Nodo:",
+        "    def __init__(self, valor, siguiente=None):",
+        "        self.valor = valor",
+        "        self.siguiente = siguiente",
+        "",
+        "def longitud(cabeza):",
+        "    n = 0",
+        "    actual = cabeza",
+        "    while actual is not None:",
+        "        n += 1",
+        "        actual = actual.siguiente",
+        "    return n"
+      ],
+      "hints": {
+        "es": [
+          "Cuenta nodos mientras avanzas por la cadena."
+        ],
+        "en": [
+          "Count nodes as you advance along the chain."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "longitud",
+          "harness": "c = Nodo(1, Nodo(2, Nodo(3)))\nassert longitud(c) == 3\nassert longitud(None) == 0"
+        }
+      ]
+    }
+  ]
+}

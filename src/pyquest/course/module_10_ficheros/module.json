@@ -1,0 +1,15 @@
+{
+  "id": "m10",
+  "order": 10,
+  "title": {
+    "es": "Ficheros",
+    "en": "Files"
+  },
+  "summary": {
+    "es": "Leer y escribir archivos de texto con with open(...) y los modos r/w/a.",
+    "en": "Read and write text files with with open(...) and the r/w/a modes."
+  },
+  "lessons": [
+    "lesson_01.json"
+  ]
+}

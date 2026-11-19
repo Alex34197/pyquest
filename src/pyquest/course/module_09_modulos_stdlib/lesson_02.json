@@ -1,0 +1,214 @@
+{
+  "id": "m9l2",
+  "title": {
+    "es": "JSON: intercambiar datos",
+    "en": "JSON: exchanging data"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Texto estructurado: JSON"
+      },
+      {
+        "type": "text",
+        "value": "El módulo `json` convierte entre objetos de Python (dict, list…) y texto JSON. `json.dumps(obj)` crea el texto; `json.loads(texto)` lo vuelve a objeto. Es el formato más común para intercambiar datos."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import json",
+          "datos = {'nombre': 'Ana', 'edad': 25}",
+          "texto = json.dumps(datos)",
+          "print(texto)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "{\"nombre\": \"Ana\", \"edad\": 25}"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`json.dumps(obj, sort_keys=True)` ordena las claves (útil para resultados estables) e `indent=2` lo hace legible. `json.loads` hace el camino inverso."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import json",
+          "print(json.loads('[1, 2, 3]'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[1, 2, 3]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Lo que guardes debe ser 'serializable': números, texto, listas, diccionarios, booleanos y None."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Structured text: JSON"
+      },
+      {
+        "type": "text",
+        "value": "The `json` module converts between Python objects (dict, list…) and JSON text. `json.dumps(obj)` builds the text; `json.loads(text)` turns it back into an object. It's the most common data-exchange format."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import json",
+          "datos = {'nombre': 'Ana', 'edad': 25}",
+          "texto = json.dumps(datos)",
+          "print(texto)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "{\"nombre\": \"Ana\", \"edad\": 25}"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`json.dumps(obj, sort_keys=True)` sorts the keys (handy for stable results) and `indent=2` makes it readable. `json.loads` does the reverse."
+      },
+      {
+        "type": "code",
+        "value": [
+          "import json",
+          "print(json.loads('[1, 2, 3]'))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "[1, 2, 3]"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Whatever you store must be 'serializable': numbers, text, lists, dicts, booleans and None."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m9l2e1",
+      "prompt": {
+        "es": "Define `a_json(d)` que devuelva el diccionario como texto JSON con las **claves ordenadas** (usa `json.dumps(d, sort_keys=True)`).",
+        "en": "Define `a_json(d)` returning the dict as JSON text with **sorted keys** (use `json.dumps(d, sort_keys=True)`)."
+      },
+      "starter_code": [
+        "import json",
+        "",
+        "def a_json(d):",
+        "    pass"
+      ],
+      "solution": [
+        "import json",
+        "",
+        "def a_json(d):",
+        "    return json.dumps(d, sort_keys=True)"
+      ],
+      "hints": {
+        "es": [
+          "json.dumps(d, sort_keys=True) ordena las claves."
+        ],
+        "en": [
+          "json.dumps(d, sort_keys=True) sorts the keys."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "a_json",
+          "cases": [
+            {
+              "args": [
+                {
+                  "b": 1,
+                  "a": 2
+                }
+              ],
+              "expected": "{\"a\": 2, \"b\": 1}"
+            },
+            {
+              "args": [
+                {
+                  "x": 1
+                }
+              ],
+              "expected": "{\"x\": 1}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m9l2e2",
+      "prompt": {
+        "es": "Define `desde_json(s)` que convierta el texto JSON `s` en el objeto de Python correspondiente (usa `json.loads`).",
+        "en": "Define `desde_json(s)` converting the JSON text `s` into the corresponding Python object (use `json.loads`)."
+      },
+      "starter_code": [
+        "import json",
+        "",
+        "def desde_json(s):",
+        "    pass"
+      ],
+      "solution": [
+        "import json",
+        "",
+        "def desde_json(s):",
+        "    return json.loads(s)"
+      ],
+      "hints": {
+        "es": [
+          "json.loads(s) interpreta el texto JSON."
+        ],
+        "en": [
+          "json.loads(s) parses the JSON text."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "desde_json",
+          "cases": [
+            {
+              "args": [
+                "[1, 2, 3]"
+              ],
+              "expected": [
+                1,
+                2,
+                3
+              ]
+            },
+            {
+              "args": [
+                "{\"x\": 5}"
+              ],
+              "expected": {
+                "x": 5
+              }
+            },
+            {
+              "args": [
+                "\"hola\""
+              ],
+              "expected": "hola"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

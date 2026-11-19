@@ -1,0 +1,205 @@
+{
+  "id": "m75l1",
+  "title": {
+    "es": "Memoización y subproblemas",
+    "en": "Memoization and subproblems"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Guardar lo ya calculado"
+      },
+      {
+        "type": "text",
+        "value": "La **programación dinámica** resuelve un problema combinando soluciones de subproblemas más pequeños, **guardando** los resultados para no recalcularlos. Subir una escalera de n peldaños (de 1 o 2 en 2) es la suma de las formas de subir n-1 y n-2."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def escalera(n):",
+          "    a, b = 1, 1",
+          "    for _ in range(n):",
+          "        a, b = b, a + b",
+          "    return a",
+          "",
+          "print(escalera(4))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "5"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Es la versión 'de abajo arriba' (tabla) de lo que con recursión harías con @lru_cache."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Storing what's already computed"
+      },
+      {
+        "type": "text",
+        "value": "**Dynamic programming** solves a problem by combining solutions of smaller subproblems, **storing** the results to avoid recomputing. Climbing a staircase of n steps (1 or 2 at a time) is the sum of the ways to climb n-1 and n-2."
+      },
+      {
+        "type": "code",
+        "value": [
+          "def escalera(n):",
+          "    a, b = 1, 1",
+          "    for _ in range(n):",
+          "        a, b = b, a + b",
+          "    return a",
+          "",
+          "print(escalera(4))"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "5"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "It's the 'bottom-up' (table) version of what you'd do recursively with @lru_cache."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m75l1e1",
+      "prompt": {
+        "es": "Define `subir_escalera(n)`: nº de formas de subir n peldaños subiendo de 1 o de 2 en 2.",
+        "en": "Define `subir_escalera(n)`: number of ways to climb n steps taking 1 or 2 at a time."
+      },
+      "starter_code": [
+        "def subir_escalera(n):",
+        "    pass"
+      ],
+      "solution": [
+        "def subir_escalera(n):",
+        "    a, b = 1, 1",
+        "    for _ in range(n):",
+        "        a, b = b, a + b",
+        "    return a"
+      ],
+      "hints": {
+        "es": [
+          "Es la sucesión de Fibonacci: formas(n) = formas(n-1) + formas(n-2)."
+        ],
+        "en": [
+          "It's Fibonacci: ways(n) = ways(n-1) + ways(n-2)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "subir_escalera",
+          "cases": [
+            {
+              "args": [
+                1
+              ],
+              "expected": 1
+            },
+            {
+              "args": [
+                2
+              ],
+              "expected": 2
+            },
+            {
+              "args": [
+                3
+              ],
+              "expected": 3
+            },
+            {
+              "args": [
+                4
+              ],
+              "expected": 5
+            },
+            {
+              "args": [
+                5
+              ],
+              "expected": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m75l1e2",
+      "prompt": {
+        "es": "Define `monedas(cantidad, valores)`: mínimo nº de monedas para sumar `cantidad`; -1 si es imposible.",
+        "en": "Define `monedas(cantidad, valores)`: minimum number of coins to make `cantidad`; -1 if impossible."
+      },
+      "starter_code": [
+        "def monedas(cantidad, valores):",
+        "    pass"
+      ],
+      "solution": [
+        "def monedas(cantidad, valores):",
+        "    INF = float('inf')",
+        "    dp = [0] + [INF] * cantidad",
+        "    for i in range(1, cantidad + 1):",
+        "        for v in valores:",
+        "            if v <= i and dp[i - v] + 1 < dp[i]:",
+        "                dp[i] = dp[i - v] + 1",
+        "    return dp[cantidad] if dp[cantidad] != INF else -1"
+      ],
+      "hints": {
+        "es": [
+          "Tabla dp donde dp[i] = mínimo de monedas para la cantidad i."
+        ],
+        "en": [
+          "DP table where dp[i] = minimum coins for amount i."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "monedas",
+          "cases": [
+            {
+              "args": [
+                11,
+                [
+                  1,
+                  2,
+                  5
+                ]
+              ],
+              "expected": 3
+            },
+            {
+              "args": [
+                0,
+                [
+                  1
+                ]
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                3,
+                [
+                  2
+                ]
+              ],
+              "expected": -1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

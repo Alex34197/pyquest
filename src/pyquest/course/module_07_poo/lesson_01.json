@@ -1,0 +1,190 @@
+{
+  "id": "m7l1",
+  "title": {
+    "es": "Clases y objetos",
+    "en": "Classes and objects"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Crear tus propios tipos"
+      },
+      {
+        "type": "text",
+        "value": "Una **clase** es un molde para crear **objetos** que agrupan datos (**atributos**) y comportamiento (**métodos**). `__init__` es el constructor: se ejecuta al crear el objeto y recibe `self` (el propio objeto)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Perro:",
+          "    def __init__(self, nombre):",
+          "        self.nombre = nombre",
+          "    def ladrar(self):",
+          "        return f'{self.nombre}: Guau'",
+          "",
+          "p = Perro('Toby')",
+          "print(p.ladrar())"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Toby: Guau"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`self` representa la instancia concreta; con `self.atributo` guardas y lees sus datos. Cada objeto tiene sus propios atributos."
+      },
+      {
+        "type": "code",
+        "value": [
+          "a = Perro('Ann')",
+          "b = Perro('Bos')",
+          "print(a.nombre, b.nombre)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Ann Bos"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "Por convención, las clases se nombran en MayúsculaCamello (`MiClase`) y los métodos/atributos en snake_case."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Create your own types"
+      },
+      {
+        "type": "text",
+        "value": "A **class** is a blueprint to create **objects** that group data (**attributes**) and behaviour (**methods**). `__init__` is the constructor: it runs when the object is created and receives `self` (the object itself)."
+      },
+      {
+        "type": "code",
+        "value": [
+          "class Perro:",
+          "    def __init__(self, nombre):",
+          "        self.nombre = nombre",
+          "    def ladrar(self):",
+          "        return f'{self.nombre}: Guau'",
+          "",
+          "p = Perro('Toby')",
+          "print(p.ladrar())"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Toby: Guau"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`self` is the specific instance; with `self.attribute` you store and read its data. Each object has its own attributes."
+      },
+      {
+        "type": "code",
+        "value": [
+          "a = Perro('Ann')",
+          "b = Perro('Bos')",
+          "print(a.nombre, b.nombre)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "Ann Bos"
+        ]
+      },
+      {
+        "type": "note",
+        "value": "By convention, classes are named in UpperCamelCase (`MyClass`) and methods/attributes in snake_case."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m7l1e1",
+      "prompt": {
+        "es": "Define una clase `Contador` que empiece en 0, con un método `incrementar()` que sume 1 y un método `valor()` que devuelva el total.",
+        "en": "Define a class `Contador` starting at 0, with a method `incrementar()` that adds 1 and a method `valor()` returning the total."
+      },
+      "starter_code": [
+        "class Contador:",
+        "    def __init__(self):",
+        "        pass"
+      ],
+      "solution": [
+        "class Contador:",
+        "    def __init__(self):",
+        "        self.cuenta = 0",
+        "    def incrementar(self):",
+        "        self.cuenta += 1",
+        "    def valor(self):",
+        "        return self.cuenta"
+      ],
+      "hints": {
+        "es": [
+          "Guarda el total en self.cuenta dentro de __init__.",
+          "incrementar hace self.cuenta += 1."
+        ],
+        "en": [
+          "Store the total in self.cuenta inside __init__.",
+          "incrementar does self.cuenta += 1."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "contador",
+          "harness": "c = Contador()\nc.incrementar()\nc.incrementar()\nassert c.valor() == 2\nc.incrementar()\nassert c.valor() == 3"
+        }
+      ]
+    },
+    {
+      "id": "m7l1e2",
+      "prompt": {
+        "es": "Define una clase `Rectangulo(base, altura)` con métodos `area()` y `perimetro()`.",
+        "en": "Define a class `Rectangulo(base, altura)` with methods `area()` and `perimetro()`."
+      },
+      "starter_code": [
+        "class Rectangulo:",
+        "    def __init__(self, base, altura):",
+        "        pass"
+      ],
+      "solution": [
+        "class Rectangulo:",
+        "    def __init__(self, base, altura):",
+        "        self.base = base",
+        "        self.altura = altura",
+        "    def area(self):",
+        "        return self.base * self.altura",
+        "    def perimetro(self):",
+        "        return 2 * (self.base + self.altura)"
+      ],
+      "hints": {
+        "es": [
+          "Guarda base y altura en __init__.",
+          "area = base*altura; perimetro = 2*(base+altura)."
+        ],
+        "en": [
+          "Store base and altura in __init__.",
+          "area = base*altura; perimetro = 2*(base+altura)."
+        ]
+      },
+      "tests": [
+        {
+          "type": "code",
+          "name": "rectangulo",
+          "harness": "r = Rectangulo(3, 4)\nassert r.area() == 12\nassert r.perimetro() == 14\nassert Rectangulo(5, 5).area() == 25"
+        }
+      ]
+    }
+  ]
+}

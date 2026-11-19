@@ -1,0 +1,204 @@
+{
+  "id": "m10l1",
+  "title": {
+    "es": "Leer y escribir archivos",
+    "en": "Reading and writing files"
+  },
+  "theory": {
+    "es": [
+      {
+        "type": "heading",
+        "value": "Trabajar con archivos"
+      },
+      {
+        "type": "text",
+        "value": "Para leer o escribir un archivo se usa `with open(ruta, modo) as f:`. El bloque `with` **cierra** el archivo automáticamente al terminar, incluso si ocurre un error."
+      },
+      {
+        "type": "code",
+        "value": [
+          "with open('saludo.txt', 'w') as f:",
+          "    f.write('hola mundo')"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Modos principales: `'r'` leer (por defecto), `'w'` escribir (crea o **sobrescribe**), `'a'` añadir al final."
+      },
+      {
+        "type": "code",
+        "value": [
+          "with open('saludo.txt', 'r') as f:",
+          "    contenido = f.read()",
+          "print(contenido)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "hola mundo"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`f.read()` devuelve todo el contenido como una cadena; `f.readlines()` una lista de líneas; y también puedes recorrer el archivo con `for linea in f:`."
+      },
+      {
+        "type": "note",
+        "value": "Usa **siempre** `with`: garantiza que el archivo se cierra aunque haya un error en medio."
+      }
+    ],
+    "en": [
+      {
+        "type": "heading",
+        "value": "Working with files"
+      },
+      {
+        "type": "text",
+        "value": "To read or write a file use `with open(path, mode) as f:`. The `with` block **closes** the file automatically when done, even if an error occurs."
+      },
+      {
+        "type": "code",
+        "value": [
+          "with open('saludo.txt', 'w') as f:",
+          "    f.write('hola mundo')"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "Main modes: `'r'` read (default), `'w'` write (creates or **overwrites**), `'a'` append to the end."
+      },
+      {
+        "type": "code",
+        "value": [
+          "with open('saludo.txt', 'r') as f:",
+          "    contenido = f.read()",
+          "print(contenido)"
+        ]
+      },
+      {
+        "type": "output",
+        "value": [
+          "hola mundo"
+        ]
+      },
+      {
+        "type": "text",
+        "value": "`f.read()` returns the whole content as a string; `f.readlines()` a list of lines; and you can also iterate the file with `for line in f:`."
+      },
+      {
+        "type": "note",
+        "value": "**Always** use `with`: it guarantees the file is closed even if an error happens midway."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "id": "m10l1e1",
+      "prompt": {
+        "es": "Define `guardar_y_leer(ruta, texto)` que escriba `texto` en el archivo `ruta` y luego devuelva lo que lea de vuelta de ese archivo.",
+        "en": "Define `guardar_y_leer(ruta, texto)` that writes `texto` to file `ruta` and then returns what it reads back from that file."
+      },
+      "starter_code": [
+        "def guardar_y_leer(ruta, texto):",
+        "    pass"
+      ],
+      "solution": [
+        "def guardar_y_leer(ruta, texto):",
+        "    with open(ruta, 'w') as f:",
+        "        f.write(texto)",
+        "    with open(ruta, 'r') as f:",
+        "        return f.read()"
+      ],
+      "hints": {
+        "es": [
+          "Abre en modo 'w' para escribir y luego en 'r' para leer.",
+          "f.read() devuelve todo el contenido."
+        ],
+        "en": [
+          "Open in 'w' to write, then in 'r' to read.",
+          "f.read() returns the whole content."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "guardar_y_leer",
+          "cases": [
+            {
+              "args": [
+                "a.txt",
+                "hola"
+              ],
+              "expected": "hola"
+            },
+            {
+              "args": [
+                "b.txt",
+                ""
+              ],
+              "expected": ""
+            },
+            {
+              "args": [
+                "c.txt",
+                "una linea"
+              ],
+              "expected": "una linea"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m10l1e2",
+      "prompt": {
+        "es": "Define `append_y_leer(ruta)` que: escriba `'a'` (modo 'w'), luego añada `'b'` (modo 'a') y por último devuelva el contenido leído. Debe devolver `'ab'`.",
+        "en": "Define `append_y_leer(ruta)` that: writes `'a'` (mode 'w'), then appends `'b'` (mode 'a'), and finally returns the read content. It must return `'ab'`."
+      },
+      "starter_code": [
+        "def append_y_leer(ruta):",
+        "    pass"
+      ],
+      "solution": [
+        "def append_y_leer(ruta):",
+        "    with open(ruta, 'w') as f:",
+        "        f.write('a')",
+        "    with open(ruta, 'a') as f:",
+        "        f.write('b')",
+        "    with open(ruta, 'r') as f:",
+        "        return f.read()"
+      ],
+      "hints": {
+        "es": [
+          "'w' crea/sobrescribe; 'a' añade al final.",
+          "Lee al final en modo 'r'."
+        ],
+        "en": [
+          "'w' creates/overwrites; 'a' appends.",
+          "Read at the end in 'r' mode."
+        ]
+      },
+      "tests": [
+        {
+          "type": "function",
+          "function": "append_y_leer",
+          "cases": [
+            {
+              "args": [
+                "x.txt"
+              ],
+              "expected": "ab"
+            },
+            {
+              "args": [
+                "y.txt"
+              ],
+              "expected": "ab"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

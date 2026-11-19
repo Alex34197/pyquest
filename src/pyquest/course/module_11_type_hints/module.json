@@ -1,0 +1,16 @@
+{
+  "id": "m11",
+  "order": 11,
+  "title": {
+    "es": "Anotaciones de tipos",
+    "en": "Type hints"
+  },
+  "summary": {
+    "es": "Anotar variables, funciones y colecciones; valores opcionales (X | None).",
+    "en": "Annotate variables, functions and collections; optional values (X | None)."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}

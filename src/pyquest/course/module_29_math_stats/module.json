@@ -1,0 +1,16 @@
+{
+  "id": "m29",
+  "order": 29,
+  "title": {
+    "es": "Matemáticas y estadística",
+    "en": "Math and statistics"
+  },
+  "summary": {
+    "es": "math (gcd, factorial, floor/ceil) y statistics (mean, median).",
+    "en": "math (gcd, factorial, floor/ceil) and statistics (mean, median)."
+  },
+  "lessons": [
+    "lesson_01.json",
+    "lesson_02.json"
+  ]
+}
